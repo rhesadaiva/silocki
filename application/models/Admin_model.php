@@ -10,7 +10,17 @@ class Admin_model extends CI_Model
 
     public function getPangkat()
     {
-        return $this->db->get('user')->result_array();
+        return $this->db->get('pangkat')->result_array();
+    }
+
+    public function getRole()
+    {
+        return $this->db->get('user_role')->result_array();
+    }
+
+    public function getSeksi()
+    {
+        return $this->db->get('seksi/subseksi')->result_array();
     }
 
     public function tambahUser()
@@ -19,13 +29,18 @@ class Admin_model extends CI_Model
             'nama' => $this->input->post('nama'),
             'nip' => $this->input->post('nip'),
             'pangkat' => $this->input->post('pangkat'),
-            'password' => md5($this->input->post('password')),
+            'password' => md5(123456),
             'role_id' => $this->input->post('role'),
-            'level' => $this->input->post('level'),
             'seksi' => $this->input->post('seksisub'),
-            'atasan' => $this->input->post('atasanlangsung'),
+            'atasan' => $this->input->post('atasan'),
 
         ];
         return $this->db->insert('user', $data);
+    }
+
+    public function deleteUser($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('user');
     }
 }

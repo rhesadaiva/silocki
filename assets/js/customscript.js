@@ -307,5 +307,50 @@ $('.button-tidaksetujulogbookbawahan').on('click', function (e) {
     })
 });
 
+//const Manage User
+const flashDataManageUser = $('.flashdata-manageuser').data('flashdatamanageuser');
+
+if (flashDataManageUser) {
+    Swal.fire({
+        title: 'Sukses !',
+        text: 'Pegawai ' + flashDataManageUser + '.',
+        type: 'success'
+
+    });
+}
+console.log('Pegawai ' + flashDataManageUser);
+
+$('.button-hapuspegawai').on('click', function (e) {
+
+    e.preventDefault();
+    const href = $(this).attr('href');
+
+    Swal.fire({
+        title: 'Konfirmasi Hapus Data Pegawai',
+        text: "Apakah anda yakin untuk menghapus data pegawai ini?",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085D6',
+        confirmButtonText: '<i class="fas fa-fw fa-trash"></i> Ya, Hapus',
+        cancelButtontext: '<i class="fas fa-fw fa-times"></i> Kembali'
+    }).then((result) => {
+        if (result.value) {
+            document.location.href = href;
+
+        }
+    })
+});
+
+//Init Datatables User
+$(document).ready(function () {
+    $('#datauser').DataTable({
+        "lengthChange": false,
+        "ordering": false,
+        "info": false,
+
+    });
+});
+
 
 console.log('Script berhasil diload!!!!!');

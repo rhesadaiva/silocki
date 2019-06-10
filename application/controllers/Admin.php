@@ -36,11 +36,19 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function tambahUser()
+    public function tambahpegawai()
     {
-        $data['title'] = 'Tambah User';
+        $data['title'] = 'Tambah Pegawai';
         $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
         $data['user_data'] = $this->Admin_model->getUsersData();
+        $data['pangkat'] = $this->Admin_model->getPangkat();
+        $data['role'] = $this->Admin_model->getRole();
+        $data['seksi'] = $this->Admin_model->getSeksi();
+
+        //Validasi Tambah User
+
+        $this->form_validation->set_rules('nama', 'Nama', 'required');
+        $this->form_validation->set_rules('nip', 'Nomor Induk Pegawai', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('templates/header', $data);
@@ -51,8 +59,15 @@ class Admin extends CI_Controller
         } else {
 
             $this->Admin_model->tambahUser();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">New Sub Menu added!</div>');
+            $this->session->set_flashdata('user', 'ditambahkan dengan password 123456');
             redirect('admin/manajemen_user');
         }
+    }
+
+    public function hapuspegawai($id)
+    {
+        $this->Admin_model->deleteUser($id);
+        $this->session->set_flashdata('user', 'berhasil dihapus. Silahkan melanjutkan kegiatan anda!');
+        redirect('admin/manajemen_user');
     }
 }

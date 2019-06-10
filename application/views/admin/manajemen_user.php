@@ -1,4 +1,9 @@
 <style>
+    h4 {
+        color: royalblue;
+        font-weight: bold;
+    }
+
     th {
         font-size: 14px;
     }
@@ -13,6 +18,11 @@
         width: 10%;
         text-align: center;
     }
+
+    .dataTables_wrapper .dataTables_filter {
+        float: right;
+        text-align: left;
+    }
 </style>
 
 
@@ -20,14 +30,20 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+    <div class="flashdata-manageuser" data-flashdatamanageuser="<?= $this->session->flashdata('user'); ?>"></div>
 
-    <div class="card shadow">
+    <div class="card shadow border-left-primary">
 
         <div class="card-header py-3">
 
-            <!-- Button trigger modal -->
-            <a class="btn btn-primary" href="<?= base_url('admin/tambahUser'); ?>" role="button">Link</a>
+            <div class="row">
+                <div class="col-sm">
+                    <h4><?= $title; ?></h4>
+                </div>
+                <div class="col-sm">
+                    <a class="btn btn-info btn-sm float-sm-right" href="<?= base_url('admin/tambahpegawai'); ?>"><i class="fas fa-fw fa-user-plus"></i> Tambah Pegawai</a>
+                </div>
+            </div>
         </div>
 
         <div class="card-body">
@@ -36,7 +52,7 @@
 
                 <div class="col-lg">
 
-                    <table class="table table-bordered table-hover" id="izin">
+                    <table class="table table-bordered table-hover" id="datauser">
                         <thead class="thead-light">
                             <tr>
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">No.</th>
@@ -59,12 +75,33 @@
                                     <td><?= $user['nama']; ?></td>
                                     <td><?= $user['nip']; ?></td>
                                     <td><?= $user['pangkat']; ?></td>
-                                    <td><?= $user['level']; ?></td>
+                                    <td><?php switch ($user['role_id']) {
+                                            case 1:
+                                                echo "Admin";
+                                                break;
+
+                                            case 2:
+                                                echo "Kepala Kantor";
+                                                break;
+
+                                            case 3:
+                                                echo "Kepala Subbagian / Kepala Seksi";
+                                                break;
+
+                                            case 4:
+                                                echo "Kepala Subseksi";
+                                                break;
+
+                                            case 5:
+                                                echo "Pelaksana";
+                                                break;
+                                        }
+                                        ?></td>
                                     <td><?= $user['seksi']; ?></td>
                                     <td><?= $user['atasan']; ?></td>
                                     <td class="aksi">
-                                        <a data-toggle="tooltip" data-placement="left" title="Edit" href=""><i class="fas fa-fw fa-edit"></i></a>
-                                        <a data-toggle="tooltip" data-placement="left" title="Delete" class="Delete" href="<?= base_url(); ?>izinmuat/hapusizinmuat/<?= $user['id']; ?>"><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
+                                        <a data-toggle="tooltip" data-placement="left" title="Edit Data Pegawai" href=""><i class="fas fa-fw fa-edit"></i></a>
+                                        <a data-toggle="tooltip" data-placement="left" title="Delete" class="button-hapuspegawai" href="<?= base_url(); ?>admin/hapuspegawai/<?= $user['id']; ?>"><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
 
                                     </td>
                                 </tr>
