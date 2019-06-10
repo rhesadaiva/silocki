@@ -44,7 +44,7 @@
     </div>
 
     <div class="card shadow mt-3">
-        <h5 class="card-header">Daftar IKU</h5>
+        <h5 class="card-header">Daftar IKU Bawahan</h5>
         <div class="card-body">
             <div class="row">
 
