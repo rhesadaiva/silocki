@@ -53,6 +53,9 @@
 <script src="<?= base_url('assets/'); ?>js/customscript.js"></script>
 <script src="<?= base_url('assets/'); ?>vendor/bootstrap-selectpicker/js/bootstrap-select.js"></script>
 
+<!-- DataTables Script -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
 </body>
 

@@ -20,7 +20,8 @@
     <link href="<?= base_url('assets/') ?>css/logbook.css" rel="stylesheet">
     <link href="<?= base_url('assets/') ?>vendor/bootstrap-selectpicker/css/bootstrap-select.css" rel="stylesheet">
 
-
+    <!-- Datatables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 
 </head>
 
