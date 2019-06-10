@@ -1,0 +1,47 @@
+
+    .judul {
+        color: royalblue;
+        font-weight: bold;
+
+    }
+
+    h5.logbook {
+        color: forestgreen;
+        font-weight: bold;
+    }
+
+    .col-form-label {
+        font-weight: bold;
+    }
+
+    .nav-item {
+        color: forestgreen;
+    }
+
+
+    .nav-link {
+        font-weight: bold;
+    }
+
+    .tableheadlogbook {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .realisasi {
+        width: 15%;
+    }
+
+    tr.detail {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    td.wakturekam{
+        width: 120px;
+        font-size:13px;
+    }
+
+    td.periode{
+        width: 120px;
+    }
