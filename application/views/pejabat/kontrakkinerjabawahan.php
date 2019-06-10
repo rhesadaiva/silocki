@@ -13,6 +13,11 @@
         width: 10%;
         text-align: center;
     }
+
+    h5 {
+        color: royalblue;
+        font-weight: bold;
+    }
 </style>
 
 
@@ -22,10 +27,11 @@
     <!-- Page Heading -->
     <div class="flashdata-kontrakbawahan" data-flashdatakontrakbawahan="<?= $this->session->flashdata('kkbawahan'); ?>"></div>
     <div class="flashdata-ikubawahan" data-flashdataikubawahan="<?= $this->session->flashdata('ikubawahan'); ?>"></div>
+    <div class="flashdata-logbookbawahan" data-flashdatalogbookbawahan="<?= $this->session->flashdata('logbookbawahan'); ?>"></div>
 
-    <div class="card shadow">
+    <div class="card shadow border-left-primary">
         <div class="card-header">
-            <h5 class="text-gray-800"><?= $title; ?></h5>
+            <h5><?= $title; ?></h5>
         </div>
         <div class="card-body">
             <div class="row">
@@ -45,34 +51,33 @@
                             <tr>
                                 <?php $i = 1; ?>
                                 <?php foreach ($kontrak_kinerja as $kontrak) : ?>
-                                    <th scope="row"><?= $i ?></th>
+                                    <th class="text-center" scope="row"><?= $i ?></th>
                                     <td><?= $kontrak['nomorkk']; ?></td>
                                     <td><?= $kontrak['nama']; ?></td>
                                     <td><?= shortdate_indo($kontrak['tanggalmulai']); ?> s.d <?= shortdate_indo($kontrak['tanggalselesai']); ?></td>
                                     <td>
-                                        <?
-                                        switch ($kontrak['is_validated']) {
-                                            case '1':
-                                                echo 'Belum tervalidasi';
+                                        <?php switch ($kontrak['is_validated']) {
+                                            case 1:
+                                                echo "Belum divalidasi";
                                                 break;
 
-                                            case '2':
-                                                echo 'Sudah divalidasi oleh atasan';
+                                            case 2:
+                                                echo "Sudah divalidasi oleh atasan";
                                                 break;
-                                            case '3':
-                                                echo 'Sudah divalidasi oleh Seksi Kepatuhan Internal';
+
+                                            case 3:
+                                                echo "Sudah divalidasi oleh Seksi Kepatuhan Internal";
                                                 break;
                                         }
                                         ?>
                                     </td>
                                     <td class="aksi">
                                         <?php if ($kontrak['is_validated'] == 1) : ?>
-
-                                            <a data-toggle="tooltip" data-placement="left" title="Detail Kontrak Kinerja" href="<?= base_url(); ?>pejabat/detailkontrak/<?= $kontrak['id']; ?> "><i class="fas fa-fw fa-search"></i></a>
                                             <a data-toggle="tooltip" class="button-buttonapprovekontrak" data-placement="left" title="Persetujuan Kontrak Kinerja" href="<?= base_url(); ?>pejabat/approvekontrak/<?= $kontrak['id']; ?> "><span style="color:green;"><i class="fas fa-fw fa-thumbs-up"></i></a>
 
                                         <?php else : ?>
-                                            <a data-toggle="tooltip" class="button-buttonbatalapprovekontrak" data-placement="left" title="Pembatalan Persetujuan Kontrak Kinerja" href="<?= base_url(); ?>pejabat/batalapprovekontrak/<?= $kontrak['id']; ?> "><span style="color:red;"><i class="fas fa-thumbs-down"></i></i></a>
+                                            <a data-toggle="tooltip" data-placement="left" title="Detail Kontrak Kinerja" href="<?= base_url(); ?>pejabat/detailkontrak/<?= $kontrak['id']; ?> "><i class="fas fa-fw fa-search"></i></a>
+                                            <a data-toggle="tooltip" class="button-buttonbatalapprovekontrak" data-placement="left" title="Pembatalan Persetujuan Kontrak Kinerja" href="<?= base_url(); ?>pejabat/batalapprovekontrak/<?= $kontrak['id']; ?> "><span style="color:red;"><i class="fas fa-fw fa-thumbs-down"></i></i></a>
 
                                         <?php endif; ?>
 

@@ -1,15 +1,17 @@
 <style>
-    .card-header {
-        marg
-    }
-
     th {
         font-size: 14px;
+    }
+
+    h4 {
+        color: royalblue;
+        font-weight: bold;
     }
 
     td {
         text-align: center;
         font-size: 15px;
+        font-weight: normal;
     }
 
     .aksi {
@@ -32,7 +34,7 @@
 
     <?php endif; ?>
 
-    <div class="card shadow">
+    <div class="card shadow border-left-primary">
 
         <div class="card-header">
             <div class="row">
@@ -73,26 +75,29 @@
                                     <td><?= $kontrak['nomorkk']; ?></td>
                                     <td><?= shortdate_indo($kontrak['tanggalmulai']); ?> s.d <?= shortdate_indo($kontrak['tanggalselesai']); ?></td>
                                     <td>
-                                        <?
-                                        switch ($kontrak['is_validated']) {
-                                            case '1':
-                                                echo 'Belum tervalidasi';
+                                        <?php switch ($kontrak['is_validated']) {
+                                            case 1:
+                                                echo "Belum divalidasi";
                                                 break;
 
-                                            case '2':
-                                                echo 'Sudah divalidasi oleh atasan';
+                                            case 2:
+                                                echo "Sudah divalidasi oleh atasan";
                                                 break;
-                                            case '3':
-                                                echo 'Sudah divalidasi oleh Seksi Kepatuhan Internal';
+
+                                            case 3:
+                                                echo "Sudah divalidasi oleh Seksi Kepatuhan Internal";
                                                 break;
                                         }
                                         ?>
                                     </td>
                                     <td class="aksi">
-                                        <a data-toggle="tooltip" data-placement="left" title="Edit" href="<?= base_url(); ?>kontrakkinerja/editkontrak/<?= $kontrak['id']; ?> "><i class="fas fa-fw fa-edit"></i></a>
-                                        <a data-toggle="tooltip" data-placement="left" title="Delete" class="hapus-kontrak" href="<?= base_url(); ?>kontrakkinerja/hapuskontrak/<?= $kontrak['id']; ?> "><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
-
-                                    </td>
+                                        <?php if ($kontrak['is_validated'] == 1) : ?>
+                                            <a data-toggle="tooltip" data-placement="left" title="Edit" href="<?= base_url(); ?>kontrakkinerja/editkontrak/<?= $kontrak['id']; ?> "><i class="fas fa-fw fa-edit"></i></a>
+                                            <a data-toggle="tooltip" data-placement="left" title="Delete" class="hapus-kontrak" href="<?= base_url(); ?>kontrakkinerja/hapuskontrak/<?= $kontrak['id']; ?> "><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
+                                        <?php else : ?>
+                                            <i data-toggle="tooltip" data-placement="left" title="Logbook Terkunci" class="button-locklgobook" id="button-locklogbook"><span style=" color:#daa520;"><i class="fas fa-fw fa-lock"></i></span></i>
+                                        </td>
+                                    <?php endif; ?>
                                 </tr>
                                 <?php $i++; ?>
                             <?php endforeach; ?>

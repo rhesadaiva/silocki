@@ -1,3 +1,24 @@
+<style>
+    td {
+        text-align: center;
+    }
+
+    h5.detail-kontrak {
+        color: royalblue;
+        font-weight: bold;
+    }
+
+    h5.daftar-iku {
+        color: forestgreen;
+        font-weight: bold;
+    }
+
+    td.kontrak {
+        text-align: left;
+        padding-right: 700px;
+    }
+</style>
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -8,24 +29,24 @@
     <div class="row">
         <div class="col-lg">
 
-            <div class="card shadow">
+            <div class="card shadow  border-left-primary">
                 <div class="card-header">
-                    <h5 class="text-gray-800"><?= $title; ?> : <?= $detailkontrak['nomorkk']; ?></h5>
+                    <h5 class="detail-kontrak"><?= $title; ?> : <?= $detailkontrak['nomorkk']; ?></h5>
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <tbody>
 
-                            <th width="300px">Seri Kontrak Kinerja</th>
-                            <td><?= $detailkontrak['kontrakkinerjake']; ?></td>
+                            <th scope="row">Seri Kontrak Kinerja</th>
+                            <td class="kontrak"><?= $detailkontrak['kontrakkinerjake']; ?></td>
                             <tr>
                                 <th scope="row">Tanggal Awal Kontrak Kinerja</th>
-                                <td><?= shortdate_indo($detailkontrak['tanggalmulai']); ?></td>
+                                <td class="kontrak"><?= shortdate_indo($detailkontrak['tanggalmulai']); ?></td>
                             </tr>
 
                             <tr>
                                 <th scope="row">Tanggal Selesai Kontrak Kinerja</th>
-                                <td><?= shortdate_indo($detailkontrak['tanggalselesai']); ?> </td>
+                                <td class="kontrak"><?= shortdate_indo($detailkontrak['tanggalselesai']); ?> </td>
                             </tr>
 
                             <div class="col-sm-4">
@@ -43,9 +64,11 @@
 
     </div>
 
-    <div class="card shadow mt-3">
-        <h5 class="card-header">Daftar IKU Bawahan</h5>
-        <div class="card-body">
+    <div class="card shadow mt-3 border-left-success">
+        <div class="card-header">
+            <h5 class="daftar-iku">Daftar IKU Bawahan</h5>
+        </div>
+        <div class="card-body ">
             <div class="row">
 
                 <div class="col-lg">
@@ -73,13 +96,11 @@
 
                                     <td class="aksi">
                                         <?php if ($iku['iku_validated'] == 0) : ?>
-
-                                            <a data-toggle="tooltip" data-placement="left" title="Detail Indikator Kinerja Utama" href="<?= base_url(); ?>pejabat/ikubawahan/<?= $iku['id_iku']; ?>"><i class="fas fa-fw fa-search"></i></a>
                                             <a data-toggle="tooltip" class="button-buttonapprovekontrak" data-placement="left" title="Persetujuan Indikator Kinerja Utama" href="<?= base_url(); ?>pejabat/approveiku/<?= $iku['id_iku']; ?> "><span style="color:green;"><i class="fas fa-fw fa-thumbs-up"></i></a>
 
                                         <?php else : ?>
 
-                                            <a data-toggle="tooltip" data-placement="left" title="Input Logbook" class="inputlogbook" href="<?= base_url(); ?>logbook/showlogbook/<?= $iku['id_iku']; ?>"><span style="color:forestgreen;"><i class="fas fa-fw fa-chart-line"></i></span></a>
+                                            <a data-toggle="tooltip" data-placement="left" title="Lihat Logbook" class="inputlogbook" href="<?= base_url(); ?>pejabat/logbookbawahan/<?= $iku['id_iku']; ?>"><span style="color:forestgreen;"><i class="fas fa-fw fa-chart-line"></i></span></a>
                                             <a data-toggle="tooltip" class="button-buttonbatalapproveiku" data-placement="left" title="Pembatalan Persetujuan IKU" href="<?= base_url(); ?>pejabat/batalapproveiku/<?= $iku['id_iku']; ?> "><span style="color:red;"><i class="fas fa-thumbs-down"></i></a>
 
                                         <?php endif; ?>

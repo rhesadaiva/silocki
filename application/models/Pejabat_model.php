@@ -74,4 +74,26 @@ class Pejabat_model extends CI_Model
         $this->db->where('id_iku', $idiku);
         $this->db->update('indikatorkinerjautama', $data);
     }
+
+    public function approvelogbook($idlogbook)
+    {
+        $data =
+            [
+                'is_approved' => 1
+            ];
+
+        $this->db->where('id_logbook', $idlogbook);
+        $this->db->update('logbook', $data);
+    }
+
+    public function batalapprovelogbook($idlogbook)
+    {
+        $data =
+            [
+                'is_approved' => 0
+            ];
+
+        $this->db->where('id_logbook', $idlogbook);
+        $this->db->update('logbook', $data);
+    }
 }

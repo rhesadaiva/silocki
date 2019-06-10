@@ -1,3 +1,10 @@
+<style>
+    h5 {
+        color: royalblue;
+        font-weight: bold;
+    }
+</style>
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -7,9 +14,9 @@
             <div class="row">
                 <div class="col-lg">
 
-                    <div class="card shadow">
+                    <div class="card shadow border-left-info">
                         <div class="card-header py-3">
-                            <h4><?= $title; ?></h4>
+                            <h5><?= $title; ?></h5>
                         </div>
                         <div class="card-body">
 

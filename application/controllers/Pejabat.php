@@ -10,6 +10,8 @@ class Pejabat extends CI_Controller
         cek_admin();
         cek_atasan();
         $this->load->model('Pejabat_model');
+        $this->load->model('Indikator_model');
+        $this->load->model('Logbook_model');
     }
 
     public function kontrakkinerjabawahan()
@@ -70,6 +72,37 @@ class Pejabat extends CI_Controller
     {
         $this->Pejabat_model->batalapproveiku($idiku);
         $this->session->set_flashdata('ikubawahan', 'Dibatalkan');
+        redirect('pejabat/kontrakkinerjabawahan');
+    }
+
+    public function logbookbawahan($idiku)
+    {
+        $idiku = $this->uri->segment(3);
+        $data['title'] = 'Detail Indikator Kinerja Utama';
+        $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
+        $data['role'] = $this->session->userdata('role_id');
+        $data['indikator'] = $this->Indikator_model->getIKUById($idiku);
+        $data['logbookdetail'] = $this->Logbook_model->getlogbook($idiku);
+
+
+        $this->load->view('templates/header', $data);
+        cek_sidebar();
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('pejabat/logbookbawahan', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function approvelogbook($idlogbook)
+    {
+        $this->Pejabat_model->approvelogbook($idlogbook);
+        $this->session->set_flashdata('logbookbawahan', 'Disetujui');
+        redirect('pejabat/kontrakkinerjabawahan');
+    }
+
+    public function batalapprovelogbook($idlogbook)
+    {
+        $this->Pejabat_model->batalapprovelogbook($idlogbook);
+        $this->session->set_flashdata('logbookbawahan', 'Dibatalkan');
         redirect('pejabat/kontrakkinerjabawahan');
     }
 }

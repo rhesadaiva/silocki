@@ -21,8 +21,8 @@ $('.hapus-kontrak').on('click', function (e) {
         text: "Apakah anda yakin untuk menghapus data ini?",
         type: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
         confirmButtonText: 'Hapus data'
     }).then((result) => {
         if (result.value) {
@@ -211,7 +211,7 @@ $('.button-buttonapproveiku').on('click', function (e) {
 
     Swal.fire({
         title: 'Konfirmasi Pembatalan Persetujuan Indikator Kinerja Utama Bawahan',
-        text: "Apakah anda yakin untuk membatalkan persetujuan IKU ini?",
+        text: "Apakah anda yakin untuk menyetujui IKU ini?",
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085D6',
@@ -249,6 +249,64 @@ $('.button-buttonbatalapproveiku').on('click', function (e) {
     })
 });
 
+//const Logbook Bawahan
+const flashDataLogbookBawahan = $('.flashdata-logbookbawahan').data('flashdatalogbookbawahan');
+
+if (flashDataLogbookBawahan) {
+    Swal.fire({
+        title: 'Sukses !',
+        text: 'Logbook Bawahan berhasil ' + flashDataLogbookBawahan + '.' + ' ' + 'Silahkan melanjutkan kegiatan anda!',
+        type: 'success'
+
+    });
+}
+console.log('Logbook Bawahan berhasil ' + flashDataLogbookBawahan);
+
+//Sweet Alert Approve Logbook
+$('.button-buttonapprovelogbookbawahan').on('click', function (e) {
+
+    e.preventDefault();
+    const href = $(this).attr('href');
+
+    Swal.fire({
+        title: 'Konfirmasi Persetujuan Logbook Bawahan',
+        text: "Apakah anda yakin untuk menyetujui Logbook ini?",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085D6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '<i class="fas fa-fw fa-check"></i> Setuju',
+        cancelButtontext: '<i class="fas fa-fw fa-times"></i> Batal'
+    }).then((result) => {
+        if (result.value) {
+            document.location.href = href;
+
+        }
+    })
+});
+
+//Sweet Alert Pembatalan Logbook
+$('.button-buttonbatalapprovelogbookbawahan').on('click', function (e) {
+
+    e.preventDefault();
+    const href = $(this).attr('href');
+
+    Swal.fire({
+        title: 'Konfirmasi Pembatalan Logbook Bawahan',
+        text: "Apakah anda yakin untuk membatalkan persetujuan Logbook ini?",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085D6',
+        confirmButtonText: '<i class="fas fa-fw fa-times"></i> Ya, Batalkan',
+        cancelButtontext: '<i class="fas fa-fw fa-times"></i> Kembali'
+    }).then((result) => {
+        if (result.value) {
+            document.location.href = href;
+
+        }
+    })
+});
 
 
 console.log('Script berhasil diload!!!!!');

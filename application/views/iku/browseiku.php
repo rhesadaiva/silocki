@@ -15,7 +15,7 @@
     }
 
     td.namaiku {
-        text-align: justify;
+        text-align: center;
         font-size: 15px;
         width: 400px;
     }
@@ -24,6 +24,11 @@
         font-size: 15px;
         width: 10%;
         text-align: center;
+    }
+
+    h4 {
+        color: royalblue;
+        font-weight: bold;
     }
 </style>
 
@@ -102,7 +107,7 @@
 
                                         <?php else : ?>
                                             <a data-toggle="tooltip" data-placement="left" title="Input Logbook" class="inputlogbook" href="<?= base_url(); ?>logbook/showlogbook/<?= $iku['id_iku']; ?>"><span style="color:forestgreen;"><i class="fas fa-fw fa-chart-line"></i></span></a>
-                                            <a data-toggle="tooltip" data-placement="left" title="IKU Terkunci" class="button-lockiku" id="button-lockiku"><span style=" color:#daa520;"><i class="fas fa-fw fa-lock"></i></span></a>
+
                                         <?php endif; ?>
                                     </td>
                                 </tr>
