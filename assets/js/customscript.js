@@ -125,7 +125,7 @@ $('.button-kirimlogbook').on('click', function (e) {
     })
 });
 
-//-----------------------------DATA KK BAWAHAN -----------------------------------//
+//Const KK Bawahan
 const flashDataKontrakBawahan = $('.flashdata-kontrakbawahan').data('flashdatakontrakbawahan');
 
 //Sweet Alert FlashData Kontrak Bawahan
@@ -185,9 +185,8 @@ $('.button-buttonbatalapprovekontrak').on('click', function (e) {
         }
     })
 });
-//----------------------------END OF KONTRAK BAWAHAN--------------------------------//
 
-//-----------------------------DATA IKU BAWAHAN -----------------------------------//
+
 //const IKU Bawahan
 const flashDataIKUBawahan = $('.flashdata-ikubawahan').data('flashdataikubawahan');
 
@@ -263,7 +262,7 @@ if (flashDataLogbookBawahan) {
 console.log('Logbook Bawahan berhasil ' + flashDataLogbookBawahan);
 
 //Sweet Alert Approve Logbook
-$('.button-buttonapprovelogbookbawahan').on('click', function (e) {
+$('.button-setujulogbookbawahan').on('click', function (e) {
 
     e.preventDefault();
     const href = $(this).attr('href');
@@ -286,7 +285,7 @@ $('.button-buttonapprovelogbookbawahan').on('click', function (e) {
 });
 
 //Sweet Alert Pembatalan Logbook
-$('.button-buttonbatalapprovelogbookbawahan').on('click', function (e) {
+$('.button-tidaksetujulogbookbawahan').on('click', function (e) {
 
     e.preventDefault();
     const href = $(this).attr('href');
