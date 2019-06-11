@@ -15,6 +15,7 @@ class Admin extends CI_Controller
     {
         $data['title'] = 'Home';
         $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
+        $data['jumlahuser'] = $this->Admin_model->countUser();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_admin');

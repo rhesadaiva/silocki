@@ -2,77 +2,176 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-
-    <div class="col-sm-4">
-
-        <div class="card border-left-primary">
-
-            <div class="card-body">
-                <h5 class="pb-3"><i class="far fa-fw fa-id-card"></i> <b>PROFIL</b></h5>
-                <!-- NAMA -->
-                <div class="card">
-                    <div class="card">
-                        <div class="card-body">
-                            <b>NAMA/NIP</b>
-                            <hr class>
-                            <?= $user['nama']; ?>
-                            <br>
-                            <?= $user['nip']; ?>
-                        </div>
-                    </div>
-                </div>
-                <!-- END NAMA -->
-                <!-- UNOR -->
-                <div class="card mt-2">
-                    <div class="card">
-                        <div class="card-body">
-                            <b>UNIT ORGANISASI</b>
-                            <hr>
-                            Seksi <?= $user['seksi']; ?>
-                        </div>
-                    </div>
-                </div>
-                <!-- END UNOR -->
-                <!-- JABATAN -->
-                <div class="card mt-2">
-                    <div class="card">
-                        <div class="card-body">
-                            <b>JABATAN</b>
-                            <hr>
-                            <?= $user['level']; ?> pada Seksi <?= $user['seksi']; ?>
-                        </div>
-                    </div>
-                </div>
-                <!-- END JABATAN -->
-                <!-- PANGKAT GOLONGAN -->
-                <div class="card mt-2">
-                    <div class="card">
-                        <div class="card-body">
-                            <b>PANGKAT/GOLONGAN</b>
-                            <hr>
-                            <?= $user['pangkat']; ?>
-                        </div>
-                    </div>
-                </div>
-                <!-- END PANGKAT GOLONGAN -->
-                <!-- ATASAN -->
-                <div class="card mt-2">
-                    <div class="card">
-                        <div class="card-body">
-                            <b>ATASAN</b>
-                            <hr>
-                            <?= $user['atasan']; ?>
-                        </div>
-                    </div>
-                </div>
-                <!-- END ATASAN -->
-            </div>
-
-
-        </div>
-
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h4 class="h3 mb-0 text-gray-800">Dashboard</h4>
 
     </div>
+
+    <!-- Content Row -->
+    <div class="row">
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-s font-weight-bold text-uppercase text-primary mb-1">JUMLAH USER AKTIF</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlahuser; ?></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-fw fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-s font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-s font-weight-bold text-info text-uppercase mb-1">Tasks</div>
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto">
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                </div>
+                                <div class="col">
+                                    <div class="progress progress-sm mr-2">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pending Requests Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-s font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Row -->
+
+    <div class="row">
+
+        <!--PROFIL -->
+        <div class="col-xl-5 col-lg-4">
+            <div class="card shadow mb-4 border-top-primary">
+
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between ">
+                    <h5 class="m-0 font-weight-bold text-primary"><i class="far fa-fw fa-id-card"></i> Profil</h5>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="profil">
+                        <div class="card">
+                            <div class="card-body py-2">
+                                <b>NAMA/NIP</b>
+                                <hr class="mt-1">
+                                <?= $user['nama']; ?>
+                                <br>
+                                <?= $user['nip']; ?>
+                            </div>
+                        </div>
+                        <div class="card mt-3">
+                            <div class="card-body py-2">
+                                <b>PANGKAT/GOLONGAN</b>
+                                <hr class="mt-1">
+                                <?= $user['pangkat']; ?>
+                            </div>
+                        </div>
+                        <div class="card mt-3">
+                            <div class="card-body py-2">
+                                <b>UNIT ORGANISASI</b>
+                                <hr class="mt-1">
+                                <?php switch ($user['role_id']) {
+                                    case 1:
+                                        echo "Admin";
+                                        break;
+
+                                    case 2:
+                                        echo "Kepala Kantor";
+                                        break;
+
+                                    case 3:
+                                        echo "Kepala Subbagian / Kepala Seksi";
+                                        break;
+
+                                    case 4:
+                                        echo "Kepala Subseksi";
+                                        break;
+
+                                    case 5:
+                                        echo "Pelaksana";
+                                        break;
+                                }
+                                ?> pada <?= $user['seksi']; ?>
+                            </div>
+                        </div>
+                        <div class="card mt-3">
+                            <div class="card-body py-2">
+                                <b>ATASAN</b>
+                                <hr class="mt-1">
+                                <?= $user['atasan']; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PENGUMUMAN -->
+        <div class="col-xl-7 col-lg-8">
+            <div class="card shadow mb-4 border-top-info">
+                <div class="card-header py-3">
+                    <h5 class="m-0 font-weight-bold text-info"><i class="fas fa-fw fa-bullhorn"></i> PENGUMUMAN</h5>
+                </div>
+                <div class="card-body">
+                    <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
+                    <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 </div>

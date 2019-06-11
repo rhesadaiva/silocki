@@ -23,6 +23,16 @@ class Admin_model extends CI_Model
         return $this->db->get('seksi/subseksi')->result_array();
     }
 
+    public function countUser()
+    {
+        $query = $this->db->get('user');
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
+
     public function tambahUser()
     {
         $data = [
