@@ -6,7 +6,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-fw fa-book"></i></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Logbook</div>
+        <div class="sidebar-brand-text mx-3">Silocki</div>
     </a>
 
     <!-- Divider -->
