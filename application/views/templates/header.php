@@ -17,6 +17,7 @@
 
     <!-- Custom styles for this template-->
     <link href="<?= base_url('assets/') ?>css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets/') ?>css/profil.css" rel="stylesheet">
     <link href="<?= base_url('assets/') ?>css/logbook.css" rel="stylesheet">
     <link href="<?= base_url('assets/') ?>vendor/bootstrap-selectpicker/css/bootstrap-select.css" rel="stylesheet">
 

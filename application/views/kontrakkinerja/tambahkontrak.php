@@ -84,7 +84,7 @@
 
                             <div class="form-group row">
                                 <div class="col-sm-6">
-                                    <button type="button" class="btn btn-warning ml-2" onclick="window.history.go(-1); return false;"><i class="fas fa-fw fa-undo-alt"></i> Kembali</button>
+                                    <button type="button" class="btn btn-warning" onclick="window.history.go(-1); return false;"><i class="fas fa-fw fa-undo-alt"></i> Kembali</button>
                                     <button type="submit" name="buttonkontrakbaru" id="buttonkontrakbaru" class="btn btn-success"><i class="fas fa-fw fa-sign-in-alt"></i> Simpan</button>
                                 </div>
                             </div>
