@@ -31,8 +31,16 @@
 
             <div class="card shadow  border-left-primary">
                 <div class="card-header">
-                    <h5 class="detail-kontrak"><?= $title; ?> : <?= $detailkontrak['nomorkk']; ?></h5>
+                    <div class="row">
+                        <div class="col-sm">
+                            <h5 class="judul"><?= $title; ?>: <?= $detailkontrak['nomorkk']; ?></h5>
+                        </div>
+                        <div class="col-sm">
+                            <button type="button" class="btn btn-warning btn-sm float-right" onclick="window.history.go(-1); return false;"><i class="fas fa-fw fa-undo-alt"></i> Kembali</button>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="card-body">
                     <table class="table">
                         <tbody>

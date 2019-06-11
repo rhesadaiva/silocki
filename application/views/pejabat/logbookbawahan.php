@@ -2,8 +2,18 @@
 <div class="container-fluid">
 
     <div class="card shadow border-left-primary">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-sm">
+                    <h5 class="judul"><?= $title; ?></h5>
+                </div>
+                <div class="col-sm">
+                    <button type="button" class="btn btn-warning btn-sm float-right" onclick="window.history.go(-1); return false;"><i class="fas fa-fw fa-undo-alt"></i> Kembali</button>
+                </div>
+            </div>
+        </div>
         <div class="card-body">
-            <h5 class="judul pb-2"><?= $title; ?></h5>
+
             <table class="table">
                 <tbody>
 
