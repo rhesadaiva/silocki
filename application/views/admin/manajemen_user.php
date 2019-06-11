@@ -5,12 +5,12 @@
     }
 
     th {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     td {
         text-align: center;
-        font-size: 13px;
+        font-size: 15px;
     }
 
     .aksi {
@@ -19,9 +19,7 @@
         text-align: center;
     }
 
-    .dataTables_wrapper .dataTables_filter {
-        float: right;
-        text-align: left;
+
     }
 </style>
 
