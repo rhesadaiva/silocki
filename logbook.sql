@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 10, 2019 at 05:42 AM
+-- Generation Time: Jun 11, 2019 at 05:57 AM
 -- Server version: 8.0.15
 -- PHP Version: 7.1.23
 
@@ -70,7 +70,7 @@ CREATE TABLE `kontrakkinerja` (
 --
 
 INSERT INTO `kontrakkinerja` (`id`, `nip`, `kontrakkinerjake`, `nomorkk`, `tanggalmulai`, `tanggalselesai`, `is_validated`) VALUES
-('5cf6f9b586cd3', 'admin', 'Pertama', '123', '2019-01-01', '2019-12-31', 1),
+('5cf6f9b586cd3', 'admin', 'Pertama', '123', '2019-01-01', '2019-12-31', 2),
 ('5cf6f9ea65c77', '199506072015021003', 'Pertama', 'ABC/123', '2019-01-01', '2019-12-31', 1);
 
 -- --------------------------------------------------------
@@ -97,7 +97,7 @@ CREATE TABLE `logbook` (
 --
 
 INSERT INTO `logbook` (`id_logbook`, `id_iku`, `periode`, `perhitungan`, `realisasibulan`, `realisasiterakhir`, `ket`, `wakturekam`, `is_approved`, `is_sent`) VALUES
-('5cf6fb39ba1a3', 5, 'Januari', '123', '123', '123', '123', 'Rabu, 5 Juni 2019 | Pukul 06:14 WIB', 0, 1);
+('5cf6fb39ba1a3', 5, 'Januari', '123', '123', '123', '123', 'Rabu, 5 Juni 2019 | Pukul 06:14 WIB', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -132,6 +132,63 @@ INSERT INTO `pangkat` (`id`, `pangkat/golongan`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `seksi/subseksi`
+--
+
+CREATE TABLE `seksi/subseksi` (
+  `id` int(11) NOT NULL,
+  `seksi/subseksi` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `seksi/subseksi`
+--
+
+INSERT INTO `seksi/subseksi` (`id`, `seksi/subseksi`) VALUES
+(1, 'Subbagian Umum'),
+(2, 'Urusan Tata Usaha dan Kepegawaian'),
+(3, 'Urusan Rumah Tangga'),
+(4, 'Urusan Keuangan'),
+(5, 'Seksi Penindakan dan Penyidikan'),
+(6, 'Subseksi Penindakan dan Sarana Operasi'),
+(7, 'Subseksi Intelijen'),
+(8, 'Subseksi Penyidikan dan Barang Hasil Penindakan'),
+(9, 'Seksi Kepatuhan Internal'),
+(10, 'Subseksi Kepatuhan Pelaksanaan Tugas Pengawasan'),
+(11, 'Subseksi Kepatuhan Pelaksanaan Tugas Administrasi'),
+(12, 'Seksi Pengolahan Data dan Administrasi Dokumen'),
+(13, 'Seksi Pelayanan Kepabeanan dan Cukai I'),
+(14, 'Seksi Pelayanan Kepabeanan dan Cukai II'),
+(15, 'Seksi Pelayanan Kepabeanan dan Cukai III'),
+(16, 'Seksi Pelayanan Kepabeanan dan Cukai IV'),
+(17, 'Seksi Pelayanan Kepabeanan dan Cukai V'),
+(18, 'Seksi Pelayanan Kepabeanan dan Cukai VI'),
+(19, 'Subseksi Hanggar Pabean dan Cukai I'),
+(20, 'Subseksi Hanggar Pabean dan Cukai II'),
+(21, 'Subseksi Hanggar Pabean dan Cukai III'),
+(22, 'Subseksi Hanggar Pabean dan Cukai IV'),
+(23, 'Subseksi Hanggar Pabean dan Cukai V'),
+(24, 'Subseksi Hanggar Pabean dan Cukai VI'),
+(25, 'Subseksi Hanggar Pabean dan Cukai VII'),
+(26, 'Subseksi Hanggar Pabean dan Cukai VIII'),
+(27, 'Subseksi Hanggar Pabean dan Cukai IX'),
+(28, 'Subseksi Hanggar Pabean dan Cukai X'),
+(29, 'Subseksi Hanggar Pabean dan Cukai XI'),
+(30, 'Subseksi Hanggar Pabean dan Cukai XII'),
+(31, 'Subseksi Hanggar Pabean dan Cukai XIII'),
+(32, 'Subseksi Hanggar Pabean dan Cukai XIV'),
+(33, 'Subseksi Hanggar Pabean dan Cukai XV'),
+(34, 'Seksi Perbendaharaan'),
+(35, 'Subseksi Administrasi Manifest'),
+(36, 'Subseksi Administrasi Penerimaan dan Jaminan'),
+(37, 'Subseksi Penagihan dan Pengembalian'),
+(38, 'Seksi Penyuluhan dan Layanan Informasi'),
+(39, 'Subseksi Penyuluhan'),
+(40, 'Subseksi Layanan Informasi');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -142,7 +199,6 @@ CREATE TABLE `user` (
   `pangkat` varchar(128) NOT NULL,
   `password` varchar(128) NOT NULL,
   `role_id` int(11) NOT NULL,
-  `level` varchar(128) NOT NULL,
   `seksi` varchar(128) NOT NULL,
   `atasan` varchar(128) NOT NULL,
   `nipatasan` varchar(128) NOT NULL
@@ -152,10 +208,10 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `nama`, `nip`, `pangkat`, `password`, `role_id`, `level`, `seksi`, `atasan`, `nipatasan`) VALUES
-(1, 'Administrator', 'admin', '0', '21232f297a57a5a743894a0e4a801fc3', 1, 'Admin', 'Pengolahan Data dan Administrasi Dokumen', 'Kepala Kantor', 'kakan'),
-(3, 'Kepala Kantor', 'kakan', '', '57aee06784fb57b06e11b4633ceeb9c3', 2, 'Kepala Kantor', 'Kepala Kantor', 'Admin', ''),
-(4, 'Rhesa Daiva Bremana', '199506072015021003', 'Pengatur Muda Tk.I /II.b', 'e10adc3949ba59abbe56e057f20f883e', 5, 'Pelaksana', 'Pengolahan Data dan Administrasi Dokumen', 'Zuhalta', '1962110101983031001');
+INSERT INTO `user` (`id`, `nama`, `nip`, `pangkat`, `password`, `role_id`, `seksi`, `atasan`, `nipatasan`) VALUES
+(1, 'Administrator', 'admin', '0', '21232f297a57a5a743894a0e4a801fc3', 1, 'Pengolahan Data dan Administrasi Dokumen', 'Kepala Kantor', 'kakan'),
+(3, 'Kepala Kantor', 'kakan', '', '57aee06784fb57b06e11b4633ceeb9c3', 2, 'Kepala Kantor', 'Admin', ''),
+(4, 'Rhesa Daiva Bremana', '199506072015021003', 'Pengatur Muda Tk.I /II.b', 'e10adc3949ba59abbe56e057f20f883e', 5, 'Pengolahan Data dan Administrasi Dokumen', 'Zuhalta', '1962110101983031001');
 
 -- --------------------------------------------------------
 
@@ -208,6 +264,12 @@ ALTER TABLE `pangkat`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `seksi/subseksi`
+--
+ALTER TABLE `seksi/subseksi`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -230,10 +292,16 @@ ALTER TABLE `pangkat`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
+-- AUTO_INCREMENT for table `seksi/subseksi`
+--
+ALTER TABLE `seksi/subseksi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user_role`
