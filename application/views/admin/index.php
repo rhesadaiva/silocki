@@ -10,7 +10,7 @@
     <!-- Content Row -->
     <div class="row">
 
-        <!-- Earnings (Monthly) Card Example -->
+        <!-- Jumlah User Aktif -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
@@ -27,17 +27,17 @@
             </div>
         </div>
 
-        <!-- Earnings (Monthly) Card Example -->
+        <!-- Total Kontrak Kinerja  -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-s font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                            <div class="text-s font-weight-bold text-success text-uppercase mb-1">JUMLAH KONTRAK KINERJA</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlahkk; ?></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            <i class="fas fa-fw fa-book-open fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -101,56 +101,77 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
+
                     <div class="profil">
-                        <div class="card">
+                        <div class="card border-left-success">
                             <div class="card-body py-2">
-                                <b>NAMA/NIP</b>
+                                <span style="color: black; font-weight: 700">
+                                    NAMA/NIP
+                                </span>
                                 <hr class="mt-1">
-                                <?= $user['nama']; ?>
-                                <br>
-                                <?= $user['nip']; ?>
+
+                                <span style="color: #858796; font-weight: 600">
+                                    <?= $user['nama']; ?>
+                                    <br>
+                                    <?= $user['nip']; ?>
+                                </span>
+
                             </div>
                         </div>
                         <div class="card mt-3">
-                            <div class="card-body py-2">
-                                <b>PANGKAT/GOLONGAN</b>
+                            <div class="card-body py-2 border-left-info">
+                                <span style="color: black; font-weight: 700">
+                                    PANGKAT/GOLONGAN
+                                </span>
                                 <hr class="mt-1">
-                                <?= $user['pangkat']; ?>
+                                <span style="color: #858796; font-weight: 600">
+                                    <?= $user['pangkat']; ?>
+                                </span>
                             </div>
                         </div>
                         <div class="card mt-3">
-                            <div class="card-body py-2">
-                                <b>UNIT ORGANISASI</b>
+                            <div class="card-body py-2 border-left-warning">
+                                <span style="color: black; font-weight: 700">
+                                    UNIT ORGANISASI
+                                </span>
                                 <hr class="mt-1">
-                                <?php switch ($user['role_id']) {
-                                    case 1:
-                                        echo "Admin";
-                                        break;
+                                <span style="color: #858796; font-weight: 600">
+                                    <?php switch ($user['role_id']) {
+                                        case 1:
+                                            echo "Admin";
+                                            break;
 
-                                    case 2:
-                                        echo "Kepala Kantor";
-                                        break;
+                                        case 2:
+                                            echo "Kepala Kantor";
+                                            break;
 
-                                    case 3:
-                                        echo "Kepala Subbagian / Kepala Seksi";
-                                        break;
+                                        case 3:
+                                            echo "Kepala Subbagian / Kepala Seksi";
+                                            break;
 
-                                    case 4:
-                                        echo "Kepala Subseksi";
-                                        break;
+                                        case 4:
+                                            echo "Kepala Subseksi";
+                                            break;
 
-                                    case 5:
-                                        echo "Pelaksana";
-                                        break;
-                                }
-                                ?> pada <?= $user['seksi']; ?>
+                                        case 5:
+                                            echo "Pelaksana";
+                                            break;
+                                    }
+                                    ?> pada <?= $user['seksi']; ?>
+                                </span>
                             </div>
                         </div>
+
                         <div class="card mt-3">
-                            <div class="card-body py-2">
-                                <b>ATASAN</b>
-                                <hr class="mt-1">
-                                <?= $user['atasan']; ?>
+                            <div class="card-body py-2 border-left-danger">
+                                <span style="color: black; font-weight: 700">
+                                    ATASAN
+                                </span>
+                                <hr class=" mt-1">
+                                <span style="color: #858796; font-weight: 600">
+                                    <?= $user['atasan']; ?>
+                                </span>
+
                             </div>
                         </div>
                     </div>
