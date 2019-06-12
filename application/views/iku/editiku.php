@@ -41,7 +41,7 @@
                             <div class="form-group row">
                                 <label for="formulaiku" class="col-sm-3 col-form-label">Formula IKU</label>
                                 <div class="col-sm-5">
-                                    <textarea class="form-control rounded-1" input-type="text" id="formulaiku" name="formulaiku" rows="2" <?= $iku['formulaiku']; ?>></textarea>
+                                    <textarea class="form-control rounded-1" input-type="text" id="formulaiku" name="formulaiku" rows="2" value="<?= $iku['formulaiku']; ?>"></textarea>
                                     <?= form_error('formulaiku', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>
