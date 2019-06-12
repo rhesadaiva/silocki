@@ -98,7 +98,7 @@
                                     <td><?= $user['seksi']; ?></td>
                                     <td><?= $user['atasan']; ?></td>
                                     <td class="aksi">
-                                        <a data-toggle="tooltip" data-placement="left" title="Edit Data Pegawai" href=""><i class="fas fa-fw fa-edit"></i></a>
+                                        <a data-toggle="tooltip" data-placement="left" title="Edit Data Pegawai" href="<?= base_url(); ?>admin/editpegawai/<?= $user['id']; ?>"><i class="fas fa-fw fa-edit"></i></a>
                                         <a data-toggle="tooltip" data-placement="left" title="Delete" class="button-hapuspegawai" href="<?= base_url(); ?>admin/hapuspegawai/<?= $user['id']; ?>"><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
 
                                     </td>

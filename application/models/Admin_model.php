@@ -23,9 +23,24 @@ class Admin_model extends CI_Model
         return $this->db->get('seksi/subseksi')->result_array();
     }
 
+    public function getUserByID($id)
+    {
+        return $this->db->get_where('user', ['id' => $id])->row_array();
+    }
+
     public function countUser()
     {
         $query = $this->db->get('user');
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
+
+    public function countKK()
+    {
+        $query = $this->db->get('kontrakkinerja');
         if ($query->num_rows() > 0) {
             return $query->num_rows();
         } else {
@@ -52,5 +67,23 @@ class Admin_model extends CI_Model
     {
         $this->db->where('id', $id);
         $this->db->delete('user');
+    }
+
+    public function editUser($id)
+    {
+
+        $id = $this->uri->segment(3);
+
+        $data = [
+            'nama' => $this->input->post('nama'),
+            'nip' => $this->input->post('nip'),
+            'pangkat' => $this->input->post('pangkat'),
+            'role_id' => $this->input->post('role'),
+            'seksi' => $this->input->post('seksisub'),
+            'atasan' => $this->input->post('atasan'),
+
+        ];
+        $this->db->where('id', $id);
+        $this->db->update('user', $data);
     }
 }
