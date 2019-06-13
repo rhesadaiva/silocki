@@ -1,47 +1,62 @@
+.judul {
+	color: royalblue;
+	font-weight: bold;
 
-    .judul {
-        color: royalblue;
-        font-weight: bold;
+}
 
-    }
+h5.logbook {
+	color: forestgreen;
+	font-weight: bold;
+}
 
-    h5.logbook {
-        color: forestgreen;
-        font-weight: bold;
-    }
+.col-form-label {
+	font-weight: bold;
+}
 
-    .col-form-label {
-        font-weight: bold;
-    }
-
-    .nav-item {
-        color: forestgreen;
-    }
+.nav-item.nav-logbook {
+	color: forestgreen;
+}
 
 
-    .nav-link {
-        font-weight: bold;
-    }
+.nav-link {
+	font-weight: bold;
+}
 
-    .tableheadlogbook {
-        font-size: 14px;
-        text-align: center;
-    }
+.tableheadlogbook {
+	font-size: 14px;
+	text-align: center;
+}
 
-    .realisasi {
-        width: 15%;
-    }
+.realisasi {
+	width: 10%;
+}
 
-    tr.detail {
-        font-size: 14px;
-        text-align: center;
-    }
+.perhitungan {
+	width: 25%;
+}
 
-    td.wakturekam{
-        width: 120px;
-        font-size:13px;
-    }
+.keterangan {
+	width: 25%;
+}
 
-    td.periode{
-        width: 120px;
-    }
+tr.detail {
+	font-size: 14px;
+	text-align: center;
+}
+
+td.wakturekam {
+	width: 120px;
+	font-size: 13px;
+}
+
+td.periode {
+	width: 120px;
+}
+
+th.nomor {
+	width: 60px;
+}
+
+td.aksi {
+	width: 80px
+}

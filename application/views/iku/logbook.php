@@ -45,8 +45,8 @@
             <!-- NAVBAR -->
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                    <a class="nav-item nav-link active" id="nav-rekamlogbook-tab" data-toggle="tab" href="#nav-rekamlogbook" role="tab"><i class="fas fa-fw fa-pencil-alt"></i> Rekam Logbook</a>
-                    <a class="nav-item nav-link" id="nav-detaillogbook-tab" data-toggle="tab" href="#nav-detaillogbook" role="tab"><i class="fas fa-fw fa-search"></i> Detail Logbook</a>
+                    <a class="nav-item nav-logbook nav-link active" id="nav-rekamlogbook-tab" data-toggle="tab" href="#nav-rekamlogbook" role="tab"><i class="fas fa-fw fa-pencil-alt"></i> Rekam Logbook</a>
+                    <a class="nav-item nav-logbook nav-link" id="nav-detaillogbook-tab" data-toggle="tab" href="#nav-detaillogbook" role="tab"><i class="fas fa-fw fa-search"></i> Detail Logbook</a>
                 </div>
             </nav>
 
@@ -140,10 +140,10 @@
                             <tr class="tableheadlogbook">
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">No.</th>
                                 <th class="text-center" scope="col">Periode Pelaporan</th>
-                                <th class="text-center" scope="col">Perhitungan</th>
+                                <th class="text-center perhitungan" scope="col">Perhitungan</th>
                                 <th class="text-center realisasi" scope="col">Realisasi Pada Bulan Pelaporan</th>
                                 <th class="text-center realisasi" data-valign="middle" data-halign="center" scope="col">Realisasi s.d Bulan Pelaporan</th>
-                                <th class="text-center" data-valign="middle" data-halign="center" scope="col">Keterangan</th>
+                                <th class="text-center keterangan" data-valign="middle" data-halign="center" scope="col">Keterangan</th>
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">Waktu Rekam</th>
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">Aksi</th>
                             </tr>
@@ -153,7 +153,7 @@
                             <?php $i = 1 ?>
                             <?php foreach ($logbookdetail as $logbook) : ?>
                                 <tr class="detail">
-                                    <th class="text-center" scope="row"><?= $i; ?></th>
+                                    <th class="nomor" scope="row"><?= $i; ?></th>
                                     <td class="periode"><?= $logbook['periode']; ?></td>
                                     <td><?= $logbook['perhitungan']; ?></td>
                                     <td><?= $logbook['realisasibulan']; ?></td>

@@ -14,12 +14,13 @@ class Logbook_model extends CI_Model
             'id_iku' => $this->input->post('id_iku', true),
             'id_logbook' => uniqid(),
             'is_sent' => 0,
+            'wakturekam' => indonesian_date2(date("Y-m-d H:i:s")),
             //END OF TIDAK PERLU FORM VALIDATION
 
             'perhitungan' => $this->input->post('perhitungan', true),
             'realisasibulan' => $this->input->post('realisasipadabulan', true),
             'realisasiterakhir' => $this->input->post('realisasisdbulan', true),
-            'wakturekam' => indonesian_date2(date("Y-m-d H:i:s")),
+
             'ket' => $this->input->post('keterangan', true),
         ];
 
