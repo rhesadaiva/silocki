@@ -7,11 +7,22 @@ class Pejabat extends CI_Controller
     {
         parent::__construct();
         is_logged_in();
-        cek_admin();
         cek_atasan();
         $this->load->model('Pejabat_model');
         $this->load->model('Indikator_model');
         $this->load->model('Logbook_model');
+    }
+
+    public function index()
+    {
+        $data['title'] = 'Home';
+        $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
+
+        $this->load->view('templates/header', $data);
+        cek_sidebar();
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('pejabat/index');
+        $this->load->view('templates/footer');
     }
 
     public function kontrakkinerjabawahan()
@@ -22,7 +33,7 @@ class Pejabat extends CI_Controller
         if ($data['role'] == 1) {
             $data['kontrak_kinerja'] = $this->Pejabat_model->getAllKontrak();
         } else {
-            $data['kontrak_kinerja'] = $this->Kontrak_model->getKontrakByNIP();
+            $data['kontrak_kinerja'] = $this->Pejabat_model->getKontrakBawahan();
         }
 
         $this->load->view('templates/header', $data);

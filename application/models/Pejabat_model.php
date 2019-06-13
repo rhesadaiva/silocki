@@ -12,9 +12,9 @@ class Pejabat_model extends CI_Model
 
     public function getKontrakBawahan()
     {
-        $role = $this->session->userdata('nip');
+        $role = $this->session->userdata('nama');
 
-        $query = $this->db->query("SELECT `kontrakkinerja`.*, `user`.nama, `user`.nip, `user`.atasan, `user`.nipatasan from kontrakkinerja join user using (nip) where nipatasan = $role ");
+        $query = $this->db->query("SELECT `kontrakkinerja`.*, `user`.nama, `user`.nip, `user`.atasan, `user`.nipatasan from kontrakkinerja join user using (nip) where atasan = '$role' ");
 
         return $query->result_array();
     }
@@ -97,7 +97,4 @@ class Pejabat_model extends CI_Model
         $this->db->where('id_logbook', $idlogbook);
         $this->db->update('logbook', $data);
     }
-
-    public function countPegawaiNologbook()
-    { }
 }
