@@ -19,26 +19,29 @@
             <div class="tab-content" id="nav-tabContent">
 
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-
-                    <div class="form-group row mt-4">
-                        <label for="pilihbulan" class="col-sm-2 col-form-label">Pilih Bulan</label>
-                        <div class="col-sm-3 pl-0">
-                            <select class="selectpicker" name="periodepelaporan" data-live-search="true">
-                                <option value="Januari">Januari</option>
-                                <option value="Februari">Februari</option>
-                                <option value="Maret">Maret</option>
-                                <option value="April">April</option>
-                                <option value="Mei">Mei</option>
-                                <option value="Juni">Juni</option>
-                                <option value="Juli">Juli</option>
-                                <option value="Agustus">Agustus</option>
-                                <option value="September">September</option>
-                                <option value="Oktober">Oktober</option>
-                                <option value="November">November</option>
-                                <option value="Desember">Desember</option>
-                            </select>
+                    <form action="<?= base_url('admin/caribelumrekamlogbook') ?>" method="get">
+                        <div class="form-group row mt-4">
+                            <label for="pilihbulan" class="col-lg-1 col-sm-2 pr-1 col-form-label" style="margin-right:10px">Pilih Bulan</label>
+                            <div class="select">
+                                <select class="selectpicker mr-2" name="periodepelaporan" data-live-search="true" data-width="125px">
+                                    <option value="Januari">Januari</option>
+                                    <option value="Februari">Februari</option>
+                                    <option value="Maret">Maret</option>
+                                    <option value="April">April</option>
+                                    <option value="Mei">Mei</option>
+                                    <option value="Juni">Juni</option>
+                                    <option value="Juli">Juli</option>
+                                    <option value="Agustus">Agustus</option>
+                                    <option value="September">September</option>
+                                    <option value="Oktober">Oktober</option>
+                                    <option value="November">November</option>
+                                    <option value="Desember">Desember</option>
+                                </select>
+                            </div>
+                            <br>
+                            <input type="submit" class="btn btn-primary btn-sm" style="width:80px;margin-left:60px" value="Cari">
                         </div>
-                    </div>
+                    </form>
                     <table class="table table-bordered table-hover mt-1">
                         <thead class="thead-light">
                             <tr>
@@ -47,16 +50,19 @@
                                 <th scope="col">Keterangan</th>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                            </tr>
-
-
+                            <?php $i = 1; ?>
+                            <?php foreach ($belumlogbook as $belum) : ?>
+                                <tr>
+                                    <th scope="row"><?= $i; ?></th>
+                                    <td><?= $belum['nama']; ?></td>
+                                    <td>Pegawai tersebut belum menyerahkan logbook untuk bulan <?= $belum['periode']; ?></td>
+                                </tr>
+                                <?php $i++; ?>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
+                <!-- END PEGAWAI BELUM SERAHKAN LOGBOOK -->
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
             </div>

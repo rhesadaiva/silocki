@@ -86,4 +86,23 @@ class Admin_model extends CI_Model
         $this->db->where('id', $id);
         $this->db->update('user', $data);
     }
+    public function pegawainologbook()
+    {
+        $query = $this->db->query("SELECT `user`.`nama`, `user`.`nip`, `kontrakkinerja`.`nomorkk`, `kontrakkinerja`.`nip`, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.`nip`, `logbook`.* 
+                                    from `kontrakkinerja` right join `user` using (`nip`) 
+                                    join `indikatorkinerjautama` using (`nomorkk`)
+                                    join `logbook` using (`id_iku`) where `is_sent` = 0");
+
+        return $query->result_array();
+    }
+
+    public function filternologbook($periode)
+    {
+        $query = $this->db->query("SELECT `user`.`nama`, `user`.`nip`, `kontrakkinerja`.`nomorkk`, `kontrakkinerja`.`nip`, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.`nip`, `logbook`.* 
+                                    from `kontrakkinerja` right join `user` using (`nip`) 
+                                    join `indikatorkinerjautama` using (`nomorkk`)
+                                    join `logbook` using (`id_iku`) where `is_sent` = 0 and `periode` =  '$periode'");
+
+        return $query->result_array();
+    }
 }

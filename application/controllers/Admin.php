@@ -105,11 +105,26 @@ class Admin extends CI_Controller
     public function monitoring_pegawai()
     {
         $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
+        $data['belumlogbook'] = $this->Admin_model->pegawainologbook();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_admin');
         $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/monitoring');
+        $this->load->view('admin/monitoring', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function caribelumrekamlogbook()
+    {
+        $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
+        $data['periode'] = $this->input->get('periodepelaporan');
+
+        $data['belumlogbook'] = $this->Admin_model->filternologbook($data['periode']);
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar_admin');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/monitoring', $data);
         $this->load->view('templates/footer');
     }
 }
