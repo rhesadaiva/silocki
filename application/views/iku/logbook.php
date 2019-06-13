@@ -57,7 +57,7 @@
                     <form action="" method="post">
 
                         <div class="form-group row">
-                            <label for="id_ikui" class="col-sm-2 col-form-label sr-only">ID IKU</label>
+                            <label for="id_iku" class="col-sm-2 col-form-label sr-only">ID IKU</label>
                             <div class="col-sm-2">
                                 <input type="hidden" class="form-control" name="id_iku" value="<?= $indikator['id_iku']; ?>" readonly>
                             </div>
