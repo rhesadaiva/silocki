@@ -90,10 +90,14 @@ class Pejabat_model extends CI_Model
     {
         $data =
             [
-                'is_approved' => 0
+                'is_approved' => 0,
+                'is_sent' => 0
             ];
 
         $this->db->where('id_logbook', $idlogbook);
         $this->db->update('logbook', $data);
     }
+
+    public function countPegawaiNologbook()
+    { }
 }
