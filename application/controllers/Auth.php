@@ -43,12 +43,14 @@ class Auth extends CI_Controller
                 } elseif ($user['role_id'] == 2) {
 
                     redirect('kepalakantor');
-                } elseif ($user['role_id'] == 5) {
+                } elseif ($user['role_id'] == 3) {
 
-                    redirect('pelaksana');
+                    redirect('pejabat');
+                } elseif ($user['role_id'] == 4) {
+
+                    redirect('pejabat');
                 } else {
-
-                    redirect('atasan');
+                    redirect('pelaksana');
                 }
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username tidak ditemukan! Silahkan login kembali.</div>');
