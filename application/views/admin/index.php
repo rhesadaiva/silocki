@@ -97,7 +97,7 @@
             <div class="card shadow mb-4 border-top-primary">
 
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between ">
-                    <h5 class="m-0 font-weight-bold text-primary"><i class="far fa-fw fa-id-card"></i> Profil</h5>
+                    <h5 class="m-0 font-weight-bold text-primary"><i class="far fa-fw fa-id-card"></i> PROFIL</h5>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">

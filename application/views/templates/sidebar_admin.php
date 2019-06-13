@@ -71,18 +71,18 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
 
-    <!-- Nav Item - Charts -->
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/monitoring_pegawai') ?>">
+            <i class="fas fa-fw fa-check-circle"></i>
+            <span>Monitoring Pegawai</span></a>
+    </li>
+
+    <!-- Nav Item - Manajemen User -->
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin/manajemen_user'); ?>">
             <i class="fas fa-fw fa-users"></i>
             <span>Manajemen User</span></a>
-    </li>
-
-    <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
     </li>
 
     <!-- Divider -->

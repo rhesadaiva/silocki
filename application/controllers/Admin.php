@@ -101,4 +101,15 @@ class Admin extends CI_Controller
         $this->session->set_flashdata('user', 'berhasil dihapus. Silahkan melanjutkan kegiatan anda!');
         redirect('admin/manajemen_user');
     }
+
+    public function monitoring_pegawai()
+    {
+        $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar_admin');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/monitoring');
+        $this->load->view('templates/footer');
+    }
 }
