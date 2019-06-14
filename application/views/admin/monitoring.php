@@ -1,3 +1,11 @@
+<style>
+    th.nomor {
+        width: 80px;
+        text-align: center;
+    }
+</style>
+
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -11,7 +19,7 @@
         <div class="card-body">
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Belum mengajukan Logbook</a>
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><i class="far fa-fw fa-folder-open"></i> Belum mengajukan Logbook</a>
                     <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
                     <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
                 </div>
@@ -39,13 +47,14 @@
                                 </select>
                             </div>
                             <br>
-                            <input type="submit" class="btn btn-primary btn-sm" style="width:80px;margin-left:60px" value="Cari">
+                            <input type="submit" class="btn btn-primary btn-sm" style="width:50px;margin-left:30px" value="Cari">
+                            <a class="btn btn-danger btn-sm ml-2 py-auto" href="<?= base_url('admin/monitoring_pegawai') ?>" role="button">Reset</a>
                         </div>
                     </form>
                     <table class="table table-bordered table-hover mt-1">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col">No</th>
+                                <th scope="col" class="nomor">No</th>
                                 <th scope="col">Nama Pegawai</th>
                                 <th scope="col">Keterangan</th>
                         </thead>
@@ -53,7 +62,7 @@
                             <?php $i = 1; ?>
                             <?php foreach ($belumlogbook as $belum) : ?>
                                 <tr>
-                                    <th scope="row"><?= $i; ?></th>
+                                    <th scope="row" class="nomor"><?= $i; ?></th>
                                     <td><?= $belum['nama']; ?></td>
                                     <td>Pegawai tersebut belum menyerahkan logbook untuk bulan <?= $belum['periode']; ?></td>
                                 </tr>
