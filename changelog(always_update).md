@@ -9,3 +9,7 @@ Merupakan catatan singkat mengenai penambahan atau perbaikan fitur
     - Memperbaiki controller Pejabat sehingga bisa membaca data Kontrak Kinerja bawahan (SELESAI)
     - Merancang query terhadap pegawai yang belum mengirim logbook (SEDANG DALAM PROSES)
     - Merancang desain dan fitur filter pada halaman monitoring (SEDANG DALAM PROSES)
+
+- 14 Juni 2019
+    - Membuat tombol reset di monitoring pegawai
+    - Menggeser modal logout ke topbar
