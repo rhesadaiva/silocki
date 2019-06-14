@@ -74,4 +74,39 @@ class Auth extends CI_Controller
     {
         $this->load->view('login/blocked');
     }
+
+    public function gantipassword()
+    {
+        $data['title'] = 'Ganti Password';
+        $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
+
+        $this->form_validation->set_rules('passwordlama', 'Password Lama', 'trim|required');
+        $this->form_validation->set_rules('passwordbaru1', 'Password Baru', 'trim|required|matches[passwordbaru2]');
+        $this->form_validation->set_rules('passwordbaru2', 'Konfirmasi Password Baru', 'trim|required|matches[passwordbaru1]');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('templates/header', $data);
+            cek_sidebar();
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('login/gantipassword', $data);
+            $this->load->view('templates/footer');
+        } else {
+
+            $passwordlama = $this->input->post('passwordlama');
+            $passwordbaru = $this->input->post('passwordbaru1');
+
+            if (!md5($passwordlama, $data['user']['password'])) {
+                $this->load->view('login/invalidpassword');
+            } else {
+                $newpassword = md5($passwordbaru);
+
+                $this->db->set('password', $newpassword);
+                $this->db->where('nip', $this->session->userdata('nip'));
+                $this->db->update('user');
+
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password berhasil diubah, silahkan login kembali.</div>');
+                redirect('auth');
+            }
+        }
+    }
 }
