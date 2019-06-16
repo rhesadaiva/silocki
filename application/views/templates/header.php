@@ -19,10 +19,8 @@
     <link href="<?= base_url('assets/') ?>css/sb-admin-2.min.css" rel="stylesheet">
     <link href="<?= base_url('assets/') ?>css/mystyle.css" rel="stylesheet">
     <link href="<?= base_url('assets/') ?>css/logbook.css" rel="stylesheet">
+    <link href="<?= base_url('assets/') ?>vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <link href="<?= base_url('assets/') ?>vendor/bootstrap-selectpicker/css/bootstrap-select.css" rel="stylesheet">
-
-    <!-- Datatables CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 
 </head>
 
