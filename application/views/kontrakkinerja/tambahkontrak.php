@@ -1,5 +1,5 @@
 <style>
-    h5 {
+    h4 {
         color: royalblue;
         font-weight: bold;
     }
@@ -15,7 +15,7 @@
 
                     <div class="card shadow border-left-info">
                         <div class="card-header py-3">
-                            <h5><?= $title; ?></h5>
+                            <h4><?= $title; ?></h4>
                         </div>
                         <div class="card-body">
 

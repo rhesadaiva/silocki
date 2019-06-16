@@ -2,7 +2,7 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            <span style="font-size:15px">Coded with &hearts; by Daiva - 2019</span>
         </div>
     </div>
 </footer>
@@ -30,11 +30,9 @@
 <script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
 <script src="<?= base_url('assets/'); ?>js/sweetalert2.all.min.js"></script>
 <script src="<?= base_url('assets/'); ?>js/customscript.js"></script>
+<script src="<?= base_url('assets/'); ?>vendor/datatables/jquery.dataTables.js"></script>
+<script src="<?= base_url('assets/'); ?>vendor/datatables/dataTables.bootstrap4.js"></script>
 <script src="<?= base_url('assets/'); ?>vendor/bootstrap-selectpicker/js/bootstrap-select.js"></script>
-
-<!-- DataTables Script -->
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
 </body>
 
