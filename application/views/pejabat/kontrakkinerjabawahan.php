@@ -1,6 +1,6 @@
 <style>
     th {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     td {
@@ -14,7 +14,7 @@
         text-align: center;
     }
 
-    h5 {
+    h4 {
         color: royalblue;
         font-weight: bold;
     }
@@ -31,7 +31,7 @@
 
     <div class="card shadow border-left-primary">
         <div class="card-header">
-            <h5><?= $title; ?></h5>
+            <h4><?= $title; ?></h4>
         </div>
         <div class="card-body">
             <div class="row">

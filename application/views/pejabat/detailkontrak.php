@@ -3,12 +3,12 @@
         text-align: center;
     }
 
-    h5.detail-kontrak {
+    h4.detail-kontrak {
         color: royalblue;
         font-weight: bold;
     }
 
-    h5.daftar-iku {
+    h4.daftar-iku {
         color: forestgreen;
         font-weight: bold;
     }
@@ -33,7 +33,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-sm">
-                            <h5 class="judul"><?= $title; ?>: <?= $detailkontrak['nomorkk']; ?></h5>
+                            <h4 class="judul"><?= $title; ?>: <?= $detailkontrak['nomorkk']; ?></h4>
                         </div>
                         <div class="col-sm">
                             <button type="button" class="btn btn-warning btn-sm float-right" onclick="window.history.go(-1); return false;"><i class="fas fa-fw fa-undo-alt"></i> Kembali</button>
@@ -74,7 +74,7 @@
 
     <div class="card shadow mt-3 border-left-success">
         <div class="card-header">
-            <h5 class="daftar-iku">Daftar IKU Bawahan</h5>
+            <h4 class="daftar-iku">Daftar IKU Bawahan</h4>
         </div>
         <div class="card-body ">
             <div class="row">
