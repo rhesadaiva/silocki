@@ -2,7 +2,7 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span style="font-size:15px">Coded with &hearts; by Daiva - 2019</span>
+            <span style="font-size:15px">Developed with &hearts; by Daiva - 2019</span>
         </div>
     </div>
 </footer>

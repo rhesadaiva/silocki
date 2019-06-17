@@ -53,11 +53,11 @@
         Atasan
     </div>
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#persetujuanatasan" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-check"></i>
             <span>Persetujuan Atasan</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="persetujuanatasan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item mx auto" href="<?= base_url('pejabat/kontrakkinerjabawahan'); ?>">Approval Bawahan</a>
             </div>
@@ -73,9 +73,16 @@
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/monitoring_pegawai') ?>">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#monitoringpegawai" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-check-circle"></i>
-            <span>Monitoring Pegawai</span></a>
+            <span>Monitoring Pegawai</span>
+        </a>
+        <div id="monitoringpegawai" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item mx-auto" href="<?= base_url('admin/belumrekamlogbook'); ?>">Belum Rekam Logbook</a>
+                <a class="collapse-item mx-auto" href="<?= base_url('admin/logbookbelumdisetujui'); ?>">Logbook belum disetujui</a>
+            </div>
+        </div>
     </li>
 
     <!-- Nav Item - Manajemen User -->
