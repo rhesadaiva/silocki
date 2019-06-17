@@ -15,7 +15,7 @@ class Logbook_model extends CI_Model
             'id_logbook' => uniqid(),
             'is_sent' => 0,
             'wakturekam' => indonesian_date2(date("Y-m-d H:i:s")),
-            'nip' => $this->session->userdata['nip'],
+            // 'nip' => $this->session->userdata['nip'],
             //END OF TIDAK PERLU FORM VALIDATION
 
             'perhitungan' => $this->input->post('perhitungan', true),
@@ -32,7 +32,7 @@ class Logbook_model extends CI_Model
     public function getlogbook($idiku)
     {
         $idiku = $this->uri->segment(3);
-        $query = $this->db->query("SELECT indikatorkinerjautama.*, logbook.* FROM indikatorkinerjautama JOIN logbook USING(id_iku) where id_iku='$idiku'");
+        $query = $this->db->query("SELECT indikatorkinerjautama.*, logbook.* FROM indikatorkinerjautama JOIN logbook using(id_iku) where logbook.id_iku='$idiku'");
         return $query->result_array();
     }
 
