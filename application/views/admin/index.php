@@ -37,7 +37,7 @@
                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlahkk; ?></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-fw fa-book-open fa-2x text-gray-300"></i>
+                            <i class="fas fa-fw fa-file-signature fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -50,16 +50,12 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-s font-weight-bold text-info text-uppercase mb-1">Tasks</div>
+                            <div class="text-s font-weight-bold text-info text-uppercase mb-1">JUMLAH INDIKATOR KINERJA UTAMA</div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $jumlahiku; ?></div>
                                 </div>
-                                <div class="col">
-                                    <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                         <div class="col-auto">
@@ -76,11 +72,11 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-s font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                            <div class="text-s font-weight-bold text-warning text-uppercase mb-1">JUMLAH LOGBOOK</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlahlogbook; ?></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                            <i class="fas fa-fw fa-clipboard-check fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -186,8 +182,7 @@
                     <h5 class="m-0 font-weight-bold text-info"><i class="fas fa-fw fa-bullhorn"></i> PENGUMUMAN</h5>
                 </div>
                 <div class="card-body">
-                    <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
-                    <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
+
                 </div>
             </div>
         </div>

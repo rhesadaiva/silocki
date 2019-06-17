@@ -26,7 +26,7 @@
         text-align: center;
     }
 
-    h5 {
+    h4 {
         color: royalblue;
         font-weight: bold;
     }
@@ -54,7 +54,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-sm">
-                    <h5 class="text-dark-800"><?= $title; ?></h5>
+                    <h4 class="text-dark-800"><?= $title; ?></h4>
                 </div>
                 <div class="col-sm">
                     <a class="btn btn-info btn-sm float-right" href="<?= base_url('') ?>iku/rekamiku/"><i class="fas fa-fw fa-folder-plus"></i> Tambah IKU</a>

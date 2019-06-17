@@ -15,6 +15,7 @@ class Logbook_model extends CI_Model
             'id_logbook' => uniqid(),
             'is_sent' => 0,
             'wakturekam' => indonesian_date2(date("Y-m-d H:i:s")),
+            'nip' => $this->session->userdata['nip'],
             //END OF TIDAK PERLU FORM VALIDATION
 
             'perhitungan' => $this->input->post('perhitungan', true),

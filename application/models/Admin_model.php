@@ -48,6 +48,26 @@ class Admin_model extends CI_Model
         }
     }
 
+    public function countIKU()
+    {
+        $query = $this->db->get('indikatorkinerjautama');
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
+
+    public function countLogbook()
+    {
+        $query = $this->db->get('logbook');
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
+
     public function tambahUser()
     {
         $data = [
@@ -102,6 +122,26 @@ class Admin_model extends CI_Model
                                     from `kontrakkinerja` right join `user` using (`nip`) 
                                     join `indikatorkinerjautama` using (`nomorkk`)
                                     join `logbook` using (`id_iku`) where `is_sent` = 0 and `periode` =  '$periode'");
+
+        return $query->result_array();
+    }
+
+    public function pegawainotvalidatedlogbook()
+    {
+        $query = $this->db->query("SELECT `user`.`nama`, `user`.`nip`, `kontrakkinerja`.`nomorkk`, `kontrakkinerja`.`nip`, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.`nip`, `logbook`.* 
+                                    from `kontrakkinerja` right join `user` using (`nip`) 
+                                    join `indikatorkinerjautama` using (`nomorkk`)
+                                    join `logbook` using (`id_iku`) where `is_sent` = 1 and `is_approved`= 0");
+
+        return $query->result_array();
+    }
+
+    public function filternotvalidatedlogbook($periode)
+    {
+        $query = $this->db->query("SELECT `user`.`nama`, `user`.`nip`, `kontrakkinerja`.`nomorkk`, `kontrakkinerja`.`nip`, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.`nip`, `logbook`.* 
+                                    from `kontrakkinerja` right join `user` using (`nip`) 
+                                    join `indikatorkinerjautama` using (`nomorkk`)
+                                    join `logbook` using (`id_iku`) where `is_sent` = 1 and `is_approved`= 0 and `periode` =  '$periode'");
 
         return $query->result_array();
     }

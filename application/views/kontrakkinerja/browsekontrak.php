@@ -1,9 +1,9 @@
 <style>
     th {
-        font-size: 14px;
+        font-size: 15px;
     }
 
-    h5 {
+    h4 {
         color: royalblue;
         font-weight: bold;
     }
@@ -39,7 +39,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-sm">
-                    <h5><?= $title; ?></h5>
+                    <h4><?= $title; ?></h4>
                 </div>
                 <div class="col-sm">
                     <a class="btn btn-info btn-sm float-sm-right" href="<?= base_url('kontrakkinerja/tambahkontrak'); ?>"><i class="fas fa-fw fa-folder-plus"></i> Tambah Kontrak</a>

@@ -17,6 +17,8 @@ class Admin extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
         $data['jumlahuser'] = $this->Admin_model->countUser();
         $data['jumlahkk'] = $this->Admin_model->countKK();
+        $data['jumlahiku'] = $this->Admin_model->countIKU();
+        $data['jumlahlogbook'] = $this->Admin_model->countLogbook();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_admin');
@@ -66,6 +68,8 @@ class Admin extends CI_Controller
         }
     }
 
+
+    //Fitur Edit User
     public function editpegawai($id)
     {
         $data['title'] = 'Ubah Data Pegawai';
@@ -88,13 +92,14 @@ class Admin extends CI_Controller
             $this->load->view('admin/edituser', $data);
             $this->load->view('templates/footer');
         } else {
-
+            //Validasi
             $this->Admin_model->editUser($id);
             $this->session->set_flashdata('user', 'berhasil diubah, silahkan melanjutkan kegiatan anda!');
             redirect('admin/manajemen_user');
         }
     }
 
+    //Hapus User
     public function hapuspegawai($id)
     {
         $this->Admin_model->deleteUser($id);
@@ -102,20 +107,27 @@ class Admin extends CI_Controller
         redirect('admin/manajemen_user');
     }
 
-    public function monitoring_pegawai()
+    //Halaman Daftar Pegawai yang belum rekam logbook
+    public function belumrekamlogbook()
     {
+        $data['title'] = 'Pegawai Yang Belum Rekam Logbook';
         $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
+        $data['periode'] = $this->input->get('periodepelaporan');
+
         $data['belumlogbook'] = $this->Admin_model->pegawainologbook();
+
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_admin');
         $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/monitoring', $data);
+        $this->load->view('admin/belumrekamlogbook', $data);
         $this->load->view('templates/footer');
     }
 
-    public function caribelumrekamlogbook()
+    //Halaman Pencarian Pegawai yang belum rekam logbook
+    public function filterbelumrekamlogbook()
     {
+        $data['title'] = 'Pegawai Yang Belum Rekam Logbook';
         $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
         $data['periode'] = $this->input->get('periodepelaporan');
 
@@ -124,7 +136,37 @@ class Admin extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_admin');
         $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/monitoring', $data);
+        $this->load->view('admin/belumrekamlogbook', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function logbookbelumdisetujui()
+    {
+        $data['title'] = 'Logbook Yang Belum Disetujui';
+        $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
+        $data['periode'] = $this->input->get('periodepelaporan');
+
+        $data['belumlogbook'] = $this->Admin_model->pegawainotvalidatedlogbook();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar_admin');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/belumapprovelogbook', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function filterlogbookbelumdisetujui()
+    {
+        $data['title'] = 'Logbook Yang Belum Disetujui';
+        $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
+        $data['periode'] = $this->input->get('periodepelaporan');
+
+        $data['belumlogbook'] = $this->Admin_model->filternotvalidatedlogbook($data['periode']);
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar_admin');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/belumapprovelogbook', $data);
         $this->load->view('templates/footer');
     }
 }

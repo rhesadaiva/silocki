@@ -5,7 +5,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-sm">
-                    <h5 class="judul"><?= $title; ?></h5>
+                    <h4 class="judul"><?= $title; ?></h4>
                 </div>
                 <div class="col-sm">
                     <button type="button" class="btn btn-warning btn-sm float-right" onclick="window.history.go(-1); return false;"><i class="fas fa-fw fa-undo-alt"></i> Kembali</button>
@@ -40,7 +40,7 @@
 
     <div class="card shadow mt-3 border-left-success">
         <div class="card-header">
-            <h5 class="logbook">Daftar Logbook Bawahan</h5>
+            <h4 class="logbook">Daftar Logbook Bawahan</h4>
         </div>
         <div class="card-body">
 

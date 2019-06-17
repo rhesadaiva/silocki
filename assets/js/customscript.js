@@ -353,4 +353,4 @@ $(document).ready(function () {
 });
 
 
-console.log('Script berhasil diload!!!!!');
+console.log('Script berhasil diload!!!!!')
