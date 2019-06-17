@@ -3,27 +3,34 @@
 
     <!-- Page Heading -->
 
-    <div class="card">
-        <div class="card-header">
-            <h5 class="text-gray-800"><?= $title; ?></h5>
-        </div>
-        <div class="card-body">
-            <form>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+    <div class="col-lg-5 col-sm-5">
+        <div class="card shadow border-left-primary">
+            <div class="card-header">
+                <h4 class="text-gray-800"><span style="color:royalblue;font-weight: bold;"><?= $title; ?></span></h4>
+            </div>
+            <div class="card-body">
+
+                <?= $this->session->flashdata('message'); ?>
+
+                <form action="<?= base_url('auth/gantipassword'); ?>" method="post">
+                    <div class="form-group">
+                        <label for="passwordlama">Password Sekarang</label>
+                        <input type="password" class="form-control" id="passwordlama" name="passwordlama">
+                        <?= form_error('passwordlama', '<small class="text-danger pl-3">', '</small>'); ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordbaru1">Password Baru</label>
+                        <input type="password" class="form-control" id="passwordbaru1" name="passwordbaru1">
+                        <?= form_error('passwordbaru1', '<small class="text-danger pl-3">', '</small>'); ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordbaru2">Konfirmasi Password Baru</label>
+                        <input type="password" class="form-control" id="passwordbaru2" name="passwordbaru2">
+                        <?= form_error('passwordbaru2', '<small class="text-danger pl-3">', '</small>'); ?>
+                    </div>
+                    <button type="submit" class="mt-3 btn btn-primary"><i class="fas fa-fw fa-key"></i> Ganti Password</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

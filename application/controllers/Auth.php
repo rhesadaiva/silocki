@@ -19,6 +19,7 @@ class Auth extends CI_Controller
         }
     }
 
+    //Private function login
     private function _login()
     {
         $username = $this->input->post('nip');
@@ -62,6 +63,7 @@ class Auth extends CI_Controller
         }
     }
 
+    //Logout
     public function logout()
     {
         $this->session->unset_userdata('nip');
@@ -70,19 +72,21 @@ class Auth extends CI_Controller
         redirect('auth');
     }
 
+    //Halaman Blocked
     public function blocked()
     {
         $this->load->view('login/blocked');
     }
 
+    //Fitur Ganti Password
     public function gantipassword()
     {
         $data['title'] = 'Ganti Password';
         $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
 
         $this->form_validation->set_rules('passwordlama', 'Password Lama', 'trim|required');
-        $this->form_validation->set_rules('passwordbaru1', 'Password Baru', 'trim|required|matches[passwordbaru2]');
-        $this->form_validation->set_rules('passwordbaru2', 'Konfirmasi Password Baru', 'trim|required|matches[passwordbaru1]');
+        $this->form_validation->set_rules('passwordbaru1', 'Password Baru', 'trim|required|matches[passwordbaru2]|min_length[5]');
+        $this->form_validation->set_rules('passwordbaru2', 'Konfirmasi Password Baru', 'trim|required|matches[passwordbaru1]|min_length[5]');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('templates/header', $data);
@@ -92,20 +96,26 @@ class Auth extends CI_Controller
             $this->load->view('templates/footer');
         } else {
 
-            $passwordlama = $this->input->post('passwordlama');
+            $passwordlama = md5($this->input->post('passwordlama'));
             $passwordbaru = $this->input->post('passwordbaru1');
+            $currentpass = $data['user']['password'];
 
-            if (!md5($passwordlama, $data['user']['password'])) {
-                $this->load->view('login/invalidpassword');
+            //Jika input pada form Password Sekarang tidak match pada database
+            if ($passwordlama != $currentpass) {
+
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password lama tidak sesuai dengan password sekarang!</div>');
+                redirect('auth/gantipassword');
             } else {
+
+                //Password sudah OK
                 $newpassword = md5($passwordbaru);
 
                 $this->db->set('password', $newpassword);
                 $this->db->where('nip', $this->session->userdata('nip'));
                 $this->db->update('user');
 
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password berhasil diubah, silahkan login kembali.</div>');
-                redirect('auth');
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password berhasil diubah, silahkan gunakan password baru pada saat login kembali.</div>');
+                redirect('auth/gantipassword');
             }
         }
     }
