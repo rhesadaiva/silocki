@@ -17,7 +17,7 @@ Merupakan catatan singkat mengenai penambahan atau perbaikan fitur
 
 
 - 16 Juni 2019
-    - PENTING: Jangan lupa tambahkan kolom NIP di tabel LOGBOOK
+    - PENTING: Jangan lupa tambahkan kolom NIP di tabel LOGBOOK (DIBATALKAN, HAPUS JUGA DI LAPTOP)
 
 - 17 Juni 2019
     - Membuat halaman filter belum approvelogbook
@@ -31,4 +31,6 @@ Merupakan catatan singkat mengenai penambahan atau perbaikan fitur
     - Menambah input 'NIP' di logbook_model.php
     - Mengupdate pengumuman di index.php
     - Perbaikan style pada menu browseiku.php, tambahiku.php, browsekontrak.php, logbookbawahan.php
-    - 
+    - PENTING: CEK DI TABLE LOGBOOK, column id.iku ubah tipe dari INT ke VARCHAR !!!!!!!!
+    - Menambah favicon.ico
+    - Memperbaiki Sidebar
