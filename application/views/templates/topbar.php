@@ -66,15 +66,15 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Logout</h5>
+                        <h5 class="modal-title" id="exampleModalLabel" style="color:royalblue;font-weight:bold">Konfirmasi Logout</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
                     <div class="modal-body">Apakah anda yakin akan logout?</div>
                     <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="<?= base_url('auth/logout'); ?>">Logout</a>
+                        <button class="btn btn-primary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-danger" href="<?= base_url('auth/logout'); ?>">Logout</a>
                     </div>
                 </div>
             </div>
