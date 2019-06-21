@@ -40,6 +40,7 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    //Fungsi tambah pegawai
     public function tambahpegawai()
     {
         $data['title'] = 'Tambah Pegawai';
@@ -116,7 +117,6 @@ class Admin extends CI_Controller
 
         $data['belumlogbook'] = $this->Admin_model->pegawainologbook();
 
-
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_admin');
         $this->load->view('templates/topbar', $data);
@@ -139,7 +139,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/belumrekamlogbook', $data);
         $this->load->view('templates/footer');
     }
-
+    //Halaman Pencarian Logbook belum disetujui
     public function logbookbelumdisetujui()
     {
         $data['title'] = 'Logbook Yang Belum Disetujui';
@@ -155,6 +155,7 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    //Halaman Filter Logbook belum disetujui
     public function filterlogbookbelumdisetujui()
     {
         $data['title'] = 'Logbook Yang Belum Disetujui';

@@ -16,8 +16,8 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-s font-weight-bold text-uppercase text-primary mb-1">JUMLAH USER AKTIF</div>
-                            <!-- <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlahuser; ?></div> -->
+                            <div class="text-s font-weight-bold text-uppercase text-primary mb-1">JUMLAH BAWAHAN AKTIF</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlahbawahan; ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-fw fa-users fa-2x text-gray-300"></i>
@@ -33,8 +33,8 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-s font-weight-bold text-success text-uppercase mb-1">JUMLAH KONTRAK KINERJA</div>
-                            <!-- <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlahkk; ?></div> -->
+                            <div class="text-s font-weight-bold text-success text-uppercase mb-1">KONTRAK KINERJA BELUM DISETUJUI</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $kkbelumdiapprove; ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-fw fa-file-signature fa-2x text-gray-300"></i>
@@ -44,16 +44,16 @@
             </div>
         </div>
 
-        <!-- Earnings (Monthly) Card Example -->
+        <!-- Jumlah IKU Belum Disetujui -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-s font-weight-bold text-info text-uppercase mb-1">JUMLAH INDIKATOR KINERJA UTAMA</div>
+                            <div class="text-s font-weight-bold text-info text-uppercase mb-1">INDIKATOR BELUM DISETUJUI</div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <!-- <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $jumlahiku; ?></div> -->
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $ikubelumdiapprove; ?></div>
                                 </div>
 
                             </div>
@@ -66,14 +66,14 @@
             </div>
         </div>
 
-        <!-- Pending Requests Card Example -->
+        <!-- Logbook yang Belum Disetujui -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-s font-weight-bold text-warning text-uppercase mb-1">JUMLAH LOGBOOK</div>
-                            <!-- <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlahlogbook; ?></div> -->
+                            <div class="text-s font-weight-bold text-warning text-uppercase mb-1">LOGBOOK BELUM DISETUJUI</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $logbookbelumdiapprove; ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-fw fa-clipboard-check fa-2x text-gray-300"></i>
@@ -99,6 +99,7 @@
                 <div class="card-body">
 
                     <div class="profil">
+
                         <div class="card border-left-success">
                             <div class="card-body py-2">
                                 <span style="color: black; font-weight: 700">
@@ -114,6 +115,7 @@
 
                             </div>
                         </div>
+
                         <div class="card mt-3">
                             <div class="card-body py-2 border-left-info">
                                 <span style="color: black; font-weight: 700">
@@ -125,6 +127,7 @@
                                 </span>
                             </div>
                         </div>
+
                         <div class="card mt-3">
                             <div class="card-body py-2 border-left-warning">
                                 <span style="color: black; font-weight: 700">

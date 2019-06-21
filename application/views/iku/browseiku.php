@@ -96,7 +96,7 @@
                                         <td><?= $iku['nama']; ?></td>
                                     <?php endif; ?>
                                     <td><?= $iku['kodeiku']; ?></td>
-                                    <td class="namaiku"><?= $iku['namaiku']; ?></td>
+                                    <td class="namaiku text-justify"><?= $iku['namaiku']; ?></td>
                                     <td><?= $iku['targetiku']; ?> dari <?= $iku['nilaitertinggi']; ?></td>
 
                                     <td class="aksi">

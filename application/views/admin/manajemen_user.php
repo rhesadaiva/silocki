@@ -49,8 +49,7 @@
             <div class="row">
 
                 <div class="col-lg">
-
-                    <table class="table table-bordered table-hover" id="datauser">
+                    <table class="table table-bordered table-hover mt-4" id="datauser">
                         <thead class="thead-light">
                             <tr>
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">No.</th>

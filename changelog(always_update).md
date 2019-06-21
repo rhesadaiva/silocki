@@ -28,9 +28,14 @@ Merupakan catatan singkat mengenai penambahan atau perbaikan fitur
     - Merubah footer.php
     - Minor update pada customscript.js
     - Minor update pada logbookbawahan.php
-    - Menambah input 'NIP' di logbook_model.php
-    - Mengupdate pengumuman di index.php
+     - Mengupdate pengumuman di index.php
     - Perbaikan style pada menu browseiku.php, tambahiku.php, browsekontrak.php, logbookbawahan.php
     - PENTING: CEK DI TABLE LOGBOOK, column id.iku ubah tipe dari INT ke VARCHAR !!!!!!!!
     - Menambah favicon.ico
     - Memperbaiki Sidebar
+
+- 18 Juni 2019
+    - Membuat query menghitung jumlah user bawahan, jumlah kk, iku, dan logbook yang belum diapprove pada Pejabat_model.php
+    - Membuat laman index.php pada pejabat dan menambahkan query hitung jumlah kk, iku, logbook yang belum diapprove
+    - Menambahkan keterangan pada controller Admin.php
+    

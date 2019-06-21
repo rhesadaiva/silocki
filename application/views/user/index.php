@@ -10,14 +10,14 @@
     <!-- Content Row -->
     <div class="row">
 
-        <!-- Jumlah User Aktif -->
+        <!-- Jumlah User Aktif
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-s font-weight-bold text-uppercase text-primary mb-1">JUMLAH USER AKTIF</div>
-                            <!-- <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlahuser; ?></div> -->
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlahuser; ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-fw fa-users fa-2x text-gray-300"></i>
@@ -25,16 +25,16 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- Total Kontrak Kinerja  -->
-        <div class="col-xl-3 col-md-6 mb-4">
+        <div class="col-xl-4 col-md-6 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-s font-weight-bold text-success text-uppercase mb-1">JUMLAH KONTRAK KINERJA</div>
-                            <!-- <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlahkk; ?></div> -->
+                            <div class="text-s font-weight-bold text-success text-uppercase mb-1">JUMLAH KONTRAK KINERJA YANG DISETUJUI</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $kkdisetujui; ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-fw fa-file-signature fa-2x text-gray-300"></i>
@@ -45,15 +45,15 @@
         </div>
 
         <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
+        <div class="col-xl-4 col-md-6 mb-4">
             <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-s font-weight-bold text-info text-uppercase mb-1">JUMLAH INDIKATOR KINERJA UTAMA</div>
+                            <div class="text-s font-weight-bold text-info text-uppercase mb-1">JUMLAH INDIKATOR KINERJA UTAMA YANG DISETUJUI</div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <!-- <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $jumlahiku; ?></div> -->
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $ikudisetujui; ?></div>
                                 </div>
 
                             </div>
@@ -67,13 +67,13 @@
         </div>
 
         <!-- Pending Requests Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
+        <div class="col-xl-4 col-md-6 mb-4">
             <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-s font-weight-bold text-warning text-uppercase mb-1">JUMLAH LOGBOOK</div>
-                            <!-- <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlahlogbook; ?></div> -->
+                            <div class="text-s font-weight-bold text-warning text-uppercase mb-1">JUMLAH LOGBOOK YANG TELAH DIKIRIM</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $logbookdikirim; ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-fw fa-clipboard-check fa-2x text-gray-300"></i>

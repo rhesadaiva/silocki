@@ -4,41 +4,35 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Indikator_model extends CI_Model
 {
 
+    //Ambil data User
     public function user()
     {
         $query = $this->db->get('user');
         return $query->result_array();
     }
 
+    //Ambil IKU berdasarkan id
     public function getIKUById($idiku)
     {
         return $this->db->get_where('indikatorkinerjautama', ['id_iku' => $idiku])->row_array();
     }
 
-    public function logbookterakhir()
-    {
-        $data = $this->db->query("SELECT * FROM logbook ORDER BY id_logbook DESC LIMIT 1");
-
-        if ($data->num_rows() > 0) {
-            return $data->result_array()[0];
-        } else {
-            return 0;
-        }
-    }
-
+    //Ambil data kontrak khusus admin
     public function getKontrak()
     {
         $query = $this->db->query('SELECT `kontrakkinerja`.*, `user`.nama from `kontrakkinerja`join `user` using(nip)');
         return $query->result_array();
     }
 
+    //Ambil data kontrak berdasarkan NIP login
     public function getKontrakByNIP()
     {
         $role = $this->session->userdata('nip');
-        $query = $this->db->query("SELECT * from `kontrakkinerja`  where nip=$role and is_validated=1");
+        $query = $this->db->query("SELECT * from `kontrakkinerja`  where nip='$role' and is_validated=1");
         return $query->row_array();
     }
 
+    //Ambil data IKU khusus ADMIN
     public function getIKU()
     {
         //return $this->db->get('indikatorkinerjautama')->result_array();
@@ -46,14 +40,17 @@ class Indikator_model extends CI_Model
         return $query->result_array();
     }
 
+    //Ambil data IKU berdasarkan NIP login
     public function getIKUByNIP()
     {
         $role = $this->session->userdata('nip');
         return $this->db->get_where('indikatorkinerjautama', ['nip' => $role])->result_array();
     }
 
+    //Tambah IKU Baru
     public function rekamikubaru()
     {
+        //Ambil data dari form
         $data = [
             'nip' => $this->input->post('nomorpegawai', true),
             'id_iku' => uniqid(),
@@ -70,12 +67,14 @@ class Indikator_model extends CI_Model
         $this->db->insert('indikatorkinerjautama', $data);
     }
 
+    //Hapus IKU
     public function hapusiku($idiku)
     {
         $this->db->where('id_iku', $idiku);
         $this->db->delete('indikatorkinerjautama');
     }
 
+    //Edit IKU
     public function ubahdataIKU()
     {
         $data = [

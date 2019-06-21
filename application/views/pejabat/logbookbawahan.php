@@ -63,6 +63,7 @@
                                 <th class="text-center realisasi" data-valign="middle" data-halign="center" scope="col">Realisasi s.d Bulan Pelaporan</th>
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">Keterangan</th>
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">Waktu Rekam</th>
+                                <th class="text-center" data-valign="middle" data-halign="center" scope="col">Waktu Persetujuan</th>
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -76,8 +77,9 @@
                                     <td><?= $logbook['perhitungan']; ?></td>
                                     <td><?= $logbook['realisasibulan']; ?></td>
                                     <td><?= $logbook['realisasiterakhir']; ?></td>
-                                    <td><?= $logbook['ket']; ?></td>
-                                    <td class="wakturekam"><?= $logbook['wakturekam']; ?></td>
+                                    <td class="text-justify"><?= $logbook['ket']; ?></td>
+                                    <td class="wakturekam text-justify"><?= $logbook['wakturekam']; ?></td>
+                                    <td class="wakturekam text-justify"><?= $logbook['tgl_approve']; ?></td>
 
                                     <td class="aksi">
                                         <?php if ($logbook['is_approved'] == 0) : ?>

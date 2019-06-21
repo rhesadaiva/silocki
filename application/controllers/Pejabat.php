@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+date_default_timezone_set('Asia/Jakarta');
 
 class Pejabat extends CI_Controller
 {
@@ -17,6 +18,10 @@ class Pejabat extends CI_Controller
     {
         $data['title'] = 'Home';
         $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
+        $data['jumlahbawahan'] = $this->Pejabat_model->countBawahan();
+        $data['kkbelumdiapprove'] = $this->Pejabat_model->countKKBawahanNotApproved();
+        $data['ikubelumdiapprove'] = $this->Pejabat_model->countIKUBawahanNotApproved();
+        $data['logbookbelumdiapprove'] = $this->Pejabat_model->countLogbookBawahanNotApproved();
 
         $this->load->view('templates/header', $data);
         cek_sidebar();
@@ -25,6 +30,7 @@ class Pejabat extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    //Ambil Data KK Bawahan
     public function kontrakkinerjabawahan()
     {
         $data['title'] = 'Browse Kontrak Kinerja Bawahan';
@@ -43,6 +49,7 @@ class Pejabat extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    //Approve KK
     public function approvekontrak($id)
     {
         $this->Pejabat_model->approvekontrak($id);
@@ -50,6 +57,7 @@ class Pejabat extends CI_Controller
         redirect('pejabat/kontrakkinerjabawahan');
     }
 
+    //Batal Approve KK
     public function batalapprovekontrak($id)
     {
         $this->Pejabat_model->batalapprovekontrak($id);
@@ -57,6 +65,7 @@ class Pejabat extends CI_Controller
         redirect('pejabat/kontrakkinerjabawahan');
     }
 
+    //Get Data KK
     public function detailkontrak($id)
     {
         $data['detailkontrak'] = $this->Pejabat_model->getdetailkontrak($id);
@@ -71,6 +80,7 @@ class Pejabat extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    //Approve IKU
     public function approveiku($idiku)
     {
         $this->Pejabat_model->approveiku($idiku);
@@ -78,7 +88,7 @@ class Pejabat extends CI_Controller
         redirect('pejabat/kontrakkinerjabawahan');
     }
 
-
+    //Batal Approve IKU
     public function batalapproveiku($idiku)
     {
         $this->Pejabat_model->batalapproveiku($idiku);
@@ -86,6 +96,7 @@ class Pejabat extends CI_Controller
         redirect('pejabat/kontrakkinerjabawahan');
     }
 
+    //Get Logbook Bawahan
     public function logbookbawahan($idiku)
     {
         $idiku = $this->uri->segment(3);
@@ -103,6 +114,7 @@ class Pejabat extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    //Approve Logbook
     public function approvelogbook($idlogbook)
     {
         $this->Pejabat_model->approvelogbook($idlogbook);
@@ -110,6 +122,7 @@ class Pejabat extends CI_Controller
         redirect('pejabat/kontrakkinerjabawahan');
     }
 
+    //Batal approve logbook
     public function batalapprovelogbook($idlogbook)
     {
         $this->Pejabat_model->batalapprovelogbook($idlogbook);

@@ -106,6 +106,8 @@ class Admin_model extends CI_Model
         $this->db->where('id', $id);
         $this->db->update('user', $data);
     }
+
+    //query ambil data pegawai yang belum punya logbook
     public function pegawainologbook()
     {
         $query = $this->db->query("SELECT `user`.`nama`, `user`.`nip`, `kontrakkinerja`.`nomorkk`, `kontrakkinerja`.`nip`, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.`nip`, `logbook`.* 
@@ -116,6 +118,7 @@ class Admin_model extends CI_Model
         return $query->result_array();
     }
 
+    //query filter data pegawai yang belum punya logbook bulan ini
     public function filternologbook($periode)
     {
         $query = $this->db->query("SELECT `user`.`nama`, `user`.`nip`, `kontrakkinerja`.`nomorkk`, `kontrakkinerja`.`nip`, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.`nip`, `logbook`.* 
@@ -126,6 +129,7 @@ class Admin_model extends CI_Model
         return $query->result_array();
     }
 
+    //query pegawai yang belum divalidasi logbooknya
     public function pegawainotvalidatedlogbook()
     {
         $query = $this->db->query("SELECT `user`.`nama`, `user`.`nip`, `kontrakkinerja`.`nomorkk`, `kontrakkinerja`.`nip`, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.`nip`, `logbook`.* 
@@ -136,6 +140,7 @@ class Admin_model extends CI_Model
         return $query->result_array();
     }
 
+    //query filter data pegawai yang belum divalidasi logbooknya
     public function filternotvalidatedlogbook($periode)
     {
         $query = $this->db->query("SELECT `user`.`nama`, `user`.`nip`, `kontrakkinerja`.`nomorkk`, `kontrakkinerja`.`nip`, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.`nip`, `logbook`.* 

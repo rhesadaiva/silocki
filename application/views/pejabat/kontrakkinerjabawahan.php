@@ -36,6 +36,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-lg">
+
                     <table class="table table-bordered table-hover" id="browseiku">
                         <thead class="thead-light">
                             <tr>
@@ -44,10 +45,13 @@
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">Pemilik Kontrak Kinerja</th>
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">Periode Kontrak Kinerja</th>
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">Status Validasi</th>
+                                <?php if ($this->session->userdata('role_id') == 1) : ?>
+                                    <th class="text-center" data-valign="middle" data-halign="center" scope="col">Nama validator</th>
+                                <?php endif; ?>
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="kontrakbawahan">
                             <tr>
                                 <?php $i = 1; ?>
                                 <?php foreach ($kontrak_kinerja as $kontrak) : ?>
@@ -71,6 +75,9 @@
                                         }
                                         ?>
                                     </td>
+                                    <?php if ($this->session->userdata('role_id') == 1) : ?>
+                                        <td><?= $kontrak['nama_validated']; ?></td>
+                                    <?php endif; ?>
                                     <td class="aksi">
                                         <?php if ($kontrak['is_validated'] == 1) : ?>
                                             <a data-toggle="tooltip" class="button-buttonapprovekontrak" data-placement="left" title="Persetujuan Kontrak Kinerja" href="<?= base_url(); ?>pejabat/approvekontrak/<?= $kontrak['id']; ?> "><span style="color:green;"><i class="fas fa-fw fa-thumbs-up"></i></a>

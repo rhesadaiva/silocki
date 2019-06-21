@@ -17,6 +17,10 @@
         text-align: left;
         padding-right: 700px;
     }
+
+    td.nama-iku {
+        text-align: left;
+    }
 </style>
 
 <!-- Begin Page Content -->
@@ -88,6 +92,9 @@
                                 <th class="text-center" scope="col">Nomor IKU</th>
                                 <th class="text-center" scope="col">Nama IKU</th>
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">Target IKU</th>
+                                <?php if ($this->session->userdata('role_id') == 1) : ?>
+                                    <th class="text-center" data-valign="middle" data-halign="center" scope="col">Nama Validator</th>
+                                <?php endif; ?>
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">Aksi</th>
 
 
@@ -99,12 +106,14 @@
                                 <tr>
                                     <th class="text-center" scope="row"><?= $i; ?></th>
                                     <td><?= $iku['kodeiku']; ?></td>
-                                    <td><?= $iku['namaiku']; ?></td>
+                                    <td class="nama-iku"><?= $iku['namaiku']; ?></td>
                                     <td><?= $iku['targetiku']; ?> dari <?= $iku['nilaitertinggi']; ?></td>
-
+                                    <?php if ($this->session->userdata('role_id') == 1) : ?>
+                                        <td><?= $iku['nama_validated']; ?></td>
+                                    <?php endif; ?>
                                     <td class="aksi">
                                         <?php if ($iku['iku_validated'] == 0) : ?>
-                                            <a data-toggle="tooltip" class="button-buttonapprovekontrak" data-placement="left" title="Persetujuan Indikator Kinerja Utama" href="<?= base_url(); ?>pejabat/approveiku/<?= $iku['id_iku']; ?> "><span style="color:green;"><i class="fas fa-fw fa-thumbs-up"></i></a>
+                                            <a data-toggle="tooltip" class="button-buttonapproveiku" data-placement="left" title="Persetujuan Indikator Kinerja Utama" href="<?= base_url(); ?>pejabat/approveiku/<?= $iku['id_iku']; ?> "><span style="color:green;"><i class="fas fa-fw fa-thumbs-up"></i></a>
 
                                         <?php else : ?>
 

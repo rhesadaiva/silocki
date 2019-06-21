@@ -15,7 +15,6 @@ class Logbook_model extends CI_Model
             'id_logbook' => uniqid(),
             'is_sent' => 0,
             'wakturekam' => indonesian_date2(date("Y-m-d H:i:s")),
-            // 'nip' => $this->session->userdata['nip'],
             //END OF TIDAK PERLU FORM VALIDATION
 
             'perhitungan' => $this->input->post('perhitungan', true),
@@ -29,6 +28,7 @@ class Logbook_model extends CI_Model
         $this->db->insert('logbook', $data);
     }
 
+    //Ambil data logbook
     public function getlogbook($idiku)
     {
         $idiku = $this->uri->segment(3);
@@ -36,18 +36,14 @@ class Logbook_model extends CI_Model
         return $query->result_array();
     }
 
-    public function ambillogbook()
-    {
-        $query = $this->db->query('SELECT * from logbook');
-        return $query->result_array();
-    }
-
+    // Hapus Logbook
     public function deletelogbook($idlogbook)
     {
         $this->db->where('id_logbook', $idlogbook);
         $this->db->delete('logbook');
     }
 
+    //Kirim data Logbook ke atasan
     public function kirimlogbook($idlogbook)
     {
         $data = [

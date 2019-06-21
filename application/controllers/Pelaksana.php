@@ -8,6 +8,7 @@ class Pelaksana extends CI_Controller
         parent::__construct();
         is_logged_in();
         cek_pelaksana();
+        $this->load->model('Pelaksana_model');
     }
 
 
@@ -15,6 +16,9 @@ class Pelaksana extends CI_Controller
     {
         $data['title'] = 'Home';
         $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
+        $data['kkdisetujui'] = $this->Pelaksana_model->countKKApproved();
+        $data['ikudisetujui'] = $this->Pelaksana_model->countIKUApproved();
+        $data['logbookdikirim'] = $this->Pelaksana_model->countLogbookSent();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_user');

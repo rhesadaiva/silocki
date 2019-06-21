@@ -4,30 +4,35 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Kontrak_model extends CI_Model
 {
 
+    //Ambil data user
     public function user()
     {
         $query = $this->db->get('user');
         return $query->result_array();
     }
 
+    //Ambil semua KK (khusus admin)
     public function getKontrak()
     {
         $query = $this->db->query('SELECT `kontrakkinerja`.*, `user`.nama from `kontrakkinerja`join `user` using(nip)');
         return $query->result_array();
     }
 
+    //Ambil KK berdasarkan NIP login
     public function getKontrakByNIP()
     {
         $role = $this->session->userdata('nip');
-        $query = $this->db->query("SELECT * from `kontrakkinerja` where nip=$role and is_validated=1");
+        $query = $this->db->query("SELECT * from `kontrakkinerja` where nip='$role' ");
         return $query->result_array();
     }
 
+    //ambil KK berdasarkan ID
     public function getKontrakbyID($id)
     {
         return $this->db->get_where('kontrakkinerja', ['id' => $id])->row_array();
     }
 
+    //Tambah KK Baru
     public function tambahkontrakbaru()
     {
         $data = [
@@ -43,12 +48,14 @@ class Kontrak_model extends CI_Model
         $this->db->insert('kontrakkinerja', $data);
     }
 
+    //Hapus KK 
     public function hapuskontrak($id)
     {
         $this->db->where('id', $id);
         $this->db->delete('kontrakkinerja');
     }
 
+    //Edit KK
     public function editkontrak()
     {
         $data = [
