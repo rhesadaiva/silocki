@@ -3,31 +3,38 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Admin_model extends CI_Model
 {
+
+    //Ambil data user
     public function getUsersData()
     {
         return $this->db->get('user')->result_array();
     }
 
+    //Ammbil data pangkat
     public function getPangkat()
     {
         return $this->db->get('pangkat')->result_array();
     }
 
+    //Ambil data role
     public function getRole()
     {
         return $this->db->get('user_role')->result_array();
     }
 
+    //Ambil data seksi
     public function getSeksi()
     {
         return $this->db->get('seksi/subseksi')->result_array();
     }
 
+    //Ambil data user by ID
     public function getUserByID($id)
     {
         return $this->db->get_where('user', ['id' => $id])->row_array();
     }
 
+    //Hitung jumlah User
     public function countUser()
     {
         $query = $this->db->get('user');
@@ -38,6 +45,7 @@ class Admin_model extends CI_Model
         }
     }
 
+    //Hitung jumlah KK
     public function countKK()
     {
         $query = $this->db->get('kontrakkinerja');
@@ -48,6 +56,7 @@ class Admin_model extends CI_Model
         }
     }
 
+    //Hitung jumlah IKU
     public function countIKU()
     {
         $query = $this->db->get('indikatorkinerjautama');
@@ -58,6 +67,7 @@ class Admin_model extends CI_Model
         }
     }
 
+    //Hitung jumlah logbook
     public function countLogbook()
     {
         $query = $this->db->get('logbook');
@@ -68,6 +78,7 @@ class Admin_model extends CI_Model
         }
     }
 
+    //Rekam User
     public function tambahUser()
     {
         $data = [
@@ -83,12 +94,14 @@ class Admin_model extends CI_Model
         return $this->db->insert('user', $data);
     }
 
+    //Hapus User
     public function deleteUser($id)
     {
         $this->db->where('id', $id);
         $this->db->delete('user');
     }
 
+    //Edit User
     public function editUser($id)
     {
 
@@ -107,27 +120,27 @@ class Admin_model extends CI_Model
         $this->db->update('user', $data);
     }
 
-    //query ambil data pegawai yang belum punya logbook
-    public function pegawainologbook()
-    {
-        $query = $this->db->query("SELECT `user`.`nama`, `user`.`nip`, `kontrakkinerja`.`nomorkk`, `kontrakkinerja`.`nip`, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.`nip`, `logbook`.* 
-                                    from `kontrakkinerja` right join `user` using (`nip`) 
-                                    join `indikatorkinerjautama` using (`nomorkk`)
-                                    join `logbook` using (`id_iku`) where `is_sent` = 0");
+    // //query ambil data pegawai yang belum punya logbook
+    // public function pegawainologbook()
+    // {
+    //     $query = $this->db->query("SELECT `user`.`nama`, `user`.`nip`, `kontrakkinerja`.`nomorkk`, `kontrakkinerja`.`nip`, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.`nip`, `logbook`.* 
+    //                                 from `kontrakkinerja` right join `user` using (`nip`) 
+    //                                 join `indikatorkinerjautama` using (`nomorkk`)
+    //                                 join `logbook` using (`id_iku`) where `is_sent` = 0");
 
-        return $query->result_array();
-    }
+    //     return $query->result_array();
+    // }
 
-    //query filter data pegawai yang belum punya logbook bulan ini
-    public function filternologbook($periode)
-    {
-        $query = $this->db->query("SELECT `user`.`nama`, `user`.`nip`, `kontrakkinerja`.`nomorkk`, `kontrakkinerja`.`nip`, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.`nip`, `logbook`.* 
-                                    from `kontrakkinerja` right join `user` using (`nip`) 
-                                    join `indikatorkinerjautama` using (`nomorkk`)
-                                    join `logbook` using (`id_iku`) where `is_sent` = 0 and `periode` =  '$periode'");
+    // //query filter data pegawai yang belum punya logbook bulan ini
+    // public function filternologbook($periode)
+    // {
+    //     $query = $this->db->query("SELECT `user`.`nama`, `user`.`nip`, `kontrakkinerja`.`nomorkk`, `kontrakkinerja`.`nip`, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.`nip`, `logbook`.* 
+    //                                 from `kontrakkinerja` right join `user` using (`nip`) 
+    //                                 join `indikatorkinerjautama` using (`nomorkk`)
+    //                                 join `logbook` using (`id_iku`) where `is_sent` = 0 and `periode` =  '$periode'");
 
-        return $query->result_array();
-    }
+    //     return $query->result_array();
+    // }
 
     //query pegawai yang belum divalidasi logbooknya
     public function pegawainotvalidatedlogbook()
@@ -147,6 +160,28 @@ class Admin_model extends CI_Model
                                     from `kontrakkinerja` right join `user` using (`nip`) 
                                     join `indikatorkinerjautama` using (`nomorkk`)
                                     join `logbook` using (`id_iku`) where `is_sent` = 1 and `is_approved`= 0 and `periode` =  '$periode'");
+
+        return $query->result_array();
+    }
+
+    //query ambil data pegawai yang sudah punya logbook
+    public function logbookclear()
+    {
+        $query = $this->db->query("SELECT `user`.`nama`, `user`.`nip`, `kontrakkinerja`.`nomorkk`, `kontrakkinerja`.`nip`, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.`nip`, `logbook`.* 
+                                    from `kontrakkinerja` join `user` using (`nip`) 
+                                    join `indikatorkinerjautama` using (`nomorkk`)
+                                    join `logbook` using (`id_iku`) where `is_sent` = 1 and `is_approved` = 1");
+
+        return $query->result_array();
+    }
+
+    //query filter data pegawai yang sudah punya logbook bulan ini
+    public function filterlogbookclear($periode)
+    {
+        $query = $this->db->query("SELECT `user`.`nama`, `user`.`nip`, `kontrakkinerja`.`nomorkk`, `kontrakkinerja`.`nip`, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.`nip`, `logbook`.* 
+                                    from `kontrakkinerja` join `user` using (`nip`) 
+                                    join `indikatorkinerjautama` using (`nomorkk`)
+                                    join `logbook` using (`id_iku`) where `is_sent` = 1 and `is_approved` = 1 and `periode` =  '$periode'");
 
         return $query->result_array();
     }

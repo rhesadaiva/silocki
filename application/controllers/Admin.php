@@ -108,37 +108,38 @@ class Admin extends CI_Controller
         redirect('admin/manajemen_user');
     }
 
-    //Halaman Daftar Pegawai yang belum rekam logbook
-    public function belumrekamlogbook()
-    {
-        $data['title'] = 'Pegawai Yang Belum Rekam Logbook';
-        $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
-        $data['periode'] = $this->input->get('periodepelaporan');
+    // //Halaman Daftar Pegawai yang belum rekam logbook
+    // public function belumrekamlogbook()
+    // {
+    //     $data['title'] = 'Pegawai Yang Belum Rekam Logbook';
+    //     $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
+    //     $data['periode'] = $this->input->get('periodepelaporan');
 
-        $data['belumlogbook'] = $this->Admin_model->pegawainologbook();
+    //     $data['belumlogbook'] = $this->Admin_model->pegawainologbook();
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar_admin');
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/belumrekamlogbook', $data);
-        $this->load->view('templates/footer');
-    }
+    //     $this->load->view('templates/header', $data);
+    //     $this->load->view('templates/sidebar_admin');
+    //     $this->load->view('templates/topbar', $data);
+    //     $this->load->view('admin/belumrekamlogbook', $data);
+    //     $this->load->view('templates/footer');
+    // }
 
-    //Halaman Pencarian Pegawai yang belum rekam logbook
-    public function filterbelumrekamlogbook()
-    {
-        $data['title'] = 'Pegawai Yang Belum Rekam Logbook';
-        $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
-        $data['periode'] = $this->input->get('periodepelaporan');
+    // //Halaman Pencarian Pegawai yang belum rekam logbook
+    // public function filterbelumrekamlogbook()
+    // {
+    //     $data['title'] = 'Pegawai Yang Belum Rekam Logbook';
+    //     $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
+    //     $data['periode'] = $this->input->get('periodepelaporan');
 
-        $data['belumlogbook'] = $this->Admin_model->filternologbook($data['periode']);
+    //     $data['belumlogbook'] = $this->Admin_model->filternologbook($data['periode']);
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar_admin');
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/belumrekamlogbook', $data);
-        $this->load->view('templates/footer');
-    }
+    //     $this->load->view('templates/header', $data);
+    //     $this->load->view('templates/sidebar_admin');
+    //     $this->load->view('templates/topbar', $data);
+    //     $this->load->view('admin/belumrekamlogbook', $data);
+    //     $this->load->view('templates/footer');
+    // }
+
     //Halaman Pencarian Logbook belum disetujui
     public function logbookbelumdisetujui()
     {
@@ -168,6 +169,38 @@ class Admin extends CI_Controller
         $this->load->view('templates/sidebar_admin');
         $this->load->view('templates/topbar', $data);
         $this->load->view('admin/belumapprovelogbook', $data);
+        $this->load->view('templates/footer');
+    }
+
+    //Halaman Daftar Pegawai yang sudah rekam logbook
+    public function logbookselesai()
+    {
+        $data['title'] = 'Pegawai Yang Sudah Rekam Logbook';
+        $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
+        $data['periode'] = $this->input->get('periodepelaporan');
+
+        $data['logbookclear'] = $this->Admin_model->logbookclear();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar_admin');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/logbookselesai', $data);
+        $this->load->view('templates/footer');
+    }
+
+    // //Halaman Pencarian Pegawai yang belum rekam logbook
+    public function filterlogbookselesai()
+    {
+        $data['title'] = 'Pegawai Yang Sudah Rekam Logbook';
+        $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
+        $data['periode'] = $this->input->get('periodepelaporan');
+
+        $data['logbookclear'] = $this->Admin_model->filterlogbookclear($data['periode']);
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar_admin');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/logbookselesai', $data);
         $this->load->view('templates/footer');
     }
 }

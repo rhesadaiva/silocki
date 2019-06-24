@@ -39,3 +39,5 @@ Merupakan catatan singkat mengenai penambahan atau perbaikan fitur
     - Membuat laman index.php pada pejabat dan menambahkan query hitung jumlah kk, iku, logbook yang belum diapprove
     - Menambahkan keterangan pada controller Admin.php
     
+- 21 Juni 2019
+    - Merubah dari fitur belum rekam logbook menjadi yang sudah mengirim logbook
