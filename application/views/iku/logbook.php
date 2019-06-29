@@ -76,18 +76,18 @@
                             <label for="periodepelaporan" class="col-sm-2 col-form-label">Periode Pelaporan</label>
                             <div class="col-sm-6">
                                 <select class="selectpicker" name="periodepelaporan" data-live-search="true">
-                                    <option value="Januari">Januari</option>
-                                    <option value="Februari">Februari</option>
-                                    <option value="Maret">Maret</option>
-                                    <option value="April">April</option>
-                                    <option value="Mei">Mei</option>
-                                    <option value="Juni">Juni</option>
-                                    <option value="Juli">Juli</option>
-                                    <option value="Agustus">Agustus</option>
-                                    <option value="September">September</option>
-                                    <option value="Oktober">Oktober</option>
-                                    <option value="November">November</option>
-                                    <option value="Desember">Desember</option>
+                                    <option value="1">Januari</option>
+                                    <option value="2">Februari</option>
+                                    <option value="3">Maret</option>
+                                    <option value="4">April</option>
+                                    <option value="5">Mei</option>
+                                    <option value="6">Juni</option>
+                                    <option value="7">Juli</option>
+                                    <option value="8">Agustus</option>
+                                    <option value="9">September</option>
+                                    <option value="10">Oktober</option>
+                                    <option value="11">November</option>
+                                    <option value="12">Desember</option>
                                 </select>
                             </div>
                         </div>
@@ -154,7 +154,58 @@
                             <?php foreach ($logbookdetail as $logbook) : ?>
                                 <tr class="detail">
                                     <th class="nomor" scope="row"><?= $i; ?></th>
-                                    <td class="periode"><?= $logbook['periode']; ?></td>
+                                    <td class="periode">
+                                        <?php switch ($logbook['periode']) {
+                                            case 1:
+                                                echo "Januari";
+                                                break;
+
+                                            case 2:
+                                                echo "Februari";
+                                                break;
+
+                                            case 3:
+                                                echo "Maret";
+                                                break;
+
+                                            case 4:
+                                                echo "April";
+                                                break;
+
+                                            case 5:
+                                                echo "Mei";
+                                                break;
+
+                                            case 6:
+                                                echo "Juni";
+                                                break;
+
+                                            case 7:
+                                                echo "Juli";
+                                                break;
+
+                                            case 8:
+                                                echo "Agustus";
+                                                break;
+
+                                            case 9;
+                                                echo "September";
+                                                break;
+
+                                            case 10;
+                                                echo "Oktober";
+                                                break;
+
+                                            case 11;
+                                                echo "November";
+                                                break;
+
+                                            case 12;
+                                                echo "Desember";
+                                                break;
+                                        }
+                                        ?>
+                                    </td>
                                     <td><?= $logbook['perhitungan']; ?></td>
                                     <td><?= $logbook['realisasibulan']; ?></td>
                                     <td><?= $logbook['realisasiterakhir']; ?></td>

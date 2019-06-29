@@ -148,6 +148,7 @@ class Admin extends CI_Controller
         $data['periode'] = $this->input->get('periodepelaporan');
 
         $data['belumlogbook'] = $this->Admin_model->pegawainotvalidatedlogbook();
+        // var_dump($data['belumlogbook']);
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_admin');
@@ -175,7 +176,7 @@ class Admin extends CI_Controller
     //Halaman Daftar Pegawai yang sudah rekam logbook
     public function logbookselesai()
     {
-        $data['title'] = 'Pegawai Yang Sudah Rekam Logbook';
+        $data['title'] = 'Logbook yang sudah dikirim dan divalidasi oleh atasan';
         $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
         $data['periode'] = $this->input->get('periodepelaporan');
 
@@ -191,7 +192,7 @@ class Admin extends CI_Controller
     // //Halaman Pencarian Pegawai yang belum rekam logbook
     public function filterlogbookselesai()
     {
-        $data['title'] = 'Pegawai Yang Sudah Rekam Logbook';
+        $data['title'] = 'Logbook yang sudah dikirim dan divalidasi oleh atasan';
         $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
         $data['periode'] = $this->input->get('periodepelaporan');
 
