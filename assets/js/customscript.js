@@ -351,4 +351,8 @@ $(document).ready(function () {
 
     });
 });
-console.log('Script berhasil diload!!!!!')
+
+//Preloader script
+$(document).ready(function () {
+    $('.preloader').fadeOut();
+})

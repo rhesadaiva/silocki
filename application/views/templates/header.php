@@ -27,5 +27,11 @@
 
 <body id="page-top">
 
+    <!-- PRELOADER -->
+    <div class="preloader">
+        <div class="loading">
+            <img class="gif" src="<?= base_url('assets/') ?>img/loader.gif" alt="">
+        </div>
+    </div>
     <!-- Page Wrapper -->
     <div id="wrapper">
