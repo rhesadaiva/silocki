@@ -46,7 +46,7 @@
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">Periode Kontrak Kinerja</th>
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">Status Validasi</th>
                                 <?php if ($this->session->userdata('role_id') == 1) : ?>
-                                    <th class="text-center" data-valign="middle" data-halign="center" scope="col">Nama validator</th>
+                                    <th class="text-center" data-valign="middle" data-halign="center" scope="col">Nama Validator</th>
                                 <?php endif; ?>
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">Aksi</th>
                             </tr>

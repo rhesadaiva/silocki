@@ -1,3 +1,13 @@
+<style>
+    th {
+        text-align: center;
+    }
+
+    td {
+        text-align: center;
+    }
+</style>
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -42,7 +52,7 @@
                         <th scope="col">Nama Pegawai</th>
                         <th scope="col">Keterangan</th>
                         <th scope="col">Periode</th>
-                </thead>
+
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($belumlogbook as $belum) : ?>
@@ -103,6 +113,7 @@
                                     }
                                     ?>
                                 </td>
+
                             </tr>
                         <?php endif; ?>
 
