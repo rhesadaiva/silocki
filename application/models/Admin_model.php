@@ -150,7 +150,7 @@ class Admin_model extends CI_Model
                                     from logbook 
                                     join user on `logbook`.`nippegawai`=`user`.`nip`
                                     where `is_sent` = 1 and `is_approved` = 0 
-                                    group by `nippegawai`, `periode` Order BY `periode`");
+                                    GROUP BY `nippegawai`, `periode` ORDER BY `periode`");
 
         return $query->result_array();
     }
@@ -163,7 +163,7 @@ class Admin_model extends CI_Model
                                     from logbook 
                                     join user on `logbook`.`nippegawai`=`user`.`nip`
                                     where `is_sent` = 1 and `is_approved` = 0 and `periode` = $periode
-                                    group by `nippegawai`, `periode` Order BY `periode`");
+                                    GROUP BY `nippegawai`, `periode` ORDER BY `periode`");
 
         return $query->result_array();
     }
