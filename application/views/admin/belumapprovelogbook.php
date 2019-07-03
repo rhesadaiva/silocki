@@ -1,3 +1,10 @@
+<style>
+    th,
+    tr {
+        text-align: center;
+    }
+</style>
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
