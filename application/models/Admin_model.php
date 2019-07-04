@@ -120,28 +120,6 @@ class Admin_model extends CI_Model
         $this->db->update('user', $data);
     }
 
-    // //query ambil data pegawai yang belum punya logbook
-    // public function pegawainologbook()
-    // {
-    //     $query = $this->db->query("SELECT `user`.`nama`, `user`.`nip`, `kontrakkinerja`.`nomorkk`, `kontrakkinerja`.`nip`, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.`nip`, `logbook`.* 
-    //                                 from `kontrakkinerja` right join `user` using (`nip`) 
-    //                                 join `indikatorkinerjautama` using (`nomorkk`)
-    //                                 join `logbook` using (`id_iku`) where `is_sent` = 0");
-
-    //     return $query->result_array();
-    // }
-
-    // //query filter data pegawai yang belum punya logbook bulan ini
-    // public function filternologbook($periode)
-    // {
-    //     $query = $this->db->query("SELECT `user`.`nama`, `user`.`nip`, `kontrakkinerja`.`nomorkk`, `kontrakkinerja`.`nip`, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.`nip`, `logbook`.* 
-    //                                 from `kontrakkinerja` right join `user` using (`nip`) 
-    //                                 join `indikatorkinerjautama` using (`nomorkk`)
-    //                                 join `logbook` using (`id_iku`) where `is_sent` = 0 and `periode` =  '$periode'");
-
-    //     return $query->result_array();
-    // }
-
     //query pegawai yang belum divalidasi logbooknya
     public function pegawainotvalidatedlogbook()
     {
@@ -166,6 +144,7 @@ class Admin_model extends CI_Model
                                     GROUP BY `nippegawai`, `periode` ORDER BY `periode`");
 
         return $query->result_array();
+        return $query->num_rows();
     }
 
     //query ambil data pegawai yang sudah punya logbook
