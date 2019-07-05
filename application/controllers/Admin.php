@@ -145,7 +145,7 @@ class Admin extends CI_Controller
     //Halaman Daftar Pegawai yang sudah rekam logbook
     public function logbookselesai()
     {
-        $data['title'] = 'Logbook yang sudah dikirim dan divalidasi oleh atasan';
+        $data['title'] = 'Logbook Yang Sudah Divalidasi';
         $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
         $data['periode'] = $this->input->get('periodepelaporan');
 

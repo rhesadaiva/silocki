@@ -80,7 +80,7 @@
         <div id="monitoringpegawai" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item mx-auto" href="<?= base_url('admin/logbookselesai'); ?>">Sudah Mengirim Logbook</a>
-                <a class="collapse-item mx-auto" href="<?= base_url('admin/logbookbelumdisetujui'); ?>">Logbook belum disetujui</a>
+                <a class="collapse-item mx-auto" href="<?= base_url('admin/logbookbelumdisetujui'); ?>">Logbook Belum Disetujui</a>
             </div>
         </div>
     </li>
