@@ -73,7 +73,12 @@
                             <?php foreach ($logbookdetail as $logbook) : ?>
                                 <tr class="detail">
                                     <th class="text-center" scope="row"><?= $i; ?></th>
+<<<<<<< HEAD
                                     <!-- Ganti Tanggal -->
+=======
+
+                                    <!-- Mengganti angka menjadi bulan -->
+>>>>>>> 4f85151a83f432e1464474c6177d0c19ef6e9197
                                     <td class="periode">
                                         <?php switch ($logbook['periode']) {
                                             case 1:
@@ -123,9 +128,16 @@
                                             case 12;
                                                 echo "Desember";
                                                 break;
+<<<<<<< HEAD
                                         }
                                         ?></td>
                                     <!-- END -->
+=======
+                                        }; ?>
+                                    </td>
+                                    <!-- Mengganti angka menjadi bulan -->
+
+>>>>>>> 4f85151a83f432e1464474c6177d0c19ef6e9197
                                     <td><?= $logbook['perhitungan']; ?></td>
                                     <td><?= $logbook['realisasibulan']; ?></td>
                                     <td><?= $logbook['realisasiterakhir']; ?></td>

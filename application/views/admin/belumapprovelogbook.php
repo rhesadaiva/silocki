@@ -1,6 +1,14 @@
 <style>
+<<<<<<< HEAD
     th,
     tr {
+=======
+    th {
+        text-align: center;
+    }
+
+    td {
+>>>>>>> 4f85151a83f432e1464474c6177d0c19ef6e9197
         text-align: center;
     }
 </style>
@@ -49,7 +57,7 @@
                         <th scope="col">Nama Pegawai</th>
                         <th scope="col">Keterangan</th>
                         <th scope="col">Periode</th>
-                </thead>
+
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($belumlogbook as $belum) : ?>
@@ -110,6 +118,7 @@
                                     }
                                     ?>
                                 </td>
+
                             </tr>
                         <?php endif; ?>
 
