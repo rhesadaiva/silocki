@@ -1,14 +1,6 @@
 <style>
-<<<<<<< HEAD
     th,
     tr {
-=======
-    th {
-        text-align: center;
-    }
-
-    td {
->>>>>>> 4f85151a83f432e1464474c6177d0c19ef6e9197
         text-align: center;
     }
 </style>

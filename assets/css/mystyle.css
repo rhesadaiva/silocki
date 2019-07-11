@@ -1,12 +1,3 @@
-.login-image {
-    background-image: url('../img/kantor.jpg');
-    background-size: cover;
-    margin-top: 100px;
-}
-
-.login-image::after {
-    background-image: linear-gradient(red, yellow);
-}
 
 .border-top-primary {
     border-top: .25rem solid #4e73df!important;
