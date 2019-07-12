@@ -10,6 +10,7 @@
     transform: translate(-50%, -50%);
     background-color: rgba(0,0,0,0.5) !important;
     width: 500px;
+    height: 350px;
 }
 
 div.text-center h4{
@@ -17,7 +18,29 @@ div.text-center h4{
 }
 
 .user input[type = "text"],.user input[type = "password"]{
-    border:0;
-    background-color: rgb(244, 231, 231);
+    border:1px solid royalblue;
+    background-color: rgba(0,0,0,0.5);
     display: block;
+    color: white;
 }
+
+input{
+    text-align: center;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+    color: white;
+ }
+ 
+ :-moz-placeholder { /* Firefox 18- */
+    text-align: center;  
+ }
+ 
+ ::-moz-placeholder {  /* Firefox 19+ */
+    text-align: center;  
+ }
+ 
+ :-ms-input-placeholder {  
+    text-align: center; 
+ }

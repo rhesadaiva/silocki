@@ -73,11 +73,9 @@
                             <?php foreach ($logbookdetail as $logbook) : ?>
                                 <tr class="detail">
                                     <th class="text-center" scope="row"><?= $i; ?></th>
-                                    <<<<<<< HEAD <!-- Ganti Tanggal -->
-                                        =======
-
+                                     <!-- Ganti Tanggal -->
                                         <!-- Mengganti angka menjadi bulan -->
-                                        >>>>>>> 4f85151a83f432e1464474c6177d0c19ef6e9197
+                                       
                                         <td class="periode">
                                             <?php switch ($logbook['periode']) {
                                                 case 1:
