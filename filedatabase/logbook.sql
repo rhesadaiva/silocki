@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 01, 2019 at 10:11 AM
+-- Generation Time: Jul 12, 2019 at 01:49 AM
 -- Server version: 8.0.15
 -- PHP Version: 7.1.23
 
@@ -51,8 +51,8 @@ INSERT INTO `indikatorkinerjautama` (`id_iku`, `nip`, `nomorkk`, `kodeiku`, `nam
 ('5d16c74c9927a', '199506072015021003', '4/BC.15.7.12/2019', '1a-N', 'Persentase realisasi penerimaan dan penelitian kelengkapan dokumen kepabeanan dan cukai sesuai janji layanan', '(Dokumen yang diterima dan diteliti tepat waktu / Dokumen yang diterima dan diteliti) x 100%', '92%', '100%', 'Persentase', 'Average', 1, 'Zuhalta'),
 ('5d16c7d75f518', '199506072015021003', '4/BC.15.7.12/2019', '1b-N', 'Persentase penyelesaian dokumen PIB dan PEB ke sistem aplikasi  CEISA', '(Dokumen yang sudah diadministrasikan / Dokumen yang sudah terkirim ke CEISA) x 100%', '92%', '100%', 'Persentase', 'Average', 1, 'Zuhalta'),
 ('5d16c8d324500', '199506072015021003', '4/BC.15.7.12/2019', '1c-N', 'Persentase penyelesaian permintaan Modul Aktivasi Importir, ekspor PPJK dan Sarana Pengangkut', '(Penyelesaian permintaan modul / Jumlah permintaan Modul) x 100 %', '92%', '100%', 'Persentase', 'Average', 1, 'Zuhalta'),
-('5d16cd0e22f35', '199506072015021003', '4/BC.15.7.12/2019', '2a-C', 'Persentase penyelesaian permasalahan CEISA', '(Jumlah tiket permasalahan yang diselesaikan unit kerja setempat / Jumlah tiket permasalahan yang dibuat) x 100%', '92%', '100%', 'Persentase', 'Average', 0, ''),
-('5d16cece2c8cf', '199506072015021003', '4/BC.15.7.12/2019', '2b-C', 'Indeks Pelaksanaan Persiapan Operasional CEISA', '(Jumlah kegiatan harian yang dilakukan / Jumlah kegiatan harian yang seharusnya dilakukan x 100%) / Jumlah hari kerja pada bulan bersangkutan', '3', '4', 'Indeks', 'Average', 0, '');
+('5d16cd0e22f35', '199506072015021003', '4/BC.15.7.12/2019', '2a-C', 'Persentase penyelesaian permasalahan CEISA', '(Jumlah tiket permasalahan yang diselesaikan unit kerja setempat / Jumlah tiket permasalahan yang dibuat) x 100%', '92%', '100%', 'Persentase', 'Average', 1, 'Zuhalta'),
+('5d16cece2c8cf', '199506072015021003', '4/BC.15.7.12/2019', '2b-C', 'Indeks Pelaksanaan Persiapan Operasional CEISA', '(Jumlah kegiatan harian yang dilakukan / Jumlah kegiatan harian yang seharusnya dilakukan x 100%) / Jumlah hari kerja pada bulan bersangkutan', '3', '4', 'Indeks', 'Average', 1, 'Zuhalta');
 
 -- --------------------------------------------------------
 
@@ -107,8 +107,8 @@ CREATE TABLE `logbook` (
 --
 
 INSERT INTO `logbook` (`id_logbook`, `id_iku`, `nippegawai`, `periode`, `perhitungan`, `realisasibulan`, `realisasiterakhir`, `ket`, `wakturekam`, `is_approved`, `is_sent`, `tgl_approve`, `tgl_batalapprove`, `nama_validated`) VALUES
-('5d18f0b871177', '5d16c74c9927a', '199506072015021003', '1', '(27/27) x 100%', '100%', '100%', 'IKU ini dapat dipenuhi karena ada penerimaan dokumen PIB sebanyak 25 dokumen dan PPFTZ-01 Dalam negeri sebanyak 2 dokumen.', 'Senin, 1 Juli 2019 | Pukul 00:26 WIB', 0, 1, '', '', ''),
-('5d18f0ed8a751', '5d16c74c9927a', '199506072015021003', '2', '(17/17) x 100%', '100%', '100%', 'IKU ini dapat dipenuhi karena ada penerimaan dokumen PIB sebanyak 15 dokumen dan PPFTZ-01 Dalam negeri sebanyak 1 dokumen', 'Senin, 1 Juli 2019 | Pukul 00:27 WIB', 0, 0, '', '', '');
+('5d18f0b871177', '5d16c74c9927a', '199506072015021003', '1', '(27/27) x 100%', '100%', '100%', 'IKU ini dapat dipenuhi karena ada penerimaan dokumen PIB sebanyak 25 dokumen dan PPFTZ-01 Dalam negeri sebanyak 2 dokumen.', 'Senin, 1 Juli 2019 | Pukul 00:26 WIB', 1, 1, 'Jumat, 12 Juli 2019 | Pukul 01:20 WIB', 'Jumat, 12 Juli 2019 | Pukul 01:20 WIB', 'Administrator'),
+('5d18f0ed8a751', '5d16c74c9927a', '199506072015021003', '2', '(17/17) x 100%', '100%', '100%', 'IKU ini dapat dipenuhi karena ada penerimaan dokumen PIB sebanyak 15 dokumen dan PPFTZ-01 Dalam negeri sebanyak 1 dokumen', 'Senin, 1 Juli 2019 | Pukul 00:27 WIB', 1, 1, 'Rabu, 3 Juli 2019 | Pukul 19:45 WIB', '', 'Zuhalta');
 
 -- --------------------------------------------------------
 
@@ -221,7 +221,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `nama`, `nip`, `pangkat`, `password`, `role_id`, `seksi`, `atasan`) VALUES
 (1, 'Administrator', 'admin', 'Pengatur Muda Tk.I/II.b', '21232f297a57a5a743894a0e4a801fc3', 1, 'Seksi Pengolahan Data dan Administrasi Dokumen', 'Zuhalta'),
 (3, 'Kepala Kantor', 'kakan', 'Pembina/IV.a', '57aee06784fb57b06e11b4633ceeb9c3', 1, 'Kepala Kantor', 'Kepala Kantor'),
-(4, 'Rhesa Daiva Bremana', '199506072015021003', 'Pengatur Muda Tk.I /II.b', 'e10adc3949ba59abbe56e057f20f883e', 5, 'Pengolahan Data dan Administrasi Dokumen', 'Zuhalta'),
+(4, 'Rhesa Daiva Bremana', '199506072015021003', 'Pengatur Muda Tk.I /II.b', '0ca4503d3a2257ea26cbbcc2651ecb4c', 5, 'Pengolahan Data dan Administrasi Dokumen', 'Zuhalta'),
 (9, 'Zuhalta', '196212241983031001', 'Penata Tk.I/III.d', 'e10adc3949ba59abbe56e057f20f883e', 3, 'Seksi Pengolahan Data dan Administrasi Dokumen', 'Kepala Kantor'),
 (10, 'Sukardi', '196510102005011001', 'Pengatur Tk.I/II.d', 'e10adc3949ba59abbe56e057f20f883e', 5, 'Seksi Pengolahan Data dan Administrasi Dokumen', 'Zuhalta');
 
