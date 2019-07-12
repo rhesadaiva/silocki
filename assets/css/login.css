@@ -15,3 +15,9 @@
 div.text-center h4{
     color: white;
 }
+
+.user input[type = "text"],.user input[type = "password"]{
+    border:0;
+    background-color: rgb(244, 231, 231);
+    display: block;
+}
