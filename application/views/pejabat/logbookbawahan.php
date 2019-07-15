@@ -73,84 +73,6 @@
                             <?php foreach ($logbookdetail as $logbook) : ?>
                                 <tr class="detail">
                                     <th class="text-center" scope="row"><?= $i; ?></th>
-<<<<<<< HEAD
-                                    <<<<<<< HEAD <!-- Ganti Tanggal -->
-                                        =======
-
-                                        <!-- Mengganti angka menjadi bulan -->
-                                        >>>>>>> 4f85151a83f432e1464474c6177d0c19ef6e9197
-                                        <td class="periode">
-                                            <?php switch ($logbook['periode']) {
-                                                case 1:
-                                                    echo "Januari";
-                                                    break;
-
-                                                case 2:
-                                                    echo "Februari";
-                                                    break;
-
-                                                case 3:
-                                                    echo "Maret";
-                                                    break;
-
-                                                case 4:
-                                                    echo "April";
-                                                    break;
-
-                                                case 5:
-                                                    echo "Mei";
-                                                    break;
-
-                                                case 6:
-                                                    echo "Juni";
-                                                    break;
-
-                                                case 7:
-                                                    echo "Juli";
-                                                    break;
-
-                                                case 8:
-                                                    echo "Agustus";
-                                                    break;
-
-                                                case 9;
-                                                    echo "September";
-                                                    break;
-
-                                                case 10;
-                                                    echo "Oktober";
-                                                    break;
-
-                                                case 11;
-                                                    echo "November";
-                                                    break;
-
-                                                case 12;
-                                                    echo "Desember";
-                                                    break;
-                                            }; ?>
-                                        </td>
-                                        <!-- Mengganti angka menjadi bulan -->
-
-                                        <td><?= $logbook['perhitungan']; ?></td>
-                                        <td><?= $logbook['realisasibulan']; ?></td>
-                                        <td><?= $logbook['realisasiterakhir']; ?></td>
-                                        <td class="text-justify"><?= $logbook['ket']; ?></td>
-                                        <td class="wakturekam text-justify"><?= $logbook['wakturekam']; ?></td>
-                                        <td class="wakturekam text-justify"><?= $logbook['tgl_approve']; ?></td>
-
-                                        <td class="aksi">
-                                            <?php if ($logbook['is_approved'] == 0) : ?>
-
-                                                <a data-toggle="tooltip" data-placement="left" title="Setuju Logbook Bawahan" class="button-setujulogbookbawahan" href="<?= base_url(); ?>pejabat/approvelogbook/<?= $logbook['id_logbook']; ?>"><span style="color:blue;"><i class="fas fa-fw fa-thumbs-up"></i></span></a>
-
-                                            <?php else : ?>
-
-                                                <a data-toggle="tooltip" data-placement="left" title="Batalkan Persetujuan Logbook" class="button-tidaksetujulogbookbawahan" href="<?= base_url(); ?>pejabat/batalapprovelogbook/<?= $logbook['id_logbook']; ?>"><span style="color:red;"><i class="fas fa-fw fa-thumbs-down"></i></span></a>
-
-                                            <?php endif; ?>
-                                        </td>
-=======
                                     <!-- Ganti Tanggal -->
                                     <!-- Mengganti angka menjadi bulan -->
 
@@ -224,7 +146,6 @@
 
                                         <?php endif; ?>
                                     </td>
->>>>>>> d58deddb461d2604877d57ab1b5fd8b67cd836fd
 
                                 </tr>
 
