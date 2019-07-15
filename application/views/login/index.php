@@ -12,7 +12,9 @@
                         <div class="col-lg">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h4 class="mb-4">Sistem Laporan Capaian Kinerja KPPBC Tanjungpinang</h4>
+                                    <div class="box">
+                                        <h4 class="mb-4">Sistem Laporan Capaian Kinerja KPPBC Tanjungpinang</h4>
+                                    </div>
                                 </div>
 
                                 <?= $this->session->flashdata('message'); ?>

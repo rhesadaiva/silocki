@@ -10,6 +10,7 @@
     transform: translate(-50%, -50%);
     background-color: rgba(0,0,0,0.9) !important;
     width: 500px;
+    height: 350px;
 }
 
 div.text-center h4{
