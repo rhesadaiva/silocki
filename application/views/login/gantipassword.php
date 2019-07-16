@@ -14,17 +14,17 @@
 
                 <form action="<?= base_url('auth/gantipassword'); ?>" method="post">
                     <div class="form-group">
-                        <label for="passwordlama">Password Sekarang</label>
+                        <label for="passwordlama"><b>Password Sekarang</b></label>
                         <input type="password" class="form-control" id="passwordlama" name="passwordlama">
                         <?= form_error('passwordlama', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                     <div class="form-group">
-                        <label for="passwordbaru1">Password Baru</label>
+                        <label for="passwordbaru1"><b>Password Baru</b></label>
                         <input type="password" class="form-control" id="passwordbaru1" name="passwordbaru1">
                         <?= form_error('passwordbaru1', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                     <div class="form-group">
-                        <label for="passwordbaru2">Konfirmasi Password Baru</label>
+                        <label for="passwordbaru2"><b>Konfirmasi Password Baru</b></label>
                         <input type="password" class="form-control" id="passwordbaru2" name="passwordbaru2">
                         <?= form_error('passwordbaru2', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
