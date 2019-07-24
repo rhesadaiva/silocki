@@ -37,3 +37,7 @@
     font: 14px arial;
 }
 
+th, td {
+    color: black;
+}
+
