@@ -27,16 +27,16 @@ h4.logbook {
 	text-align: center;
 }
 
-.realisasi {
+/* .realisasi {
 	width: 10%;
+} */
+
+td.perhitungan {
+	width: 200px;
 }
 
-.perhitungan {
-	width: 25%;
-}
-
-.keterangan {
-	width: 25%;
+td.keterangan {
+	width: 180px;
 }
 
 tr.detail {
@@ -45,8 +45,12 @@ tr.detail {
 }
 
 td.wakturekam {
-	width: 120px;
+	width: 100px;
 	font-size: 13px;
+}
+
+td.realisasi {
+	width: 120px;
 }
 
 td.periode {
@@ -58,5 +62,33 @@ th.nomor {
 }
 
 td.aksi {
-	width: 80px
+	width: 80px;
+}
+
+td.keterangan {
+	width: 400px;
+}
+
+td.perhitungan-bawahan {
+	width: 150px;
+}
+
+td.keterangan-bawahan {
+	width: 500px;
+}
+
+td.wakturekam-bawahan {
+	width: 120px;
+}
+
+td.waktupersetujuan-bawahan {
+	width: 120px;
+}
+
+th.nomor-bawahan {
+	width: 60px;
+}
+
+td.realisasi-bawahan {
+	width: 120px;
 }

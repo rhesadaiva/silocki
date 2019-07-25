@@ -206,10 +206,10 @@
                                         }
                                         ?>
                                     </td>
-                                    <td><?= $logbook['perhitungan']; ?></td>
-                                    <td><?= $logbook['realisasibulan']; ?></td>
-                                    <td><?= $logbook['realisasiterakhir']; ?></td>
-                                    <td class="text-justify"><?= $logbook['ket']; ?></td>
+                                    <td class="perhitungan"><?= $logbook['perhitungan']; ?></td>
+                                    <td class="realisasi"><?= $logbook['realisasibulan']; ?></td>
+                                    <td class="realisasi"><?= $logbook['realisasiterakhir']; ?></td>
+                                    <td class="text-justify keterangan"><?= $logbook['ket']; ?></td>
                                     <td class="wakturekam"><?= $logbook['wakturekam']; ?></td>
 
                                     <td class="aksi">

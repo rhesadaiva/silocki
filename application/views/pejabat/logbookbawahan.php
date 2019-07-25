@@ -72,7 +72,7 @@
                             <?php $i = 1 ?>
                             <?php foreach ($logbookdetail as $logbook) : ?>
                                 <tr class="detail">
-                                    <th class="text-center" scope="row"><?= $i; ?></th>
+                                    <th class="text-center nomor-bawahan" scope="row"><?= $i; ?></th>
                                     <!-- Ganti Tanggal -->
                                     <!-- Mengganti angka menjadi bulan -->
 
@@ -128,12 +128,12 @@
                                         }
                                         ?></td>
                                     <!-- END -->
-                                    <td><?= $logbook['perhitungan']; ?></td>
-                                    <td><?= $logbook['realisasibulan']; ?></td>
-                                    <td><?= $logbook['realisasiterakhir']; ?></td>
-                                    <td class="text-justify"><?= $logbook['ket']; ?></td>
-                                    <td class="wakturekam text-justify"><?= $logbook['wakturekam']; ?></td>
-                                    <td class="wakturekam text-justify"><?= $logbook['tgl_approve']; ?></td>
+                                    <td class="perhitungan-bawahan"><?= $logbook['perhitungan']; ?></td>
+                                    <td class="realisasi-bawahan"><?= $logbook['realisasibulan']; ?></td>
+                                    <td class="realisasi-bawahan"><?= $logbook['realisasiterakhir']; ?></td>
+                                    <td class="text-justify keterangan-bawahan"><?= $logbook['ket']; ?></td>
+                                    <td class="wakturekam-bawahan text-justify"><?= $logbook['wakturekam']; ?></td>
+                                    <td class="waktupersetujuan-bawahan text-justify"><?= $logbook['tgl_approve']; ?></td>
 
                                     <td class="aksi">
                                         <?php if ($logbook['is_approved'] == 0) : ?>
