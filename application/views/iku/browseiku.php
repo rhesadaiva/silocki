@@ -101,7 +101,6 @@
 
                                     <td class="aksi">
                                         <?php if ($iku['iku_validated'] == 0) : ?>
-                                            <!--<a data-toggle="tooltip" data-placement="left" title="Input Logbook" class="inputlogbook" href="<?= base_url(); ?>logbook/showlogbook/<?= $iku['id_iku']; ?>"><span style="color:forestgreen;"><i class="fas fa-fw fa-chart-line"></i></span></a> -->
                                             <a data-toggle="tooltip" data-placement="left" title="Edit" href="<?= base_url(); ?>iku/editiku/<?= $iku['id_iku']; ?>"><i class="fas fa-fw fa-edit"></i></a>
                                             <a data-toggle="tooltip" data-placement="left" title="Delete" class="buttonhapusiku" href="<?= base_url(); ?>iku/hapusiku/<?= $iku['id_iku']; ?> "><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
 
