@@ -16,7 +16,7 @@
                                         <h4 class="mb-4">Sistem Laporan Capaian Kinerja KPPBC Tanjungpinang</h4>
                                     </div>
                                 </div>
-
+                                <br>
                                 <?= $this->session->flashdata('message'); ?>
 
                                 <form class="user" method="post" action="<?= base_url('auth'); ?>">
