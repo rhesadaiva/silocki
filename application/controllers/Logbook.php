@@ -45,6 +45,7 @@ class Logbook extends CI_Controller
     public function aksirekamlogbook()
     {
         $this->Logbook_model->newlogbook();
+        helper_log("add", "menambah logbook baru");
         $this->session->set_flashdata('logbook', 'Ditambahkan');
         redirect('iku/browseiku');
     }
@@ -52,6 +53,7 @@ class Logbook extends CI_Controller
     public function hapuslogbook($idlogbook)
     {
         $this->Logbook_model->deletelogbook($idlogbook);
+        helper_log("delete", "menghapus logbook (id-logbook = $idlogbook)");
         $this->session->set_flashdata('logbook', 'Dihapus');
         redirect('iku/browseiku');
     }
@@ -59,6 +61,7 @@ class Logbook extends CI_Controller
     public function kirimkeatasan($idlogbook)
     {
         $this->Logbook_model->kirimlogbook($idlogbook);
+        helper_log("send", "mengirim logbook ke atasan (id-logbook = $idlogbook)");
         $this->session->set_flashdata('logbook', 'Dikirim ke atasan');
         redirect('iku/browseiku');
     }

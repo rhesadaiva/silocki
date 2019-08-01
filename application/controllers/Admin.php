@@ -64,6 +64,7 @@ class Admin extends CI_Controller
         } else {
 
             $this->Admin_model->tambahUser();
+            helper_log("add", "menambah pegawai baru");
             $this->session->set_flashdata('user', 'ditambahkan dengan password 123456');
             redirect('admin/manajemen_user');
         }
@@ -95,6 +96,7 @@ class Admin extends CI_Controller
         } else {
             //Validasi
             $this->Admin_model->editUser($id);
+            helper_log("edit", "mengubah data pegawai (id-pegawai = $id)");
             $this->session->set_flashdata('user', 'berhasil diubah, silahkan melanjutkan kegiatan anda!');
             redirect('admin/manajemen_user');
         }
@@ -104,6 +106,7 @@ class Admin extends CI_Controller
     public function hapuspegawai($id)
     {
         $this->Admin_model->deleteUser($id);
+        helper_log("delete", "menghapus data pegawai (id-pegawai = $id)");
         $this->session->set_flashdata('user', 'berhasil dihapus. Silahkan melanjutkan kegiatan anda!');
         redirect('admin/manajemen_user');
     }

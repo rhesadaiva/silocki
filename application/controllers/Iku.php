@@ -36,11 +36,14 @@ class Iku extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
         $data['nip'] = $this->Indikator_model->user();
         $data['role'] = $this->session->userdata('role_id');
+
         if ($data['role'] == 1) {
             $data['kontrak_kinerja'] = $this->Indikator_model->getKontrak();
+
         } else {
             $data['kontrak_kinerja'] = $this->Indikator_model->getKontrakByNIP();
         }
+
         $this->form_validation->set_rules('kodeiku', 'Kode IKU', 'required');
         $this->form_validation->set_rules('namaiku', 'Nomor Kontrak Kinerja', 'required');
         $this->form_validation->set_rules('formulaiku', 'Formula IKU', 'required');
@@ -55,9 +58,11 @@ class Iku extends CI_Controller
             $this->load->view('templates/topbar', $data);
             $this->load->view('iku/tambahiku', $data);
             $this->load->view('templates/footer');
+
         } else {
             $this->Indikator_model->rekamikubaru();
             $this->session->set_flashdata('flash', 'Ditambahkan');
+            helper_log("add", "menambah iku baru");
             redirect('iku/browseiku');
         }
     }
@@ -65,6 +70,7 @@ class Iku extends CI_Controller
     public function hapusiku($idiku)
     {
         $this->Indikator_model->hapusiku($idiku);
+        helper_log("delete", "menghapus iku (id-iku = $idiku)");
         $this->session->set_flashdata('flash', 'Dihapus');
         redirect('iku/browseiku');
     }
@@ -93,8 +99,10 @@ class Iku extends CI_Controller
             $this->load->view('templates/topbar', $data);
             $this->load->view('iku/editiku', $data);
             $this->load->view('templates/footer');
+
         } else {
             $this->Indikator_model->ubahdataIKU($idiku);
+            helper_log("edit", "mengubah iku (id-iku = $idiku)");
             $this->session->set_flashdata('flash', 'Diubah');
             redirect('iku/browseiku');
         }

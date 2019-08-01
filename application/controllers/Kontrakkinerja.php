@@ -50,6 +50,7 @@ class Kontrakkinerja extends CI_Controller
 
             $this->Kontrak_model->tambahkontrakbaru();
             $this->session->set_flashdata('flash', 'Ditambahkan');
+            helper_log("add", "menambah kontrak kinerja baru");
             redirect('kontrakkinerja/browsekontrak');
         }
     }
@@ -57,6 +58,7 @@ class Kontrakkinerja extends CI_Controller
     {
         $this->Kontrak_model->hapuskontrak($id);
         $this->session->set_flashdata('flash', 'Dihapus');
+        helper_log("delete", "menghapus kontrak kinerja (id-kontrak = $id)");
         redirect('kontrakkinerja/browsekontrak');
     }
 
@@ -82,6 +84,7 @@ class Kontrakkinerja extends CI_Controller
 
             $this->Kontrak_model->editkontrak($id);
             $this->session->set_flashdata('flash', 'Diubah');
+            helper_log("edit", "mengubah kontrak kinerja (id-kontrak = $id)");
             redirect('kontrakkinerja/browsekontrak');
         }
     }

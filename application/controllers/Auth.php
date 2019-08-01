@@ -37,6 +37,7 @@ class Auth extends CI_Controller
                     'role_id' => $user['role_id']
                 ];
                 $this->session->set_userdata($data);
+                helper_log("login", "masuk ke aplikasi");  
 
                 if ($user['role_id'] == 1) {
 
@@ -66,9 +67,8 @@ class Auth extends CI_Controller
     //Logout
     public function logout()
     {
-        $this->session->unset_userdata('nip');
-        $this->session->unset_userdata('role_id');
-
+        $this->session->sess_destroy();
+        helper_log("logout", "keluar dari aplikasi");
         redirect('auth');
     }
 
