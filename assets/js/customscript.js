@@ -21,9 +21,10 @@ $('.hapus-kontrak').on('click', function (e) {
         text: "Apakah anda yakin untuk menghapus data ini?",
         type: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
-        confirmButtonText: 'Hapus data'
+        confirmButtonColor: '#e74a3b',
+        cancelButtonColor: '#4e73df',
+        confirmButtonText: '<i class="fas fa-fw fa-trash"></i> Hapus data',
+        cancelButtontext: '<i class="fas fa-fw fa-times"></i> Batal'
     }).then((result) => {
         if (result.value) {
             document.location.href = href;
@@ -55,8 +56,8 @@ $('.buttonhapusiku').on('click', function (e) {
         text: "Apakah anda yakin untuk menghapus data ini?",
         type: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
+        confirmButtonColor: '#e74a3b',
+        cancelButtonColor: '#4e73df',
         confirmButtonText: '<i class="fas fa-fw fa-trash"></i> Hapus data',
         cancelButtontext: '<i class="fas fa-fw fa-times"></i> Batal'
     }).then((result) => {
@@ -90,9 +91,9 @@ $('.button-hapuslogbook').on('click', function (e) {
         text: "Apakah anda yakin untuk menghapus data ini?",
         type: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: '<i class="fas fa-fw fa-trash"></i> Hapus logbook',
+        confirmButtonColor: '#e74a3b',
+        cancelButtonColor: '#4e73df',
+        confirmButtonText: '<i class="fas fa-fw fa-trash"></i> Hapus data',
         cancelButtontext: '<i class="fas fa-fw fa-times"></i> Batal'
     }).then((result) => {
         if (result.value) {
@@ -113,8 +114,8 @@ $('.button-kirimlogbook').on('click', function (e) {
         text: "Apakah anda yakin untuk mengirim data logbook ini ke atasan anda? Data yang sudah dikirim tidak dapat diubah lagi!",
         type: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085D6',
-        cancelButtonColor: '#d33',
+        confirmButtonColor: '#4e73df',
+        cancelButtonColor: '#e74a3b',
         confirmButtonText: '<i class="fas fa-fw fa-paper-plane"></i> Kirim logbook',
         cancelButtontext: '<i class="fas fa-fw fa-times"></i> Batal'
     }).then((result) => {
