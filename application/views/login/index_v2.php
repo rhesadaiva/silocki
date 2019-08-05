@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="<?= base_url() ?>assets/img/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+        SiLoCKi KPPBC Tanjungpinang | Login
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+        name='viewport' />
+
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <!-- CSS Files -->
+    <link href="assets/css/material-kit.min.css?v=2.0.5" rel="stylesheet" />
+    <!-- My CSS -->
+    <link href="assets/css/login-style.css" rel="stylesheet" />
+
+</head>
+
+<body class="login-page">
+
+    <div class="page-header header-filter">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+                    <div class="card card-login">
+
+                        <div class="card-header card-header-success text-center">
+                            <h4 class="card-title">SISTEM PELAPORAN CAPAIAN KINERJA KPPBC TANJUNGPINANG</h4>
+
+                        </div>
+
+                        <?= $this->session->flashdata('message'); ?>
+
+                        <div class="card-body card-form">
+                            <!-- Form -->
+                            <form method="post" action="<?= base_url('auth'); ?>">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">account_circle</i>
+                                        </span>
+                                    </div>
+                                    <input type="text" name="nip" class="form-control" placeholder="Nomor Induk Pegawai" value="<?= set_value('nip'); ?>" autocomplete off>
+                                    <?= form_error('nip', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">lock_outline</i>
+                                        </span>
+                                    </div>
+                                    <input type="password" name="password" class="form-control" placeholder="Password">
+                                    <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
+
+                                <button type="submit" class="btn btn-success btn-submit"><b>LOGIN</b></button>
+                            </form>
+                            <!-- End Form -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <div class="copyright">
+                    &copy;
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>, developed with <i class="material-icons">favorite</i> by
+                    Daiva
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!--   Core JS Files   -->
+    <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
+    <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
+    <script src="assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+    <script src="<?= base_url() ?>assets/js/plugins/moment.min.js"></script>
+    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+    <script src="<?= base_url() ?>assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="<?= base_url() ?>assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+    <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+    <script src="<?= base_url() ?>assets/js/material-kit.min.js?v=2.0.5" type="text/javascript"></script>
+
+</body>
+
+</html>

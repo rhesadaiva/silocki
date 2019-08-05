@@ -10,9 +10,7 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('templates/auth_header.php');
-            $this->load->view('login/index');
-            $this->load->view('templates/auth_footer.php');
+            $this->load->view('login/index_v2');
         } else {
             //validation success
             $this->_login();
@@ -55,11 +53,11 @@ class Auth extends CI_Controller
                     redirect('pelaksana');
                 }
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username tidak ditemukan! Silahkan login kembali.</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"><b class="alert-message">NIP atau Password tidak sesuai!</b></div>');
                 redirect('auth');
             }
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username tidak ditemukan! Silahkan login kembali.</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"><b class="alert-message">NIP atau Password tidak sesuai!</b></div>');
             redirect('auth');
         }
     }
