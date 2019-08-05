@@ -1,0 +1,53 @@
+body{
+    background-image: url('../img/kantor.jpg');
+    background-size: cover;
+    background-position: top center;
+}
+
+.btn-submit{
+    margin:20px 140px 100px;
+}
+
+.alert.alert-danger {
+    background-color: #f55145;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 0px;
+    padding: 15px
+}
+
+h4.card-title{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+b.alert-message {
+    font-weight: 1000px;
+    font-size: 14px;
+}
+
+.card-login{
+    height: 380px;
+    width: 380px;
+    background-color: rgba(255, 255, 255, 0.8)
+}
+
+.card-form{
+    margin-top: 10px;
+}
+
+::-webkit-input-placeholder {
+    color: #616161 !important;
+}
+
+::-moz-placeholder {
+    color:#616161 !important;
+}
+
+::-ms-placeholder {
+    color:#616161 !important;
+}
+
+::placeholder {
+    color:#616161 !important;
+}
