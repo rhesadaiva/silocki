@@ -76,7 +76,7 @@
                     <script>
                         document.write(new Date().getFullYear())
                     </script>, developed with <i class="material-icons">favorite</i> by
-                    Daiva
+                    Daiva <i class="material-icons">favorite</i> Deany
                 </div>
             </div>
         </footer>
