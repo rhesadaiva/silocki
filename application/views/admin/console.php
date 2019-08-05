@@ -1,6 +1,6 @@
 <!-- style for this page -->
 <style>
- h4 {
+    h4 {
         color: royalblue;
         font-weight: bold;
     }
@@ -18,13 +18,13 @@
             <h4>Log Activity</h4>
         </div>
         <div class="card-body">
-            <table class="table table-bordered table-hover" id="log-activity">
-                <thead>
+            <table class="table table-bordered table-hover table-striped" id="log-activity">
+                <thead class="thead-light">
                     <tr>
-                    <th scope="col">No.</th>
-                    <th scope="col" class="text-center">Nama User</th>
-                    <th scope="col">Waktu</th>
-                    <th scope="col">Log</th>
+                        <th scope="col" class="text-center">No.</th>
+                        <th scope="col" class="text-center">Nama User</th>
+                        <th scope="col" class="text-center">Waktu</th>
+                        <th scope="col" class="text-center">Log</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,10 +33,10 @@
                         <tr>
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $activity['log_user']; ?></td>
-                            <td><?= $activity['log_desc']; ?></td>
                             <td><?= $activity['log_time']; ?></td>
+                            <td><?= $activity['log_desc']; ?></td>
                         </tr>
-                    <?php $i++; ?>
+                        <?php $i++; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>
