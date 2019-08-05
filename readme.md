@@ -18,8 +18,3 @@ SILOCKI KPPBC
 
 
 Apabila keadaan memungkinkan, tidak menutup kemungkinan source code aplikasi ini dapat digunakan pada satker lain yang membutuhkan.
-
-
-
-BEST REGARDS
-DEVELOPER: RHESA DAIVA BREMANA
