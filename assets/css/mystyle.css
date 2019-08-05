@@ -41,3 +41,7 @@ th, td {
     color: black;
 }
 
+ul.pagination{
+	justify-content: center;
+}
+

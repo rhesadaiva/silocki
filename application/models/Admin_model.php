@@ -172,4 +172,9 @@ class Admin_model extends CI_Model
 
         return $query->result_array();
     }
+
+    public function getLogData()
+    {
+        return $this->db->get('tabel_log')->result_array(); 
+    }
 }

@@ -92,6 +92,13 @@
             <span>Manajemen User</span></a>
     </li>
 
+    <!-- Nav Item - Admin Console -->
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/console'); ?>">
+        <i class="fas fa-cogs"></i>
+            <span>Admin Console</span></a>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

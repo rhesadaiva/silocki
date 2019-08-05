@@ -357,3 +357,15 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('.preloader').fadeOut();
 })
+
+//Init Datatables Log-Activity
+$(document).ready(function () {
+    $('#log-activity').DataTable({
+
+        "lengthChange": false,
+        "ordering": false,
+        "info": false,
+        "searching": false,
+
+    });
+});

@@ -176,4 +176,17 @@ class Admin extends CI_Controller
         $this->load->view('admin/logbookselesai', $data);
         $this->load->view('templates/footer');
     }
+
+    public function console()
+    {
+        $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
+        $data['title'] = "Admin Console";
+        $data['log_data'] = $this->Admin_model->getLogData();
+        
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar_admin');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/console', $data);
+        $this->load->view('templates/footer');
+    }
 }
