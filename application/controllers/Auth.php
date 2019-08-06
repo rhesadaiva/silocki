@@ -35,7 +35,7 @@ class Auth extends CI_Controller
                     'role_id' => $user['role_id']
                 ];
                 $this->session->set_userdata($data);
-                helper_log("login", "masuk ke aplikasi");  
+                helper_log("login", "Masuk ke aplikasi SiLocki");
 
                 if ($user['role_id'] == 1) {
 
@@ -66,7 +66,7 @@ class Auth extends CI_Controller
     public function logout()
     {
         $this->session->sess_destroy();
-        helper_log("logout", "keluar dari aplikasi");
+        helper_log("logout", "Keluar dari aplikasi SiLocki");
         redirect('auth');
     }
 
@@ -111,6 +111,8 @@ class Auth extends CI_Controller
                 $this->db->set('password', $newpassword);
                 $this->db->where('nip', $this->session->userdata('nip'));
                 $this->db->update('user');
+
+                helper_log("edit", "Mengubah password");
 
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password berhasil diubah, silahkan gunakan password baru pada saat login kembali.</div>');
                 redirect('auth/gantipassword');

@@ -360,12 +360,11 @@ $(document).ready(function () {
 
 //Init Datatables Log-Activity
 $(document).ready(function () {
-    $('#log-activity').DataTable({
+    $('#log-table').DataTable({
 
         "lengthChange": false,
         "ordering": false,
         "info": false,
         "searching": false,
-
     });
 });

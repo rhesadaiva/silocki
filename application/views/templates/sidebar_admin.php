@@ -77,7 +77,7 @@
             <i class="fas fa-fw fa-check-circle"></i>
             <span>Monitoring Pegawai</span>
         </a>
-        <div id="monitoringpegawai" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="monitoringpegawai" class="collapse" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item mx-auto" href="<?= base_url('admin/logbookselesai'); ?>">Sudah Mengirim Logbook</a>
                 <a class="collapse-item mx-auto" href="<?= base_url('admin/logbookbelumdisetujui'); ?>">Logbook Belum Disetujui</a>
@@ -94,9 +94,16 @@
 
     <!-- Nav Item - Admin Console -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/console'); ?>">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#adminconsole">
         <i class="fas fa-cogs"></i>
-            <span>Admin Console</span></a>
+            <span>Admin Console</span>
+        </a>
+        <div id="adminconsole" class="collapse" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item mx-auto" href="<?= base_url('admin/logdata'); ?>">Log Activity</a>
+                <a class="collapse-item mx-auto" href="<?= base_url('admin/config'); ?>">Admin Config</a>
+            </div>
+        </div>
     </li>
 
     <!-- Divider -->

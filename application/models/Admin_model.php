@@ -175,6 +175,20 @@ class Admin_model extends CI_Model
 
     public function getLogData()
     {
-        return $this->db->get('tabel_log')->result_array(); 
+        return $this->db->get('tabel_log')->result_array();
+    }
+
+    public function getDataSelector($type, $keyword)
+    {
+        if ($type = "kontrak") {
+            $query = $this->db->query("SELECT * from `kontrakkinerja` where `id` = '$keyword' ");
+            return $query->result_array();
+        } elseif ($type = "iku") {
+            $query = $this->db->query("SELECT * from `indikatorkinerjautama` where `id_iku` = '$keyword' ");
+            return $query->result_array();
+        } else {
+            $query = $this->db->query("SELECT * from `logbook` where `id_logbook` = '$keyword' ");
+            return $query->result_array();
+        }
     }
 }
