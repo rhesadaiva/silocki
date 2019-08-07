@@ -1,7 +1,6 @@
 <style>
     .btn-utility {
-        padding: 2px 2px 2px 2px;
-        margin-top: 2px;
+        margin-top: 6px;
     }
 </style>
 <!-- Begin Page Content -->
@@ -62,13 +61,17 @@
                                 </select>
                             </div>
 
-                            <div class="form-group col-md-2 ml-3">
-                                <label for="inputCity">Keyword</label>
+                            <div class="form-group col-md-2 ml-4">
+                                <label for="inputCity"><b>Keyword</b></label>
                                 <input type="text" class="form-control" id="keyword" name="keyword">
                             </div>
-                            <br>
-                            <button class="btn btn-primary btn-sm ml-3 btn-utility" type="submit"><i class="fas fa-fw fa-search"></i> Cari Data</button>
-                            <button class="btn btn-danger btn-sm ml-3 btn-utility" type="button"><i class="fas fa-fw fa-undo-alt"></i> Reset Hasil Pencarian</button>
+
+                            <div class="form-group col-md-6 ml-3">
+                                <br>
+                                <button class="btn btn-primary ml-1 btn-utility" type="submit"><i class="fas fa-fw fa-search"></i> Cari Data</button>
+                                <button class="btn btn-danger ml-2 btn-utility" type="button"><i class="fas fa-fw fa-undo-alt"></i> Reset Hasil Pencarian</button>
+                            </div>
+
                     </form>
                 </div>
             </div>
@@ -76,8 +79,41 @@
         </div>
     </div>
 
+    <?php if (isset($_GET['tipe-data'], $_GET['keyword'])) : ?>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+            </tbody>
+        </table>
 
+    <?php endif; ?>
 
+</div>
 </div>
 <!-- /.container-fluid -->
 

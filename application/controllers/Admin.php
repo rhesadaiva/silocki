@@ -200,6 +200,7 @@ class Admin extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
         $data['type'] = $this->input->get('tipe-data');
         $data['keyword'] = $this->input->get('keyword');
+        $data['log_data'] = $this->Admin_model->getLogData();
 
         $data['resultData'] = $this->Admin_model->getDataSelector($data['type'], $data['periode']);
 
