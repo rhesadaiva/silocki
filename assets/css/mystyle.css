@@ -37,7 +37,13 @@
 	font: 14px arial;
 }
 
-th, td {
-    color: black;
+th,
+td {
+	color: black;
 }
 
+h6.application-name {
+	margin-top: 5px;
+	margin-bottom: 5px;
+
+}
