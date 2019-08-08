@@ -94,16 +94,9 @@
 
     <!-- Nav Item - Admin Console -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#adminconsole">
-        <i class="fas fa-cogs"></i>
-            <span>Admin Console</span>
-        </a>
-        <div id="adminconsole" class="collapse" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item mx-auto" href="<?= base_url('admin/logdata'); ?>">Log Activity</a>
-                <a class="collapse-item mx-auto" href="<?= base_url('admin/config'); ?>">Admin Config</a>
-            </div>
-        </div>
+        <a class="nav-link" href="<?= base_url('admin/console'); ?>">
+            <i class="fas fa-fw fa-cogs"></i>
+            <span>Admin Console</span></a>
     </li>
 
     <!-- Divider -->

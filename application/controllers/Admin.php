@@ -181,7 +181,7 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function logdata()
+    public function console()
     {
         $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
         $data['title'] = "Admin Console";
@@ -190,24 +190,7 @@ class Admin extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_admin');
         $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/console', $data);
-        $this->load->view('templates/footer');
-    }
-
-    public function cariData()
-    {
-        // $data['title'] = 'Logbook Yang Sudah Divalidasi';
-        $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
-        $data['type'] = $this->input->get('tipe-data');
-        $data['keyword'] = $this->input->get('keyword');
-        $data['log_data'] = $this->Admin_model->getLogData();
-
-        $data['resultData'] = $this->Admin_model->getDataSelector($data['type'], $data['periode']);
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar_admin');
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/console', $data);
+        $this->load->view('admin/logpage', $data);
         $this->load->view('templates/footer');
     }
 }
