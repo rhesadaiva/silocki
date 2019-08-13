@@ -60,8 +60,13 @@ class Indikator_model extends CI_Model
             'formulaiku' => $this->input->post('formulaiku', true),
             'targetiku' => $this->input->post('targetiku', true),
             'nilaitertinggi' => $this->input->post('nilaitertinggi', true),
+            'aspektarget' => $this->input->post('aspektarget', true),
+            'penanggungjawab' => $this->input->post('penanggungjawab', true),
+            'penyediadata' => $this->input->post('penyediadata', true),
+            'sumberdata' => $this->input->post('sumberdata', true),
             'satuanpengukuran' => $this->input->post('satuanpengukuran', true),
             'konsolidasiperiodeiku' => $this->input->post('konsolidasiperiode', true),
+            'periodepelaporan' => $this->input->post('periodepelaporan', true),
         ];
 
         $this->db->insert('indikatorkinerjautama', $data);

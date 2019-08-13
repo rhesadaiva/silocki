@@ -39,7 +39,6 @@ class Iku extends CI_Controller
 
         if ($data['role'] == 1) {
             $data['kontrak_kinerja'] = $this->Indikator_model->getKontrak();
-
         } else {
             $data['kontrak_kinerja'] = $this->Indikator_model->getKontrakByNIP();
         }
@@ -49,8 +48,13 @@ class Iku extends CI_Controller
         $this->form_validation->set_rules('formulaiku', 'Formula IKU', 'required');
         $this->form_validation->set_rules('targetiku', 'Target IKU', 'required');
         $this->form_validation->set_rules('nilaitertinggi', 'Nilai Tertinggi', 'required');
+        $this->form_validation->set_rules('aspektarget', 'Aspek Target', 'required');
+        $this->form_validation->set_rules('penanggungjawab', 'Penanggung Jawab', 'required');
+        $this->form_validation->set_rules('penyediadata', 'Penyedia Data', 'required');
+        $this->form_validation->set_rules('sumberdata', 'Sumber Data', 'required');
         $this->form_validation->set_rules('satuanpengukuran', 'Satuan Pengukuran', 'required');
         $this->form_validation->set_rules('konsolidasiperiode', 'Konsolidasi Periode', 'required');
+        $this->form_validation->set_rules('periodepelaporan', 'Periode Pelaporan', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('templates/header', $data);
@@ -58,7 +62,6 @@ class Iku extends CI_Controller
             $this->load->view('templates/topbar', $data);
             $this->load->view('iku/tambahiku', $data);
             $this->load->view('templates/footer');
-
         } else {
             $this->Indikator_model->rekamikubaru();
             $this->session->set_flashdata('flash', 'Ditambahkan');
@@ -99,7 +102,6 @@ class Iku extends CI_Controller
             $this->load->view('templates/topbar', $data);
             $this->load->view('iku/editiku', $data);
             $this->load->view('templates/footer');
-
         } else {
             $this->Indikator_model->ubahdataIKU($idiku);
             helper_log("edit", "mengubah iku (id-iku = $idiku)");

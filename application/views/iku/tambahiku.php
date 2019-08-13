@@ -15,7 +15,7 @@
                 <div class="col-lg">
 
                     <div class="card shadow border-left-info">
-                        <div class="card-header py-3">
+                        <div class="card-header py-2">
                             <h4><?= $title; ?></h4>
                         </div>
                         <div class="card-body">
@@ -24,15 +24,15 @@
                                 <label for="nomorkk" class="col-sm-3 col-form-label">Nomor Kontrak Kinerja</label>
                                 <div class="col-sm-5">
                                     <?php if ($this->session->userdata('role_id') == 1) : ?>
-                                        <select class="selectpicker" name="nomorkk" data-live-search="true" data-width="fit">
-                                            <?php foreach ($kontrak_kinerja as $kontrak) : ?>
-                                                <option value="<?= $kontrak['nomorkk']; ?>"><?= $kontrak['nomorkk']; ?> - <?= $kontrak['nama']; ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
+                                    <select class="selectpicker" name="nomorkk" data-live-search="true" data-width="fit">
+                                        <?php foreach ($kontrak_kinerja as $kontrak) : ?>
+                                        <option value="<?= $kontrak['nomorkk']; ?>"><?= $kontrak['nomorkk']; ?> - <?= $kontrak['nama']; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                     <?php else : ?>
-                                        <select class="selectpicker" name="nomorkk">
-                                            <option value="<?= $kontrak_kinerja['nomorkk']; ?>"><?= $kontrak_kinerja['nomorkk']; ?></option>
-                                        </select>
+                                    <select class="selectpicker" name="nomorkk">
+                                        <option value="<?= $kontrak_kinerja['nomorkk']; ?>"><?= $kontrak_kinerja['nomorkk']; ?></option>
+                                    </select>
                                     <?php endif; ?>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
                             <div class="form-group row">
                                 <label for="namaiku" class="col-sm-3 col-form-label">Nama IKU</label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="namaiku">
+                                    <textarea class="form-control rounded-1" input-type="text" id="namaiku" name="namaiku" rows="2"></textarea>
                                     <?= form_error('namaiku', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>
@@ -82,12 +82,44 @@
                             <div class="form-group row">
                                 <label for="satuanpengukuran" class="col-sm-3 col-form-label">Satuan Pengukuran IKU</label>
                                 <div class="col-sm-5">
-                                    <select class="selectpicker" name="satuanpengukuran">
-                                        <option value="Persentase">Persentase</option>
-                                        <option value="Indeks">Indeks</option>
-                                        <option value="Jumlah">Jumlah</option>
+                                    <input type="text" class="form-control" name="satuanpengukuran">
+                                    <?= form_error('satuanpengukuran', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="aspektarget" class="col-sm-3 col-form-label">Aspek Target IKU</label>
+                                <div class="col-sm-5">
+                                    <select class="selectpicker" name="aspektarget">
+                                        <option value="Kuantitas">Kuantitas</option>
+                                        <option value="Kualitas">Kualitas</option>
                                         <option value="Waktu">Waktu</option>
+                                        <option value="Biaya">Biaya</option>
                                     </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="penanggungjawab" class="col-sm-3 col-form-label">Unit/Pihak Penanggung Jawab IKU</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" name="penanggungjawab">
+                                    <?= form_error('penanggungjawab', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="penyediadata" class="col-sm-3 col-form-label">Unit/Pihak Penyedia Data IKU</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" name="penyediadata">
+                                    <?= form_error('penyediadata', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="sumberdata" class="col-sm-3 col-form-label">Sumber Data</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" name="sumberdata">
+                                    <?= form_error('sumberdata', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>
 
@@ -103,20 +135,32 @@
                             </div>
 
                             <div class="form-group row">
+                                <label for="periodepelaporan" class="col-sm-3 col-form-label">Periode Pelaporan IKU</label>
+                                <div class="col-sm-5">
+                                    <select class="selectpicker" name="periodepelaporan">
+                                        <option value="Bulanan">Bulanan</option>
+                                        <option value="Triwulanan">Triwulanan</option>
+                                        <option value="Semesteran">Semesteran</option>
+                                        <option value="Tahunan">Tahunan</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <?php if ($this->session->userdata('role_id') == 1) : ?>
-                                    <label for="nomorpegawai" class="col-sm-3 col-form-label">Set Pegawai</label>
-                                    <div class="col-sm-5">
-                                        <select class="selectpicker" name="nomorpegawai" data-live-search="true" data-width="fit">
-                                            <?php foreach ($nip as $n) : ?>
-                                                <option value="<?= $n['nip']; ?>"><?= $n['nip']; ?> - <?= $n['nama']; ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
+                                <label for="nomorpegawai" class="col-sm-3 col-form-label">Set Pegawai</label>
+                                <div class="col-sm-5">
+                                    <select class="selectpicker" name="nomorpegawai" data-live-search="true" data-width="fit">
+                                        <?php foreach ($nip as $n) : ?>
+                                        <option value="<?= $n['nip']; ?>"><?= $n['nip']; ?> - <?= $n['nama']; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
                                 <?php else : ?>
-                                    <label for="nomorpegawai" class="col-sm-3 col-form-label sr-only">NIP</label>
-                                    <div class="col-sm-5">
-                                        <input type="hidden" class="form-control" name="nomorpegawai" value="<?= $this->session->userdata('nip'); ?>" readonly>
-                                    </div>
+                                <label for="nomorpegawai" class="col-sm-3 col-form-label sr-only">NIP</label>
+                                <div class="col-sm-5">
+                                    <input type="hidden" class="form-control" name="nomorpegawai" value="<?= $this->session->userdata('nip'); ?>" readonly>
+                                </div>
                                 <?php endif; ?>
                             </div>
 
