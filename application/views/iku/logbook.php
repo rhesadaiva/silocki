@@ -141,8 +141,8 @@
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">No.</th>
                                 <th class="text-center" scope="col">Periode Pelaporan</th>
                                 <th class="text-center perhitungan" scope="col">Perhitungan</th>
-                                <th class="text-center realisasi" scope="col">Realisasi Pada Bulan Pelaporan</th>
-                                <th class="text-center realisasi" data-valign="middle" data-halign="center" scope="col">Realisasi s.d Bulan Pelaporan</th>
+                                <th class="text-center realisasiawal" scope="col">Realisasi Pada Bulan Pelaporan</th>
+                                <th class="text-center realisasiterakhir" data-valign="middle" data-halign="center" scope="col">Realisasi s.d Bulan Pelaporan</th>
                                 <th class="text-center keterangan" data-valign="middle" data-halign="center" scope="col">Keterangan</th>
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">Waktu Rekam</th>
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">Aksi</th>
@@ -152,10 +152,10 @@
                         <tbody>
                             <?php $i = 1 ?>
                             <?php foreach ($logbookdetail as $logbook) : ?>
-                                <tr class="detail">
-                                    <th class="nomor" scope="row"><?= $i; ?></th>
-                                    <td class="periode">
-                                        <?php switch ($logbook['periode']) {
+                            <tr class="detail">
+                                <th class="nomor" scope="row"><?= $i; ?></th>
+                                <td class="periode">
+                                    <?php switch ($logbook['periode']) {
                                             case 1:
                                                 echo "Januari";
                                                 break;
@@ -205,30 +205,30 @@
                                                 break;
                                         }
                                         ?>
-                                    </td>
-                                    <td class="perhitungan"><?= $logbook['perhitungan']; ?></td>
-                                    <td class="realisasi"><?= $logbook['realisasibulan']; ?></td>
-                                    <td class="realisasi"><?= $logbook['realisasiterakhir']; ?></td>
-                                    <td class="text-justify keterangan"><?= $logbook['ket']; ?></td>
-                                    <td class="wakturekam"><?= $logbook['wakturekam']; ?></td>
+                                </td>
+                                <td class="perhitungan"><?= $logbook['perhitungan']; ?></td>
+                                <td class="realisasi"><?= $logbook['realisasibulan']; ?></td>
+                                <td class="realisasiterakhir"><?= $logbook['realisasiterakhir']; ?></td>
+                                <td class="text-justify keterangan"><?= $logbook['ket']; ?></td>
+                                <td class="wakturekam"><?= $logbook['wakturekam']; ?></td>
 
-                                    <td class="aksi">
-                                        <?php if ($logbook['is_sent'] == 0) : ?>
+                                <td class="aksi">
+                                    <?php if ($logbook['is_sent'] == 0) : ?>
 
-                                            <a data-toggle="tooltip" data-placement="left" title="Kirim Ke Atasan" class="button-kirimlogbook" href="<?= base_url(); ?>logbook/kirimkeatasan/<?= $logbook['id_logbook']; ?>"><span style="color:blue;"><i class="fas fa-fw fa-paper-plane"></i></span></a>
-                                            <a data-toggle="tooltip" data-placement="left" title="Hapus Logbook" class="button-hapuslogbook" href="<?= base_url(); ?>logbook/hapuslogbook/<?= $logbook['id_logbook']; ?> "><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
+                                    <a data-toggle="tooltip" data-placement="left" title="Kirim Ke Atasan" class="button-kirimlogbook" href="<?= base_url(); ?>logbook/kirimkeatasan/<?= $logbook['id_logbook']; ?>"><span style="color:blue;"><i class="fas fa-fw fa-paper-plane"></i></span></a>
+                                    <a data-toggle="tooltip" data-placement="left" title="Hapus Logbook" class="button-hapuslogbook" href="<?= base_url(); ?>logbook/hapuslogbook/<?= $logbook['id_logbook']; ?> "><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
 
-                                        <?php else : ?>
+                                    <?php else : ?>
 
-                                            <a data-toggle="tooltip" data-placement="left" title="Logbook Terkunci" class="button-locklgobook" id="button-locklogbook"><span style=" color:#daa520;"><i class="fas fa-fw fa-lock"></i></span></a>
+                                    <a data-toggle="tooltip" data-placement="left" title="Logbook Terkunci" class="button-locklgobook" id="button-locklogbook"><span style=" color:#daa520;"><i class="fas fa-fw fa-lock"></i></span></a>
 
-                                        <?php endif; ?>
-                                    </td>
+                                    <?php endif; ?>
+                                </td>
 
-                                </tr>
+                            </tr>
 
-                            </tbody>
-                            <?php $i++; ?>
+                        </tbody>
+                        <?php $i++; ?>
                         <?php endforeach; ?>
                     </table>
                 </div>

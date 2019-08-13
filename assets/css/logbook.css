@@ -17,7 +17,6 @@ h4.logbook {
 	color: forestgreen;
 }
 
-
 .nav-link {
 	font-weight: bold;
 }
@@ -91,4 +90,8 @@ th.nomor-bawahan {
 
 td.realisasi-bawahan {
 	width: 120px;
+}
+
+th.realisasiawal {
+	width: 80px;
 }

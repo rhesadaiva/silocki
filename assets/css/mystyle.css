@@ -39,11 +39,30 @@
 
 th,
 td {
-	color: black;
+	color: rgba(0, 0, 0, 0.817);
 }
 
 h6.application-name {
 	margin-top: 5px;
 	margin-bottom: 5px;
 
+}
+
+label {
+	color: rgba(0, 0, 0, 0.612);
+}
+
+div.application-name {
+	color: rgba(0, 0, 0, 0.612);
+}
+
+span.username {
+	color: rgba(0, 0, 0, 0.735);
+	font-size: 15px;
+	font-weight: 600;
+}
+
+span.profil {
+	color: rgba(0, 0, 0, 0.735);
+	font-weight: 600;
 }

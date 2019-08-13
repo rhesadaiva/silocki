@@ -106,7 +106,7 @@
                                 </span>
                                 <hr class="mt-1">
 
-                                <span style="color: #858796; font-weight: 600">
+                                <span class="profil">
                                     <?= $user['nama']; ?>
                                     <br>
                                     <?= $user['nip']; ?>
@@ -120,7 +120,7 @@
                                     PANGKAT/GOLONGAN
                                 </span>
                                 <hr class="mt-1">
-                                <span style="color: #858796; font-weight: 600">
+                                <span class="profil">
                                     <?= $user['pangkat']; ?>
                                 </span>
                             </div>
@@ -131,7 +131,7 @@
                                     UNIT ORGANISASI
                                 </span>
                                 <hr class="mt-1">
-                                <span style="color: #858796; font-weight: 600">
+                                <span class="profil">
                                     <?php switch ($user['role_id']) {
                                         case 1:
                                             echo "Admin";
@@ -164,7 +164,7 @@
                                     ATASAN
                                 </span>
                                 <hr class=" mt-1">
-                                <span style="color: #858796; font-weight: 600">
+                                <span class="profil">
                                     <?= $user['atasan']; ?>
                                 </span>
 

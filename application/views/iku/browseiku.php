@@ -74,13 +74,13 @@
                         <thead class="thead-light">
                             <tr>
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">No.</th>
-                                <th class="text-center" scope="col">Nomor Kontrak Kinerja</th>
+                                <th class="text-center" data-valign="middle" data-halign="center" scope="col">Nomor Kontrak Kinerja</th>
                                 <?php if ($this->session->userdata['role_id'] == 1) : ?>
-                                    <th class="text-center" scope="col">Pemilik Kontrak Kinerja</th>
+                                <th class="text-center" scope="col">Pemilik Kontrak Kinerja</th>
                                 <?php endif; ?>
                                 <th class="text-center" scope="col">Nomor IKU</th>
-                                <th class="text-center" scope="col">Nama IKU</th>
-                                <th class="text-center" data-valign="middle" data-halign="center" scope="col">Target IKU</th>
+                                <th class="text-center" data-valign="middle" data-halign="center" scope="col"">Nama IKU</th>
+                                <th class=" text-center" data-valign="middle" data-halign="center" scope="col">Target IKU</th>
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">Aksi</th>
 
 
@@ -89,28 +89,28 @@
                         <tbody>
                             <?php $i = 1; ?>
                             <?php foreach ($indikator as $iku) : ?>
-                                <tr>
-                                    <th class="text-center" scope="row"><?= $i; ?></th>
-                                    <td class="nomorkk"><?= $iku['nomorkk']; ?></td>
-                                    <?php if ($this->session->userdata['role_id'] == 1) : ?>
-                                        <td><?= $iku['nama']; ?></td>
+                            <tr>
+                                <th class="text-center" scope="row"><?= $i; ?></th>
+                                <td class="nomorkk"><?= $iku['nomorkk']; ?></td>
+                                <?php if ($this->session->userdata['role_id'] == 1) : ?>
+                                <td><?= $iku['nama']; ?></td>
+                                <?php endif; ?>
+                                <td><?= $iku['kodeiku']; ?></td>
+                                <td class="namaiku text-justify"><?= $iku['namaiku']; ?></td>
+                                <td><?= $iku['targetiku']; ?> dari <?= $iku['nilaitertinggi']; ?></td>
+
+                                <td class="aksi">
+                                    <?php if ($iku['iku_validated'] == 0) : ?>
+                                    <a data-toggle="tooltip" data-placement="left" title="Edit" href="<?= base_url(); ?>iku/editiku/<?= $iku['id_iku']; ?>"><i class="fas fa-fw fa-edit"></i></a>
+                                    <a data-toggle="tooltip" data-placement="left" title="Delete" class="buttonhapusiku" href="<?= base_url(); ?>iku/hapusiku/<?= $iku['id_iku']; ?> "><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
+
+                                    <?php else : ?>
+                                    <a data-toggle="tooltip" data-placement="left" title="Input Logbook" class="inputlogbook" href="<?= base_url(); ?>logbook/showlogbook/<?= $iku['id_iku']; ?>"><span style="color:forestgreen;"><i class="fas fa-fw fa-chart-line"></i></span></a>
+
                                     <?php endif; ?>
-                                    <td><?= $iku['kodeiku']; ?></td>
-                                    <td class="namaiku text-justify"><?= $iku['namaiku']; ?></td>
-                                    <td><?= $iku['targetiku']; ?> dari <?= $iku['nilaitertinggi']; ?></td>
-
-                                    <td class="aksi">
-                                        <?php if ($iku['iku_validated'] == 0) : ?>
-                                            <a data-toggle="tooltip" data-placement="left" title="Edit" href="<?= base_url(); ?>iku/editiku/<?= $iku['id_iku']; ?>"><i class="fas fa-fw fa-edit"></i></a>
-                                            <a data-toggle="tooltip" data-placement="left" title="Delete" class="buttonhapusiku" href="<?= base_url(); ?>iku/hapusiku/<?= $iku['id_iku']; ?> "><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
-
-                                        <?php else : ?>
-                                            <a data-toggle="tooltip" data-placement="left" title="Input Logbook" class="inputlogbook" href="<?= base_url(); ?>logbook/showlogbook/<?= $iku['id_iku']; ?>"><span style="color:forestgreen;"><i class="fas fa-fw fa-chart-line"></i></span></a>
-
-                                        <?php endif; ?>
-                                    </td>
-                                </tr>
-                                <?php $i++; ?>
+                                </td>
+                            </tr>
+                            <?php $i++; ?>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
