@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jul 12, 2019 at 01:49 AM
--- Server version: 8.0.15
--- PHP Version: 7.1.23
+-- Host: 127.0.0.1
+-- Generation Time: Aug 13, 2019 at 12:45 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -32,27 +32,21 @@ CREATE TABLE `indikatorkinerjautama` (
   `id_iku` varchar(128) NOT NULL,
   `nip` varchar(128) NOT NULL,
   `nomorkk` varchar(128) NOT NULL,
-  `kodeiku` varchar(128) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `namaiku` varchar(128) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `formulaiku` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `kodeiku` varchar(128) NOT NULL,
+  `namaiku` varchar(128) NOT NULL,
+  `formulaiku` text NOT NULL,
   `targetiku` varchar(128) NOT NULL,
   `nilaitertinggi` varchar(128) NOT NULL,
-  `satuanpengukuran` enum('Persentase','Indeks','Satuan','Waktu') CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `aspektarget` enum('Kuantitas','Kualitas','Waktu','Biaya') NOT NULL,
+  `penanggungjawab` varchar(100) NOT NULL,
+  `penyediadata` varchar(100) NOT NULL,
+  `sumberdata` varchar(100) NOT NULL,
+  `satuanpengukuran` varchar(100) NOT NULL,
   `konsolidasiperiodeiku` enum('Sum','Average','Take Last Known','') NOT NULL,
+  `periodepelaporan` enum('Bulanan','Triwulanan','Semesteran','Tahunan') NOT NULL,
   `iku_validated` int(12) NOT NULL,
   `nama_validated` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `indikatorkinerjautama`
---
-
-INSERT INTO `indikatorkinerjautama` (`id_iku`, `nip`, `nomorkk`, `kodeiku`, `namaiku`, `formulaiku`, `targetiku`, `nilaitertinggi`, `satuanpengukuran`, `konsolidasiperiodeiku`, `iku_validated`, `nama_validated`) VALUES
-('5d16c74c9927a', '199506072015021003', '4/BC.15.7.12/2019', '1a-N', 'Persentase realisasi penerimaan dan penelitian kelengkapan dokumen kepabeanan dan cukai sesuai janji layanan', '(Dokumen yang diterima dan diteliti tepat waktu / Dokumen yang diterima dan diteliti) x 100%', '92%', '100%', 'Persentase', 'Average', 1, 'Zuhalta'),
-('5d16c7d75f518', '199506072015021003', '4/BC.15.7.12/2019', '1b-N', 'Persentase penyelesaian dokumen PIB dan PEB ke sistem aplikasi  CEISA', '(Dokumen yang sudah diadministrasikan / Dokumen yang sudah terkirim ke CEISA) x 100%', '92%', '100%', 'Persentase', 'Average', 1, 'Zuhalta'),
-('5d16c8d324500', '199506072015021003', '4/BC.15.7.12/2019', '1c-N', 'Persentase penyelesaian permintaan Modul Aktivasi Importir, ekspor PPJK dan Sarana Pengangkut', '(Penyelesaian permintaan modul / Jumlah permintaan Modul) x 100 %', '92%', '100%', 'Persentase', 'Average', 1, 'Zuhalta'),
-('5d16cd0e22f35', '199506072015021003', '4/BC.15.7.12/2019', '2a-C', 'Persentase penyelesaian permasalahan CEISA', '(Jumlah tiket permasalahan yang diselesaikan unit kerja setempat / Jumlah tiket permasalahan yang dibuat) x 100%', '92%', '100%', 'Persentase', 'Average', 1, 'Zuhalta'),
-('5d16cece2c8cf', '199506072015021003', '4/BC.15.7.12/2019', '2b-C', 'Indeks Pelaksanaan Persiapan Operasional CEISA', '(Jumlah kegiatan harian yang dilakukan / Jumlah kegiatan harian yang seharusnya dilakukan x 100%) / Jumlah hari kerja pada bulan bersangkutan', '3', '4', 'Indeks', 'Average', 1, 'Zuhalta');
 
 -- --------------------------------------------------------
 
@@ -64,20 +58,13 @@ CREATE TABLE `kontrakkinerja` (
   `id` varchar(128) NOT NULL,
   `nip` varchar(128) NOT NULL,
   `kontrakkinerjake` varchar(128) NOT NULL,
-  `nomorkk` varchar(128) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `nomorkk` varchar(128) NOT NULL,
   `tanggalmulai` date NOT NULL,
   `tanggalselesai` date NOT NULL,
   `is_validated` int(11) NOT NULL,
   `tgl_validated` varchar(128) NOT NULL,
   `nama_validated` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `kontrakkinerja`
---
-
-INSERT INTO `kontrakkinerja` (`id`, `nip`, `kontrakkinerjake`, `nomorkk`, `tanggalmulai`, `tanggalselesai`, `is_validated`, `tgl_validated`, `nama_validated`) VALUES
-('5d16c67cdc187', '199506072015021003', 'Pertama', '4/BC.15.7.12/2019', '2019-01-01', '2019-12-31', 2, 'Sabtu, 29 Juni 2019 | Pukul 09:43 WIB', 'Zuhalta');
 
 -- --------------------------------------------------------
 
@@ -88,27 +75,19 @@ INSERT INTO `kontrakkinerja` (`id`, `nip`, `kontrakkinerjake`, `nomorkk`, `tangg
 CREATE TABLE `logbook` (
   `id_logbook` varchar(225) NOT NULL,
   `id_iku` varchar(128) NOT NULL,
-  `nippegawai` varchar(128) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `periode` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `nippegawai` varchar(128) NOT NULL,
+  `periode` varchar(255) NOT NULL,
   `perhitungan` varchar(255) NOT NULL,
-  `realisasibulan` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `realisasiterakhir` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `ket` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `realisasibulan` varchar(255) NOT NULL,
+  `realisasiterakhir` varchar(255) NOT NULL,
+  `ket` text NOT NULL,
   `wakturekam` varchar(255) NOT NULL,
   `is_approved` int(2) NOT NULL,
   `is_sent` int(2) NOT NULL,
-  `tgl_approve` varchar(128) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `tgl_batalapprove` varchar(128) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `tgl_approve` varchar(128) NOT NULL,
+  `tgl_batalapprove` varchar(128) NOT NULL,
   `nama_validated` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `logbook`
---
-
-INSERT INTO `logbook` (`id_logbook`, `id_iku`, `nippegawai`, `periode`, `perhitungan`, `realisasibulan`, `realisasiterakhir`, `ket`, `wakturekam`, `is_approved`, `is_sent`, `tgl_approve`, `tgl_batalapprove`, `nama_validated`) VALUES
-('5d18f0b871177', '5d16c74c9927a', '199506072015021003', '1', '(27/27) x 100%', '100%', '100%', 'IKU ini dapat dipenuhi karena ada penerimaan dokumen PIB sebanyak 25 dokumen dan PPFTZ-01 Dalam negeri sebanyak 2 dokumen.', 'Senin, 1 Juli 2019 | Pukul 00:26 WIB', 1, 1, 'Jumat, 12 Juli 2019 | Pukul 01:20 WIB', 'Jumat, 12 Juli 2019 | Pukul 01:20 WIB', 'Administrator'),
-('5d18f0ed8a751', '5d16c74c9927a', '199506072015021003', '2', '(17/17) x 100%', '100%', '100%', 'IKU ini dapat dipenuhi karena ada penerimaan dokumen PIB sebanyak 15 dokumen dan PPFTZ-01 Dalam negeri sebanyak 1 dokumen', 'Senin, 1 Juli 2019 | Pukul 00:27 WIB', 1, 1, 'Rabu, 3 Juli 2019 | Pukul 19:45 WIB', '', 'Zuhalta');
 
 -- --------------------------------------------------------
 
@@ -200,13 +179,27 @@ INSERT INTO `seksi/subseksi` (`id`, `seksi/subseksi`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tabel_log`
+--
+
+CREATE TABLE `tabel_log` (
+  `log_id` int(11) NOT NULL,
+  `log_time` varchar(255) DEFAULT NULL,
+  `log_user` varchar(255) DEFAULT NULL,
+  `log_tipe` int(11) DEFAULT NULL,
+  `log_desc` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `nama` varchar(128) NOT NULL,
-  `nip` varchar(128) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `nip` varchar(128) NOT NULL,
   `pangkat` varchar(128) NOT NULL,
   `password` varchar(128) NOT NULL,
   `role_id` int(11) NOT NULL,
@@ -221,7 +214,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `nama`, `nip`, `pangkat`, `password`, `role_id`, `seksi`, `atasan`) VALUES
 (1, 'Administrator', 'admin', 'Pengatur Muda Tk.I/II.b', '21232f297a57a5a743894a0e4a801fc3', 1, 'Seksi Pengolahan Data dan Administrasi Dokumen', 'Zuhalta'),
 (3, 'Kepala Kantor', 'kakan', 'Pembina/IV.a', '57aee06784fb57b06e11b4633ceeb9c3', 1, 'Kepala Kantor', 'Kepala Kantor'),
-(4, 'Rhesa Daiva Bremana', '199506072015021003', 'Pengatur Muda Tk.I /II.b', '0ca4503d3a2257ea26cbbcc2651ecb4c', 5, 'Pengolahan Data dan Administrasi Dokumen', 'Zuhalta'),
+(4, 'Rhesa Daiva Bremana', '199506072015021003', 'Pengatur Muda Tk.I /II.b', 'e10adc3949ba59abbe56e057f20f883e', 5, 'Pengolahan Data dan Administrasi Dokumen', 'Zuhalta'),
 (9, 'Zuhalta', '196212241983031001', 'Penata Tk.I/III.d', 'e10adc3949ba59abbe56e057f20f883e', 3, 'Seksi Pengolahan Data dan Administrasi Dokumen', 'Kepala Kantor'),
 (10, 'Sukardi', '196510102005011001', 'Pengatur Tk.I/II.d', 'e10adc3949ba59abbe56e057f20f883e', 5, 'Seksi Pengolahan Data dan Administrasi Dokumen', 'Zuhalta');
 
@@ -282,6 +275,12 @@ ALTER TABLE `seksi/subseksi`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tabel_log`
+--
+ALTER TABLE `tabel_log`
+  ADD PRIMARY KEY (`log_id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -310,10 +309,16 @@ ALTER TABLE `seksi/subseksi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
+-- AUTO_INCREMENT for table `tabel_log`
+--
+ALTER TABLE `tabel_log`
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `user_role`
