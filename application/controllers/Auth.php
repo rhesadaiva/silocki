@@ -35,7 +35,7 @@ class Auth extends CI_Controller
                     'role_id' => $user['role_id']
                 ];
                 $this->session->set_userdata($data);
-                helper_log("login", "masuk ke aplikasi");  
+                helper_log("login", "masuk ke aplikasi");
 
                 if ($user['role_id'] == 1) {
 
@@ -116,5 +116,42 @@ class Auth extends CI_Controller
                 redirect('auth/gantipassword');
             }
         }
+    }
+
+    public function lupapassword()
+    {
+        $this->form_validation->set_rules('nipforgot', 'NIP', 'trim|required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('login/index_v2');
+        } else {
+            $this->_forgotpass();
+        }
+    }
+
+    private function _forgotpass()
+    {
+        $nipforgot = $this->input->post('nipforgot', true);
+
+        $user = $this->db->get_where('user', ['nip' => $nipforgot])->row_array();
+
+        // Cek NIP apakah tersedia di database
+        if ($nipforgot == $user['nip']) {
+            $data = [
+                'nama' => $user['nama']
+            ];
+
+            $this->session->set_userdata($data);
+
+            // SIAPKAN TOKEN
+            $token = base64_encode(random_bytes(32));
+            var_dump($token);
+            die;
+
+            // COBA CEK DI SIAP VERSI 1 YG ADA DI MACBOOK
+        } else {
+            $this->session->set_flashdata('forgot', '<div class="alert alert-danger-sm" role="alert"><b class="alert-message">NIP atau Password tidak sesuai!</b></div>');
+            redirect('auth');
+        };
     }
 }

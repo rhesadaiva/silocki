@@ -59,8 +59,16 @@
                                     <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
 
-                                <button type="submit" class="btn btn-success btn-submit"><b>LOGIN</b></button>
+                                <div class="row btn-row-submit">
+                                    <button type="submit" class="btn btn-success btn-submit"><b>LOGIN</b></button>
+                                </div>
+
                             </form>
+                            <div class="row btn-row-forget">
+                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#forgotpassword">
+                                    <b>LUPA PASSWORD</b>
+                                </button>
+                            </div>
                             <!-- End Form -->
                         </div>
                     </div>
@@ -79,6 +87,42 @@
             </div>
         </footer>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="forgotpassword" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="forgotpasswordlabel"><b>Authentikasi Ganti Password</b></h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <?= $this->session->flashdata('forgot'); ?>
+
+                    <form action="<?= base_url('auth/lupapassword'); ?>" method="post">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="material-icons">account_circle</i>
+                                </span>
+                            </div>
+                            <input type="text" name="nipforgot" class="form-control" placeholder="Nomor Induk Pegawai" autocomplete off>
+                            <?= form_error('nipforgot', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><b>Batal</b></button>
+                            <button type="submit" class="btn btn-primary"><b>Proses</b></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!--   Core JS Files   -->
     <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
     <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
