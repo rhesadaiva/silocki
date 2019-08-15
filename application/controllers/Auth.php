@@ -10,7 +10,9 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
         if ($this->form_validation->run() == false) {
+            $this->load->view('templates/authv2_header');
             $this->load->view('login/index_v2');
+            $this->load->view('templates/authv2_footer');
         } else {
             //validation success
             $this->_login();
@@ -123,7 +125,9 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('nipforgot', 'NIP', 'trim|required');
 
         if ($this->form_validation->run() == false) {
+            $this->load->view('templates/authv2_header');
             $this->load->view('login/index_v2');
+            $this->load->view('templates/authv2_footer_auto_modal');
         } else {
             $this->_forgotpass();
         }
@@ -132,26 +136,50 @@ class Auth extends CI_Controller
     private function _forgotpass()
     {
         $nipforgot = $this->input->post('nipforgot', true);
-
         $user = $this->db->get_where('user', ['nip' => $nipforgot])->row_array();
 
         // Cek NIP apakah tersedia di database
         if ($nipforgot == $user['nip']) {
-            $data = [
-                'nama' => $user['nama']
-            ];
-
-            $this->session->set_userdata($data);
 
             // SIAPKAN TOKEN
-            $token = base64_encode(random_bytes(32));
-            var_dump($token);
-            die;
+            $token = uniqid();
+            // var_dump($token);
+            // die;
 
-            // COBA CEK DI SIAP VERSI 1 YG ADA DI MACBOOK
+            $user_token = [
+                'nama' => $user['nama'],
+                'nip' => $nipforgot,
+                'token' => $token,
+                'is_used' => 0
+            ];
+
+            $this->_telegram(
+                $user['nama']['nip']['telegram'],
+                "Halo, " . $user['nama'] . "\n"
+            );
+
+            $this->db->insert('user_token', $user_token);
+            // End Token
+
+
         } else {
             $this->session->set_flashdata('forgot', '<div class="alert alert-danger-sm" role="alert"><b class="alert-message">NIP atau Password tidak sesuai!</b></div>');
-            redirect('auth');
+            redirect('auth/lupapassword');
         };
+    }
+
+    private function _telegram($idtelegram, $message)
+    {
+        $url = "https://api.telegram.org/bot905076968:AAG8sNGqlABcYAw6PuUL6eSuFn1-pmSGUpU/sendMessage?parse_mode=markdown&chat_id=" . $idtelegram;
+        $url - $url . "&text=" . urlencode($message);
+
+        $ch = curl_init();
+        $optArray = array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true
+        );
+        curl_setopt_array($ch, $optArray);
+        $result = curl_exec($ch);
+        curl_close($ch);
     }
 }

@@ -14,17 +14,19 @@ body {
 
 .btn-row-submit {
 	margin-left: 130px;
+	margin-top: 10px;
 }
 
 .btn-row-forget {
 	margin-left: 100px;
+
 }
 
 .alert.alert-danger {
 	background-color: #f55145;
 	color: #fff;
 	text-align: center;
-	margin-bottom: 0px;
+	margin-bottom: -2px;
 	padding: 15px
 }
 
@@ -47,13 +49,13 @@ b.alert-message {
 }
 
 .card-login {
-	height: 380px;
+	height: 400px;
 	width: 380px;
 	background-color: rgba(255, 255, 255, 0.8)
 }
 
 .card-form {
-	margin-top: 10px;
+	margin-top: 5px;
 }
 
 ::-webkit-input-placeholder {
