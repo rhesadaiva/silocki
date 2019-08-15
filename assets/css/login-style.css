@@ -19,8 +19,12 @@ body {
 
 .btn-row-forget {
 	margin-left: 100px;
-
 }
+
+.btn-row-reset {
+	margin-left: 100px;
+}
+
 
 .alert.alert-danger {
 	background-color: #f55145;
@@ -55,7 +59,7 @@ b.alert-message {
 }
 
 .card-form {
-	margin-top: 5px;
+	margin-top: -10px;
 }
 
 ::-webkit-input-placeholder {
