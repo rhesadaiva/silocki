@@ -141,10 +141,14 @@ class Auth extends CI_Controller
         // Cek NIP apakah tersedia di database
         if ($nipforgot == $user['nip']) {
 
-            // SIAPKAN TOKEN
+            $data = [
+                'nama' => $user['nama'],
+                'nip'  => $nipforgot
+            ];
+
+            $this->session->set_userdata($data);
+
             $token = uniqid();
-            // var_dump($token);
-            // die;
 
             $user_token = [
                 'nama' => $user['nama'],
@@ -153,25 +157,69 @@ class Auth extends CI_Controller
                 'is_used' => 0
             ];
 
-            $this->_telegram(
-                $user['nama']['nip']['telegram'],
-                "Halo, " . $user['nama'] . "\n"
-            );
-
             $this->db->insert('user_token', $user_token);
-            // End Token
-
-
+            redirect('auth/resetpassword');
         } else {
             $this->session->set_flashdata('forgot', '<div class="alert alert-danger-sm" role="alert"><b class="alert-message">NIP atau Password tidak sesuai!</b></div>');
             redirect('auth/lupapassword');
         };
     }
 
-    private function _telegram($idtelegram, $message)
+
+    public function resetpassword()
     {
-        $url = "https://api.telegram.org/bot905076968:AAG8sNGqlABcYAw6PuUL6eSuFn1-pmSGUpU/sendMessage?parse_mode=markdown&chat_id=" . $idtelegram;
-        $url - $url . "&text=" . urlencode($message);
+        $nipforgot = $this->session->userdata('nip');
+        $namaforgot = $this->session->userdata('nama');
+
+        $data['nama'] = $this->session->userdata('nama');
+        $data['nip'] = $this->session->userdata('nip');
+
+        // Ambil data token
+        $query = $this->db->query("SELECT `user_token`.*, `user`.`telegram` FROM `user_token` join `user`  using(nip) where `user_token`.`nip` = '$nipforgot' and `is_used` = 0  ");
+        $data['tokendata'] = $query->row_array();
+
+        // Tetapkan data token
+        $tokenid = $data['tokendata']['token'];
+
+        // Ambil data untuk dikirim ke Telegram
+        $telegramuser['nama'] = $this->db->get_where('user', ['nip' => $nipforgot])->row_array();
+
+        // Kirim Notifikasi Ke Telegram
+        $this->_telegram(
+            $telegramuser['nama']['telegram'],
+            "Halo, *" . $namaforgot . "*. \n\nSistem mendeteksi adanya permintaan reset password aplikasi *SILOCKI* yang dilakukan oleh akun anda. \n\nBerikut adalah nomor token untuk mereset akun anda = *" . $tokenid . "* \n\nSilahkan abaikan pesan ini apabila anda tidak merasa melakukan permintaan reset. Terima Kasih."
+        );
+        $this->form_validation->set_rules('resetpass', 'NIP', 'trim|required');
+        $this->form_validation->set_rules('konfirmresetpass', 'NIP', 'trim|required');
+        $this->form_validation->set_rules('token_number', 'NIP', 'trim|required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/authv2_header');
+            $this->load->view('login/resetpassword', $data);
+            $this->load->view('templates/authv2_footer');
+        } else {
+            $this->aksiresetpassword();
+        }
+    }
+
+    public function aksiresetpassword()
+    {
+        $nipforgot = $this->session->userdata('nip');
+
+        $query = $this->db->query("SELECT * FROM `user_token` WHERE `nip` = $nipforgot AND `is_used` = 0 ");
+        $token['nip'] = $query->row_array();
+
+        $token_data = $this->input->post('token_number');
+        $resetpass = $this->input->post('resetpass');
+        $konfirmresetpass = $this->input->post('konfirmresetpass');
+    }
+
+
+
+    private function _telegram($telegram, $message)
+    {
+        $url = "https://api.telegram.org/bot905076968:AAG8sNGqlABcYAw6PuUL6eSuFn1-pmSGUpU/sendMessage?parse_mode=markdown&chat_id=" . $telegram;
+        $url = $url . "&text=" . urlencode($message);
 
         $ch = curl_init();
         $optArray = array(
