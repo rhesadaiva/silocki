@@ -12,4 +12,3 @@
 
 2.Menambah form pada halaman tambah Indikator Kinerja Utama seperti pada eperformance (**SELESAI**)
 
-4.
