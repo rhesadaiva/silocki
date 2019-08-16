@@ -51,6 +51,12 @@
                                     <button type="submit" class="btn btn-danger btn-reset"><b>RESET PASSWORD</b></button>
                                 </div>
 
+                                <div class="row btn-row-request">
+                                    <button type="button" class="btn btn-danger btn-request" id="requestbtn" href="<?= base_url('auth/requestToken'); ?>">
+                                        <b>REQUEST TOKEN</b>
+                                    </button>
+                                </div>
+
                             </form>
                             <!-- End Form -->
                         </div>
@@ -69,4 +75,26 @@
                 </div>
             </div>
         </footer>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="requestmodal" tabindex="-1">
+        <div class="modal-dialog" role="document">
+
+            <!-- Modal Content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><b>Request Token Telegram</b></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Token reset sudah dikirimkan ke akun Telegram anda!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
     </div>

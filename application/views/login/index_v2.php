@@ -13,7 +13,7 @@
 
                         <?= $this->session->flashdata('message'); ?>
 
-                        <div class="card-body card-form">
+                        <div class="card-body card-form form-login">
                             <!-- Form -->
                             <form method="post" action="<?= base_url('auth'); ?>">
                                 <div class="input-group">

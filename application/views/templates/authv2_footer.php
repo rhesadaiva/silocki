@@ -10,6 +10,19 @@
  <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
  <script src="<?= base_url(); ?>assets/js/material-kit.min.js?v=2.0.5" type="text/javascript"></script>
 
+ <script type="text/javascript">
+     $(document).ready(function() {
+         $('#requestbtn').click(function(e) {
+
+             e.preventDefault();
+             const href = $(this).attr('href');
+
+             $('#requestmodal').modal();
+             document.location.href = href;
+         });
+     });
+ </script>
+
  </body>
 
  </html>
