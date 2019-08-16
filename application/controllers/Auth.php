@@ -165,7 +165,6 @@ class Auth extends CI_Controller
         };
     }
 
-
     public function resetpassword()
     {
         $nipforgot = $this->session->userdata('nip');
@@ -173,6 +172,12 @@ class Auth extends CI_Controller
 
         $data['nama'] = $this->session->userdata('nama');
         $data['nip'] = $this->session->userdata('nip');
+
+        $data['reset'] = $this->db->get_where('user_token', ['nip' => $nipforgot, 'is_used' => 0])->row_array();
+
+        $this->form_validation->set_rules('token_number', 'NIP', 'trim|required');
+        $this->form_validation->set_rules('resetpass', 'NIP', 'trim|required|matches[konfirmresetpass]');
+        $this->form_validation->set_rules('konfirmresetpass', 'NIP', 'trim|required');
 
         // Ambil data token
         $query = $this->db->query("SELECT `user_token`.*, `user`.`telegram` FROM `user_token` join `user`  using(nip) where `user_token`.`nip` = '$nipforgot' and `is_used` = 0  ");
@@ -185,33 +190,41 @@ class Auth extends CI_Controller
         $telegramuser['nama'] = $this->db->get_where('user', ['nip' => $nipforgot])->row_array();
 
         // Kirim Notifikasi Ke Telegram
-        $this->_telegram(
-            $telegramuser['nama']['telegram'],
-            "Halo, *" . $namaforgot . "*. \n\nSistem mendeteksi adanya permintaan reset password aplikasi *SILOCKI* yang dilakukan oleh akun anda. \n\nBerikut adalah nomor token untuk mereset akun anda = *" . $tokenid . "* \n\nSilahkan abaikan pesan ini apabila anda tidak merasa melakukan permintaan reset. Terima Kasih."
-        );
-        $this->form_validation->set_rules('resetpass', 'NIP', 'trim|required');
-        $this->form_validation->set_rules('konfirmresetpass', 'NIP', 'trim|required');
-        $this->form_validation->set_rules('token_number', 'NIP', 'trim|required');
+        // $this->_telegram(
+        //     $telegramuser['nama']['telegram'],
+        //     "Halo, *" . $namaforgot . "*. \n\nSistem mendeteksi adanya permintaan reset password aplikasi *SILOCKI* yang dilakukan oleh akun anda. \n\nBerikut adalah nomor token untuk mereset akun anda = *" . $tokenid . "* \n\nSilahkan abaikan pesan ini apabila anda tidak merasa melakukan permintaan reset. Terima Kasih."
+        // );
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/authv2_header');
             $this->load->view('login/resetpassword', $data);
             $this->load->view('templates/authv2_footer');
         } else {
-            $this->aksiresetpassword();
+
+            $token_data = $this->input->post('tokennumber');
+            $resetpass = $this->input->post('resetpass');
+
+            $tokenreset = $data['reset']['token'];
+
+            if ($token_data != $tokenreset) {
+                $this->session->set_flashdata('reset', '<div class="alert alert-danger-sm" role="alert"><b class="alert-message">TOKEN TIDAK DITEMUKAN</b></div>');
+                redirect('auth/resetpassword');
+            } else {
+
+                $newpass = md5($resetpass);
+
+                $this->db->set('password', $newpass);
+                $this->db->where('nip', $nipforgot);
+                $this->db->update('user');
+
+                $this->db->set('is_used', 1);
+                $this->db->where('nip', $nipforgot);
+                $this->db->update('user_token');
+
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><b class="alert-message">PASSWORD TELAH BERHASIL DIGANTI</b></div>');
+                redirect('auth');
+            }
         }
-    }
-
-    public function aksiresetpassword()
-    {
-        $nipforgot = $this->session->userdata('nip');
-
-        $query = $this->db->query("SELECT * FROM `user_token` WHERE `nip` = $nipforgot AND `is_used` = 0 ");
-        $token['nip'] = $query->row_array();
-
-        $token_data = $this->input->post('token_number');
-        $resetpass = $this->input->post('resetpass');
-        $konfirmresetpass = $this->input->post('konfirmresetpass');
     }
 
 
