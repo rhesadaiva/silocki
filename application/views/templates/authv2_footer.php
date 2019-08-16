@@ -14,11 +14,12 @@
      $(document).ready(function() {
          $('#requestbtn').click(function(e) {
 
-             e.preventDefault();
              const href = $(this).attr('href');
+             e.preventDefault();
 
              $('#requestmodal').modal();
              document.location.href = href;
+
          });
      });
  </script>
