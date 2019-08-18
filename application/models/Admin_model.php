@@ -89,6 +89,7 @@ class Admin_model extends CI_Model
             'role_id' => $this->input->post('role'),
             'seksi' => $this->input->post('seksisub'),
             'atasan' => $this->input->post('atasan'),
+            'telegram' => $this->input->post('telegram'),
 
         ];
         return $this->db->insert('user', $data);
@@ -114,6 +115,7 @@ class Admin_model extends CI_Model
             'role_id' => $this->input->post('role'),
             'seksi' => $this->input->post('seksisub'),
             'atasan' => $this->input->post('atasan'),
+            'telegram' => $this->input->post('telegram'),
 
         ];
         $this->db->where('id', $id);

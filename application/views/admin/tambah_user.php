@@ -80,6 +80,17 @@
                             </div>
 
                             <div class="form-group row">
+                                <label for="nama" class="col-sm-3 col-form-label">ID Telegram</label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" name="telegram">
+                                    <?= form_error('telegram', '<small class="text-danger pl-3">', '</small>'); ?>
+                                    <div class="link">
+                                        <a href="https://api.telegram.org/bot905076968:AAG8sNGqlABcYAw6PuUL6eSuFn1-pmSGUpU/getUpdates" target="_blank">Cek ID Telegram</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <div class="col-sm-6">
                                     <button type="button" class="btn btn-warning" onclick="window.history.go(-1); return false;"><i class="fas fa-fw fa-undo-alt"></i> Kembali</button>
                                     <button type="submit" name="buttonuserbaru" id="buttonuserbaru" class="btn btn-success"><i class="fas fa-fw fa-sign-in-alt"></i> Simpan</button>

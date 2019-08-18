@@ -51,9 +51,9 @@ class Admin extends CI_Controller
         $data['seksi'] = $this->Admin_model->getSeksi();
 
         //Validasi Tambah User
-
         $this->form_validation->set_rules('nama', 'Nama', 'required');
         $this->form_validation->set_rules('nip', 'Nomor Induk Pegawai', 'required');
+        $this->form_validation->set_rules('telegram', 'ID Telegram', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('templates/header', $data);
@@ -70,7 +70,6 @@ class Admin extends CI_Controller
         }
     }
 
-
     //Fitur Edit User
     public function editpegawai($id)
     {
@@ -86,6 +85,7 @@ class Admin extends CI_Controller
 
         $this->form_validation->set_rules('nama', 'Nama', 'required');
         $this->form_validation->set_rules('nip', 'Nomor Induk Pegawai', 'required');
+        $this->form_validation->set_rules('telegram', 'ID Telegram', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('templates/header', $data);
