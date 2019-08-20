@@ -368,3 +368,15 @@ $(document).ready(function () {
         "searching": false,
     });
 });
+
+// Alert Tambah Pengumuman
+
+const flashDataPengumuman = $('.flashdata-pengumuman').data('flashdatapengumuman');
+
+if (flashDataPengumuman) {
+    Swal.fire({
+        title: 'Sukses !',
+        text: 'Pengumuman berhasil ' + flashDataPengumuman + '.' + ' ' + 'Silahkan melanjutkan kegiatan anda!',
+        type: 'success'
+    });
+}

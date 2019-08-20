@@ -19,6 +19,7 @@ class Admin extends CI_Controller
         $data['jumlahkk'] = $this->Admin_model->countKK();
         $data['jumlahiku'] = $this->Admin_model->countIKU();
         $data['jumlahlogbook'] = $this->Admin_model->countLogbook();
+        $data['pengumuman']  = $this->Admin_model->getPengumuman();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_admin');
@@ -186,11 +187,26 @@ class Admin extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
         $data['title'] = "Admin Console";
         $data['log_data'] = $this->Admin_model->getLogData();
+        $data['notifikasi'] = $this->Admin_model->getPengumuman();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_admin');
         $this->load->view('templates/topbar', $data);
         $this->load->view('admin/logpage', $data);
         $this->load->view('templates/footer');
+    }
+
+    public function tambahpengumuman()
+    {
+        $this->Admin_model->insertPengumuman();
+        $this->session->set_flashdata('pengumuman', 'ditambahkan');
+        redirect('admin/console');
+    }
+
+    public function hapuspengumuman($id)
+    {
+        $this->Admin_model->deletePengumuman($id);
+        $this->session->set_flashdata('pengumuman', 'dihapus');
+        redirect('admin/console');
     }
 }

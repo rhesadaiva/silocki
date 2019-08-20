@@ -178,17 +178,25 @@ class Admin_model extends CI_Model
         return $this->db->get('tabel_log')->result_array();
     }
 
-    public function getDataSelector($type, $keyword)
+    public function getPengumuman()
     {
-        if ($type = "kontrak") {
-            $query = $this->db->query("SELECT * from `kontrakkinerja` where `id` = '$keyword' ");
-            return $query->result_array();
-        } elseif ($type = "iku") {
-            $query = $this->db->query("SELECT * from `indikatorkinerjautama` where `id_iku` = '$keyword' ");
-            return $query->result_array();
-        } else {
-            $query = $this->db->query("SELECT * from `logbook` where `id_logbook` = '$keyword' ");
-            return $query->result_array();
-        }
+        return $this->db->get('pengumuman')->result_array();
+    }
+
+    public function insertPengumuman()
+    {
+        $alert =
+            [
+                'content' => $this->input->post('contentisi', true),
+                'tglrekam' => date("Y-m-d H:i:s")
+            ];
+
+        $this->db->insert('pengumuman', $alert);
+    }
+
+    public function deletePengumuman($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('pengumuman');
     }
 }
