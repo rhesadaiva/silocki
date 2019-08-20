@@ -174,4 +174,31 @@ class Admin_model extends CI_Model
 
         return $query->result_array();
     }
+
+    public function getLogData()
+    {
+        return $this->db->get('tabel_log')->result_array();
+    }
+
+    public function getPengumuman()
+    {
+        return $this->db->get('pengumuman')->result_array();
+    }
+
+    public function insertPengumuman()
+    {
+        $alert =
+            [
+                'content' => $this->input->post('contentisi', true),
+                'tglrekam' => date("Y-m-d H:i:s")
+            ];
+
+        $this->db->insert('pengumuman', $alert);
+    }
+
+    public function deletePengumuman($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('pengumuman');
+    }
 }

@@ -77,7 +77,7 @@
             <i class="fas fa-fw fa-check-circle"></i>
             <span>Monitoring Pegawai</span>
         </a>
-        <div id="monitoringpegawai" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="monitoringpegawai" class="collapse" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item mx-auto" href="<?= base_url('admin/logbookselesai'); ?>">Sudah Mengirim Logbook</a>
                 <a class="collapse-item mx-auto" href="<?= base_url('admin/logbookbelumdisetujui'); ?>">Logbook Belum Disetujui</a>
@@ -90,6 +90,13 @@
         <a class="nav-link" href="<?= base_url('admin/manajemen_user'); ?>">
             <i class="fas fa-fw fa-users"></i>
             <span>Manajemen User</span></a>
+    </li>
+
+    <!-- Nav Item - Admin Console -->
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/console'); ?>">
+            <i class="fas fa-fw fa-cogs"></i>
+            <span>Admin Console</span></a>
     </li>
 
     <!-- Divider -->

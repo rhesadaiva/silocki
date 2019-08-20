@@ -357,3 +357,26 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('.preloader').fadeOut();
 })
+
+//Init Datatables Log-Activity
+$(document).ready(function () {
+    $('#log-table').DataTable({
+
+        "lengthChange": false,
+        "ordering": false,
+        "info": false,
+        "searching": false,
+    });
+});
+
+// Alert Tambah Pengumuman
+
+const flashDataPengumuman = $('.flashdata-pengumuman').data('flashdatapengumuman');
+
+if (flashDataPengumuman) {
+    Swal.fire({
+        title: 'Sukses !',
+        text: 'Pengumuman berhasil ' + flashDataPengumuman + '.' + ' ' + 'Silahkan melanjutkan kegiatan anda!',
+        type: 'success'
+    });
+}

@@ -19,6 +19,7 @@ class Admin extends CI_Controller
         $data['jumlahkk'] = $this->Admin_model->countKK();
         $data['jumlahiku'] = $this->Admin_model->countIKU();
         $data['jumlahlogbook'] = $this->Admin_model->countLogbook();
+        $data['pengumuman']  = $this->Admin_model->getPengumuman();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_admin');
@@ -32,6 +33,8 @@ class Admin extends CI_Controller
         $data['title'] = 'Manajemen User';
         $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
         $data['user_data'] = $this->Admin_model->getUsersData();
+
+        helper_log("access", "Mengakses menu Manajemen User");
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_admin');
@@ -64,7 +67,9 @@ class Admin extends CI_Controller
         } else {
 
             $this->Admin_model->tambahUser();
-            helper_log("add", "menambah pegawai baru");
+
+            helper_log("add", "Menambah data pegawai baru");
+
             $this->session->set_flashdata('user', 'ditambahkan dengan password 123456');
             redirect('admin/manajemen_user');
         }
@@ -96,7 +101,7 @@ class Admin extends CI_Controller
         } else {
             //Validasi
             $this->Admin_model->editUser($id);
-            helper_log("edit", "mengubah data pegawai (id-pegawai = $id)");
+            helper_log("edit", "Mengubah data pegawai (id-pegawai = $id)");
             $this->session->set_flashdata('user', 'berhasil diubah, silahkan melanjutkan kegiatan anda!');
             redirect('admin/manajemen_user');
         }
@@ -106,7 +111,7 @@ class Admin extends CI_Controller
     public function hapuspegawai($id)
     {
         $this->Admin_model->deleteUser($id);
-        helper_log("delete", "menghapus data pegawai (id-pegawai = $id)");
+        helper_log("delete", "Menghapus data pegawai (id-pegawai = $id)");
         $this->session->set_flashdata('user', 'berhasil dihapus. Silahkan melanjutkan kegiatan anda!');
         redirect('admin/manajemen_user');
     }
@@ -164,7 +169,7 @@ class Admin extends CI_Controller
     // //Halaman Pencarian Pegawai yang belum rekam logbook
     public function filterlogbookselesai()
     {
-        $data['title'] = 'Logbook yang sudah dikirim dan divalidasi oleh atasan';
+        $data['title'] = 'Logbook Yang Sudah Divalidasi';
         $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
         $data['periode'] = $this->input->get('periodepelaporan');
 
@@ -175,5 +180,33 @@ class Admin extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('admin/logbookselesai', $data);
         $this->load->view('templates/footer');
+    }
+
+    public function console()
+    {
+        $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
+        $data['title'] = "Admin Console";
+        $data['log_data'] = $this->Admin_model->getLogData();
+        $data['notifikasi'] = $this->Admin_model->getPengumuman();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar_admin');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/logpage', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function tambahpengumuman()
+    {
+        $this->Admin_model->insertPengumuman();
+        $this->session->set_flashdata('pengumuman', 'ditambahkan');
+        redirect('admin/console');
+    }
+
+    public function hapuspengumuman($id)
+    {
+        $this->Admin_model->deletePengumuman($id);
+        $this->session->set_flashdata('pengumuman', 'dihapus');
+        redirect('admin/console');
     }
 }
