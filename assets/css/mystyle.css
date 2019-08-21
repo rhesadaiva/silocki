@@ -45,7 +45,6 @@ td {
 h6.application-name {
 	margin-top: 5px;
 	margin-bottom: 5px;
-
 }
 
 label {
@@ -66,3 +65,49 @@ span.profil {
 	color: rgba(0, 0, 0, 0.735);
 	font-weight: 600;
 }
+
+/* MANAGE USER ADMIN */
+h4.manageuser {
+	color: royalblue;
+	font-weight: bold;
+}
+
+th.manageuser {
+	font-size: 15px;
+}
+
+td.manageuser {
+	text-align: center;
+	font-size: 15px;
+}
+
+.aksimanageuser {
+	font-size: 15px;
+	width: 10%;
+	text-align: center;
+}
+
+/* TAMBAH USER STYLE */
+h4.tambahuser {
+	color: royalblue;
+	font-weight: bold;
+}
+
+/* EDIT USER STYLE */
+h4.edituser {
+	color: royalblue;
+	font-weight: bold;
+}
+
+/* BELUM APPROVE STYLE */
+th.belumapprove,
+tr.belumapprove {
+	text-align: center;
+}
+
+/* SUDAH SELESAI STYLE */
+th.selesai,
+tr.selesai {
+	text-align: center;
+}
+

@@ -1,0 +1,58 @@
+/* BROWSE IKU STYLE */
+th.browseiku {
+    font-size: 14px;
+}
+
+h4.browseiku {
+    color: royalblue;
+    font-weight: bold;
+}
+
+td.browseiku {
+    text-align: center;
+    font-size: 15px;
+}
+
+td.pemilik {
+    text-align: center;
+    width: 10%;
+}
+
+td.nomorkk {
+    text-align: center;
+    font-size: 15px;
+    width: 15%;
+}
+
+td.namaiku {
+    text-align: center;
+    font-size: 15px;
+    width: 50%;
+}
+
+td.nomoriku {
+    width: 10%;
+}
+
+th.nomorurut {
+    width: 5%;
+}
+
+.aksibrowseiku {
+    font-size: 15px;
+    width: 10%;
+    text-align: center;
+}
+
+/* TAMBAH IKU STYLE */
+h4.tambahiku {
+    color: royalblue;
+    font-weight: bold;
+}
+
+/* EDIT IKU STYLE */
+h5.editiku {
+    color: royalblue;
+    font-weight: bold;
+}
+

@@ -1,0 +1,37 @@
+/* BROWSE KONTRAK STYLE */
+ th.browsekontrak {
+    font-size: 15px;
+}
+
+h4.browsekontrak {
+    color: royalblue;
+    font-weight: bold;
+}
+
+td.browsekontrak {
+    text-align: center;
+    font-size: 15px;
+    font-weight: normal;
+}
+
+td.aksibrowsekontrak {
+    font-size: 15px;
+    width: 10%;
+    text-align: center;
+}
+
+/* TAMBAH KONTRAK STYLE */
+h4.tambahkontrak {
+    color: royalblue;
+    font-weight: bold;
+}
+
+
+/* EDIT KONTRAK STYLE */
+h5.editkontrak {
+    color: royalblue;
+    font-weight: bold;
+}
+
+
+

@@ -31,11 +31,11 @@ h4.logbook {
 } */
 
 td.perhitungan {
-	width: 200px;
+	width: 12%;
 }
 
 td.keterangan {
-	width: 180px;
+	width: 40%;
 }
 
 tr.detail {
@@ -44,7 +44,7 @@ tr.detail {
 }
 
 td.wakturekam {
-	width: 100px;
+	width: 9%;
 	font-size: 13px;
 }
 
