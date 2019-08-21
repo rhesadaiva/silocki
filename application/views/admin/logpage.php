@@ -1,40 +1,3 @@
-<style>
-    table.log-table {
-        margin-top: 40px;
-    }
-
-    h4.pengumumanjudul {
-        color: royalblue;
-        font-weight: 700;
-    }
-
-    .pengumumantr {
-        text-align: center;
-    }
-
-    .pengumumanisi {
-        text-align: center;
-    }
-
-    .btn-simpanpeng {
-        margin-right: 3px
-    }
-
-    .aksipengumuman {
-        width: 10%;
-    }
-
-    .contentpengumuman {
-        width: 60%;
-        text-align: justify;
-    }
-
-    h5.modal-title {
-        color: royalblue;
-        font-weight: 700;
-    }
-</style>
-
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -76,7 +39,7 @@
                             <tr>
                                 <th scope="row"><?= $i; ?></th>
                                 <td><?= $activity['log_user']; ?></td>
-                                <td><?= $activity['log_time']; ?></td>
+                                <td><?= indonesian_date2($activity['log_time']); ?></td>
                                 <td><?= $activity['log_desc']; ?></td>
 
                             </tr>
@@ -103,7 +66,7 @@
                             </div>
                             <div class="card-body">
                                 <table class="table table-bordered table-hover">
-                                    <thead>
+                                    <thead class="thead-light">
                                         <tr class="pengumumantr">
                                             <th scope="col">No</th>
                                             <th scope="col">Isi Pengumuman</th>
@@ -150,15 +113,15 @@
                 <div class="modal-body">
                     <!-- Form Tambah Pengumuman -->
                     <form action="<?= base_url('admin/tambahpengumuman'); ?>" method="post">
+
                         <div class="form-group">
                             <label for="contentpeng" style="color: black;">Isi Pengumuman</label>
                             <textarea class="form-control rounded-1" input-type="text" name="contentisi" rows="2"></textarea>
                         </div>
 
-                        <div class="modal-footer pt-2">
-                            <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-fw fa-save"></i>Tambah Data</button>
-                        </div>
+                        <button type="submit" class="btn btn-success btn-sm float-right"><i class="fas fa-fw fa-save"></i>Tambah Data</button>
                     </form>
+
                 </div>
             </div>
         </div>

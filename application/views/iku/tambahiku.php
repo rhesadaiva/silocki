@@ -1,10 +1,3 @@
-<style>
-    h4 {
-        color: royalblue;
-        font-weight: bold;
-    }
-</style>
-
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -16,7 +9,7 @@
 
                     <div class="card shadow border-left-info">
                         <div class="card-header py-2">
-                            <h4><?= $title; ?></h4>
+                            <h4 class="tambahiku"><?= $title; ?></h4>
                         </div>
                         <div class="card-body">
 

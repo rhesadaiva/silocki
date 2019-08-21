@@ -1,38 +1,3 @@
-<style>
-    th {
-        font-size: 14px;
-    }
-
-    td {
-        text-align: center;
-        font-size: 15px;
-    }
-
-    td.nomorkk {
-        text-align: center;
-        font-size: 15px;
-        width: 200px;
-    }
-
-    td.namaiku {
-        text-align: center;
-        font-size: 15px;
-        width: 400px;
-    }
-
-    .aksi {
-        font-size: 15px;
-        width: 10%;
-        text-align: center;
-    }
-
-    h4 {
-        color: royalblue;
-        font-weight: bold;
-    }
-</style>
-
-
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -54,7 +19,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-sm">
-                    <h4 class="text-dark-800"><?= $title; ?></h4>
+                    <h4 class="text-dark-800 browseiku"><?= $title; ?></h4>
                 </div>
                 <div class="col-sm">
                     <a class="btn btn-info btn-sm float-right" href="<?= base_url('') ?>iku/rekamiku/"><i class="fas fa-fw fa-folder-plus"></i> Tambah IKU</a>
@@ -73,33 +38,31 @@
                     <table class="table table-bordered table-hover" id="browseiku">
                         <thead class="thead-light">
                             <tr>
-                                <th class="text-center" data-valign="middle" data-halign="center" scope="col">No.</th>
-                                <th class="text-center" data-valign="middle" data-halign="center" scope="col">Nomor Kontrak Kinerja</th>
+                                <th class="text-center browseiku" data-valign="middle" data-halign="center" scope="col">No.</th>
+                                <th class="text-center browseiku" data-valign="middle" data-halign="center" scope="col">Nomor Kontrak Kinerja</th>
                                 <?php if ($this->session->userdata['role_id'] == 1) : ?>
-                                <th class="text-center" scope="col">Pemilik Kontrak Kinerja</th>
+                                <th class="text-center browseiku" scope="col">Pemilik Kontrak Kinerja</th>
                                 <?php endif; ?>
-                                <th class="text-center" scope="col">Nomor IKU</th>
-                                <th class="text-center" data-valign="middle" data-halign="center" scope="col"">Nama IKU</th>
-                                <th class=" text-center" data-valign="middle" data-halign="center" scope="col">Target IKU</th>
-                                <th class="text-center" data-valign="middle" data-halign="center" scope="col">Aksi</th>
-
-
+                                <th class="text-center browseiku" scope="col">Nomor IKU</th>
+                                <th class="text-center browseiku" data-valign="middle" data-halign="center" scope="col">Nama IKU</th>
+                                <th class=" text-center browseiku" data-valign="middle" data-halign="center" scope="col">Target IKU</th>
+                                <th class="text-center browseiku" data-valign="middle" data-halign="center" scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php $i = 1; ?>
                             <?php foreach ($indikator as $iku) : ?>
                             <tr>
-                                <th class="text-center" scope="row"><?= $i; ?></th>
-                                <td class="nomorkk"><?= $iku['nomorkk']; ?></td>
+                                <th class="text-center nomorurut browseiku" scope="row"><?= $i; ?></th>
+                                <td class="nomorkk browseiku"><?= $iku['nomorkk']; ?></td>
                                 <?php if ($this->session->userdata['role_id'] == 1) : ?>
-                                <td><?= $iku['nama']; ?></td>
+                                <td class="browseiku pemilik"><?= $iku['nama']; ?></td>
                                 <?php endif; ?>
-                                <td><?= $iku['kodeiku']; ?></td>
-                                <td class="namaiku text-justify"><?= $iku['namaiku']; ?></td>
-                                <td><?= $iku['targetiku']; ?> dari <?= $iku['nilaitertinggi']; ?></td>
+                                <td class="nomoriku browseiku"><?= $iku['kodeiku']; ?></td>
+                                <td class="namaiku text-justify browseiku"><?= $iku['namaiku']; ?></td>
+                                <td class="targetiku browseiku"><?= $iku['targetiku']; ?> dari <?= $iku['nilaitertinggi']; ?></td>
 
-                                <td class="aksi">
+                                <td class="aksibrowseiku">
                                     <?php if ($iku['iku_validated'] == 0) : ?>
                                     <a data-toggle="tooltip" data-placement="left" title="Edit" href="<?= base_url(); ?>iku/editiku/<?= $iku['id_iku']; ?>"><i class="fas fa-fw fa-edit"></i></a>
                                     <a data-toggle="tooltip" data-placement="left" title="Delete" class="buttonhapusiku" href="<?= base_url(); ?>iku/hapusiku/<?= $iku['id_iku']; ?> "><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>

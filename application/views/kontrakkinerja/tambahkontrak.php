@@ -1,9 +1,3 @@
-<style>
-    h4 {
-        color: royalblue;
-        font-weight: bold;
-    }
-</style>
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -15,25 +9,25 @@
 
                     <div class="card shadow border-left-info">
                         <div class="card-header py-3">
-                            <h4><?= $title; ?></h4>
+                            <h4 class="tambahkontrak"><?= $title; ?></h4>
                         </div>
                         <div class="card-body">
 
                             <div class="form-group row">
                                 <?php if ($this->session->userdata('role_id') == 1) : ?>
-                                    <label for="nipkk" class="col-sm-3 col-form-label">Set Pegawai</label>
-                                    <div class="col-sm-6">
-                                        <select class="selectpicker" name="nipkk" data-live-search="true" data-width="fit">
-                                            <?php foreach ($nip as $n) : ?>
-                                                <option value="<?= $n['nip']; ?>"><?= $n['nip']; ?> - <?= $n['nama']; ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
+                                <label for="nipkk" class="col-sm-3 col-form-label">Set Pegawai</label>
+                                <div class="col-sm-6">
+                                    <select class="selectpicker" name="nipkk" data-live-search="true" data-width="fit">
+                                        <?php foreach ($nip as $n) : ?>
+                                        <option value="<?= $n['nip']; ?>"><?= $n['nip']; ?> - <?= $n['nama']; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
                                 <?php else : ?>
-                                    <label for="nipkk" class="col-sm-3 col-form-label sr-only">NIP</label>
-                                    <div class="col-sm-6">
-                                        <input type="hidden" class="form-control" name="nipkk" value="<?= $this->session->userdata('nip'); ?>" readonly>
-                                    </div>
+                                <label for="nipkk" class="col-sm-3 col-form-label sr-only">NIP</label>
+                                <div class="col-sm-6">
+                                    <input type="hidden" class="form-control" name="nipkk" value="<?= $this->session->userdata('nip'); ?>" readonly>
+                                </div>
                                 <?php endif; ?>
                             </div>
 
