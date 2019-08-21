@@ -41,4 +41,9 @@ class Pelaksana_model extends CI_Model
             return 0;
         }
     }
+
+    public function getPengumuman()
+    {
+        return $this->db->get('pengumuman')->result_array();
+    }
 }

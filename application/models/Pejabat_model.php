@@ -30,7 +30,7 @@ class Pejabat_model extends CI_Model
             [
                 'is_validated' => 2,
                 'nama_validated' => $role,
-                'tgl_validated' => indonesian_date2(date("Y-m-d H:i:s")),
+                'tgl_validated' => date("Y-m-d H:i:s"),
             ];
 
         $this->db->where('id', $id);
@@ -100,7 +100,7 @@ class Pejabat_model extends CI_Model
             [
                 'is_sent' => 1,
                 'is_approved' => 1,
-                'tgl_approve' => indonesian_date2(date("Y-m-d H:i:s")),
+                'tgl_approve' => date("Y-m-d H:i:s"),
                 'nama_validated' => $role,
             ];
 
@@ -115,7 +115,7 @@ class Pejabat_model extends CI_Model
             [
                 'is_approved' => 0,
                 'is_sent' => 0,
-                'tgl_batalapprove' => indonesian_date2(date("Y-m-d H:i:s"))
+                'tgl_batalapprove' => date("Y-m-d H:i:s")
             ];
 
         $this->db->where('id_logbook', $idlogbook);
@@ -175,5 +175,10 @@ class Pejabat_model extends CI_Model
         } else {
             return 0;
         }
+    }
+
+    public function getPengumuman()
+    {
+        return $this->db->get('pengumuman')->result_array();
     }
 }
