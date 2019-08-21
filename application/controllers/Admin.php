@@ -131,6 +131,7 @@ class Admin extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('admin/belumapprovelogbook', $data);
         $this->load->view('templates/footer');
+        // helper_log("access", "mengakses menu Logbook Yang Belum Disetujui");
     }
 
     //Halaman Filter Logbook belum disetujui
@@ -147,6 +148,7 @@ class Admin extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('admin/belumapprovelogbook', $data);
         $this->load->view('templates/footer');
+        helper_log("access", "melakukan pencarian pada menu Logbook Yang Belum Disetujui");
         // var_dump($data['belumlogbook']);
     }
 
@@ -164,6 +166,7 @@ class Admin extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('admin/logbookselesai', $data);
         $this->load->view('templates/footer');
+        // helper_log("access", "mengakses menu Logbook Yang Sudah Divalidasi");
     }
 
     // //Halaman Pencarian Pegawai yang belum rekam logbook
@@ -180,6 +183,7 @@ class Admin extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('admin/logbookselesai', $data);
         $this->load->view('templates/footer');
+        helper_log("access", "melakukan pencarian pada menu Logbook Yang Sudah Divalidasi");
     }
 
     public function console()
@@ -194,11 +198,13 @@ class Admin extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('admin/logpage', $data);
         $this->load->view('templates/footer');
+        // helper_log("access", "mengakses menu Admin Console");
     }
 
     public function tambahpengumuman()
     {
         $this->Admin_model->insertPengumuman();
+        helper_log("add", "menambah pengumuman");
         $this->session->set_flashdata('pengumuman', 'ditambahkan');
         redirect('admin/console');
     }
@@ -206,6 +212,7 @@ class Admin extends CI_Controller
     public function hapuspengumuman($id)
     {
         $this->Admin_model->deletePengumuman($id);
+        helper_log("delete", "menghapus pengumuman");
         $this->session->set_flashdata('pengumuman', 'dihapus');
         redirect('admin/console');
     }
