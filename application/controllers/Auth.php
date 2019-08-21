@@ -37,7 +37,7 @@ class Auth extends CI_Controller
                     'role_id' => $user['role_id']
                 ];
                 $this->session->set_userdata($data);
-                helper_log("login", "masuk ke aplikasi");
+                helper_log("login", "Masuk ke aplikasi SiLocki");
 
                 if ($user['role_id'] == 1) {
 
