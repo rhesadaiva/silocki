@@ -12,3 +12,5 @@
 
 2.Menambah form pada halaman tambah Indikator Kinerja Utama seperti pada eperformance (**SELESAI**)
 
+3.Fitur menambah pengumuman dan ditampilkan di semua akun (**SELESAI**)
+
