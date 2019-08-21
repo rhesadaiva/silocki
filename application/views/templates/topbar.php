@@ -8,7 +8,7 @@
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
             <div class="application-name">
                 <h6 class="application-name"><b>Sistem Laporan Capaian Kinerja KPPBC Tanjungpinang</b></h6>
-                <h6>Versi: 1.0</h6>
+                <h6>Versi: 1.1</h6>
             </div>
 
             <!-- Sidebar Toggle (Topbar) -->
