@@ -1,0 +1,45 @@
+/* KK BAWAHAN STYLE */
+th.kkbawahan {
+    font-size: 15px;
+}
+
+td.kkbawahan {
+    text-align: center;
+    font-size: 15px;
+}
+
+.aksiapprovekontrak {
+    font-size: 15px;
+    width: 10%;
+    text-align: center;
+}
+
+h4.kkbawahan {
+    color: royalblue;
+    font-weight: bold;
+}
+
+/* DETAIL KONTRAK & IKU BAWAHAN STYLE */
+td.detailkontrak {
+    text-align: center;
+}
+
+h4.detail-kontrak {
+    color: royalblue;
+    font-weight: bold;
+}
+
+h4.daftar-iku {
+    color: forestgreen;
+    font-weight: bold;
+}
+
+td.kontrak {
+    text-align: left;
+    padding-right: 700px;
+}
+
+td.nama-iku {
+    text-align: left;
+}
+
