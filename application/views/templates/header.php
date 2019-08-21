@@ -23,6 +23,7 @@
     <link href="<?= base_url('assets/') ?>css/iku.css" rel="stylesheet">
     <link href="<?= base_url('assets/') ?>css/kontrak.css" rel="stylesheet">
     <link href="<?= base_url('assets/') ?>css/logpage.css" rel="stylesheet">
+    <link href="<?= base_url('assets/') ?>css/pejabat.css" rel="stylesheet">
     <link href="<?= base_url('assets/') ?>vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <link href="<?= base_url('assets/') ?>vendor/bootstrap-selectpicker/css/bootstrap-select.css" rel="stylesheet">
 
