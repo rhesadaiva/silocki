@@ -50,7 +50,7 @@ class Kontrakkinerja extends CI_Controller
 
             $this->Kontrak_model->tambahkontrakbaru();
             $this->session->set_flashdata('flash', 'Ditambahkan');
-            helper_log("add", "menambah kontrak kinerja baru");
+            helper_log("add", "menambah Kontrak Kinerja baru");
             redirect('kontrakkinerja/browsekontrak');
         }
     }
@@ -58,7 +58,7 @@ class Kontrakkinerja extends CI_Controller
     {
         $this->Kontrak_model->hapuskontrak($id);
         $this->session->set_flashdata('flash', 'Dihapus');
-        helper_log("delete", "menghapus kontrak kinerja (id-kontrak = $id)");
+        helper_log("delete", "menghapus Kontrak Kinerja (id-kontrak = $id)");
         redirect('kontrakkinerja/browsekontrak');
     }
 
@@ -68,6 +68,7 @@ class Kontrakkinerja extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
         $data['nip'] = $this->Kontrak_model->user();
         $data['kontrak'] = $this->Kontrak_model->getKontrakbyID($id);
+        $data['serikontrak'] = ['Pertama', 'Kedua', 'Ketiga', 'Keempat'];
 
         $this->form_validation->set_rules('kontrakkinerjake', 'Seri Kontrak Kinerja', 'required');
         $this->form_validation->set_rules('nomorkontrakkinerja', 'Nomor Kontrak Kinerja', 'required');
@@ -84,7 +85,7 @@ class Kontrakkinerja extends CI_Controller
 
             $this->Kontrak_model->editkontrak($id);
             $this->session->set_flashdata('flash', 'Diubah');
-            helper_log("edit", "mengubah kontrak kinerja (id-kontrak = $id)");
+            helper_log("edit", "mengubah Kontrak Kinerja (id-kontrak = $id)");
             redirect('kontrakkinerja/browsekontrak');
         }
     }

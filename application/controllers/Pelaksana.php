@@ -19,11 +19,12 @@ class Pelaksana extends CI_Controller
         $data['kkdisetujui'] = $this->Pelaksana_model->countKKApproved();
         $data['ikudisetujui'] = $this->Pelaksana_model->countIKUApproved();
         $data['logbookdikirim'] = $this->Pelaksana_model->countLogbookSent();
+        $data['pengumuman'] = $this->Pelaksana_model->getPengumuman();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_user');
         $this->load->view('templates/topbar', $data);
-        $this->load->view('user/index');
+        $this->load->view('user/index', $data);
         $this->load->view('templates/footer');
     }
 }

@@ -22,6 +22,7 @@ class Pejabat extends CI_Controller
         $data['kkbelumdiapprove'] = $this->Pejabat_model->countKKBawahanNotApproved();
         $data['ikubelumdiapprove'] = $this->Pejabat_model->countIKUBawahanNotApproved();
         $data['logbookbelumdiapprove'] = $this->Pejabat_model->countLogbookBawahanNotApproved();
+        $data['pengumuman'] = $this->Pejabat_model->getPengumuman();
 
         $this->load->view('templates/header', $data);
         cek_sidebar();
@@ -53,7 +54,7 @@ class Pejabat extends CI_Controller
     public function approvekontrak($id)
     {
         $this->Pejabat_model->approvekontrak($id);
-        helper_log("approval", "memberikan persetujuan kontrak kinerja (id-kontrak-kinerja = $id)");
+        helper_log("approval", "memberikan persetujuan Kontrak Kinerja (id-kontrak-kinerja = $id)");
         $this->session->set_flashdata('kkbawahan', 'Disetujui');
         redirect('pejabat/kontrakkinerjabawahan');
     }
@@ -62,7 +63,7 @@ class Pejabat extends CI_Controller
     public function batalapprovekontrak($id)
     {
         $this->Pejabat_model->batalapprovekontrak($id);
-        helper_log("unapprove", "membatalkan persetujuan kontrak kinerja (id-kontrak-kinerja = $id)");
+        helper_log("unapprove", "membatalkan persetujuan Kontrak Kinerja (id-kontrak-kinerja = $id)");
         $this->session->set_flashdata('kkbawahan', 'Dibatalkan');
         redirect('pejabat/kontrakkinerjabawahan');
     }
@@ -86,7 +87,7 @@ class Pejabat extends CI_Controller
     public function approveiku($idiku)
     {
         $this->Pejabat_model->approveiku($idiku);
-        helper_log("approval", "memberikan persetujuan iku (id-iku = $idiku)");
+        helper_log("approval", "memberikan persetujuan IKU (id-iku = $idiku)");
         $this->session->set_flashdata('ikubawahan', 'Disetujui');
         redirect('pejabat/kontrakkinerjabawahan');
     }
@@ -95,7 +96,7 @@ class Pejabat extends CI_Controller
     public function batalapproveiku($idiku)
     {
         $this->Pejabat_model->batalapproveiku($idiku);
-        helper_log("unapprove", "membatalkan persetujuan iku (id-iku = $idiku)");
+        helper_log("unapprove", "membatalkan persetujuan IKU (id-iku = $idiku)");
         $this->session->set_flashdata('ikubawahan', 'Dibatalkan');
         redirect('pejabat/kontrakkinerjabawahan');
     }
@@ -122,7 +123,7 @@ class Pejabat extends CI_Controller
     public function approvelogbook($idlogbook)
     {
         $this->Pejabat_model->approvelogbook($idlogbook);
-        helper_log("approval", "memberikan persetujuan logbook bawahan (id-logbook = $idlogbook)");
+        helper_log("approval", "memberikan persetujuan Logbook bawahan (id-logbook = $idlogbook)");
         $this->session->set_flashdata('logbookbawahan', 'Disetujui');
         redirect('pejabat/kontrakkinerjabawahan');
     }
@@ -131,7 +132,7 @@ class Pejabat extends CI_Controller
     public function batalapprovelogbook($idlogbook)
     {
         $this->Pejabat_model->batalapprovelogbook($idlogbook);
-        helper_log("unapproval", "membatalkan persetujuan logbook bawahan (id-logbook = $idlogbook)");
+        helper_log("unapproval", "membatalkan persetujuan Logbook bawahan (id-logbook = $idlogbook)");
         $this->session->set_flashdata('logbookbawahan', 'Dibatalkan');
         redirect('pejabat/kontrakkinerjabawahan');
     }

@@ -65,7 +65,7 @@ class Iku extends CI_Controller
         } else {
             $this->Indikator_model->rekamikubaru();
             $this->session->set_flashdata('flash', 'Ditambahkan');
-            helper_log("add", "menambah iku baru");
+            helper_log("add", "menambah IKU baru");
             redirect('iku/browseiku');
         }
     }
@@ -73,7 +73,7 @@ class Iku extends CI_Controller
     public function hapusiku($idiku)
     {
         $this->Indikator_model->hapusiku($idiku);
-        helper_log("delete", "menghapus iku (id-iku = $idiku)");
+        helper_log("delete", "menghapus IKU (id-iku = $idiku)");
         $this->session->set_flashdata('flash', 'Dihapus');
         redirect('iku/browseiku');
     }
@@ -87,6 +87,8 @@ class Iku extends CI_Controller
         $data['iku'] = $this->Indikator_model->getIKUById($idiku);
         $data['satuanpengukuran'] = ['Persentase', 'Indeks', 'Satuan', 'Waktu'];
         $data['konsolidasiperiode'] = ['Sum', 'Average', 'Take Last Known'];
+        $data['aspektarget'] = ['Kuantitas', 'Kualitas', 'Waktu', 'Biaya'];
+        $data['periodepelaporan'] = ['Bulanan', 'Triwulanan', 'Semesteran', 'Tahunan'];
 
         $this->form_validation->set_rules('kodeiku', 'Kode IKU', 'required');
         $this->form_validation->set_rules('namaiku', 'Nomor Kontrak Kinerja', 'required');
@@ -104,7 +106,7 @@ class Iku extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $this->Indikator_model->ubahdataIKU($idiku);
-            helper_log("edit", "mengubah iku (id-iku = $idiku)");
+            helper_log("edit", "mengubah IKU (id-iku = $idiku)");
             $this->session->set_flashdata('flash', 'Diubah');
             redirect('iku/browseiku');
         }
