@@ -65,19 +65,20 @@
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">Waktu Rekam</th>
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">Waktu Persetujuan</th>
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">Aksi</th>
+                                <th class="text-center" data-valign="middle" data-halign="center" scope="col">Test</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             <?php $i = 1 ?>
                             <?php foreach ($logbookdetail as $logbook) : ?>
-                                <tr class="detail">
-                                    <th class="text-center nomor-bawahan" scope="row"><?= $i; ?></th>
-                                    <!-- Ganti Tanggal -->
-                                    <!-- Mengganti angka menjadi bulan -->
+                            <tr class="detail">
+                                <th class="text-center nomor-bawahan" scope="row"><?= $i; ?></th>
+                                <!-- Ganti Tanggal -->
+                                <!-- Mengganti angka menjadi bulan -->
 
-                                    <td class="periode">
-                                        <?php switch ($logbook['periode']) {
+                                <td class="periode">
+                                    <?php switch ($logbook['periode']) {
                                             case 1:
                                                 echo "Januari";
                                                 break;
@@ -127,30 +128,31 @@
                                                 break;
                                         }
                                         ?></td>
-                                    <!-- END -->
-                                    <td class="perhitungan-bawahan"><?= $logbook['perhitungan']; ?></td>
-                                    <td class="realisasi-bawahan"><?= $logbook['realisasibulan']; ?></td>
-                                    <td class="realisasi-bawahan"><?= $logbook['realisasiterakhir']; ?></td>
-                                    <td class="text-justify keterangan-bawahan"><?= $logbook['ket']; ?></td>
-                                    <td class="wakturekam-bawahan text-justify"><?= $logbook['wakturekam']; ?></td>
-                                    <td class="waktupersetujuan-bawahan text-justify"><?= $logbook['tgl_approve']; ?></td>
+                                <!-- END -->
+                                <td class="perhitungan-bawahan"><?= $logbook['perhitungan']; ?></td>
+                                <td class="realisasi-bawahan"><?= $logbook['realisasibulan']; ?></td>
+                                <td class="realisasi-bawahan"><?= $logbook['realisasiterakhir']; ?></td>
+                                <td class="text-justify keterangan-bawahan"><?= $logbook['ket']; ?></td>
+                                <td class="wakturekam-bawahan text-justify"><?= indonesian_date2($logbook['wakturekam']); ?></td>
+                                <td class="waktupersetujuan-bawahan text-justify"><?= indonesian_date2($logbook['tgl_approve']); ?></td>
 
-                                    <td class="aksi">
-                                        <?php if ($logbook['is_approved'] == 0) : ?>
+                                <td class="aksi">
+                                    <?php if ($logbook['is_approved'] == 0) : ?>
 
-                                            <a data-toggle="tooltip" data-placement="left" title="Setuju Logbook Bawahan" class="button-setujulogbookbawahan" href="<?= base_url(); ?>pejabat/approvelogbook/<?= $logbook['id_logbook']; ?>"><span style="color:blue;"><i class="fas fa-fw fa-thumbs-up"></i></span></a>
+                                    <a data-toggle="tooltip" data-placement="left" title="Setuju Logbook Bawahan" class="button-setujulogbookbawahan" href="<?= base_url(); ?>pejabat/approvelogbook/<?= $logbook['id_logbook']; ?>"><span style="color:blue;"><i class="fas fa-fw fa-thumbs-up"></i></span></a>
 
-                                        <?php else : ?>
+                                    <?php else : ?>
 
-                                            <a data-toggle="tooltip" data-placement="left" title="Batalkan Persetujuan Logbook" class="button-tidaksetujulogbookbawahan" href="<?= base_url(); ?>pejabat/batalapprovelogbook/<?= $logbook['id_logbook']; ?>"><span style="color:red;"><i class="fas fa-fw fa-thumbs-down"></i></span></a>
+                                    <a data-toggle="tooltip" data-placement="left" title="Batalkan Persetujuan Logbook" class="button-tidaksetujulogbookbawahan" href="<?= base_url(); ?>pejabat/batalapprovelogbook/<?= $logbook['id_logbook']; ?>"><span style="color:red;"><i class="fas fa-fw fa-thumbs-down"></i></span></a>
 
-                                        <?php endif; ?>
-                                    </td>
+                                    <?php endif; ?>
+                                </td>
+                                <td><?= $logbook['wakturekam'] - $logbook['tgl_approve']; ?></td>
 
-                                </tr>
+                            </tr>
 
-                            </tbody>
-                            <?php $i++; ?>
+                        </tbody>
+                        <?php $i++; ?>
                         <?php endforeach; ?>
                     </table>
                 </div>
