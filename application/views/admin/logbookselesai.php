@@ -1,10 +1,3 @@
-<style>
-    th,
-    tr {
-        text-align: center;
-    }
-</style>
-
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -45,20 +38,20 @@
             <table class="table table-bordered table-hover mt-1" id="logbookselesai">
                 <thead class="thead-light" style="text-align:center">
                     <tr>
-                        <th scope="col" class="nomor">No</th>
-                        <th scope="col">Nama Pegawai</th>
-                        <th scope="col">Jumlah Logbook</th>
-                        <th scope="col">Periode</th>
+                        <th scope="col" class="nomor selesai">No</th>
+                        <th scope="col" class="selesai">Nama Pegawai</th>
+                        <th scope="col" class="selesai">Jumlah Logbook</th>
+                        <th scope="col" class="selesai">Periode</th>
                 </thead>
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($logbookclear as $clear) : ?>
-                        <tr>
-                            <th scope="row" style="text-align:center" class="nomor"><?= $i; ?></th>
-                            <td><?= $clear['nama']; ?></td>
-                            <td>Sudah menyerahkan <b><?= $clear['total']; ?></b> dari 5 Logbook</td>
-                            <td>
-                                <?php switch ($clear['periode']) {
+                    <tr class="selesai">
+                        <th scope="row" style="text-align:center" class="nomor"><?= $i; ?></th>
+                        <td class="selesai"><?= $clear['nama']; ?></td>
+                        <td class="selesai">Sudah menyerahkan <b><?= $clear['total']; ?></b> dari 5 Logbook</td>
+                        <td class="selesai">
+                            <?php switch ($clear['periode']) {
                                     case 1:
                                         echo "Januari";
                                         break;
@@ -108,9 +101,9 @@
                                         break;
                                 }
                                 ?>
-                            </td>
-                        </tr>
-                        <?php $i++; ?>
+                        </td>
+                    </tr>
+                    <?php $i++; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>

@@ -1,10 +1,3 @@
-<style>
-    th,
-    tr {
-        text-align: center;
-    }
-</style>
-
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -45,21 +38,21 @@
             <table class="table table-bordered table-hover mt-1">
                 <thead class="thead-light">
                     <tr>
-                        <th scope="col" class="nomor">No</th>
-                        <th scope="col">Nama Pegawai</th>
-                        <th scope="col">Keterangan</th>
-                        <th scope="col">Periode</th>
+                        <th scope="col" class="nomor belumapprove">No</th>
+                        <th scope="col" class="belumapprove">Nama Pegawai</th>
+                        <th scope="col" class="belumapprove">Keterangan</th>
+                        <th scope="col" class="belumapprove">Periode</th>
 
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($belumlogbook as $belum) : ?>
-                        <?php if ($belum['total'] < 5) : ?>
-                            <tr>
-                                <th scope="row" class="nomor"><?= $i; ?></th>
-                                <td><?= $belum['nama']; ?></td>
-                                <td>Ada <b><?= $belum['total']; ?></b> Logbook yang belum divalidasi oleh atasan</td>
-                                <td>
-                                    <?php switch ($belum['periode']) {
+                    <?php if ($belum['total'] < 5) : ?>
+                    <tr>
+                        <th scope="row" class="nomor belumapprove"><?= $i; ?></th>
+                        <td class="belumapprove"><?= $belum['nama']; ?></td>
+                        <td class="belumapprove">Ada <b><?= $belum['total']; ?></b> Logbook yang belum divalidasi oleh atasan</td>
+                        <td class="belumapprove">
+                            <?php switch ($belum['periode']) {
                                         case 1:
                                             echo "Januari";
                                             break;
@@ -109,12 +102,12 @@
                                             break;
                                     }
                                     ?>
-                                </td>
+                        </td>
 
-                            </tr>
-                        <?php endif; ?>
+                    </tr>
+                    <?php endif; ?>
 
-                        <?php $i++; ?>
+                    <?php $i++; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>
