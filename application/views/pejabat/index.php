@@ -185,7 +185,11 @@
                     <h5 class="m-0 font-weight-bold text-info"><i class="fas fa-fw fa-bullhorn"></i> PENGUMUMAN</h5>
                 </div>
                 <div class="card-body">
-
+                    <?php foreach ($pengumuman as $peng) : ?>
+                    <div class="alert alert-success" role="alert">
+                        <?= $peng['content']; ?>
+                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

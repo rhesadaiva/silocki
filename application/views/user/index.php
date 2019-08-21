@@ -10,23 +10,6 @@
     <!-- Content Row -->
     <div class="row">
 
-        <!-- Jumlah User Aktif
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-s font-weight-bold text-uppercase text-primary mb-1">JUMLAH USER AKTIF</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlahuser; ?></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-fw fa-users fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
         <!-- Total Kontrak Kinerja  -->
         <div class="col-xl-4 col-md-6 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
@@ -182,7 +165,11 @@
                     <h5 class="m-0 font-weight-bold text-info"><i class="fas fa-fw fa-bullhorn"></i> PENGUMUMAN</h5>
                 </div>
                 <div class="card-body">
-
+                    <?php foreach ($pengumuman as $peng) : ?>
+                    <div class="alert alert-success" role="alert">
+                        <?= $peng['content']; ?>
+                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
