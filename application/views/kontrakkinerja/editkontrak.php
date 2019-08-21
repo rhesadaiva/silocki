@@ -1,9 +1,3 @@
-<style>
-    h5 {
-        color: royalblue;
-        font-weight: bold;
-    }
-</style>
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -15,7 +9,7 @@
 
                     <div class="card shadow border-left-info">
                         <div class="card-header py-3">
-                            <h5><?= $title; ?></h5>
+                            <h5 class="editkontrak"><?= $title; ?></h5>
                         </div>
                         <div class="card-body">
 
@@ -25,10 +19,13 @@
                                 <label for="kontrakkinerjake" class="col-sm-3 col-form-label">Seri Kontrak Kinerja</label>
                                 <div class="col-sm-6">
                                     <select class="selectpicker" name="kontrakkinerjake">
-                                        <option value="Pertama">Pertama</option>
-                                        <option value="Kedua">Kedua</option>
-                                        <option value="Ketiga">Ketiga</option>
-                                        <option value="Keempat">Keempat</option>
+                                        <?php foreach ($serikontrak as $seri) : ?>
+                                        <?php if ($seri == $kontrak['kontrakkinerjake']) :  ?>
+                                        <option value="<?= $seri; ?>" selected><?= $seri; ?></option>
+                                        <?php else : ?>
+                                        <option value="<?= $seri; ?>"><?= $seri; ?></option>
+                                        <?php endif; ?>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                             </div>
@@ -36,7 +33,7 @@
                             <div class="form-group row">
                                 <label for="nomorkontrakkinerja" class="col-sm-3 col-form-label">Nomor Kontrak Kinerja</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" name="nomorkontrakkinerja">
+                                    <input type="text" class="form-control" name="nomorkontrakkinerja" value="<?= $kontrak['nomorkk']; ?>">
                                     <?= form_error('nomorkontrakkinerja', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>
@@ -44,7 +41,7 @@
                             <div class="form-group row">
                                 <label for="tanggalmulai" class="col-sm-3 col-form-label">Tanggal Mulai</label>
                                 <div class="col-sm-4">
-                                    <input type="date" class="form-control" name="tanggalmulai">
+                                    <input type="date" class="form-control" name="tanggalmulai" value="<?= $kontrak['tanggalmulai']; ?>">
                                     <?= form_error('tanggalmulai', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>
@@ -52,7 +49,7 @@
                             <div class="form-group row">
                                 <label for="tanggalselesai" class="col-sm-3 col-form-label">Tanggal Selesai</label>
                                 <div class="col-sm-4">
-                                    <input type="date" class="form-control" name="tanggalselesai">
+                                    <input type="date" class="form-control" name="tanggalselesai" value="<?= $kontrak['tanggalselesai']; ?>">
                                     <?= form_error('tanggalselesai', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>

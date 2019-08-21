@@ -1,9 +1,3 @@
-<style>
-    h5 {
-        color: royalblue;
-        font-weight: bold;
-    }
-</style>
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -15,7 +9,7 @@
 
                     <div class="card shadow border-left-info">
                         <div class="card-header py-3">
-                            <h5><?= $title; ?></h5>
+                            <h5 class="editiku"><?= $title; ?></h5>
                         </div>
                         <div class="card-body">
 
@@ -32,7 +26,7 @@
                             <div class="form-group row">
                                 <label for="namaiku" class="col-sm-3 col-form-label">Nama IKU</label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="namaiku" value="<?= $iku['namaiku']; ?>">
+                                    <textarea class="form-control rounded-1" input-type="text" id="namaiku" name="namaiku" rows="2"><?= $iku['namaiku']; ?></textarea>
                                     <?= form_error('namaiku', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>
@@ -41,7 +35,7 @@
                             <div class="form-group row">
                                 <label for="formulaiku" class="col-sm-3 col-form-label">Formula IKU</label>
                                 <div class="col-sm-5">
-                                    <textarea class="form-control rounded-1" input-type="text" id="formulaiku" name="formulaiku" rows="2" value="<?= $iku['formulaiku']; ?>"></textarea>
+                                    <textarea class="form-control rounded-1" input-type="text" id="formulaiku" name="formulaiku" rows="2"><?= $iku['formulaiku']; ?></textarea>
                                     <?= form_error('formulaiku', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>
@@ -65,15 +59,47 @@
                             <div class="form-group row">
                                 <label for="satuanpengukuran" class="col-sm-3 col-form-label">Satuan Pengukuran IKU</label>
                                 <div class="col-sm-5">
-                                    <select class="selectpicker" name="satuanpengukuran">
-                                        <?php foreach ($satuanpengukuran as $sat) : ?>
-                                            <?php if ($sat == $iku['satuanpengukuran']) : ?>
-                                                <option value="<?= $sat; ?>" selected><?= $sat; ?></option>
-                                            <?php else : ?>
-                                                <option value="<?= $sat; ?>"><?= $sat; ?></option>
-                                            <?php endif; ?>
+                                    <input type="text" class="form-control" name="satuanpengukuran" value="<?= $iku['satuanpengukuran']; ?>">
+                                    <?= form_error('satuanpengukuran', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="aspektarget" class="col-sm-3 col-form-label">Aspek Target IKU</label>
+                                <div class="col-sm-5">
+                                    <select class="selectpicker" name="aspektarget">
+                                        <?php foreach ($aspektarget as $aspek) : ?>
+                                        <?php if ($aspek == $iku['aspektarget']) : ?>
+                                        <option value="<?= $aspek; ?>" selected><?= $aspek; ?></option>
+                                        <?php else : ?>
+                                        <option value="<?= $aspek; ?>"><?= $aspek; ?></option>
+                                        <?php endif; ?>
                                         <?php endforeach; ?>
                                     </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="penanggungjawab" class="col-sm-3 col-form-label">Unit/Pihak Penanggung Jawab IKU</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" name="penanggungjawab" value="<?= $iku['penanggungjawab']; ?>">
+                                    <?= form_error('penanggungjawab', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="penyediadata" class="col-sm-3 col-form-label">Unit/Pihak Penyedia Data IKU</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" name="penyediadata" value="<?= $iku['penyediadata']; ?>">
+                                    <?= form_error('penyediadata', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="sumberdata" class="col-sm-3 col-form-label">Sumber Data</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" name="sumberdata" value="<?= $iku['sumberdata']; ?>">
+                                    <?= form_error('sumberdata', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>
 
@@ -81,16 +107,32 @@
                                 <label for="konsolidasiperiode" class="col-sm-3 col-form-label">Konsolidasi Periode IKU</label>
                                 <div class="col-sm-5">
                                     <select class="selectpicker" name="konsolidasiperiode">
-                                        <?php foreach ($konsolidasiperiode as $kon) : ?>
-                                            <?php if ($kon == $iku['konsolidasiperiodeiku']) : ?>
-                                                <option value="<?= $kon; ?>" selected><?= $kon; ?></option>
-                                            <?php else : ?>
-                                                <option value="<?= $kon; ?>"><?= $kon; ?></option>
-                                            <?php endif; ?>
+                                        <?php foreach ($konsolidasiperiode as $konsolidasi) : ?>
+                                        <?php if ($konsolidasi == $iku['konsolidasiperiodeiku']) : ?>
+                                        <option value="<?= $konsolidasi; ?>" selected><?= $konsolidasi; ?></option>
+                                        <?php else : ?>
+                                        <option value="<?= $konsolidasi; ?>"><?= $konsolidasi; ?></option>
+                                        <?php endif; ?>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
                             </div>
+
+                            <div class="form-group row">
+                                <label for="periodepelaporan" class="col-sm-3 col-form-label">Periode Pelaporan IKU</label>
+                                <div class="col-sm-5">
+                                    <select class="selectpicker" name="periodepelaporan">
+                                        <?php foreach ($periodepelaporan as $periode) : ?>
+                                        <?php if ($periode == $iku['periodepelaporan']) : ?>
+                                        <option value="<?= $periode; ?>" selected><?= $periode ?></option>
+                                        <?php else : ?>
+                                        <option value="<?= $periode; ?>"><?= $periode ?></option>
+                                        <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+
 
                             <div class="form-group row">
                                 <div class="col-sm-5 mt-3">

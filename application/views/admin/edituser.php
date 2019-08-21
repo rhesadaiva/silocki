@@ -1,8 +1,5 @@
 <style>
-    h5 {
-        color: royalblue;
-        font-weight: bold;
-    }
+
 </style>
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -15,7 +12,7 @@
 
                     <div class="card shadow border-left-info">
                         <div class="card-header py-3">
-                            <h5><?= $title; ?></h5>
+                            <h4 class="edituser"><?= $title; ?></h5>
                         </div>
                         <div class="card-body">
 
@@ -40,7 +37,11 @@
                                 <div class="col-sm-6">
                                     <select class="selectpicker" name="pangkat" data-live-search="true" data-width="fit" value="<?= $userdetail['pangkat/golongan'] ?>">
                                         <?php foreach ($pangkat as $p) : ?>
+                                        <?php if ($p['pangkat/golongan'] == $userdetail['pangkat']) : ?>
+                                        <option value="<?= $p['pangkat/golongan']; ?>" selected><?= $p['pangkat/golongan']; ?></option>
+                                        <?php else : ?>
                                         <option value="<?= $p['pangkat/golongan']; ?>"><?= $p['pangkat/golongan']; ?></option>
+                                        <?php endif; ?>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -51,7 +52,11 @@
                                 <div class="col-sm-6">
                                     <select class="selectpicker" name="role" data-live-search="true" data-width="fit">
                                         <?php foreach ($role as $r) : ?>
+                                        <?php if ($r['id'] == $userdetail['role_id']) : ?>
+                                        <option value="<?= $r['id']; ?>" selected><?= $r['level']; ?></option>
+                                        <?php else : ?>
                                         <option value="<?= $r['id']; ?>"><?= $r['level']; ?></option>
+                                        <?php endif; ?>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -62,7 +67,11 @@
                                 <div class="col-sm-6">
                                     <select class="selectpicker" name="seksisub" data-live-search="true" data-width="fit">
                                         <?php foreach ($seksi as $s) : ?>
+                                        <?php if ($s['seksi/subseksi'] == $userdetail['seksi']) : ?>
+                                        <option value="<?= $s['seksi/subseksi']; ?>" selected><?= $s['seksi/subseksi']; ?></option>
+                                        <?php else : ?>
                                         <option value="<?= $s['seksi/subseksi']; ?>"><?= $s['seksi/subseksi']; ?></option>
+                                        <?php endif; ?>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -73,7 +82,11 @@
                                 <div class="col-sm-6">
                                     <select class="selectpicker" name="atasan" data-live-search="true" data-width="fit">
                                         <?php foreach ($user_data as $user) : ?>
+                                        <?php if ($user['nama'] == $userdetail['atasan']) : ?>
+                                        <option value="<?= $user['nama']; ?>" selected><?= $user['nama']; ?></option>
+                                        <?php else : ?>
                                         <option value="<?= $user['nama']; ?>"><?= $user['nama']; ?></option>
+                                        <?php endif ?>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
