@@ -210,7 +210,7 @@
                                 <td class="realisasi"><?= $logbook['realisasibulan']; ?></td>
                                 <td class="realisasiterakhir"><?= $logbook['realisasiterakhir']; ?></td>
                                 <td class="text-justify keterangan"><?= $logbook['ket']; ?></td>
-                                <td class="wakturekam"><?= $logbook['wakturekam']; ?></td>
+                                <td class="wakturekam"><?= indonesian_date2($logbook['wakturekam']); ?></td>
 
                                 <td class="aksi">
                                     <?php if ($logbook['is_sent'] == 0) : ?>
