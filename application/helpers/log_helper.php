@@ -30,7 +30,7 @@ function helper_log($tipe = "", $str = "")
     $param['log_user']      = $CI->session->userdata('nama');
     $param['log_tipe']      = $log_tipe;
     $param['log_desc']      = $str;
-    $param['log_time']      = indonesian_date2(date("Y-m-d H:i:s"));
+    $param['log_time']      = (date("Y-m-d H:i:s"));
 
     //load model log
     $CI->load->model('Log_model');
