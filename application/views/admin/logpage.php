@@ -36,7 +36,7 @@
                         <tbody>
                             <?php $i = 1; ?>
                             <?php foreach ($log_data as $activity) : ?>
-                            <tr>
+                            <tr class="logactivity">
                                 <th scope="row"><?= $i; ?></th>
                                 <td><?= $activity['log_user']; ?></td>
                                 <td><?= indonesian_date2($activity['log_time']); ?></td>
