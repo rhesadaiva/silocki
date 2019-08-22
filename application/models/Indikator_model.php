@@ -91,6 +91,7 @@ class Indikator_model extends CI_Model
             'nilaitertinggi' => $this->input->post('nilaitertinggi', true),
             'satuanpengukuran' => $this->input->post('satuanpengukuran', true),
             'konsolidasiperiodeiku' => $this->input->post('konsolidasiperiode', true),
+            'konversi120' => $this->input->post('konversi', true),
         ];
 
         $this->db->where('id_iku', $this->input->post('id_iku'));
