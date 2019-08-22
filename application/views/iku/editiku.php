@@ -133,6 +133,21 @@
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <label for="konversi" class="col-sm-3 col-form-label">Konversi 120?</label>
+                                <div class="col-sm-5">
+                                    <select class="selectpicker" name="konversi">
+                                        <?php foreach ($konversi as $konv) : ?>
+                                        <?php if ($konv == $iku['konversi120']) : ?>
+                                        <option value="<?= $konv; ?>" selected><?= $konv ?></option>
+                                        <?php else : ?>
+                                        <option value="<?= $konv; ?>"><?= $konv ?></option>
+                                        <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+
 
                             <div class="form-group row">
                                 <div class="col-sm-5 mt-3">

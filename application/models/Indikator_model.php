@@ -67,6 +67,7 @@ class Indikator_model extends CI_Model
             'satuanpengukuran' => $this->input->post('satuanpengukuran', true),
             'konsolidasiperiodeiku' => $this->input->post('konsolidasiperiode', true),
             'periodepelaporan' => $this->input->post('periodepelaporan', true),
+            'konversi120' => $this->input->post('konversi', true),
         ];
 
         $this->db->insert('indikatorkinerjautama', $data);

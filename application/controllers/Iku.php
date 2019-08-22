@@ -89,6 +89,7 @@ class Iku extends CI_Controller
         $data['konsolidasiperiode'] = ['Sum', 'Average', 'Take Last Known'];
         $data['aspektarget'] = ['Kuantitas', 'Kualitas', 'Waktu', 'Biaya'];
         $data['periodepelaporan'] = ['Bulanan', 'Triwulanan', 'Semesteran', 'Tahunan'];
+        $data['konversi'] = ['Ya', 'Tidak'];
 
         $this->form_validation->set_rules('kodeiku', 'Kode IKU', 'required');
         $this->form_validation->set_rules('namaiku', 'Nomor Kontrak Kinerja', 'required');

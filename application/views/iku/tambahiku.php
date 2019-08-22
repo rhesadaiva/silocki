@@ -157,6 +157,15 @@
                                 <?php endif; ?>
                             </div>
 
+                            <div class="form-group row">
+                                <label for="konversi" class="col-sm-3 col-form-label">Konversi 120?</label>
+                                <div class="col-sm-5">
+                                    <select class="selectpicker" name="konversi">
+                                        <option value="Ya">Ya</option>
+                                        <option value="Tidak">Tidak</option>
+                                    </select>
+                                </div>
+                            </div>
 
                             <div class="form-group row">
                                 <div class="col-sm-5 mt-3">
