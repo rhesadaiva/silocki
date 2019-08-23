@@ -15,3 +15,9 @@
 2. Menambah ke table indikator konversi 120.
 3. Menambah style pada logout modal, agar lebih tebal.
 4. Menambah style pada log aktifitas.
+
+- Jumat, 23 Agustus 2019
+1. Menambah settingan css pada mystyle.css untuk merubah warna inputan form agar lebih mudah dibaca.
+2. Memperbaiki settingan css pada pejabat.css di menu Detail Kontrak Bawahan.
+3. Merubah tampilan tanggal pada menu Browse Kontrak Kinerja.
+4. Memperbaiki tooltip pada browse Kontrak Kinerja, browse IKU, dan Manajemen User. 
