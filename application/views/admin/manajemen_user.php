@@ -73,7 +73,7 @@
                                 <td class="manageuser"><?= $user['atasan']; ?></td>
                                 <td class="aksimanageuser">
                                     <a data-toggle="tooltip" data-placement="left" title="Edit Data Pegawai" href="<?= base_url(); ?>admin/editpegawai/<?= $user['id']; ?>"><i class="fas fa-fw fa-edit"></i></a>
-                                    <a data-toggle="tooltip" data-placement="left" title="Delete" class="button-hapuspegawai" href="<?= base_url(); ?>admin/hapuspegawai/<?= $user['id']; ?>"><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
+                                    <a data-toggle="tooltip" data-placement="left" title="Hapus Data Pegawai" class="button-hapuspegawai" href="<?= base_url(); ?>admin/hapuspegawai/<?= $user['id']; ?>"><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
 
                                 </td>
                             </tr>

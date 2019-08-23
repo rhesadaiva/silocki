@@ -49,7 +49,7 @@
                                 <th class="text-center" scope="row"><?= $i; ?></th>
                                 <td class="browsekontrak"><?= $kontrak['kontrakkinerjake']; ?></td>
                                 <td class="browsekontrak"><?= $kontrak['nomorkk']; ?></td>
-                                <td class="browsekontrak"><?= shortdate_indo($kontrak['tanggalmulai']); ?> s.d <?= shortdate_indo($kontrak['tanggalselesai']); ?></td>
+                                <td class="browsekontrak"><?= indonesian_date3($kontrak['tanggalmulai']); ?> s.d <?= indonesian_date3($kontrak['tanggalselesai']); ?></td>
                                 <td class="browsekontrak">
                                     <?php switch ($kontrak['is_validated']) {
                                             case 1:
@@ -68,8 +68,8 @@
                                 </td>
                                 <td class="aksibrowsekontrak">
                                     <?php if ($kontrak['is_validated'] == 1) : ?>
-                                    <a data-toggle="tooltip" data-placement="left" title="Edit" href="<?= base_url(); ?>kontrakkinerja/editkontrak/<?= $kontrak['id']; ?> "><i class="fas fa-fw fa-edit"></i></a>
-                                    <a data-toggle="tooltip" data-placement="left" title="Delete" class="hapus-kontrak" href="<?= base_url(); ?>kontrakkinerja/hapuskontrak/<?= $kontrak['id']; ?> "><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
+                                    <a data-toggle="tooltip" data-placement="left" title="Edit Kontrak Kinerja" href="<?= base_url(); ?>kontrakkinerja/editkontrak/<?= $kontrak['id']; ?> "><i class="fas fa-fw fa-edit"></i></a>
+                                    <a data-toggle="tooltip" data-placement="left" title="Hapus Kontrak Kinerja" class="hapus-kontrak" href="<?= base_url(); ?>kontrakkinerja/hapuskontrak/<?= $kontrak['id']; ?> "><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
                                     <?php else : ?>
                                     <i data-toggle="tooltip" data-placement="left" title="Kontrak Kinerja Terkunci" class="button-locklgobook" id="button-lockkontrak"><span style=" color:#daa520;"><i class="fas fa-fw fa-lock"></i></span></i>
                                 </td>
