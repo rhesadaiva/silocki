@@ -20,8 +20,9 @@ h4.kkbawahan {
 }
 
 /* DETAIL KONTRAK & IKU BAWAHAN STYLE */
-td.detailkontrak {
-    text-align: center;
+th.detailkontrak {
+    width: 20%;
+    padding-right: -100px;
 }
 
 h4.detail-kontrak {

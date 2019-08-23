@@ -23,16 +23,15 @@
                 <div class="card-body">
                     <table class="table">
                         <tbody>
-
-                            <th scope="row">Seri Kontrak Kinerja</th>
+                            <th scope="row" class="detailkontrak">Seri Kontrak Kinerja</th>
                             <td class="detailkontrak"><?= $detailkontrak['kontrakkinerjake']; ?></td>
                             <tr>
-                                <th scope="row">Tanggal Awal Kontrak Kinerja</th>
+                                <th scope="row" class="detailkontrak">Tanggal Awal Kontrak Kinerja</th>
                                 <td class="detailkontrak"><?= indonesian_date3($detailkontrak['tanggalmulai']); ?></td>
                             </tr>
 
                             <tr>
-                                <th scope="row">Tanggal Selesai Kontrak Kinerja</th>
+                                <th scope="row" class="detailkontrak">Tanggal Selesai Kontrak Kinerja</th>
                                 <td class="detailkontrak"><?= indonesian_date3($detailkontrak['tanggalselesai']); ?> </td>
                             </tr>
 
@@ -80,13 +79,13 @@
                             <?php foreach ($listiku as $iku) : ?>
                             <tr>
                                 <th class="text-center" scope="row"><?= $i; ?></th>
-                                <td><?= $iku['kodeiku']; ?></td>
+                                <td class="text-center"><?= $iku['kodeiku']; ?></td>
                                 <td class="nama-ikubawahan"><?= $iku['namaiku']; ?></td>
-                                <td><?= $iku['targetiku']; ?> dari <?= $iku['nilaitertinggi']; ?></td>
+                                <td class="text-center"><?= $iku['targetiku']; ?> dari <?= $iku['nilaitertinggi']; ?></td>
                                 <?php if ($this->session->userdata('role_id') == 1) : ?>
-                                <td><?= $iku['nama_validated']; ?></td>
+                                <td class="text-center"><?= $iku['nama_validated']; ?></td>
                                 <?php endif; ?>
-                                <td class="aksi">
+                                <td class="aksi text-center">
                                     <?php if ($iku['iku_validated'] == 0) : ?>
                                     <a data-toggle="tooltip" class="button-buttonapproveiku" data-placement="left" title="Persetujuan Indikator Kinerja Utama" href="<?= base_url(); ?>pejabat/approveiku/<?= $iku['id_iku']; ?> "><span style="color:green;"><i class="fas fa-fw fa-thumbs-up"></i></a>
 
