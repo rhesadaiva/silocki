@@ -24,3 +24,4 @@
 
 - Senin, 26 Agustus 2019
 1. Membuat fitur adendum (sementara dibuat seperti fitur edit, nanti akan ditambahkan validasi setelah mengetahui aturannya)
+2. membuat ajax (belum selesai)
