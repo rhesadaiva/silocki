@@ -21,3 +21,6 @@
 2. Memperbaiki settingan css pada pejabat.css di menu Detail Kontrak Bawahan.
 3. Merubah tampilan tanggal pada menu Browse Kontrak Kinerja.
 4. Memperbaiki tooltip pada browse Kontrak Kinerja, browse IKU, dan Manajemen User. 
+
+- Senin, 26 Agustus 2019
+1. Membuat fitur adendum (sementara dibuat seperti fitur edit, nanti akan ditambahkan validasi setelah mengetahui aturannya)
