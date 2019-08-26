@@ -112,4 +112,44 @@ class Iku extends CI_Controller
             redirect('iku/browseiku');
         }
     }
+
+    public function adendum($idiku)
+    {
+        $data['title'] = 'Adendum IKU';
+        $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
+        $data['nip'] = $this->Indikator_model->user();
+        $data['role'] = $this->session->userdata('role_id');
+        $data['iku'] = $this->Indikator_model->getIKUById($idiku);
+        $data['satuanpengukuran'] = ['Persentase', 'Indeks', 'Satuan', 'Waktu'];
+        $data['konsolidasiperiode'] = ['Sum', 'Average', 'Take Last Known'];
+        $data['aspektarget'] = ['Kuantitas', 'Kualitas', 'Waktu', 'Biaya'];
+        $data['periodepelaporan'] = ['Bulanan', 'Triwulanan', 'Semesteran', 'Tahunan'];
+        $data['konversi'] = ['Ya', 'Tidak'];
+
+        $this->form_validation->set_rules('kodeiku', 'Kode IKU', 'required');
+        $this->form_validation->set_rules('namaiku', 'Nomor Kontrak Kinerja', 'required');
+        $this->form_validation->set_rules('formulaiku', 'Formula IKU', 'required');
+        $this->form_validation->set_rules('targetiku', 'Target IKU', 'required');
+        $this->form_validation->set_rules('nilaitertinggi', 'Nilai Tertinggi', 'required');
+        $this->form_validation->set_rules('satuanpengukuran', 'Satuan Pengukuran', 'required');
+        $this->form_validation->set_rules('konsolidasiperiode', 'Konsolidasi Periode', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('templates/header', $data);
+            cek_sidebar();
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('iku/editiku', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->_aksiadendum;
+        }
+    }
+
+    private function _aksiadendum()
+    {
+        $this->Indikator_model->adendumIKU($idiiku);
+        helper_log("edit", "melakukan adendum IKU (id-iku = $idiku)");
+        $this->session->set_flashdata('flash', 'Diadendum');
+        redirect('iku/browseiku');
+    }
 }

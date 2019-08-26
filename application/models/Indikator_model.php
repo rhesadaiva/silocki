@@ -97,4 +97,21 @@ class Indikator_model extends CI_Model
         $this->db->where('id_iku', $this->input->post('id_iku'));
         $this->db->update('indikatorkinerjautama', $data);
     }
+
+    public function adendumIKU()
+    {
+        $data = [
+            'kodeiku' => $this->input->post('kodeiku', true),
+            'namaiku' => $this->input->post('namaiku', true),
+            'formulaiku' => $this->input->post('formulaiku', true),
+            'targetiku' => $this->input->post('targetiku', true),
+            'nilaitertinggi' => $this->input->post('nilaitertinggi', true),
+            'satuanpengukuran' => $this->input->post('satuanpengukuran', true),
+            'konsolidasiperiodeiku' => $this->input->post('konsolidasiperiode', true),
+            'konversi120' => $this->input->post('konversi', true),
+        ];
+
+        $this->db->where('id_iku', $this->input->post('id_iku'));
+        $this->db->update('indikatorkinerjautama', $data);
+    }
 }
