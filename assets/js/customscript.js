@@ -10,11 +10,12 @@ if (flashData) {
     });
 }
 
-//Sweet Alert Hapus Kontrak
+// Sweet Alert Hapus Kontrak
 $('.hapus-kontrak').on('click', function (e) {
 
     e.preventDefault();
     const href = $(this).attr('href');
+    var id = $(this).attr('id');
 
     Swal.fire({
         title: 'Konfirmasi Hapus Kontrak Kinerja',
@@ -27,11 +28,32 @@ $('.hapus-kontrak').on('click', function (e) {
         cancelButtontext: '<i class="fas fa-fw fa-times"></i> Batal'
     }).then((result) => {
         if (result.value) {
-            document.location.href = href;
+            // document.location.href = href;
+            $.ajax({
+                type: "post",
+                url: href,
+                DataType: "json",
+                data: { id: id },
+                success: function () {
+                    Swal.fire(
+                        'Kontrak Kinerja',
+                        'Berhasil dihapus! Silahkan melanjutkan kegiatan anda.',
+                        'success'
+                    )
+                },
 
+                error: function () {
+                    Swal.fire(
+                        'Batal',
+                        'Proses dibatalkan!',
+                        'error'
+                    )
+                }
+            })
         }
     })
 })
+
 
 const flashDataIKU = $('.flashdata').data('flashdataiku');
 
@@ -50,6 +72,7 @@ $('.buttonhapusiku').on('click', function (e) {
 
     e.preventDefault();
     const href = $(this).attr('href');
+    var idiku = $(this).attr('id-iku');
 
     Swal.fire({
         title: 'Konfirmasi Hapus IKU',
@@ -62,8 +85,28 @@ $('.buttonhapusiku').on('click', function (e) {
         cancelButtontext: '<i class="fas fa-fw fa-times"></i> Batal'
     }).then((result) => {
         if (result.value) {
-            document.location.href = href;
+            // document.location.href = href;
+            $.ajax({
+                type: "post",
+                url: href,
+                DataType: "json",
+                data: { idiku: idiku },
+                success: function () {
+                    Swal.fire(
+                        'Indikator Kinerja Utama',
+                        'Berhasil dihapus! Silahkan melanjutkan kegiatan anda.',
+                        'success'
+                    )
+                },
 
+                error: function () {
+                    Swal.fire(
+                        'Batal',
+                        'Proses dibatalkan!',
+                        'error'
+                    )
+                }
+            })
         }
     })
 });
@@ -85,10 +128,11 @@ $('.button-hapuslogbook').on('click', function (e) {
 
     e.preventDefault();
     const href = $(this).attr('href');
+    var idlogbook = $(this).attr('id-logbook');
 
     Swal.fire({
         title: 'Konfirmasi Hapus Logbook',
-        text: "Apakah anda yakin untuk menghapus data ini?",
+        text: "Apakah anda yakin untuk menghapus logbook ini?",
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#e74a3b',
@@ -97,8 +141,28 @@ $('.button-hapuslogbook').on('click', function (e) {
         cancelButtontext: '<i class="fas fa-fw fa-times"></i> Batal'
     }).then((result) => {
         if (result.value) {
-            document.location.href = href;
+            // document.location.href = href;
+            $.ajax({
+                type: "post",
+                url: href,
+                DataType: "json",
+                data: { idlogbook: idlogbook },
+                success: function () {
+                    Swal.fire(
+                        'Logbook',
+                        'Berhasil dihapus! Silahkan melanjutkan kegiatan anda.',
+                        'success'
+                    )
+                },
 
+                error: function () {
+                    Swal.fire(
+                        'Batal',
+                        'Proses dibatalkan!',
+                        'error'
+                    )
+                }
+            })
         }
     })
 });
@@ -108,23 +172,83 @@ $('.button-kirimlogbook').on('click', function (e) {
 
     e.preventDefault();
     const href = $(this).attr('href');
+    var idlogbook = $(this).attr('id-logbook');
 
     Swal.fire({
-        title: 'Konfirmasi Kirim Logbook ke atasan',
-        text: "Apakah anda yakin untuk mengirim data logbook ini ke atasan anda? Data yang sudah dikirim tidak dapat diubah lagi!",
+        title: 'Konfirmasi Kirim Logbook',
+        text: "Apakah anda yakin untuk mengirim logbook ini ke atasan anda?",
         type: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#4e73df',
         cancelButtonColor: '#e74a3b',
-        confirmButtonText: '<i class="fas fa-fw fa-paper-plane"></i> Kirim logbook',
+        confirmButtonColor: '#4e73df',
+        confirmButtonText: '<i class="fas fa-fw fa-paper-plane"></i> Kirim Logbook',
         cancelButtontext: '<i class="fas fa-fw fa-times"></i> Batal'
     }).then((result) => {
         if (result.value) {
-            document.location.href = href;
+            // document.location.href = href;
+            $.ajax({
+                type: "post",
+                url: href,
+                DataType: "json",
+                data: { idlogbook: idlogbook },
+                success: function () {
+                    Swal.fire(
+                        'Logbook',
+                        'Berhasil dikirim ke atasan! Silahkan melanjutkan kegiatan anda.',
+                        'success'
+                    )
+                },
 
+                error: function () {
+                    Swal.fire(
+                        'Batal',
+                        'Proses dibatalkan!',
+                        'error'
+                    )
+                }
+            })
         }
     })
 });
+
+// rekam logbok baru
+$('.buttonlogbookbaru').on('submit', function (e) {
+
+    e.preventDefault();
+
+    var idiku = $('#idiku').val();
+    const href = $(this).attr('action');
+    var id_iku = $('#id_iku').val();
+    var kodeiku = $('#kodeiku').val();
+    var periodepelaporan = $('#periodepelaporan').val();
+    var perhitungan = $('#perhitungan').val();
+    var realisasipadabulan = $('#realisasipadabulan').val();
+    var realisasisdbulan = $('#realisasisdbulan').val();
+    var keterangan = $('#keterangan').val();
+
+    $.ajax({
+        type: "post",
+        url: href,
+        DataType: "json",
+        data: $('.formlogbookbaru').serialize(),
+        success: function () {
+            Swal.fire(
+                'Logbook',
+                'Berhasil direkam! Silahkan melanjutkan kegiatan anda.',
+                'success'
+            )
+        },
+
+        error: function () {
+            Swal.fire(
+                'Batal',
+                'Proses dibatalkan!',
+                'error'
+            )
+        }
+    })
+
+})
 
 //Const KK Bawahan
 const flashDataKontrakBawahan = $('.flashdata-kontrakbawahan').data('flashdatakontrakbawahan');

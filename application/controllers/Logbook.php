@@ -38,31 +38,38 @@ class Logbook extends CI_Controller
             $this->load->view('iku/logbook', $data);
             $this->load->view('templates/footer');
         } else {
-            $this->aksirekamlogbook();
+            $newLogbook = $this->Logbook_model->newlogbook();
+            helper_log("add", "menambah Logbook baru");
+            // $this->session->set_flashdata('logbook', 'Ditambahkan');
+            // redirect('iku/browseiku');
+            echo json_encode($newLogbook);
         }
     }
 
-    public function aksirekamlogbook()
-    {
-        $this->Logbook_model->newlogbook();
-        helper_log("add", "menambah Logbook baru");
-        $this->session->set_flashdata('logbook', 'Ditambahkan');
-        redirect('iku/browseiku');
-    }
+    // public function aksirekamlogbook()
+    // {
+    //     $newLogbook = $this->Logbook_model->newlogbook();
+    //     helper_log("add", "menambah Logbook baru");
+    //     // $this->session->set_flashdata('logbook', 'Ditambahkan');
+    //     // redirect('iku/browseiku');
+    //     echo json_encode($newLogbook);
+    // }
 
     public function hapuslogbook($idlogbook)
     {
-        $this->Logbook_model->deletelogbook($idlogbook);
+        $hapuslogbook = $this->Logbook_model->deletelogbook($idlogbook);
         helper_log("delete", "menghapus Logbook (id-logbook = $idlogbook)");
-        $this->session->set_flashdata('logbook', 'Dihapus');
-        redirect('iku/browseiku');
+        // $this->session->set_flashdata('logbook', 'Dihapus');
+        // redirect('iku/browseiku');
+        echo json_encode($hapuslogbook);
     }
 
     public function kirimkeatasan($idlogbook)
     {
-        $this->Logbook_model->kirimlogbook($idlogbook);
+        $kirimlogbook = $this->Logbook_model->kirimlogbook($idlogbook);
         helper_log("send", "mengirim Logbook ke atasan (id-logbook = $idlogbook)");
-        $this->session->set_flashdata('logbook', 'Dikirim ke atasan');
-        redirect('iku/browseiku');
+        // $this->session->set_flashdata('logbook', 'Dikirim ke atasan');
+        // redirect('iku/browseiku');
+        echo json_encode($kirimlogbook);
     }
 }

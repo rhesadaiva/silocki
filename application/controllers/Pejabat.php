@@ -109,7 +109,7 @@ class Pejabat extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
         $data['role'] = $this->session->userdata('role_id');
         $data['indikator'] = $this->Indikator_model->getIKUById($idiku);
-        $data['logbookdetail'] = $this->Logbook_model->getlogbook($idiku);
+        $data['logbookdetail'] = $this->Logbook_model->getsentlogbook($idiku);
 
 
         $this->load->view('templates/header', $data);

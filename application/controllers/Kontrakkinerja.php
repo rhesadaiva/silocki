@@ -56,10 +56,10 @@ class Kontrakkinerja extends CI_Controller
     }
     public function hapuskontrak($id)
     {
-        $this->Kontrak_model->hapuskontrak($id);
-        $this->session->set_flashdata('flash', 'Dihapus');
+        $hapuskontrak = $this->Kontrak_model->hapuskontrak($id);
+        // $this->session->set_flashdata('flash', 'Dihapus');
         helper_log("delete", "menghapus Kontrak Kinerja (id-kontrak = $id)");
-        redirect('kontrakkinerja/browsekontrak');
+        echo json_encode($hapuskontrak);
     }
 
     public function editkontrak($id)

@@ -37,6 +37,14 @@ class Logbook_model extends CI_Model
         return $query->result_array();
     }
 
+    // Ambil data logbook yang sudah dikirim
+    public function getsentlogbook($idiku)
+    {
+        $idiku = $this->uri->segment(3);
+        $query = $this->db->query("SELECT indikatorkinerjautama.*, logbook.* FROM indikatorkinerjautama JOIN logbook using(id_iku) where logbook.id_iku='$idiku' and is_sent = 1");
+        return $query->result_array();
+    }
+
     // Hapus Logbook
     public function deletelogbook($idlogbook)
     {

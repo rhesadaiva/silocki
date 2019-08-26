@@ -69,8 +69,11 @@
                                 <td class="aksibrowsekontrak">
                                     <?php if ($kontrak['is_validated'] == 1) : ?>
                                     <a data-toggle="tooltip" data-placement="left" title="Edit Kontrak Kinerja" href="<?= base_url(); ?>kontrakkinerja/editkontrak/<?= $kontrak['id']; ?> "><i class="fas fa-fw fa-edit"></i></a>
-                                    <a data-toggle="tooltip" data-placement="left" title="Hapus Kontrak Kinerja" class="hapus-kontrak" href="<?= base_url(); ?>kontrakkinerja/hapuskontrak/<?= $kontrak['id']; ?> "><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
+
+                                    <a data-toggle="tooltip" data-placement="left" title="Hapus Kontrak Kinerja" class="hapus-kontrak" href="<?= base_url(); ?>kontrakkinerja/hapuskontrak/<?= $kontrak['id']; ?> " id="<?= $kontrak['id']; ?>"><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
+
                                     <?php else : ?>
+
                                     <i data-toggle="tooltip" data-placement="left" title="Kontrak Kinerja Terkunci" class="button-locklgobook" id="button-lockkontrak"><span style=" color:#daa520;"><i class="fas fa-fw fa-lock"></i></span></i>
                                 </td>
                                 <?php endif; ?>

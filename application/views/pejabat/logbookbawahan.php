@@ -65,7 +65,7 @@
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">Waktu Rekam</th>
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">Waktu Persetujuan</th>
                                 <th class="text-center" data-valign="middle" data-halign="center" scope="col">Aksi</th>
-                                <th class="text-center" data-valign="middle" data-halign="center" scope="col">Test</th>
+
                             </tr>
                         </thead>
 
@@ -140,6 +140,7 @@
                                     <?php if ($logbook['is_approved'] == 0) : ?>
 
                                     <a data-toggle="tooltip" data-placement="left" title="Setuju Logbook Bawahan" class="button-setujulogbookbawahan" href="<?= base_url(); ?>pejabat/approvelogbook/<?= $logbook['id_logbook']; ?>"><span style="color:blue;"><i class="fas fa-fw fa-thumbs-up"></i></span></a>
+                                    <a data-toggle="tooltip" data-placement="left" title="Tolak Logbook" class="button-tolaklogbookbawahan" href="<?= base_url(); ?>pejabat/batalapprovelogbook/<?= $logbook['id_logbook']; ?>"><span style="color:red;"><i class="fas fa-fw fa-times"></i></span></a>
 
                                     <?php else : ?>
 
@@ -147,7 +148,7 @@
 
                                     <?php endif; ?>
                                 </td>
-                                <td><?= $logbook['wakturekam'] - $logbook['tgl_approve']; ?></td>
+
 
                             </tr>
 

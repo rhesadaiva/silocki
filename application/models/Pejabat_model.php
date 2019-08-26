@@ -182,3 +182,6 @@ class Pejabat_model extends CI_Model
         return $this->db->get('pengumuman')->result_array();
     }
 }
+
+
+// PEJABAT

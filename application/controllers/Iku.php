@@ -72,10 +72,11 @@ class Iku extends CI_Controller
 
     public function hapusiku($idiku)
     {
-        $this->Indikator_model->hapusiku($idiku);
+        $hapusiku = $this->Indikator_model->hapusiku($idiku);
         helper_log("delete", "menghapus IKU (id-iku = $idiku)");
-        $this->session->set_flashdata('flash', 'Dihapus');
-        redirect('iku/browseiku');
+        // $this->session->set_flashdata('flash', 'Dihapus');
+        // redirect('iku/browseiku');
+        echo json_encode($hapusiku);
     }
 
     public function editiku($idiku)
@@ -141,13 +142,13 @@ class Iku extends CI_Controller
             $this->load->view('iku/editiku', $data);
             $this->load->view('templates/footer');
         } else {
-            $this->_aksiadendum;
+            $this->_aksiadendum($idiku);
         }
     }
 
-    private function _aksiadendum()
+    private function _aksiadendum($idiku)
     {
-        $this->Indikator_model->adendumIKU($idiiku);
+        $this->Indikator_model->adendumIKU($idiku);
         helper_log("edit", "melakukan adendum IKU (id-iku = $idiku)");
         $this->session->set_flashdata('flash', 'Diadendum');
         redirect('iku/browseiku');

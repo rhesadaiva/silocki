@@ -67,7 +67,7 @@
 
                                     <a data-toggle="tooltip" data-placement="left" title="Edit IKU" href="<?= base_url(); ?>iku/editiku/<?= $iku['id_iku']; ?>"><i class="fas fa-fw fa-edit"></i></a>
 
-                                    <a data-toggle="tooltip" data-placement="left" title="Hapus IKU" class="buttonhapusiku" href="<?= base_url(); ?>iku/hapusiku/<?= $iku['id_iku']; ?> "><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
+                                    <a data-toggle="tooltip" data-placement="left" title="Hapus IKU" class="buttonhapusiku" href="<?= base_url(); ?>iku/hapusiku/<?= $iku['id_iku']; ?> " id-iku="<?= $iku['id_iku']; ?>"><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
 
                                     <?php else : ?>
                                     <a data-toggle="tooltip" data-placement="left" title="Pengisian Logbook" class="inputlogbook" href="<?= base_url(); ?>logbook/showlogbook/<?= $iku['id_iku']; ?>"><span style="color:forestgreen;"><i class="fas fa-fw fa-chart-line"></i></span></a>

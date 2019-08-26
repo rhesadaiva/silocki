@@ -19,6 +19,7 @@
                     <tr>
                         <th scope="row" width="150px">Kode IKU</th>
                         <td><?= $indikator['kodeiku']; ?></td>
+                        <input type="hidden" id="idiku" value="<?= $this->uri->segment(3); ?>">
                     </tr>
 
                     <tr>
@@ -54,28 +55,26 @@
             <div class="tab-content pt-1" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-rekamlogbook" role="tabpanel">
 
-                    <form action="" method="post">
+                    <form action="" method="post" class="formlogbookbaru">
 
                         <div class="form-group row">
                             <label for="id_iku" class="col-sm-2 col-form- sr-only">ID IKU</label>
                             <div class="col-sm-2">
-                                <input type="hidden" class="form-control" name="id_iku" value="<?= $indikator['id_iku']; ?>" readonly>
+                                <input type="hidden" class="form-control" id="id_iku" name="id_iku" value="<?= $indikator['id_iku']; ?>" readonly>
                             </div>
                         </div>
-
-
 
                         <div class="form-group row">
                             <label for="kodeiku" class="col-sm-2 col-form-label sr-only">Kode IKU</label>
                             <div class="col-sm-2">
-                                <input type="hidden" class="form-control" name="kodeiku" value="<?= $indikator['kodeiku']; ?>" readonly>
+                                <input type="hidden" class="form-control" id="kodeiku" name="kodeiku" value="<?= $indikator['kodeiku']; ?>" readonly>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="periodepelaporan" class="col-sm-2 col-form-label">Periode Pelaporan</label>
                             <div class="col-sm-6">
-                                <select class="selectpicker" name="periodepelaporan" data-live-search="true">
+                                <select class="selectpicker" name="periodepelaporan" data-live-search="true" id="periodepelaporan">
                                     <option value="1">Januari</option>
                                     <option value="2">Februari</option>
                                     <option value="3">Maret</option>
@@ -95,7 +94,7 @@
                         <div class="form-group row">
                             <label for="perhitungan" class="col-sm-2 col-form-label">Perhitungan</label>
                             <div class="col-sm-6">
-                                <textarea class="form-control rounded-1" name="perhitungan"></textarea>
+                                <textarea class="form-control rounded-1" name="perhitungan" id="perhitungan"></textarea>
                                 <?= form_error('keterangan', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
@@ -103,7 +102,7 @@
                         <div class="form-group row">
                             <label for="realisasipadabulan" class="col-sm-2 col-form-label">Realisasi Pada Bulan Pelaporan</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" name="realisasipadabulan">
+                                <input type="text" class="form-control" name="realisasipadabulan" id="realisasipadabulan">
                                 <?= form_error('realisasipadabulan', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
@@ -111,7 +110,7 @@
                         <div class="form-group row">
                             <label for="realisasisdbulan" class="col-sm-2 col-form-label">Realisasi s.d Bulan Pelaporan</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" name="realisasisdbulan">
+                                <input type="text" class="form-control" name="realisasisdbulan" id="realisasisdbulan">
                                 <?= form_error('realisasisdbulan', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
@@ -119,7 +118,7 @@
                         <div class="form-group row">
                             <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
                             <div class="col-sm-6">
-                                <textarea class="form-control rounded-1" name="keterangan"></textarea>
+                                <textarea class="form-control rounded-1" name="keterangan" id="keterangan"></textarea>
                                 <?= form_error('keterangan', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
@@ -215,8 +214,9 @@
                                 <td class="aksi">
                                     <?php if ($logbook['is_sent'] == 0) : ?>
 
-                                    <a data-toggle="tooltip" data-placement="left" title="Kirim Ke Atasan" class="button-kirimlogbook" href="<?= base_url(); ?>logbook/kirimkeatasan/<?= $logbook['id_logbook']; ?>"><span style="color:blue;"><i class="fas fa-fw fa-paper-plane"></i></span></a>
-                                    <a data-toggle="tooltip" data-placement="left" title="Hapus Logbook" class="button-hapuslogbook" href="<?= base_url(); ?>logbook/hapuslogbook/<?= $logbook['id_logbook']; ?> "><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
+                                    <a data-toggle="tooltip" data-placement="left" title="Kirim Ke Atasan" class="button-kirimlogbook" href="<?= base_url(); ?>logbook/kirimkeatasan/<?= $logbook['id_logbook']; ?>" id-logbook="<?= $logbook['id_logbook'] ?>"><span style="color:blue;"><i class="fas fa-fw fa-paper-plane"></i></span></a>
+
+                                    <a data-toggle="tooltip" data-placement="left" title="Hapus Logbook" class="button-hapuslogbook" href="<?= base_url(); ?>logbook/hapuslogbook/<?= $logbook['id_logbook']; ?> " id-logbook="<?= $logbook['id_logbook'] ?>"><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
 
                                     <?php else : ?>
 
