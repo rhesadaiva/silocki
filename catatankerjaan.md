@@ -31,4 +31,8 @@
    - hapus logbook,
    - kirim logbook,
    - rekam logbook baru
-4. merubah pengisian logbook dari navbar menjadi modal agar lebih mudah membuat ajaxnya.
+4. merubah pengisian logbook dari navbar menjadi modal agar lebih mudah membuat ajax penambahan logbook baru.
+
+- Selasa, 27 Agustus 2019
+1. Menyelesaikan fitur ajax.
+2. Membuat fitur notifikasi ke pejabat dan bawahan (on progress).
