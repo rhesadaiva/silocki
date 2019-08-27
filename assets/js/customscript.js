@@ -153,6 +153,8 @@ $('.button-hapuslogbook').on('click', function (e) {
                         'Berhasil dihapus! Silahkan melanjutkan kegiatan anda.',
                         'success'
                     )
+                    // window.location.reload();
+
                 },
 
                 error: function () {
@@ -165,6 +167,7 @@ $('.button-hapuslogbook').on('click', function (e) {
             })
         }
     })
+
 });
 
 //Sweet Alert Kirim Logbook ke atasan
@@ -197,6 +200,10 @@ $('.button-kirimlogbook').on('click', function (e) {
                         'Berhasil dikirim ke atasan! Silahkan melanjutkan kegiatan anda.',
                         'success'
                     )
+
+                    setTimeout(function () {
+                        location.reload();
+                    }, 2000);
                 },
 
                 error: function () {
@@ -212,31 +219,30 @@ $('.button-kirimlogbook').on('click', function (e) {
 });
 
 // rekam logbok baru
-$('.buttonlogbookbaru').on('submit', function (e) {
+$('.inputlogbookbaru').on('submit', function (e) {
 
     e.preventDefault();
 
-    var idiku = $('#idiku').val();
-    const href = $(this).attr('action');
-    var id_iku = $('#id_iku').val();
-    var kodeiku = $('#kodeiku').val();
-    var periodepelaporan = $('#periodepelaporan').val();
-    var perhitungan = $('#perhitungan').val();
-    var realisasipadabulan = $('#realisasipadabulan').val();
-    var realisasisdbulan = $('#realisasisdbulan').val();
-    var keterangan = $('#keterangan').val();
+    var idiku = $('#id_iku').val();
+    var url = $(this).attr('action');
+    var data = $(this).serialize();
 
     $.ajax({
         type: "post",
-        url: href,
+        url: url + '/' + idiku,
         DataType: "json",
-        data: $('.formlogbookbaru').serialize(),
+        data: data,
         success: function () {
+            $()
             Swal.fire(
                 'Logbook',
                 'Berhasil direkam! Silahkan melanjutkan kegiatan anda.',
                 'success'
             )
+
+            setTimeout(function () {
+                location.reload();
+            }, 2000);
         },
 
         error: function () {

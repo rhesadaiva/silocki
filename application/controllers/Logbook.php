@@ -16,12 +16,26 @@ class Logbook extends CI_Controller
     {
 
         $idiku = $this->uri->segment(3);
+        $data['idiku'] = $this->uri->segment(3);
 
         $data['title'] = 'Detail Indikator Kinerja Utama';
         $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
         $data['role'] = $this->session->userdata('role_id');
         $data['indikator'] = $this->Indikator_model->getIKUById($idiku);
         $data['logbookdetail'] = $this->Logbook_model->getlogbook($idiku);
+
+        $this->load->view('templates/header', $data);
+        cek_sidebar();
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('iku/logbook', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function rekamlogbook($idiku)
+    {
+
+        $idiku = $this->uri->segment(3);
+        $data['idiku'] = $this->uri->segment(3);
 
         //VALIDATION DATA LOGBOOK
         $this->form_validation->set_rules('periodepelaporan', 'Periode Pelaporan', 'required');
@@ -32,11 +46,7 @@ class Logbook extends CI_Controller
         //END VALIDATION DATA LOGBOOK
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header', $data);
-            cek_sidebar();
-            $this->load->view('templates/topbar', $data);
-            $this->load->view('iku/logbook', $data);
-            $this->load->view('templates/footer');
+            $this->showlogbook($idiku);
         } else {
             $newLogbook = $this->Logbook_model->newlogbook();
             helper_log("add", "menambah Logbook baru");
@@ -45,15 +55,6 @@ class Logbook extends CI_Controller
             echo json_encode($newLogbook);
         }
     }
-
-    // public function aksirekamlogbook()
-    // {
-    //     $newLogbook = $this->Logbook_model->newlogbook();
-    //     helper_log("add", "menambah Logbook baru");
-    //     // $this->session->set_flashdata('logbook', 'Ditambahkan');
-    //     // redirect('iku/browseiku');
-    //     echo json_encode($newLogbook);
-    // }
 
     public function hapuslogbook($idlogbook)
     {
