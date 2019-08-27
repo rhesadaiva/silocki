@@ -179,7 +179,7 @@
                         <div class="form-group row">
                             <label for="periodepelaporan" class="col-sm-4 col-form-label">Periode Pelaporan</label>
                             <div class="col-sm-8">
-                                <select class="" name="periodepelaporan">
+                                <select class="selectpicker" name="periodepelaporan">
                                     <option value="1">Januari</option>
                                     <option value="2">Februari</option>
                                     <option value="3">Maret</option>

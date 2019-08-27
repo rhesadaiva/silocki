@@ -87,12 +87,12 @@
                                 <?php endif; ?>
                                 <td class="aksi text-center">
                                     <?php if ($iku['iku_validated'] == 0) : ?>
-                                    <a data-toggle="tooltip" class="button-buttonapproveiku" data-placement="left" title="Persetujuan Indikator Kinerja Utama" href="<?= base_url(); ?>pejabat/approveiku/<?= $iku['id_iku']; ?> "><span style="color:green;"><i class="fas fa-fw fa-thumbs-up"></i></a>
+                                    <a data-toggle="tooltip" class="button-buttonapproveiku" data-placement="left" title="Persetujuan Indikator Kinerja Utama" href="<?= base_url(); ?>pejabat/approveiku/<?= $iku['id_iku']; ?> " data-iku="<?= $iku['id_iku']; ?>"><span style="color:green;"><i class="fas fa-fw fa-thumbs-up"></i></a>
 
                                     <?php else : ?>
 
                                     <a data-toggle="tooltip" data-placement="left" title="Lihat Logbook" class="inputlogbook" href="<?= base_url(); ?>pejabat/logbookbawahan/<?= $iku['id_iku']; ?>"><span style="color:forestgreen;"><i class="fas fa-fw fa-chart-line"></i></span></a>
-                                    <a data-toggle="tooltip" class="button-buttonbatalapproveiku" data-placement="left" title="Pembatalan Persetujuan IKU" href="<?= base_url(); ?>pejabat/batalapproveiku/<?= $iku['id_iku']; ?> "><span style="color:red;"><i class="fas fa-thumbs-down"></i></a>
+                                    <a data-toggle="tooltip" class="button-buttonbatalapproveiku" data-placement="left" title="Pembatalan Persetujuan IKU" href="<?= base_url(); ?>pejabat/batalapproveiku/<?= $iku['id_iku']; ?> " data-iku="<?= $iku['id_iku']; ?>"><span style="color:red;"><i class="fas fa-thumbs-down"></i></a>
 
                                     <?php endif; ?>
 

@@ -57,12 +57,12 @@
                                 <?php endif; ?>
                                 <td class="aksiapprovekontrak">
                                     <?php if ($kontrak['is_validated'] == 1) : ?>
-                                    <a data-toggle="tooltip" class="button-buttonapprovekontrak" data-placement="left" title="Persetujuan Kontrak Kinerja" href="<?= base_url(); ?>pejabat/approvekontrak/<?= $kontrak['id']; ?> "><span style="color:green;"><i class="fas fa-fw fa-thumbs-up"></i></a>
+                                    <a data-toggle="tooltip" class="button-buttonapprovekontrak" data-placement="left" title="Persetujuan Kontrak Kinerja" href="<?= base_url(); ?>pejabat/approvekontrak/<?= $kontrak['id']; ?> " data-kontrak=<?= $kontrak['id']; ?>><span style="color:green;"><i class="fas fa-fw fa-thumbs-up"></i></a>
 
                                     <?php else : ?>
                                     <a data-toggle="tooltip" data-placement="left" title="Detail Kontrak Kinerja" href="<?= base_url(); ?>pejabat/detailkontrak/<?= $kontrak['id']; ?> "><i class="fas fa-fw fa-search"></i></a>
 
-                                    <a data-toggle="tooltip" class="button-buttonbatalapprovekontrak" data-placement="left" title="Pembatalan Persetujuan Kontrak Kinerja" href="<?= base_url(); ?>pejabat/batalapprovekontrak/<?= $kontrak['id']; ?> "><span style="color:red;"><i class="fas fa-fw fa-thumbs-down"></i></a>
+                                    <a data-toggle="tooltip" class="button-buttonbatalapprovekontrak" data-placement="left" title="Pembatalan Persetujuan Kontrak Kinerja" href="<?= base_url(); ?>pejabat/batalapprovekontrak/<?= $kontrak['id']; ?> " data-kontrak=<?= $kontrak['id']; ?>><span style="color:red;"><i class="fas fa-fw fa-thumbs-down"></i></a>
 
                                     <?php endif; ?>
 

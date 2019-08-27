@@ -153,8 +153,9 @@ $('.button-hapuslogbook').on('click', function (e) {
                         'Berhasil dihapus! Silahkan melanjutkan kegiatan anda.',
                         'success'
                     )
-                    // window.location.reload();
-
+                    setTimeout(function () {
+                        location.reload();
+                    }, 100);
                 },
 
                 error: function () {
@@ -203,7 +204,7 @@ $('.button-kirimlogbook').on('click', function (e) {
 
                     setTimeout(function () {
                         location.reload();
-                    }, 2000);
+                    }, 100);
                 },
 
                 error: function () {
@@ -233,7 +234,7 @@ $('.inputlogbookbaru').on('submit', function (e) {
         DataType: "json",
         data: data,
         success: function () {
-            $()
+            $('#rekamlogbook').modal('hide');
             Swal.fire(
                 'Logbook',
                 'Berhasil direkam! Silahkan melanjutkan kegiatan anda.',
@@ -242,7 +243,7 @@ $('.inputlogbookbaru').on('submit', function (e) {
 
             setTimeout(function () {
                 location.reload();
-            }, 2000);
+            }, 100);
         },
 
         error: function () {
@@ -276,6 +277,8 @@ $('.button-buttonapprovekontrak').on('click', function (e) {
 
     e.preventDefault();
     const href = $(this).attr('href');
+    var id = $(this).attr('data-kontrak');
+
 
     Swal.fire({
         title: 'Konfirmasi Persetujuan Kontrak Kinerja Bawahan',
@@ -288,8 +291,31 @@ $('.button-buttonapprovekontrak').on('click', function (e) {
         cancelButtontext: '<i class="fas fa-fw fa-times"></i> Batal'
     }).then((result) => {
         if (result.value) {
-            document.location.href = href;
+            $.ajax({
+                type: "post",
+                url: href,
+                DataType: "json",
+                data: { id: id },
+                success: function () {
+                    Swal.fire(
+                        'Kontrak Kinerja',
+                        'Berhasil disetujui! Silahkan melanjutkan kegiatan anda.',
+                        'success'
+                    )
 
+                    setTimeout(function () {
+                        location.reload();
+                    }, 100);
+                },
+
+                error: function () {
+                    Swal.fire(
+                        'Batal',
+                        'Proses dibatalkan!',
+                        'error'
+                    )
+                }
+            })
         }
     })
 });
@@ -299,6 +325,7 @@ $('.button-buttonbatalapprovekontrak').on('click', function (e) {
 
     e.preventDefault();
     const href = $(this).attr('href');
+    var id = $(this).attr('data-kontrak');
 
     Swal.fire({
         title: 'Konfirmasi Pembatalan Persetujuan Kontrak Kinerja Bawahan',
@@ -311,7 +338,31 @@ $('.button-buttonbatalapprovekontrak').on('click', function (e) {
         cancelButtontext: '<i class="fas fa-fw fa-times"></i> Kembali'
     }).then((result) => {
         if (result.value) {
-            document.location.href = href;
+            $.ajax({
+                type: "post",
+                url: href,
+                DataType: "json",
+                data: { id: id },
+                success: function () {
+                    Swal.fire(
+                        'Kontrak Kinerja',
+                        'Berhasil dibatalkan! Silahkan melanjutkan kegiatan anda.',
+                        'success'
+                    )
+
+                    setTimeout(function () {
+                        location.reload();
+                    }, 100);
+                },
+
+                error: function () {
+                    Swal.fire(
+                        'Batal',
+                        'Proses dibatalkan!',
+                        'error'
+                    )
+                }
+            })
 
         }
     })
@@ -338,9 +389,10 @@ $('.button-buttonapproveiku').on('click', function (e) {
 
     e.preventDefault();
     const href = $(this).attr('href');
+    var idiku = $(this).attr('data-iku');
 
     Swal.fire({
-        title: 'Konfirmasi Pembatalan Persetujuan Indikator Kinerja Utama Bawahan',
+        title: 'Konfirmasi Persetujuan Indikator Kinerja Utama Bawahan',
         text: "Apakah anda yakin untuk menyetujui IKU ini?",
         type: 'warning',
         showCancelButton: true,
@@ -350,8 +402,31 @@ $('.button-buttonapproveiku').on('click', function (e) {
         cancelButtontext: '<i class="fas fa-fw fa-times"></i> Batal'
     }).then((result) => {
         if (result.value) {
-            document.location.href = href;
+            $.ajax({
+                type: "post",
+                url: href,
+                DataType: "json",
+                data: { idiku: idiku },
+                success: function () {
+                    Swal.fire(
+                        'Indikator Kinerja Utama',
+                        'Berhasil disetujui! Silahkan melanjutkan kegiatan anda.',
+                        'success'
+                    )
 
+                    setTimeout(function () {
+                        location.reload();
+                    }, 100);
+                },
+
+                error: function () {
+                    Swal.fire(
+                        'Batal',
+                        'Proses dibatalkan!',
+                        'error'
+                    )
+                }
+            })
         }
     })
 });
@@ -361,6 +436,7 @@ $('.button-buttonbatalapproveiku').on('click', function (e) {
 
     e.preventDefault();
     const href = $(this).attr('href');
+    var idiku = $(this).attr('data-iku');
 
     Swal.fire({
         title: 'Konfirmasi Pembatalan Persetujuan IKU Bawahan',
@@ -373,7 +449,31 @@ $('.button-buttonbatalapproveiku').on('click', function (e) {
         cancelButtontext: '<i class="fas fa-fw fa-times"></i> Kembali'
     }).then((result) => {
         if (result.value) {
-            document.location.href = href;
+            $.ajax({
+                type: "post",
+                url: href,
+                DataType: "json",
+                data: { idiku: idiku },
+                success: function () {
+                    Swal.fire(
+                        'Indikator Kinerja Utama',
+                        'Berhasil dibatalkan! Silahkan melanjutkan kegiatan anda.',
+                        'success'
+                    )
+
+                    setTimeout(function () {
+                        location.reload();
+                    }, 100);
+                },
+
+                error: function () {
+                    Swal.fire(
+                        'Batal',
+                        'Proses dibatalkan!',
+                        'error'
+                    )
+                }
+            })
 
         }
     })
@@ -397,6 +497,7 @@ $('.button-setujulogbookbawahan').on('click', function (e) {
 
     e.preventDefault();
     const href = $(this).attr('href');
+    var idlogbook = $(this).attr('data-logbook');
 
     Swal.fire({
         title: 'Konfirmasi Persetujuan Logbook Bawahan',
@@ -409,7 +510,31 @@ $('.button-setujulogbookbawahan').on('click', function (e) {
         cancelButtontext: '<i class="fas fa-fw fa-times"></i> Batal'
     }).then((result) => {
         if (result.value) {
-            document.location.href = href;
+            $.ajax({
+                type: "post",
+                url: href,
+                DataType: "json",
+                data: { idlogbook: idlogbook },
+                success: function () {
+                    Swal.fire(
+                        'Logbook',
+                        'Berhasil disetujui! Silahkan melanjutkan kegiatan anda.',
+                        'success'
+                    )
+
+                    setTimeout(function () {
+                        location.reload();
+                    }, 100);
+                },
+
+                error: function () {
+                    Swal.fire(
+                        'Batal',
+                        'Proses dibatalkan!',
+                        'error'
+                    )
+                }
+            })
 
         }
     })
@@ -420,6 +545,7 @@ $('.button-tidaksetujulogbookbawahan').on('click', function (e) {
 
     e.preventDefault();
     const href = $(this).attr('href');
+    var idlogbook = $(this).attr('data-logbook');
 
     Swal.fire({
         title: 'Konfirmasi Pembatalan Logbook Bawahan',
@@ -432,8 +558,32 @@ $('.button-tidaksetujulogbookbawahan').on('click', function (e) {
         cancelButtontext: '<i class="fas fa-fw fa-times"></i> Kembali'
     }).then((result) => {
         if (result.value) {
-            document.location.href = href;
+            $.ajax({
+                type: "post",
+                url: href,
+                DataType: "json",
+                data: { idlogbook: idlogbook },
+                success: function () {
+                    Swal.fire(
+                        'Logbook',
+                        'Berhasil dibatalkan! Silahkan melanjutkan kegiatan anda.',
+                        'success'
+                    )
+                    setTimeout(function () {
+                        location.reload();
+                    }, 100);
+                },
 
+
+
+                error: function () {
+                    Swal.fire(
+                        'Batal',
+                        'Proses dibatalkan!',
+                        'error'
+                    )
+                }
+            })
         }
     })
 });
