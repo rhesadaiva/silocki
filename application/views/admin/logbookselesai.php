@@ -48,9 +48,9 @@
                     <?php foreach ($logbookclear as $clear) : ?>
                     <tr class="selesai">
                         <th scope="row" style="text-align:center" class="nomor"><?= $i; ?></th>
-                        <td class="selesai"><?= $clear['nama']; ?></td>
-                        <td class="selesai">Sudah menyerahkan <b><?= $clear['total']; ?></b> dari 5 Logbook</td>
-                        <td class="selesai">
+                        <td class="selesai text-center"><?= $clear['nama']; ?></td>
+                        <td class="selesai text-center">Sudah menyerahkan <b><?= $clear['total']; ?></b> dari 5 Logbook</td>
+                        <td class="selesai text-center">
                             <?php switch ($clear['periode']) {
                                     case 1:
                                         echo "Januari";

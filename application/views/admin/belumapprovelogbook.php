@@ -49,9 +49,9 @@
                     <?php if ($belum['total'] < 5) : ?>
                     <tr>
                         <th scope="row" class="nomor belumapprove"><?= $i; ?></th>
-                        <td class="belumapprove"><?= $belum['nama']; ?></td>
-                        <td class="belumapprove">Ada <b><?= $belum['total']; ?></b> Logbook yang belum divalidasi oleh atasan</td>
-                        <td class="belumapprove">
+                        <td class="belumapprove text-center"><?= $belum['nama']; ?></td>
+                        <td class="belumapprove text-center">Ada <b><?= $belum['total']; ?></b> Logbook yang belum divalidasi oleh atasan</td>
+                        <td class="belumapprove text-center">
                             <?php switch ($belum['periode']) {
                                         case 1:
                                             echo "Januari";
