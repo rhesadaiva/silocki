@@ -23,5 +23,12 @@
 4. Memperbaiki tooltip pada browse Kontrak Kinerja, browse IKU, dan Manajemen User. 
 
 - Senin, 26 Agustus 2019
-1. Membuat fitur adendum (sementara dibuat seperti fitur edit, nanti akan ditambahkan validasi setelah mengetahui aturannya)
-2. membuat ajax (belum selesai)
+1. Membuat fitur adendum (sementara dibuat seperti fitur edit, nanti akan ditambahkan validasi setelah mengetahui aturannya).
+2. Memperbaiki kolom sqtuan pengukuran dari table indikatorkinerjautama dari enum ke varchar.
+3. membuat ajax untuk aksi:
+   - hapus kontrak,
+   - hapus iku,
+   - hapus logbook,
+   - kirim logbook,
+   - rekam logbook baru
+4. merubah pengisian logbook dari navbar menjadi modal agar lebih mudah membuat ajaxnya.
