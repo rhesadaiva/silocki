@@ -24,7 +24,7 @@
 
 - Senin, 26 Agustus 2019
 1. Membuat fitur adendum (sementara dibuat seperti fitur edit, nanti akan ditambahkan validasi setelah mengetahui aturannya).
-2. Memperbaiki kolom sqtuan pengukuran dari table indikatorkinerjautama dari enum ke varchar.
+2. Memperbaiki kolom satuan pengukuran dari table indikatorkinerjautama dari enum ke varchar.
 3. membuat ajax untuk aksi:
    - hapus kontrak,
    - hapus iku,
@@ -36,3 +36,8 @@
 - Selasa, 27 Agustus 2019
 1. Menyelesaikan fitur ajax.
 2. Membuat fitur notifikasi ke pejabat dan bawahan (on progress).
+
+- Rabu, 28 Agustus 2019
+1. Membuat notifikasi ke Telegram approval dan tidak approval Kontrak Kinerja.
+2. Membuat notifikasi ke Telegram approval dan tidak approval Indikator Kinerja Utama.
+3. Membuat notifikasi ke Telegram approval dan tidak approval Logbook.
