@@ -49,7 +49,7 @@
                     <tr class="selesai">
                         <th scope="row" style="text-align:center" class="nomor"><?= $i; ?></th>
                         <td class="selesai text-center"><?= $clear['nama']; ?></td>
-                        <td class="selesai text-center">Sudah menyerahkan <b><?= $clear['total']; ?></b> dari 5 Logbook</td>
+                        <td class="selesai text-center">Sudah menyerahkan <b><?= $clear['total']; ?></b> Logbbok</td>
                         <td class="selesai text-center"><?= $clear['periode']; ?></td>
                     </tr>
                     <?php $i++; ?>
