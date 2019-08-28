@@ -36,3 +36,6 @@
 - Selasa, 27 Agustus 2019
 1. Menyelesaikan fitur ajax.
 2. Membuat fitur notifikasi ke pejabat dan bawahan (on progress).
+
+- Rabu, 28 Agustus 2019
+1. Notifikasi Logbook tidak terkirim
