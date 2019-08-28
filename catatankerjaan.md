@@ -46,3 +46,4 @@
 6. Menghapus PHP SWITCH dan SELECT OPTION bulan diganti menjadi bulan, tidak huruf.
 7. Perbaikan CSS pada tabel logbook.
 8. Merubah timeout refresh ajax.
+9. Menghapus tulisan dari 5 logbook pada halaman Logbook selesai.
