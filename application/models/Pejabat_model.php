@@ -43,10 +43,10 @@ class Pejabat_model extends CI_Model
         $this->db->where('id', $id);
         $this->db->update('kontrakkinerja', $data);
 
-        // Kirim notifikasi ke Telegram bahwa Kontrak sudah diapprove
+        // Send Notif Ke Telegram
         $this->_telegram(
             $telegram['telegram'],
-            "Halo, *" . $telegram['nama'] . " *\n\nKontrak Kinerja anda dengan nomor *" . $telegram['nomorkk'] . "* telah disetujui oleh *" . $telegram['atasan'] . "* . \n\nSilahkan melanjutkan dengan mengisi IKU dan Logbook anda. Terima kasih."
+            "Halo, *" . $telegram['nama'] . " *\n\nKontrak Kinerja anda dengan nomor *" . $telegram['nomorkk'] . "* *TELAH DISETUJUI*. \n\nSilahkan melanjutkan dengan mengisi IKU dan Logbook anda. Terima kasih."
         );
     }
 
@@ -66,9 +66,10 @@ class Pejabat_model extends CI_Model
         $this->db->where('id', $id);
         $this->db->update('kontrakkinerja', $data);
 
+        // Send Notif Ke Telegram
         $this->_telegram(
             $telegram['telegram'],
-            "Halo, *" . $telegram['nama'] . " *\n\nKontrak Kinerja anda dengan nomor *" . $telegram['nomorkk'] . "* tidak disetujui oleh *" . $telegram['atasan'] . "* . \n\nSilahkan perbaiki Kontrak Kinerja . Terima kasih."
+            "Halo, *" . $telegram['nama'] . " *\n\nKontrak Kinerja anda dengan nomor *" . $telegram['nomorkk'] . "* *TIDAK DISETUJUI* oleh atasan anda. \n\nSilahkan perbaiki Kontrak Kinerja. Terima kasih."
         );
     }
 
@@ -93,6 +94,10 @@ class Pejabat_model extends CI_Model
     {
         $role = $this->session->userdata('nama');
 
+        $query = $this->db->query("SELECT `indikatorkinerjautama`.*, `user`.nama, `user`.nip, `user`.atasan, `user`.telegram from `indikatorkinerjautama` join `user` using (nip) where `indikatorkinerjautama`.id_iku = '$idiku' ");
+
+        $telegram = $query->row_array();
+
         $data =
             [
                 'iku_validated' => 1,
@@ -103,12 +108,19 @@ class Pejabat_model extends CI_Model
         $this->db->update('indikatorkinerjautama', $data);
 
         // Send Notif ke Telegram
-
+        $this->_telegram(
+            $telegram['telegram'],
+            "Halo, *" . $telegram['nama'] . "* \n\nIKU anda dengan nomor IKU *" . $telegram['kodeiku'] . " - " . $telegram['namaiku'] . "* telah disetujui oleh atasan anda. \nSilahkan melanjutkan dengan mengisi Logbook. Terima kasih."
+        );
     }
 
     //Batal approve IKU
     public function batalapproveiku($idiku)
     {
+        $query = $this->db->query("SELECT `indikatorkinerjautama`.*, `user`.nama, `user`.nip, `user`.atasan, `user`.telegram from `indikatorkinerjautama` join `user` using (nip) where `indikatorkinerjautama`.id_iku = '$idiku' ");
+
+        $telegram = $query->row_array();
+
         $data =
             [
                 'iku_validated' => 0
@@ -116,12 +128,22 @@ class Pejabat_model extends CI_Model
 
         $this->db->where('id_iku', $idiku);
         $this->db->update('indikatorkinerjautama', $data);
+
+        // Send Notif ke Telegram
+        $this->_telegram(
+            $telegram['telegram'],
+            "Halo, *" . $telegram['nama'] . "* \n\nIKU anda dengan nomor IKU *" . $telegram['kodeiku'] . " - " . $telegram['namaiku'] . "* tidak disetujui oleh atasan anda.  \nSilahkan lakukan perbaikan terhadap IKU. Terima kasih."
+        );
     }
 
     //Approve Logbook
     public function approvelogbook($idlogbook)
     {
         $role = $this->session->userdata('nama');
+
+        $query = $this->db->query("SELECT `logbook`.*, `user`.nama, `user`.nip, `user`.atasan, `user`.telegram, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.kodeiku, `indikatorkinerjautama`.namaiku from `logbook` join `user`  on `user`.nip = `logbook`.nippegawai join `indikatorkinerjautama` using (id_iku) where `logbook`.id_logbook = '$idlogbook'");
+
+        $telegram = $query->row_array();
 
         $data =
             [
@@ -133,20 +155,36 @@ class Pejabat_model extends CI_Model
 
         $this->db->where('id_logbook', $idlogbook);
         $this->db->update('logbook', $data);
+
+        // Send Notif ke Telegram
+        $this->_telegram(
+            $telegram['telegram'],
+            "Halo, *" . $telegram['nama'] . "* \n\nLogbook anda untuk IKU *" . $telegram['kodeiku'] . " - " . $telegram['namaiku'] . "* periode " . $telegram['periode'] . "* TELAH DISETUJUI oleh atasan anda. \nTerima kasih telah menyerahkan Logbook anda."
+        );
     }
 
     //Batal approve logbook
     public function batalapprovelogbook($idlogbook)
     {
+        $query = $this->db->query("SELECT `logbook`.*, `user`.nama, `user`.nip, `user`.atasan, `user`.telegram, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.kodeiku, `indikatorkinerjautama`.namaiku from `logbook` join `user`  on `user`.nip = `logbook`.nippegawai join `indikatorkinerjautama` using (id_iku) where `logbook`.id_logbook = '$idlogbook'");
+
+        $telegram = $query->row_array();
+
         $data =
             [
+                'tgl_approve' => NULL,
                 'is_approved' => 0,
                 'is_sent' => 0,
-                'tgl_batalapprove' => date("Y-m-d H:i:s")
+                'tgl_batalapprove' => date("Y-m-d H:i:s"),
             ];
 
         $this->db->where('id_logbook', $idlogbook);
         $this->db->update('logbook', $data);
+
+        $this->_telegram(
+            $telegram['telegram'],
+            "Halo, *" . $telegram['nama'] . "* \n\Logbook anda untuk IKU *" . $telegram['kodeiku'] . " - " . $telegram['namaiku'] . "* periode " . $telegram['periode'] . "* TIDAK DISETUJUI oleh atasan anda. \nTerima kasih telah menyerahkan Logbook anda."
+        );
     }
 
     //Fungsi Hitung Bawahan
