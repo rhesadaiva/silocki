@@ -19,9 +19,6 @@ class Pejabat_model extends CI_Model
         $query = $this->db->query("SELECT `kontrakkinerja`.*, `user`.nama, `user`.nip, `user`.atasan, `user`.telegram from kontrakkinerja join user using (nip) where atasan = '$role' ");
 
         return $query->result_array();
-
-        // $resultKontrak = $query->result_array();
-
     }
 
     //Fungsi approve kontrak
@@ -217,12 +214,9 @@ class Pejabat_model extends CI_Model
     {
         $role = $this->session->userdata('nama');
 
-        $akunnotif = $this->db->get_where('user', ['nama' => $role])->row_array();
-
         $query = $this->db->query("SELECT `kontrakkinerja`.*, `user`.nama, `user`.`atasan` from kontrakkinerja  join user using (nip) where atasan = '$role' and is_validated != 2");
         if ($query->num_rows() > 0) {
-            $kknotapproved = $query->num_rows();
-            return $kknotapproved;
+            return $query->num_rows();
         } else {
             return 0;
         }
@@ -277,6 +271,3 @@ class Pejabat_model extends CI_Model
         curl_close($ch);
     }
 }
-
-
-// PEJABAT
