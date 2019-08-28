@@ -40,7 +40,28 @@ td.kontrak {
     padding-right: 700px;
 }
 
-td.nama-ikubawahan {
+/* IKU BAWAHAN Style */
+th.nomorikubawahan {
     text-align: left;
-  
+    width: 10px;
+}
+
+td.kodeikubawahan {
+    width: 30px;
+}
+
+td.nilaitertinggiikubawahan {
+    width: 50px;
+}
+
+td.namavalidatorikubawahan {
+    width: 20px;
+}
+
+td.aksiikubawahan {
+    width: 60px;
+}
+
+td.namaikubawahan {
+    width: 600px;
 }

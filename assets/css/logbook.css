@@ -26,9 +26,9 @@ h4.logbook {
 	text-align: center;
 }
 
-/* .realisasi {
-	width: 10%;
-} */
+td.realisasiterakhir {
+	width: 15px;
+}
 
 td.perhitungan {
 	width: 12%;
@@ -49,19 +49,19 @@ td.wakturekam {
 }
 
 td.realisasi {
-	width: 120px;
+	width: 10px;
 }
 
 td.periode {
-	width: 120px;
+	width: 10px;
 }
 
-th.nomor {
-	width: 60px;
+th.nomorlogbook {
+	width: 20px;
 }
 
 td.aksi {
-	width: 80px;
+	width: 50px;
 }
 
 td.keterangan {

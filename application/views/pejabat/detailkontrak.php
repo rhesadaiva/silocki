@@ -78,12 +78,12 @@
                             <?php $i = 1; ?>
                             <?php foreach ($listiku as $iku) : ?>
                             <tr>
-                                <th class="text-center" scope="row"><?= $i; ?></th>
+                                <th class="text-center nomorikubawahan" scope="row"><?= $i; ?></th>
                                 <td class="text-center kodeikubawahan"><?= $iku['kodeiku']; ?></td>
-                                <td class="nama-ikubawahan"><?= $iku['namaiku']; ?></td>
-                                <td class="text-center"><?= $iku['targetiku']; ?> dari <?= $iku['nilaitertinggi']; ?></td>
+                                <td class="namaikubawahan"><?= $iku['namaiku']; ?></td>
+                                <td class="text-center nilaitertinggiikubawahan"><?= $iku['targetiku']; ?> dari <?= $iku['nilaitertinggi']; ?></td>
                                 <?php if ($this->session->userdata('role_id') == 1) : ?>
-                                <td class="text-center"><?= $iku['nama_validated']; ?></td>
+                                <td class="text-center namavalidatorikubawahan"><?= $iku['nama_validated']; ?></td>
                                 <?php endif; ?>
                                 <td class="aksiikubawahan text-center">
                                     <?php if ($iku['iku_validated'] == 0) : ?>

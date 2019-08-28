@@ -67,7 +67,7 @@
                     <?php $i = 1 ?>
                     <?php foreach ($logbookdetail as $logbook) : ?>
                     <tr class="detail">
-                        <th class="nomor" scope="row"><?= $i; ?></th>
+                        <th class="nomorlogbook" scope="row"><?= $i; ?></th>
                         <td class="periode"><?= $logbook['periode']; ?></td>
                         <td class="perhitungan"><?= $logbook['perhitungan']; ?></td>
                         <td class="realisasi"><?= $logbook['realisasibulan']; ?></td>
