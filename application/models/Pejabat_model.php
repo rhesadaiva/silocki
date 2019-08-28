@@ -6,7 +6,7 @@ class Pejabat_model extends CI_Model
     //Ambil semua Kontrak Khusus Admin
     public function getAllKontrak()
     {
-        $query = $this->db->query("SELECT `kontrakkinerja`.*, `user`.nama, `user`.nip, `user`.atasan from kontrakkinerja join user using (nip)");
+        $query = $this->db->query("SELECT `kontrakkinerja`.*, `user`.nama, `user`.nip, `user`.atasan, `user`.telegram from kontrakkinerja join user using (nip)");
 
         return $query->result_array();
     }
@@ -16,15 +16,22 @@ class Pejabat_model extends CI_Model
     {
         $role = $this->session->userdata('nama');
 
-        $query = $this->db->query("SELECT `kontrakkinerja`.*, `user`.nama, `user`.nip, `user`.atasan from kontrakkinerja join user using (nip) where atasan = '$role' ");
+        $query = $this->db->query("SELECT `kontrakkinerja`.*, `user`.nama, `user`.nip, `user`.atasan, `user`.telegram from kontrakkinerja join user using (nip) where atasan = '$role' ");
 
         return $query->result_array();
+
+        // $resultKontrak = $query->result_array();
+
     }
 
     //Fungsi approve kontrak
     public function approvekontrak($id)
     {
         $role = $this->session->userdata('nama');
+
+        $query = $this->db->query("SELECT `kontrakkinerja`.*, `user`.nama, `user`.nip, `user`.atasan, `user`.telegram from `kontrakkinerja` join `user` using (nip) where `kontrakkinerja`.id = '$id' ");
+
+        $telegram = $query->row_array();
 
         $data =
             [
@@ -35,12 +42,22 @@ class Pejabat_model extends CI_Model
 
         $this->db->where('id', $id);
         $this->db->update('kontrakkinerja', $data);
+
+        // Kirim notifikasi ke Telegram bahwa Kontrak sudah diapprove
+        $this->_telegram(
+            $telegram['telegram'],
+            "Halo, *" . $telegram['nama'] . " *\n\nKontrak Kinerja anda dengan nomor *" . $telegram['nomorkk'] . "* telah disetujui oleh *" . $telegram['atasan'] . "* . \n\nSilahkan melanjutkan dengan mengisi IKU dan Logbook anda. Terima kasih."
+        );
     }
 
 
     //Fungsi batal approve kontrak
     public function batalapprovekontrak($id)
     {
+        $query = $this->db->query("SELECT `kontrakkinerja`.*, `user`.nama, `user`.nip, `user`.atasan, `user`.telegram from `kontrakkinerja` join `user` using (nip) where `kontrakkinerja`.id = '$id' ");
+
+        $telegram = $query->row_array();
+
         $data =
             [
                 'is_validated' => 1
@@ -48,6 +65,11 @@ class Pejabat_model extends CI_Model
 
         $this->db->where('id', $id);
         $this->db->update('kontrakkinerja', $data);
+
+        $this->_telegram(
+            $telegram['telegram'],
+            "Halo, *" . $telegram['nama'] . " *\n\nKontrak Kinerja anda dengan nomor *" . $telegram['nomorkk'] . "* tidak disetujui oleh *" . $telegram['atasan'] . "* . \n\nSilahkan perbaiki Kontrak Kinerja . Terima kasih."
+        );
     }
 
     //Ambil detail Kontrak
@@ -60,7 +82,9 @@ class Pejabat_model extends CI_Model
     public function getIKUFromKontrak($id)
     {
         $id = $this->uri->segment(3);
-        $query = $this->db->query("SELECT `kontrakkinerja`.*, `indikatorkinerjautama`.* FROM kontrakkinerja JOIN indikatorkinerjautama using (nomorkk) where id = '$id' ");
+        $query = $this->db->query("SELECT `user`.nip, `user`.`telegram`, `user`.atasan, 
+                                    `kontrakkinerja`.*, `indikatorkinerjautama`.* FROM `user` JOIN `kontrakkinerja` 
+                                    using (nip) join `indikatorkinerjautama` where `kontrakkinerja`.id = '$id' ");
         return $query->result_array();
     }
 
@@ -77,6 +101,9 @@ class Pejabat_model extends CI_Model
 
         $this->db->where('id_iku', $idiku);
         $this->db->update('indikatorkinerjautama', $data);
+
+        // Send Notif ke Telegram
+
     }
 
     //Batal approve IKU
@@ -140,9 +167,12 @@ class Pejabat_model extends CI_Model
     {
         $role = $this->session->userdata('nama');
 
+        $akunnotif = $this->db->get_where('user', ['nama' => $role])->row_array();
+
         $query = $this->db->query("SELECT `kontrakkinerja`.*, `user`.nama, `user`.`atasan` from kontrakkinerja  join user using (nip) where atasan = '$role' and is_validated != 2");
         if ($query->num_rows() > 0) {
-            return $query->num_rows();
+            $kknotapproved = $query->num_rows();
+            return $kknotapproved;
         } else {
             return 0;
         }
@@ -180,6 +210,21 @@ class Pejabat_model extends CI_Model
     public function getPengumuman()
     {
         return $this->db->get('pengumuman')->result_array();
+    }
+
+    private function _telegram($telegram, $message)
+    {
+        $url = "https://api.telegram.org/bot905076968:AAG8sNGqlABcYAw6PuUL6eSuFn1-pmSGUpU/sendMessage?parse_mode=markdown&chat_id=" . $telegram;
+        $url = $url . "&text=" . urlencode($message);
+
+        $ch = curl_init();
+        $optArray = array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true
+        );
+        curl_setopt_array($ch, $optArray);
+        $result = curl_exec($ch);
+        curl_close($ch);
     }
 }
 

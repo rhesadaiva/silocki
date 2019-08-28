@@ -29,6 +29,40 @@ class Pejabat extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('pejabat/index');
         $this->load->view('templates/footer');
+
+        // Betulkan fungsi ini dulu bro.....
+        // $this->_notifpejabat();
+    }
+
+    private function _notifpejabat()
+    {
+
+        $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
+        $kknotapproved = $this->Pejabat_model->countKKBawahanNotApproved();
+        $ikunotapproved = $this->Pejabat_model->countIKUBawahanNotApproved();
+        $logbooknotapproved = $this->Pejabat_model->countLogbookBawahanNotApproved();
+        $namalogin = $this->session->userdata('nama');
+
+        if ($kknotapproved > 0) {
+            $this->_telegram(
+                $data['user']['telegram'],
+                "Halo, *" . $namalogin . "* \n\nIzin menyampaikan, bahwa ada *" . $kknotapproved . "* Kontrak Kinerja yang belum disetujui oleh anda. \n\nSilahkan lakukan persetujuan terhadap Kontrak Kinerja tersebut agar bawahan dapat mengisi IKU dan Logbook. Terima kasih"
+            );
+        };
+
+        if ($ikunotapproved > 0) {
+            $this->_telegram(
+                $data['user']['telegram'],
+                "Halo, *" . $namalogin . "* \n\nIzin menyampaikan, bahwa ada *" . $ikunotapproved . "* Indikator Kinerja Utama (IKU) yang belum disetujui oleh anda. \n\nSilahkan lakukan persetujuan terhadap IKU tersebut agar bawahan dapat mengisi Logbook. Terima kasih"
+            );
+        };
+
+        if ($logbooknotapproved > 0) {
+            $this->_telegram(
+                $data['user']['telegram'],
+                "Halo, *" . $namalogin . "* \n\nIzin menyampaikan, bahwa ada *" . $logbooknotapproved . "* Logbook yang belum disetujui oleh anda. \n\nSilahkan lakukan persetujuan terhadap Logbook tersebut. Terima kasih"
+            );
+        };
     }
 
     //Ambil Data KK Bawahan
@@ -141,5 +175,20 @@ class Pejabat extends CI_Controller
         // $this->session->set_flashdata('logbookbawahan', 'Dibatalkan');
         // redirect('pejabat/kontrakkinerjabawahan');
         echo json_encode($batalapprovelogbook);
+    }
+
+    private function _telegram($telegram, $message)
+    {
+        $url = "https://api.telegram.org/bot905076968:AAG8sNGqlABcYAw6PuUL6eSuFn1-pmSGUpU/sendMessage?parse_mode=markdown&chat_id=" . $telegram;
+        $url = $url . "&text=" . urlencode($message);
+
+        $ch = curl_init();
+        $optArray = array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true
+        );
+        curl_setopt_array($ch, $optArray);
+        $result = curl_exec($ch);
+        curl_close($ch);
     }
 }
