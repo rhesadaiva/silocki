@@ -155,7 +155,7 @@ $('.button-hapuslogbook').on('click', function (e) {
                     )
                     setTimeout(function () {
                         location.reload();
-                    }, 100);
+                    }, 1000);
                 },
 
                 error: function () {
@@ -204,7 +204,7 @@ $('.button-kirimlogbook').on('click', function (e) {
 
                     setTimeout(function () {
                         location.reload();
-                    }, 100);
+                    }, 1000);
                 },
 
                 error: function () {
@@ -243,7 +243,7 @@ $('.inputlogbookbaru').on('submit', function (e) {
 
             setTimeout(function () {
                 location.reload();
-            }, 100);
+            }, 1000);
         },
 
         error: function () {
@@ -305,7 +305,7 @@ $('.button-buttonapprovekontrak').on('click', function (e) {
 
                     setTimeout(function () {
                         location.reload();
-                    }, 100);
+                    }, 1000);
                 },
 
                 error: function () {
@@ -352,7 +352,7 @@ $('.button-buttonbatalapprovekontrak').on('click', function (e) {
 
                     setTimeout(function () {
                         location.reload();
-                    }, 100);
+                    }, 1000);
                 },
 
                 error: function () {
@@ -416,7 +416,7 @@ $('.button-buttonapproveiku').on('click', function (e) {
 
                     setTimeout(function () {
                         location.reload();
-                    }, 100);
+                    }, 1000);
                 },
 
                 error: function () {
@@ -463,7 +463,7 @@ $('.button-buttonbatalapproveiku').on('click', function (e) {
 
                     setTimeout(function () {
                         location.reload();
-                    }, 100);
+                    }, 1000);
                 },
 
                 error: function () {
@@ -524,7 +524,7 @@ $('.button-setujulogbookbawahan').on('click', function (e) {
 
                     setTimeout(function () {
                         location.reload();
-                    }, 100);
+                    }, 1000);
                 },
 
                 error: function () {
@@ -571,7 +571,7 @@ $('.button-tidaksetujulogbookbawahan').on('click', function (e) {
                     )
                     setTimeout(function () {
                         location.reload();
-                    }, 100);
+                    }, 1000);
                 },
 
 
