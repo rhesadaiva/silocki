@@ -30,8 +30,8 @@ class Pejabat extends CI_Controller
         $this->load->view('pejabat/index');
         $this->load->view('templates/footer');
 
-        // Betulkan fungsi ini dulu bro.....
-        // $this->_notifpejabat();
+        // Notif telegram setiap pejabat membuka dashboard
+        $this->_notifpejabat();
     }
 
     private function _notifpejabat()
