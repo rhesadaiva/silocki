@@ -93,7 +93,7 @@ class Pejabat_model extends CI_Model
     {
         $role = $this->session->userdata('nama');
 
-        $query = $this->db->query("SELECT `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.nip, `indikatorkinerjautama`.kodeiku, `indikatorkinerjautama`.namaiku, `user`.nama, `user`.nip, `user`.telegram FROM `indikatorkinerjautama` JOIN `user` WHERE `indikatorkinerjautama`.id_iku = '$idiku'");
+        $query = $this->db->query("SELECT `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.nip, `indikatorkinerjautama`.kodeiku, `indikatorkinerjautama`.namaiku, `user`.nama, `user`.nip, `user`.telegram FROM `indikatorkinerjautama` JOIN `user` USING (nip) WHERE `indikatorkinerjautama`.id_iku = '$idiku'");
 
         $telegram = $query->row_array();
 
@@ -116,7 +116,7 @@ class Pejabat_model extends CI_Model
     //Batal approve IKU
     public function batalapproveiku($idiku)
     {
-        $query = $this->db->query("SELECT `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.nip, `indikatorkinerjautama`.kodeiku, `indikatorkinerjautama`.namaiku, `user`.nama, `user`.nip, `user`.telegram FROM `indikatorkinerjautama` JOIN `user` WHERE `indikatorkinerjautama`.id_iku = '$idiku'");
+        $query = $this->db->query("SELECT `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.nip, `indikatorkinerjautama`.kodeiku, `indikatorkinerjautama`.namaiku, `user`.nama, `user`.nip, `user`.telegram FROM `indikatorkinerjautama` JOIN `user` USING (nip) WHERE `indikatorkinerjautama`.id_iku = '$idiku'");
 
         $telegram = $query->row_array();
 

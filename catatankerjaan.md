@@ -41,3 +41,4 @@
 1. Membuat notifikasi ke Telegram approval dan tidak approval Kontrak Kinerja.
 2. Membuat notifikasi ke Telegram approval dan tidak approval Indikator Kinerja Utama.
 3. Membuat notifikasi ke Telegram approval dan tidak approval Logbook.
+4. Memperbaiki klausa join untuk notifikasi ke Telegram.
