@@ -72,39 +72,39 @@
                         <tbody>
                             <?php $i = 1 ?>
                             <?php foreach ($logbookdetail as $logbook) : ?>
-                            <tr class="detail">
-                                <th class="text-center nomor-bawahan" scope="row"><?= $i; ?></th>
-                                <td class="periode"><?= $logbook['periode']; ?></td>
-                                <td class="perhitungan-bawahan"><?= $logbook['perhitungan']; ?></td>
-                                <td class="realisasi-bawahan"><?= $logbook['realisasibulan']; ?></td>
-                                <td class="realisasi-bawahan"><?= $logbook['realisasiterakhir']; ?></td>
-                                <td class="text-justify keterangan-bawahan"><?= $logbook['ket']; ?></td>
-                                <td class="wakturekam-bawahan text-justify"><?= indonesian_date2($logbook['wakturekam']); ?></td>
+                                <tr class="detail">
+                                    <th class="text-center nomor-bawahan" scope="row"><?= $i; ?></th>
+                                    <td class="periode"><?= $logbook['periode']; ?></td>
+                                    <td class="perhitungan-bawahan"><?= $logbook['perhitungan']; ?></td>
+                                    <td class="realisasi-bawahan"><?= $logbook['realisasibulan']; ?></td>
+                                    <td class="realisasi-bawahan"><?= $logbook['realisasiterakhir']; ?></td>
+                                    <td class="text-justify keterangan-bawahan"><?= $logbook['ket']; ?></td>
+                                    <td class="wakturekam-bawahan text-justify"><?= indonesian_date2($logbook['wakturekam']); ?></td>
 
-                                <?php if ($logbook['tgl_approve'] != NULL) : ?>
-                                <td class="waktupersetujuan-bawahan text-justify"><?= indonesian_date2($logbook['tgl_approve']); ?></td>
-                                <?php else : ?>
-                                <td class="waktupersetujuan-bawahan text-justify"></td>
-                                <?php endif; ?>
-
-                                <td class="aksi">
-                                    <?php if ($logbook['is_approved'] == 0) : ?>
-
-                                    <a data-toggle="tooltip" data-placement="left" title="Setuju Logbook Bawahan" class="button-setujulogbookbawahan" href="<?= base_url(); ?>pejabat/approvelogbook/<?= $logbook['id_logbook']; ?>" data-logbook="<?= $logbook['id_logbook']; ?>"><span style="color:blue;"><i class="fas fa-fw fa-thumbs-up"></i></span></a>
-
+                                    <?php if ($logbook['tgl_approve'] != NULL) : ?>
+                                        <td class="waktupersetujuan-bawahan text-justify"><?= indonesian_date2($logbook['tgl_approve']); ?></td>
                                     <?php else : ?>
-
-                                    <a data-toggle="tooltip" data-placement="left" title="Batalkan Persetujuan Logbook" class="button-tidaksetujulogbookbawahan" href="<?= base_url(); ?>pejabat/batalapprovelogbook/<?= $logbook['id_logbook']; ?>" data-logbook="<?= $logbook['id_logbook']; ?>"><span style="color:red;"><i class="fas fa-fw fa-thumbs-down"></i></span></a>
-
+                                        <td class="waktupersetujuan-bawahan text-justify">Belum divalidasi</td>
                                     <?php endif; ?>
-                                </td>
+
+                                    <td class="aksi">
+                                        <?php if ($logbook['is_approved'] == 0) : ?>
+
+                                            <a data-toggle="tooltip" data-placement="left" title="Setuju Logbook Bawahan" class="button-setujulogbookbawahan" href="<?= base_url(); ?>pejabat/approvelogbook/<?= $logbook['id_logbook']; ?>" data-logbook="<?= $logbook['id_logbook']; ?>"><span style="color:blue;"><i class="fas fa-fw fa-thumbs-up"></i></span></a>
+
+                                        <?php else : ?>
+
+                                            <a data-toggle="tooltip" data-placement="left" title="Batalkan Persetujuan Logbook" class="button-tidaksetujulogbookbawahan" href="<?= base_url(); ?>pejabat/batalapprovelogbook/<?= $logbook['id_logbook']; ?>" data-logbook="<?= $logbook['id_logbook']; ?>"><span style="color:red;"><i class="fas fa-fw fa-thumbs-down"></i></span></a>
+
+                                        <?php endif; ?>
+                                    </td>
 
 
-                            </tr>
+                                </tr>
 
                         </tbody>
                         <?php $i++; ?>
-                        <?php endforeach; ?>
+                    <?php endforeach; ?>
                     </table>
                 </div>
 
