@@ -35,17 +35,35 @@ class Kontrak_model extends CI_Model
     //Tambah KK Baru
     public function tambahkontrakbaru()
     {
+        $role = $this->session->userdata('nip');
+        $login = $this->session->userdata('nama');
+
+        // Ambil Nama Atasan
+        $queryAtasan = $this->db->query("SELECT `user`.nip, `user`.atasan FROM `user` where `user`.nip = $role")->row_array();
+        $namaAtasan = $queryAtasan['atasan'];
+
+        // Ambil ID Telegram Atasan dari nama
+        $telegramAtasan = $this->db->query("SELECT `user`.nama, `user`.telegram FROM `user` where `user`.nama = '$namaAtasan'")->row_array();
+
         $data = [
             'id' => uniqid(),
-            'nip' => $this->input->post('nipkk'),
-            'kontrakkinerjake' => $this->input->post('kontrakkinerjake'),
-            'nomorkk' => $this->input->post('nomorkontrakkinerja'),
-            'tanggalmulai' => $this->input->post('tanggalmulai'),
-            'tanggalselesai' => $this->input->post('tanggalselesai'),
+            'nip' => $this->input->post('nipkk', true),
+            'kontrakkinerjake' => $this->input->post('kontrakkinerjake', true),
+            'nomorkk' => $this->input->post('nomorkontrakkinerja', true),
+            'tanggalmulai' => $this->input->post('tanggalmulai', true),
+            'tanggalselesai' => $this->input->post('tanggalselesai', true),
             'is_validated' => 1,
         ];
 
         $this->db->insert('kontrakkinerja', $data);
+
+        $nomorKontrak = $this->input->post('nomorkontrakkinerja');
+        // Send Notif ke Telegram
+
+        $this->_telegram(
+            $telegramAtasan['telegram'],
+            "Halo, *" . $telegramAtasan['nama'] . "*. \n\nBawahan anda: *" . $login . "* telah mengajukan Kontrak Kinerja dengan data sebagai berikut: \n\n*Nomor Kontrak Kinerja*: " . $nomorKontrak . "\n\nMohon diperiksa dan diberikan persetujuan apabila data sudah benar, terima kasih."
+        );
     }
 
     //Hapus KK 
@@ -68,5 +86,21 @@ class Kontrak_model extends CI_Model
 
         $this->db->where('id', $this->input->post('id_kontrak'));
         $this->db->update('kontrakkinerja', $data);
+    }
+
+    // Enabler Telegram
+    private function _telegram($telegram, $message)
+    {
+        $url = "https://api.telegram.org/bot905076968:AAG8sNGqlABcYAw6PuUL6eSuFn1-pmSGUpU/sendMessage?parse_mode=markdown&chat_id=" . $telegram;
+        $url = $url . "&text=" . urlencode($message);
+
+        $ch = curl_init();
+        $optArray = array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true
+        );
+        curl_setopt_array($ch, $optArray);
+        $result = curl_exec($ch);
+        curl_close($ch);
     }
 }

@@ -4,6 +4,7 @@ date_default_timezone_set('Asia/Jakarta');
 
 class Pejabat extends CI_Controller
 {
+
     public function __construct()
     {
         parent::__construct();
@@ -29,6 +30,7 @@ class Pejabat extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('pejabat/index');
         $this->load->view('templates/footer');
+<<<<<<< HEAD
 
         // Notif telegram setiap pejabat membuka dashboard
         $this->_notifpejabat();
@@ -63,6 +65,8 @@ class Pejabat extends CI_Controller
                 "Halo, *" . $namalogin . "* \n\nIzin menyampaikan, bahwa ada *" . $logbooknotapproved . "* Logbook yang belum disetujui oleh anda. \n\nSilahkan lakukan persetujuan terhadap Logbook tersebut. Terima kasih"
             );
         };
+=======
+>>>>>>> notif
     }
 
     //Ambil Data KK Bawahan
