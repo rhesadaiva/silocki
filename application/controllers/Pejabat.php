@@ -4,6 +4,7 @@ date_default_timezone_set('Asia/Jakarta');
 
 class Pejabat extends CI_Controller
 {
+
     public function __construct()
     {
         parent::__construct();
@@ -29,40 +30,6 @@ class Pejabat extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('pejabat/index');
         $this->load->view('templates/footer');
-
-        // Betulkan fungsi ini dulu bro.....
-        // $this->_notifpejabat();
-    }
-
-    private function _notifpejabat()
-    {
-
-        $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
-        $kknotapproved = $this->Pejabat_model->countKKBawahanNotApproved();
-        $ikunotapproved = $this->Pejabat_model->countIKUBawahanNotApproved();
-        $logbooknotapproved = $this->Pejabat_model->countLogbookBawahanNotApproved();
-        $namalogin = $this->session->userdata('nama');
-
-        if ($kknotapproved > 0) {
-            $this->_telegram(
-                $data['user']['telegram'],
-                "Halo, *" . $namalogin . "* \n\nIzin menyampaikan, bahwa ada *" . $kknotapproved . "* Kontrak Kinerja yang belum disetujui oleh anda. \n\nSilahkan lakukan persetujuan terhadap Kontrak Kinerja tersebut agar bawahan dapat mengisi IKU dan Logbook. Terima kasih"
-            );
-        };
-
-        if ($ikunotapproved > 0) {
-            $this->_telegram(
-                $data['user']['telegram'],
-                "Halo, *" . $namalogin . "* \n\nIzin menyampaikan, bahwa ada *" . $ikunotapproved . "* Indikator Kinerja Utama (IKU) yang belum disetujui oleh anda. \n\nSilahkan lakukan persetujuan terhadap IKU tersebut agar bawahan dapat mengisi Logbook. Terima kasih"
-            );
-        };
-
-        if ($logbooknotapproved > 0) {
-            $this->_telegram(
-                $data['user']['telegram'],
-                "Halo, *" . $namalogin . "* \n\nIzin menyampaikan, bahwa ada *" . $logbooknotapproved . "* Logbook yang belum disetujui oleh anda. \n\nSilahkan lakukan persetujuan terhadap Logbook tersebut. Terima kasih"
-            );
-        };
     }
 
     //Ambil Data KK Bawahan

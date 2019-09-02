@@ -50,6 +50,15 @@ class Indikator_model extends CI_Model
     //Tambah IKU Baru
     public function rekamikubaru()
     {
+        $role = $this->session->userdata('nip');
+        $login = $this->session->userdata('nama');
+        // Ambil Nama Atasan
+        $queryAtasan = $this->db->query("SELECT `user`.nip, `user`.atasan FROM `user` where `user`.nip = $role")->row_array();
+        $namaAtasan = $queryAtasan['atasan'];
+        // Ambil ID Telegram Atasan dari nama
+        $telegramAtasan = $this->db->query("SELECT `user`.nama, `user`.telegram FROM `user` where `user`.nama = '$namaAtasan'")->row_array();
+
+
         //Ambil data dari form
         $data = [
             'nip' => $this->input->post('nomorpegawai', true),
@@ -71,6 +80,12 @@ class Indikator_model extends CI_Model
         ];
 
         $this->db->insert('indikatorkinerjautama', $data);
+
+        // Send notif ke Telegram atasan
+        $this->_telegram(
+            $telegramAtasan['telegram'],
+            "Halo, *" . $telegramAtasan['nama'] . "*. \n\nBawahan anda: *" . $login . "* telah mengajukan IKU dengan data sebagai berikut: \n\n*Kode IKU*: " . $this->input->post('kodeiku') . "\n*Nama IKU*: " . $this->input->post('namaiku') . "\n\nMohon diperiksa dan diberikan persetujuan apabila data sudah benar, terima kasih."
+        );
     }
 
     //Hapus IKU
@@ -113,5 +128,21 @@ class Indikator_model extends CI_Model
 
         $this->db->where('id_iku', $this->input->post('id_iku'));
         $this->db->update('indikatorkinerjautama', $data);
+    }
+
+    // Enabler Telegram
+    private function _telegram($telegram, $message)
+    {
+        $url = "https://api.telegram.org/bot905076968:AAG8sNGqlABcYAw6PuUL6eSuFn1-pmSGUpU/sendMessage?parse_mode=markdown&chat_id=" . $telegram;
+        $url = $url . "&text=" . urlencode($message);
+
+        $ch = curl_init();
+        $optArray = array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true
+        );
+        curl_setopt_array($ch, $optArray);
+        $result = curl_exec($ch);
+        curl_close($ch);
     }
 }

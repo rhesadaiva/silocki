@@ -46,10 +46,9 @@ class Pejabat_model extends CI_Model
         // Kirim notifikasi ke Telegram bahwa Kontrak sudah diapprove
         $this->_telegram(
             $telegram['telegram'],
-            "Halo, *" . $telegram['nama'] . " *\n\nKontrak Kinerja anda dengan nomor *" . $telegram['nomorkk'] . "* TELAH DISETUJUI oleh atasan anda.\nSilahkan melanjutkan dengan mengisi IKU dan Logbook anda, terima kasih."
+            "Halo, *" . $telegram['nama'] . " *\n\nKontrak Kinerja anda dengan nomor *" . $telegram['nomorkk'] . "* \nTELAH DISETUJUI oleh atasan anda.\nSilahkan melanjutkan dengan mengisi IKU dan Logbook anda, terima kasih."
         );
     }
-
 
     //Fungsi batal approve kontrak
     public function batalapprovekontrak($id)
@@ -68,7 +67,7 @@ class Pejabat_model extends CI_Model
 
         $this->_telegram(
             $telegram['telegram'],
-            "Halo, *" . $telegram['nama'] . " *\n\nKontrak Kinerja anda dengan nomor *" . $telegram['nomorkk'] . "* TIDAK DISETUJUI oleh atasan anda.\nSilahkan melakukan perbaikan pada Kontrak Kinerja anda, terima kasih."
+            "Halo, *" . $telegram['nama'] . " *\n\nKontrak Kinerja anda dengan nomor: *" . $telegram['nomorkk'] . "* \nTIDAK DISETUJUI oleh atasan anda.\nSilahkan melakukan perbaikan pada Kontrak Kinerja anda, terima kasih."
         );
     }
 
@@ -109,7 +108,7 @@ class Pejabat_model extends CI_Model
         // Send Notif ke Telegram
         $this->_telegram(
             $telegram['telegram'],
-            "Halo, *" . $telegram['nama'] . "*. \n\nIKU anda dengan data sebagai berikut: \n*Kode IKU*: " . $telegram['kodeiku'] . "\n*Nama IKU*: " . $telegram['namaiku'] . "\n\nTELAH DISETUJUI oleh atasan anda. \nSilahkan melakukan pengisian Logbook anda, terima kasih."
+            "Halo, *" . $telegram['nama'] . "*. \nIKU anda dengan data sebagai berikut: \n\n*Kode IKU*: " . $telegram['kodeiku'] . "\n*Nama IKU*: " . $telegram['namaiku'] . "\n\nTELAH DISETUJUI oleh atasan anda. \nSilahkan melakukan pengisian Logbook anda, terima kasih."
         );
     }
 
@@ -131,7 +130,7 @@ class Pejabat_model extends CI_Model
         // Send Notif ke Telegram
         $this->_telegram(
             $telegram['telegram'],
-            "Halo, *" . $telegram['nama'] . "*. \n\nIKU anda dengan data sebagai berikut: \n*Kode IKU*: " . $telegram['kodeiku'] . "\n*Nama IKU*: " . $telegram['namaiku'] . "\n\nTIDAK DISETUJUI oleh atasan anda. \nSilahkan melakukan perbaikan pada IKU anda, terima kasih."
+            "Halo, *" . $telegram['nama'] . "*. \nIKU anda dengan data sebagai berikut: \n\n*Kode IKU*: " . $telegram['kodeiku'] . "\n*Nama IKU*: " . $telegram['namaiku'] . "\n\nTIDAK DISETUJUI oleh atasan anda. \nSilahkan melakukan perbaikan pada IKU anda, terima kasih."
         );
     }
 
@@ -164,7 +163,7 @@ class Pejabat_model extends CI_Model
         // Send Notif ke Telegram
         $this->_telegram(
             $telegram['telegram'],
-            "Halo, *" . $telegram['nama'] . "*. \n\nLogbook anda dengan data sebagai berikut: \n*Kode IKU*: " . $dataIKU['kodeiku'] . "\n*Nama IKU*: " . $dataIKU['namaiku'] . "\n*Periode Pelaporan Logbook*: " . $telegram['periode'] . "\n\nTELAH DISETUJUI oleh atasan anda.\nTerima kasih telah mengajukan Logbook."
+            "Halo, *" . $telegram['nama'] . "*. \nLogbook anda dengan data sebagai berikut: \n\n*Kode IKU*: " . $dataIKU['kodeiku'] . "\n*Nama IKU*: " . $dataIKU['namaiku'] . "\n*Periode Pelaporan Logbook*: " . $telegram['periode'] . "\n\nTELAH DISETUJUI oleh atasan anda.\nTerima kasih telah mengajukan Logbook."
         );
     }
 
@@ -195,7 +194,7 @@ class Pejabat_model extends CI_Model
         // Send Notif ke Telegram
         $this->_telegram(
             $telegram['telegram'],
-            "Halo, *" . $telegram['nama'] . "*. \n\nLogbook anda dengan data sebagai berikut: \n*Kode IKU*: " . $dataIKU['kodeiku'] . "\n*Nama IKU*: " . $dataIKU['namaiku'] . "\n*Periode Pelaporan Logbook*: " . $telegram['periode'] . "\n\nTIDAK DISETUJUI oleh atasan anda. \nSilahkan melakukan perbaikan pada Logbook anda, terima kasih."
+            "Halo, *" . $telegram['nama'] . "*. \nLogbook anda dengan data sebagai berikut: \n\n*Kode IKU*: " . $dataIKU['kodeiku'] . "\n*Nama IKU*: " . $dataIKU['namaiku'] . "\n*Periode Pelaporan Logbook*: " . $telegram['periode'] . "\n\nTIDAK DISETUJUI oleh atasan anda. \nSilahkan melakukan perbaikan pada Logbook anda, terima kasih."
         );
     }
 
@@ -216,8 +215,6 @@ class Pejabat_model extends CI_Model
     public function countKKBawahanNotApproved()
     {
         $role = $this->session->userdata('nama');
-
-        $akunnotif = $this->db->get_where('user', ['nama' => $role])->row_array();
 
         $query = $this->db->query("SELECT `kontrakkinerja`.*, `user`.nama, `user`.`atasan` from kontrakkinerja  join user using (nip) where atasan = '$role' and is_validated != 2");
         if ($query->num_rows() > 0) {
@@ -277,6 +274,3 @@ class Pejabat_model extends CI_Model
         curl_close($ch);
     }
 }
-
-
-// PEJABAT
