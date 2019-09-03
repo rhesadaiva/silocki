@@ -6,14 +6,6 @@ class Logbook_model extends CI_Model
 
     public function newlogbook()
     {
-        $role = $this->session->userdata('nip');
-        $login = $this->session->userdata('nama');
-        // Ambil Nama Atasan
-        $queryAtasan = $this->db->query("SELECT `user`.nip, `user`.atasan FROM `user` where `user`.nip = $role")->row_array();
-        $namaAtasan = $queryAtasan['atasan'];
-        // Ambil ID Telegram Atasan dari nama
-        $telegramAtasan = $this->db->query("SELECT `user`.nama, `user`.telegram FROM `user` where `user`.nama = '$namaAtasan'")->row_array();
-
         //Rekam Logbook Baru
         $data = [
             'periode' => $this->input->post('periodepelaporan', true),
@@ -35,17 +27,6 @@ class Logbook_model extends CI_Model
 
         //Insert data
         $this->db->insert('logbook', $data);
-
-        $id_iku = $this->input->post('id_iku', true);
-
-        // Query data IKU untuk dikirim ke Telegram
-        $dataIKU = $this->db->query("SELECT `logbook`.id_iku, `logbook`.id_logbook, `logbook`.periode, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.kodeiku, `indikatorkinerjautama`.namaiku FROM `logbook` JOIN `indikatorkinerjautama` USING (id_iku) WHERE `logbook`.id_iku = '$id_iku'")->row_array();
-
-        // Send Notif ke Telegram
-        $this->_telegram(
-            $telegramAtasan['telegram'],
-            "Halo, *" . $telegramAtasan['nama'] . "*. \n\nBawahan anda: *" . $login . "* telah mengajukan Logbook dengan data sebagai berikut: \n\n*Kode IKU*: " . $dataIKU['kodeiku'] . "\n*Nama IKU*: " . $dataIKU['namaiku'] . "\n*Periode Pelaporan Logbook*: " . $dataIKU['periode'] . "\n\nMohon diperiksa dan diberikan persetujuan apabila data sudah benar, terima kasih."
-        );
     }
 
     //Ambil data logbook
@@ -74,12 +55,33 @@ class Logbook_model extends CI_Model
     //Kirim data Logbook ke atasan
     public function kirimlogbook($idlogbook)
     {
+        $role = $this->session->userdata('nip');
+        $login = $this->session->userdata('nama');
+        // Ambil Nama Atasan
+        $queryAtasan = $this->db->query("SELECT `user`.nip, `user`.atasan FROM `user` where `user`.nip = $role")->row_array();
+        $namaAtasan = $queryAtasan['atasan'];
+        // Ambil ID Telegram Atasan dari nama
+        $telegramAtasan = $this->db->query("SELECT `user`.nama, `user`.telegram FROM `user` where `user`.nama = '$namaAtasan'")->row_array();
+
         $data = [
             'is_sent' => 1
         ];
 
         $this->db->where('id_logbook', $idlogbook);
         $this->db->update('logbook', $data);
+
+        // $this->db->insert('logbook', $data);
+
+        // $id_iku = $this->input->post('id_iku', true);
+
+        // Query data IKU untuk dikirim ke Telegram
+        $dataIKU = $this->db->query("SELECT `logbook`.id_iku, `logbook`.id_logbook, `logbook`.periode, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.kodeiku, `indikatorkinerjautama`.namaiku FROM `logbook` JOIN `indikatorkinerjautama` USING (id_iku) WHERE `logbook`.id_logbook = '$idlogbook'")->row_array();
+
+        // Send Notif ke Telegram
+        $this->_telegram(
+            $telegramAtasan['telegram'],
+            "Halo, *" . $telegramAtasan['nama'] . "*. \n\nBawahan anda: *" . $login . "* telah mengirim Logbook dengan data sebagai berikut: \n\n*Kode IKU*: " . $dataIKU['kodeiku'] . "\n*Nama IKU*: " . $dataIKU['namaiku'] . "\n*Periode Pelaporan Logbook*: " . $dataIKU['periode'] . "\n\nMohon diperiksa dan diberikan persetujuan apabila data sudah benar, terima kasih."
+        );
     }
 
     // Enabler Telegram
