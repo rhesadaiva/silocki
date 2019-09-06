@@ -58,7 +58,7 @@ class Logbook_model extends CI_Model
         $role = $this->session->userdata('nip');
         $login = $this->session->userdata('nama');
         // Ambil Nama Atasan
-        $queryAtasan = $this->db->query("SELECT `user`.nip, `user`.atasan FROM `user` where `user`.nip = $role")->row_array();
+        $queryAtasan = $this->db->query("SELECT `user`.nip, `user`.atasan FROM `user` where `user`.nip = '$role'")->row_array();
         $namaAtasan = $queryAtasan['atasan'];
         // Ambil ID Telegram Atasan dari nama
         $telegramAtasan = $this->db->query("SELECT `user`.nama, `user`.telegram FROM `user` where `user`.nama = '$namaAtasan'")->row_array();
@@ -82,6 +82,18 @@ class Logbook_model extends CI_Model
             $telegramAtasan['telegram'],
             "Halo, *" . $telegramAtasan['nama'] . "*. \n\nBawahan anda: *" . $login . "* telah mengirim Logbook dengan data sebagai berikut: \n\n*Kode IKU*: " . $dataIKU['kodeiku'] . "\n*Nama IKU*: " . $dataIKU['namaiku'] . "\n*Periode Pelaporan Logbook*: " . $dataIKU['periode'] . "\n\nMohon diperiksa dan diberikan persetujuan apabila data sudah benar, terima kasih."
         );
+    }
+
+    public function printLogbook($idlogbook)
+    {
+        $idlogbook = $this->uri->segment(3);
+
+        $query = $this->db->query("SELECT `user`.nama, `user`.nip, `user`.role_id, `user_role`.id, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.nip, `indikatorkinerjautama`.namaiku, `indikatorkinerjautama`.formulaiku, `indikatorkinerjautama`.targetiku, `logbook`.periode, `logbook`.perhitungan, `logbook`.realisasibulan, `logbook`.realisasiterakhir, `logbook`.ket, `logbook`.tgl_approve
+        from user join user_role on `user`.role_id = `user_role`.id
+        join `indikatorkinerjautama` using (nip)
+        join `logbook` using (id_iku) where `logbook`.id_logbook = '$idlogbook'");
+
+        return $query->row_array();
     }
 
     // Enabler Telegram

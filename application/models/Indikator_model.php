@@ -53,7 +53,7 @@ class Indikator_model extends CI_Model
         $role = $this->session->userdata('nip');
         $login = $this->session->userdata('nama');
         // Ambil Nama Atasan
-        $queryAtasan = $this->db->query("SELECT `user`.nip, `user`.atasan FROM `user` where `user`.nip = $role")->row_array();
+        $queryAtasan = $this->db->query("SELECT `user`.nip, `user`.atasan FROM `user` where `user`.nip = '$role'")->row_array();
         $namaAtasan = $queryAtasan['atasan'];
         // Ambil ID Telegram Atasan dari nama
         $telegramAtasan = $this->db->query("SELECT `user`.nama, `user`.telegram FROM `user` where `user`.nama = '$namaAtasan'")->row_array();

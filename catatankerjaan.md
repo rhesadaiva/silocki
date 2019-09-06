@@ -47,3 +47,7 @@
 7. Perbaikan CSS pada tabel logbook.
 8. Merubah timeout refresh ajax.
 9. Menghapus tulisan dari 5 logbook pada halaman Logbook selesai.
+
+- Kamis, 05 September 2019
+1. Membuat fitur generate logbook otomatis.
+2. 
