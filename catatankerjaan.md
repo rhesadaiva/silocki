@@ -50,4 +50,4 @@
 
 - Kamis, 05 September 2019
 1. Membuat fitur generate logbook otomatis.
-2. 
+2. Membuat logbook tercetak pdf.
