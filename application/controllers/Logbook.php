@@ -80,6 +80,11 @@ class Logbook extends CI_Controller
 
         $data['cetaklogbook'] = $this->Logbook_model->printLogbook($idlogbook);
 
-        $this->load->view('templates/cetak-logbook', $data);
+        $this->load->library('pdf');
+
+        $foliopaper = array(0, 0, 612.00, 936.00);
+        $this->pdf->setPaper($foliopaper, 'landscape');
+        $this->pdf->filename = "logbook" . $idlogbook;
+        $this->pdf->load_view('templates/cetak-logbook', $data);
     }
 }

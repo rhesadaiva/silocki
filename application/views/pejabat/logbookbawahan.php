@@ -91,11 +91,11 @@
                                         <?php if ($logbook['is_approved'] == 0) : ?>
 
                                             <a data-toggle="tooltip" data-placement="left" title="Setuju Logbook Bawahan" class="button-setujulogbookbawahan" href="<?= base_url(); ?>pejabat/approvelogbook/<?= $logbook['id_logbook']; ?>" data-logbook="<?= $logbook['id_logbook']; ?>"><span style="color:blue;"><i class="fas fa-fw fa-thumbs-up"></i></span></a>
-
+                                            <i data-toggle="tooltip" data-placement="left" title="Cetak Logbook" class="button-cetaklogbook" href="<?= base_url(); ?>logbook/cetakLogbook/<?= $logbook['id_logbook']; ?> "><span style="color:forestgreen;"><i class="fas fa-fw fa-print"></i></span></i>
                                         <?php else : ?>
 
                                             <a data-toggle="tooltip" data-placement="left" title="Batalkan Persetujuan Logbook" class="button-tidaksetujulogbookbawahan" href="<?= base_url(); ?>pejabat/batalapprovelogbook/<?= $logbook['id_logbook']; ?>" data-logbook="<?= $logbook['id_logbook']; ?>"><span style="color:red;"><i class="fas fa-fw fa-thumbs-down"></i></span></a>
-
+                                            <i data-toggle="tooltip" data-placement="left" title="Cetak Logbook" class="button-cetaklogbook" href="<?= base_url(); ?>logbook/cetakLogbook/<?= $logbook['id_logbook']; ?> "><span style="color:forestgreen;"><i class="fas fa-fw fa-print"></i></span></i>
                                         <?php endif; ?>
                                     </td>
 
