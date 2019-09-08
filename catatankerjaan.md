@@ -41,4 +41,13 @@
 1. Membuat notifikasi ke Telegram approval dan tidak approval Kontrak Kinerja.
 2. Membuat notifikasi ke Telegram approval dan tidak approval Indikator Kinerja Utama.
 3. Membuat notifikasi ke Telegram approval dan tidak approval Logbook.
+<<<<<<< HEAD
 4. Memperbaiki klausa join untuk notifikasi ke Telegram.
+=======
+4. Membuat notifikasi Dashboard Pejabat.
+5. Merubah tgl approve di table logbook menjadi NULL sehingga tanggal approval tidak tercetak ketika logbook belum diapprove
+6. Menghapus PHP SWITCH dan SELECT OPTION bulan diganti menjadi bulan, tidak huruf.
+7. Perbaikan CSS pada tabel logbook.
+8. Merubah timeout refresh ajax.
+9. Menghapus tulisan dari 5 logbook pada halaman Logbook selesai.
+>>>>>>> de239d76edbae01827466bf67f0fa641230b02c8
