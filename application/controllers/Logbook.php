@@ -73,4 +73,18 @@ class Logbook extends CI_Controller
         // redirect('iku/browseiku');
         echo json_encode($kirimlogbook);
     }
+
+    public function cetakLogbook($idlogbook)
+    {
+        $idlogbook = $this->uri->segment(3);
+
+        $data['cetaklogbook'] = $this->Logbook_model->printLogbook($idlogbook);
+
+        $this->load->library('pdf');
+
+        $foliopaper = array(0, 0, 612.00, 936.00);
+        $this->pdf->setPaper($foliopaper, 'landscape');
+        $this->pdf->filename = "logbook" . $idlogbook;
+        $this->pdf->load_view('templates/cetak-logbook', $data);
+    }
 }

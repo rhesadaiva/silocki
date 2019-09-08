@@ -66,34 +66,38 @@
                 <tbody>
                     <?php $i = 1 ?>
                     <?php foreach ($logbookdetail as $logbook) : ?>
-                    <tr class="detail">
-                        <th class="nomorlogbook" scope="row"><?= $i; ?></th>
-                        <td class="periode"><?= $logbook['periode']; ?></td>
-                        <td class="perhitungan"><?= $logbook['perhitungan']; ?></td>
-                        <td class="realisasi"><?= $logbook['realisasibulan']; ?></td>
-                        <td class="realisasiterakhir"><?= $logbook['realisasiterakhir']; ?></td>
-                        <td class="text-justify keterangan"><?= $logbook['ket']; ?></td>
-                        <td class="wakturekam"><?= indonesian_date2($logbook['wakturekam']); ?></td>
+                        <tr class="detail">
+                            <th class="nomorlogbook" scope="row"><?= $i; ?></th>
+                            <td class="periode"><?= $logbook['periode']; ?></td>
+                            <td class="perhitungan"><?= $logbook['perhitungan']; ?></td>
+                            <td class="realisasi"><?= $logbook['realisasibulan']; ?></td>
+                            <td class="realisasiterakhir"><?= $logbook['realisasiterakhir']; ?></td>
+                            <td class="text-justify keterangan"><?= $logbook['ket']; ?></td>
+                            <td class="wakturekam"><?= indonesian_date2($logbook['wakturekam']); ?></td>
 
-                        <td class="aksi">
-                            <?php if ($logbook['is_sent'] == 0) : ?>
+                            <td class="aksi">
+                                <?php if ($logbook['is_sent'] == 0) : ?>
 
-                            <a data-toggle="tooltip" data-placement="left" title="Kirim Ke Atasan" class="button-kirimlogbook" href="<?= base_url(); ?>logbook/kirimkeatasan/<?= $logbook['id_logbook']; ?>" id-logbook="<?= $logbook['id_logbook'] ?>"><span style="color:blue;"><i class="fas fa-fw fa-paper-plane"></i></span></a>
+                                    <a data-toggle="tooltip" data-placement="left" title="Kirim Ke Atasan" class="button-kirimlogbook" href="<?= base_url(); ?>logbook/kirimkeatasan/<?= $logbook['id_logbook']; ?>" id-logbook="<?= $logbook['id_logbook'] ?>"><span style="color:blue;"><i class="fas fa-fw fa-paper-plane"></i></span></a>
 
-                            <a data-toggle="tooltip" data-placement="left" title="Hapus Logbook" class="button-hapuslogbook" href="<?= base_url(); ?>logbook/hapuslogbook/<?= $logbook['id_logbook']; ?> " id-logbook="<?= $logbook['id_logbook'] ?>"><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
+                                    <a data-toggle="tooltip" data-placement="left" title="Hapus Logbook" class="button-hapuslogbook" href="<?= base_url(); ?>logbook/hapuslogbook/<?= $logbook['id_logbook']; ?> " id-logbook="<?= $logbook['id_logbook'] ?>"><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
 
-                            <?php else : ?>
+                                    <a data-toggle="tooltip" data-placement="left" title="Cetak Logbook" class="button-cetaklogbook" href="<?= base_url(); ?>logbook/cetakLogbook/<?= $logbook['id_logbook']; ?> "><span style="color:forestgreen;"><i class="fas fa-fw fa-print"></i></span></a>
 
-                            <a data-toggle="tooltip" data-placement="left" title="Logbook Terkunci" class="button-locklgobook" id="button-locklogbook"><span style=" color:#daa520;"><i class="fas fa-fw fa-lock"></i></span></a>
+                                <?php else : ?>
 
-                            <?php endif; ?>
-                        </td>
+                                    <a data-toggle="tooltip" data-placement="left" title="Logbook Terkunci" class="button-locklgobook" id="button-locklogbook"><span style=" color:#daa520;"><i class="fas fa-fw fa-lock"></i></span></a>
 
-                    </tr>
+                                    <a data-toggle="tooltip" data-placement="left" title="Cetak Logbook" class="button-cetaklogbook" href="<?= base_url(); ?>logbook/cetakLogbook/<?= $logbook['id_logbook']; ?> "><span style="color:forestgreen;"><i class="fas fa-fw fa-print"></i></span></a>
+
+                                <?php endif; ?>
+                            </td>
+
+                        </tr>
 
                 </tbody>
                 <?php $i++; ?>
-                <?php endforeach; ?>
+            <?php endforeach; ?>
             </table>
         </div>
     </div>
