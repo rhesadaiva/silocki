@@ -40,13 +40,12 @@
         <tr>
             <th class="identitas">Jabatan</th>
             <td>:</td>
-            <td>Pelaksana pada Seksi Pengolahan Data dan Administrasi Dokumen</td>
+            <td><?= $cetaklogbook['level']; ?> pada <?= $cetaklogbook['seksi']; ?></td>
         </tr>
         <tr>
             <th class="identitas">Nama IKU</th>
             <td>:</td>
-            <td>Persentase realisasi penerimaan dan penelitian kelengkapan dokumen kepabeanan dan cukai sesuai
-                janji layanan</td>
+            <td><?= $cetaklogbook['namaiku']; ?></td>
         </tr>
     </table>
 
@@ -82,7 +81,11 @@
                 <td><?= $cetaklogbook['realisasiterakhir']; ?></td>
                 <td class="target"><?= $cetaklogbook['targetiku']; ?></td>
                 <td class="keterangan"><?= $cetaklogbook['ket']; ?></td>
-                <td class="paraf"><?= indonesian_date2($cetaklogbook['tgl_approve']); ?></td>
+                <?php if ($cetaklogbook['tgl_approve'] === NULL) : ?>
+                    <td class="paraf">Logbook belum disetujui oleh atasan.</td>
+                <?php else : ?>
+                    <td class="paraf"><?= indonesian_date2($cetaklogbook['tgl_approve']); ?></td>
+                <?php endif; ?>
             </tr>
 
         </tbody>

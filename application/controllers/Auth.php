@@ -150,7 +150,7 @@ class Auth extends CI_Controller
 
             $this->session->set_userdata($data);
 
-            $token = uniqid();
+            $token = mt_rand(100000, 999999);
 
             $user_token = [
                 'nama' => $user['nama'],
