@@ -51,3 +51,7 @@
 - Kamis, 05 September 2019
 1. Membuat fitur generate logbook otomatis.
 2. Membuat logbook tercetak pdf.
+
+- Rabu, 18 September 2019
+1. Merubah token dari uniqid ke mt_rand()
+2. Merubah setingan printout logbook
