@@ -131,7 +131,6 @@ class Admin extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('admin/belumapprovelogbook', $data);
         $this->load->view('templates/footer');
-        // helper_log("access", "mengakses menu Logbook Yang Belum Disetujui");
     }
 
     //Halaman Filter Logbook belum disetujui
@@ -149,7 +148,6 @@ class Admin extends CI_Controller
         $this->load->view('admin/belumapprovelogbook', $data);
         $this->load->view('templates/footer');
         helper_log("access", "melakukan pencarian pada menu Logbook Yang Belum Disetujui");
-        // var_dump($data['belumlogbook']);
     }
 
     //Halaman Daftar Pegawai yang sudah rekam logbook
@@ -166,7 +164,6 @@ class Admin extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('admin/logbookselesai', $data);
         $this->load->view('templates/footer');
-        // helper_log("access", "mengakses menu Logbook Yang Sudah Divalidasi");
     }
 
     // //Halaman Pencarian Pegawai yang belum rekam logbook
@@ -186,6 +183,7 @@ class Admin extends CI_Controller
         helper_log("access", "melakukan pencarian pada menu Logbook Yang Sudah Divalidasi");
     }
 
+    // Mengakses menu Konsol
     public function console()
     {
         $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
@@ -198,9 +196,9 @@ class Admin extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('admin/logpage', $data);
         $this->load->view('templates/footer');
-        // helper_log("access", "mengakses menu Admin Console");
     }
 
+    // Menambah Pengumuman baru
     public function tambahpengumuman()
     {
         $this->Admin_model->insertPengumuman();
@@ -209,6 +207,7 @@ class Admin extends CI_Controller
         redirect('admin/console');
     }
 
+    // Menghapus pengumuman
     public function hapuspengumuman($id)
     {
         $this->Admin_model->deletePengumuman($id);

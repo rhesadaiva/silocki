@@ -35,7 +35,7 @@ class Logbook extends CI_Controller
     {
 
         $idiku = $this->uri->segment(3);
-        $data['idiku'] = $this->uri->segment(3);
+        // $data['idiku'] = $this->uri->segment(3);
 
         //VALIDATION DATA LOGBOOK
         $this->form_validation->set_rules('periodepelaporan', 'Periode Pelaporan', 'required');
@@ -50,8 +50,6 @@ class Logbook extends CI_Controller
         } else {
             $newLogbook = $this->Logbook_model->newlogbook();
             helper_log("add", "menambah Logbook baru");
-            // $this->session->set_flashdata('logbook', 'Ditambahkan');
-            // redirect('iku/browseiku');
             echo json_encode($newLogbook);
         }
     }
@@ -60,8 +58,6 @@ class Logbook extends CI_Controller
     {
         $hapuslogbook = $this->Logbook_model->deletelogbook($idlogbook);
         helper_log("delete", "menghapus Logbook (id-logbook = $idlogbook)");
-        // $this->session->set_flashdata('logbook', 'Dihapus');
-        // redirect('iku/browseiku');
         echo json_encode($hapuslogbook);
     }
 
@@ -69,8 +65,6 @@ class Logbook extends CI_Controller
     {
         $kirimlogbook = $this->Logbook_model->kirimlogbook($idlogbook);
         helper_log("send", "mengirim Logbook ke atasan (id-logbook = $idlogbook)");
-        // $this->session->set_flashdata('logbook', 'Dikirim ke atasan');
-        // redirect('iku/browseiku');
         echo json_encode($kirimlogbook);
     }
 
