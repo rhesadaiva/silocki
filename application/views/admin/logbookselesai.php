@@ -46,13 +46,16 @@
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($logbookclear as $clear) : ?>
-                    <tr class="selesai">
-                        <th scope="row" style="text-align:center" class="nomor"><?= $i; ?></th>
-                        <td class="selesai text-center"><?= $clear['nama']; ?></td>
-                        <td class="selesai text-center">Sudah menyerahkan <b><?= $clear['total']; ?></b> Logbook</td>
-                        <td class="selesai text-center"><?= $clear['periode']; ?></td>
-                    </tr>
-                    <?php $i++; ?>
+                        <tr class="selesai">
+                            <th scope="row" style="text-align:center" class="nomor"><?= $i; ?></th>
+                            <td class="selesai text-center"><?= $clear['nama']; ?></td>
+                            <td class="selesai text-center">Sudah menyerahkan <b><?= $clear['total']; ?></b> Logbook</td>
+                            <td class="selesai text-center"><?= $clear['periode']; ?>
+                            </td>
+                            <div class="datanama" value="<?= $clear['nama'] ?>"></div>
+                            <div class="dataperiode" value="<?= $clear['periode'] ?>"></div>
+                        </tr>
+                        <?php $i++; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>

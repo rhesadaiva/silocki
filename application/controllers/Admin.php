@@ -157,6 +157,7 @@ class Admin extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
         $data['periode'] = $this->input->get('periodepelaporan');
 
+
         $data['logbookclear'] = $this->Admin_model->logbookclear();
 
         $this->load->view('templates/header', $data);
@@ -214,5 +215,17 @@ class Admin extends CI_Controller
         helper_log("delete", "menghapus pengumuman");
         $this->session->set_flashdata('pengumuman', 'dihapus');
         redirect('admin/console');
+    }
+
+    public function detaillogbook()
+    {
+        $nama = $this->input->post('datanama');
+        $periode = $this->input->post('dataperiode');
+
+        print_r($nama, $periode);
+        die;
+        // $query = $this->Admin_model->detaillogbookdata($nama, $periode);
+        // echo json_encode($query);
+        // die;
     }
 }

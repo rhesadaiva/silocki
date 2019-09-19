@@ -201,4 +201,14 @@ class Admin_model extends CI_Model
         $this->db->where('id', $id);
         $this->db->delete('pengumuman');
     }
+
+    public function detaillogbookdata($nama, $periode)
+    {
+        $query = $this->db->query("SELECT `user`.nama, `user`.nip, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.kodeiku, `indikatorkinerjautama`.namaiku, `indikatorkinerjautama`.nip, `logbook`.*
+        FROM `user` JOIN `indikatorkinerjautama` USING (nip)
+        JOIN `logbook` WHERE `logbook`.is_approved = 1 
+        AND `user`.nama = '$nama' AND `logbook`.periode = '$periode'");
+
+        return $query->result_array();
+    }
 }
