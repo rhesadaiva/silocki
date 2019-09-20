@@ -82,14 +82,14 @@ class Admin_model extends CI_Model
     public function tambahUser()
     {
         $data = [
-            'nama' => $this->input->post('nama'),
-            'nip' => $this->input->post('nip'),
+            'nama' => $this->input->post('nama', true),
+            'nip' => $this->input->post('nip', true),
             'pangkat' => $this->input->post('pangkat'),
             'password' => md5(123456),
             'role_id' => $this->input->post('role'),
             'seksi' => $this->input->post('seksisub'),
             'atasan' => $this->input->post('atasan'),
-            'telegram' => $this->input->post('telegram'),
+            'telegram' => $this->input->post('telegram', true),
 
         ];
         return $this->db->insert('user', $data);
@@ -109,13 +109,13 @@ class Admin_model extends CI_Model
         $id = $this->uri->segment(3);
 
         $data = [
-            'nama' => $this->input->post('nama'),
-            'nip' => $this->input->post('nip'),
+            'nama' => $this->input->post('nama', true),
+            'nip' => $this->input->post('nip', true),
             'pangkat' => $this->input->post('pangkat'),
             'role_id' => $this->input->post('role'),
             'seksi' => $this->input->post('seksisub'),
             'atasan' => $this->input->post('atasan'),
-            'telegram' => $this->input->post('telegram'),
+            'telegram' => $this->input->post('telegram', true),
 
         ];
         $this->db->where('id', $id);

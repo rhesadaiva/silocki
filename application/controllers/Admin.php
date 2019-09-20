@@ -54,9 +54,9 @@ class Admin extends CI_Controller
         $data['seksi'] = $this->Admin_model->getSeksi();
 
         //Validasi Tambah User
-        $this->form_validation->set_rules('nama', 'Nama', 'required');
-        $this->form_validation->set_rules('nip', 'Nomor Induk Pegawai', 'required');
-        $this->form_validation->set_rules('telegram', 'ID Telegram', 'required');
+        $this->form_validation->set_rules('nama', 'Nama', 'required|trim|is_unique[user.nama]');
+        $this->form_validation->set_rules('nip', 'Nomor Induk Pegawai', 'required|trim|is_unique[user.nip]|numeric');
+        $this->form_validation->set_rules('telegram', 'ID Telegram', 'required|numeric');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('templates/header', $data);
@@ -88,9 +88,9 @@ class Admin extends CI_Controller
 
         //Validasi EDIT User
 
-        $this->form_validation->set_rules('nama', 'Nama', 'required');
-        $this->form_validation->set_rules('nip', 'Nomor Induk Pegawai', 'required');
-        $this->form_validation->set_rules('telegram', 'ID Telegram', 'required');
+        $this->form_validation->set_rules('nama', 'Nama', 'required|trim|is_unique[user.nama]');
+        $this->form_validation->set_rules('nip', 'Nomor Induk Pegawai', 'required|trim|is_unique[user.nip]|numeric');
+        $this->form_validation->set_rules('telegram', 'ID Telegram', 'required|numeric');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('templates/header', $data);
