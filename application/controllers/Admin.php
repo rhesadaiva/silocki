@@ -217,15 +217,23 @@ class Admin extends CI_Controller
         redirect('admin/console');
     }
 
-    public function detaillogbook()
+    public function getDetailLogbookDisetujui()
     {
-        $nama = $this->input->post('datanama');
-        $periode = $this->input->post('dataperiode');
+        $nama = $this->input->get('nama');
+        $periode = $this->input->get('periode');
 
-        print_r($nama, $periode);
-        die;
-        // $query = $this->Admin_model->detaillogbookdata($nama, $periode);
-        // echo json_encode($query);
-        // die;
+        $get_logbook = $this->Admin_model->detaillogbookdatadisetujui($nama, $periode);
+        echo json_encode($get_logbook);
+        exit();
+    }
+
+    public function getDetailLogbookBelumDisetujui()
+    {
+        $namabelum = $this->input->get('namabelum');
+        $periodebelum = $this->input->get('periodebelum');
+
+        $get_logbookbelum = $this->Admin_model->detaillogbookdatabelumdisetujui($namabelum, $periodebelum);
+        echo json_encode($get_logbookbelum);
+        exit();
     }
 }

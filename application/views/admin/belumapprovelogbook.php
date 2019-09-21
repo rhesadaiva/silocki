@@ -15,18 +15,18 @@
                     <label for="pilihbulan" class="col-lg-1 col-sm-2 pr-1 col-form-label" style="margin-right:10px">Pilih Bulan</label>
                     <div class="select">
                         <select class="selectpicker mr-2" name="periodepelaporan" data-live-search="true" data-width="125px">
-                            <option value="1">Januari</option>
-                            <option value="2">Februari</option>
-                            <option value="3">Maret</option>
-                            <option value="4">April</option>
-                            <option value="5">Mei</option>
-                            <option value="6">Juni</option>
-                            <option value="7">Juli</option>
-                            <option value="8">Agustus</option>
-                            <option value="9">September</option>
-                            <option value="10">Oktober</option>
-                            <option value="11">November</option>
-                            <option value="12">Desember</option>
+                            <option value="Januari">Januari</option>
+                            <option value="Februari">Februari</option>
+                            <option value="Maret">Maret</option>
+                            <option value="April">April</option>
+                            <option value="Mei">Mei</option>
+                            <option value="Juni">Juni</option>
+                            <option value="Juli">Juli</option>
+                            <option value="Agustus">Agustus</option>
+                            <option value="September">September</option>
+                            <option value="Oktober">Oktober</option>
+                            <option value="November">November</option>
+                            <option value="Desember">Desember</option>
                         </select>
                     </div>
                     <br>
@@ -42,21 +42,26 @@
                         <th scope="col" class="belumapprove">Nama Pegawai</th>
                         <th scope="col" class="belumapprove">Keterangan</th>
                         <th scope="col" class="belumapprove">Periode</th>
-
+                        <th class="belumapprove">Detail Logbook</th>
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($belumlogbook as $belum) : ?>
-                    <?php if ($belum['total'] < 5) : ?>
-                    <tr>
-                        <th scope="row" class="nomor belumapprove"><?= $i; ?></th>
-                        <td class="belumapprove text-center"><?= $belum['nama']; ?></td>
-                        <td class="belumapprove text-center">Ada <b><?= $belum['total']; ?></b> Logbook yang belum divalidasi oleh atasan</td>
-                        <td class="belumapprove text-center"><?= $belum['periode']; ?></td>
+                        <?php if ($belum['total'] < 5) : ?>
+                            <tr>
+                                <th scope="row" class="nomor belumapprove"><?= $i; ?></th>
+                                <td class="belumapprove text-center"><?= $belum['nama']; ?></td>
+                                <td class="belumapprove text-center">Ada <b><?= $belum['total']; ?></b> Logbook yang belum divalidasi oleh atasan</td>
+                                <td class="belumapprove text-center"><?= $belum['periode']; ?></td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalbelumdisetujui" id="btn-detailmodalbelumdisetujui"><i class="fas fa-fw fa-search"></i> Lihat Detail</button>
 
-                    </tr>
-                    <?php endif; ?>
+                                </td>
+                                <div id="datanamabelumdisetujui" data-nama="<?= $belum['nama'] ?>"></div>
+                                <div id="dataperiodebelumdisetujui" data-periode="<?= $belum['periode'] ?>"></div>
+                            </tr>
+                        <?php endif; ?>
 
-                    <?php $i++; ?>
+                        <?php $i++; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>
@@ -64,6 +69,51 @@
     </div>
 </div>
 <!-- /.container-fluid -->
+
+<!-- Test Modal -->
+<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" id="modalbelumdisetujui">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detail Logbook Belum Disetujui</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="title">
+                    <table class="table">
+                        <tbody id="identitaslogbookbelumdisetujui">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="contentdetail mt-1">
+                    <table class="table table-bordered">
+                        <thead class="thead-light" style="text-align:center">
+                            <tr>
+
+                                <th scope="col" class="headerdetailmodal">Kode IKU</th>
+                                <th scope="col" class="headerdetailmodal">Nama IKU</th>
+                                <th scope="col" class="headerdetailmodal">Perhitungan</th>
+                                <th scope="col" class="headerdetailmodal">Realisasi Bulan Pelaporan</th>
+                                <th scope="col" class="headerdetailmodal">Realisasi s.d Bulan Pelaporan</th>
+                                <th scope="col" class="headerdetailmodal">Keterangan</th>
+                                <th scope="col" class="headerdetailmodal">Waktu Rekam</th>
+                            </tr>
+                        </thead>
+                        <tbody id="detaillogbookbelumdisetujui">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 </div>
 <!-- End of Main Content -->

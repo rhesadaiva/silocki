@@ -661,3 +661,109 @@ if (flashDataPengumuman) {
     });
 }
 
+// AJAX menampilkan detail logbook yang telah disetujui pada modal
+
+$('#btn-detailmodal').on('click', function (e) {
+
+    e.preventDefault();
+    const nama = $('#datanama').data('nama');
+    const periode = $('#dataperiode').data('periode');
+
+    $.ajax({
+        url: "getDetailLogbookDisetujui?nama=" + nama + "&periode=" + periode,
+        data: {
+            nama: nama,
+            periode: periode
+        },
+        type: "GET",
+        dataType: "json",
+        success: function (data) {
+            let html = '';
+
+            html += '<tr class="pt-1">' +
+                '<th scope="row" style="width:200px">Pemilik Logbook</th>' +
+                '<td>' + nama + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                '<th scope="row" style="width:200px">Periode Logbook</th>' +
+                '<td>' + periode + '</td>'
+            '</tr>';
+
+
+            $('#identitaslogbook').html(html);
+
+            let html2 = '';
+            let i;
+            for (i = 0; i < data.length; i++) {
+
+                html2 += '<tr>' +
+                    '<td class="text-center identitascontent">' + data[i].kodeiku + '</td>' +
+                    '<td class=" text-justify identitascontent">' + data[i].namaiku + '</td>' +
+                    '<td class="text-justify identitascontent">' + data[i].perhitungan + '</td>' +
+                    '<td class="text-center identitascontent">' + data[i].realisasibulan + '</td>' +
+                    '<td class="text-center identitascontent">' + data[i].realisasiterakhir + '</td>' +
+                    '<td class="text-justify identitascontent">' + data[i].ket + '</td>' +
+                    '<td class="text-center identitascontent">' + data[i].wakturekam + '</td>' +
+                    '<td class="text-center identitascontent">' + data[i].tgl_approve + '</td>' +
+                    '</td>';
+
+                $('#detaillogbook').html(html2);
+            }
+        }
+    });
+
+});
+
+
+// AJAX menampilkan detail logbook yang belum disetujui pada modal
+
+$('#btn-detailmodalbelumdisetujui').on('click', function (e) {
+
+    e.preventDefault();
+    const namabelum = $('#datanamabelumdisetujui').data('nama');
+    const periodebelum = $('#dataperiodebelumdisetujui').data('periode');
+
+    $.ajax({
+        url: "getDetailLogbookBelumDisetujui?nama=" + namabelum + "&periode=" + periodebelum,
+        data: {
+            namabelum: namabelum,
+            periodebelum: periodebelum
+        },
+        type: "GET",
+        dataType: "json",
+        success: function (data) {
+            let html = '';
+
+            html += '<tr class="pt-1">' +
+                '<th scope="row" style="width:200px">Pemilik Logbook</th>' +
+                '<td>' + namabelum + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                '<th scope="row" style="width:200px">Periode Logbook</th>' +
+                '<td>' + periodebelum + '</td>'
+            '</tr>';
+
+
+            $('#identitaslogbookbelumdisetujui').html(html);
+
+            let html2 = '';
+            let i;
+            for (i = 0; i < data.length; i++) {
+
+                html2 += '<tr>' +
+                    '<td class="text-center identitascontent">' + data[i].kodeiku + '</td>' +
+                    '<td class=" text-justify identitascontent">' + data[i].namaiku + '</td>' +
+                    '<td class="text-justify identitascontent">' + data[i].perhitungan + '</td>' +
+                    '<td class="text-center identitascontent">' + data[i].realisasibulan + '</td>' +
+                    '<td class="text-center identitascontent">' + data[i].realisasiterakhir + '</td>' +
+                    '<td class="text-justify identitascontent">' + data[i].ket + '</td>' +
+                    '<td class="text-center identitascontent">' + data[i].wakturekam + '</td>' +
+                    '</td>';
+
+                $('#detaillogbookbelumdisetujui').html(html2);
+            }
+        }
+    });
+
+});
+
