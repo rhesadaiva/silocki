@@ -142,7 +142,7 @@ class Admin_model extends CI_Model
                                     count(nippegawai) as total
                                     from logbook 
                                     join user on `logbook`.`nippegawai`=`user`.`nip`
-                                    where `is_sent` = 1 and `is_approved` = 0 and `periode` = $periode
+                                    where `is_sent` = 1 and `is_approved` = 0 and `periode` = '$periode'
                                     GROUP BY `nippegawai`, `periode` ORDER BY `periode`");
 
         return $query->result_array();
@@ -200,5 +200,25 @@ class Admin_model extends CI_Model
     {
         $this->db->where('id', $id);
         $this->db->delete('pengumuman');
+    }
+
+    public function detaillogbookdatadisetujui($nama, $periode)
+    {
+        $query = $this->db->query("SELECT `user`.nama, `user`.nip, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.kodeiku, `indikatorkinerjautama`.namaiku, `indikatorkinerjautama`.nip, `logbook`.*
+        FROM `user` JOIN `indikatorkinerjautama` USING (nip)
+        JOIN `logbook` using (id_iku) WHERE `logbook`.is_approved = 1 
+        AND `user`.nama = '$nama' AND `logbook`.periode = '$periode'");
+
+        return $query->result_array();
+    }
+
+    public function detaillogbookdatabelumdisetujui($nama, $periode)
+    {
+        $query = $this->db->query("SELECT `user`.nama, `user`.nip, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.kodeiku, `indikatorkinerjautama`.namaiku, `indikatorkinerjautama`.nip, `logbook`.*
+        FROM `user` JOIN `indikatorkinerjautama` USING (nip)
+        JOIN `logbook` using (id_iku) WHERE `logbook`.is_approved = 0
+        AND `user`.nama = '$nama' AND `logbook`.periode = '$periode'");
+
+        return $query->result_array();
     }
 }
