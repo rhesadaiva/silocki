@@ -55,3 +55,6 @@
 - Rabu, 18 September 2019
 1. Merubah token dari uniqid ke mt_rand()
 2. Merubah setingan printout logbook
+
+- Sabtu, 21 September 2019
+1. Membuat ajax memanggil detail logbook pada menu monitoring
