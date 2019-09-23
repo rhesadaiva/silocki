@@ -82,13 +82,13 @@
 
                                     <a data-toggle="tooltip" data-placement="left" title="Hapus Logbook" class="button-hapuslogbook" href="<?= base_url(); ?>logbook/hapuslogbook/<?= $logbook['id_logbook']; ?> " id-logbook="<?= $logbook['id_logbook'] ?>"><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
 
-                                    <a data-toggle="tooltip" data-placement="left" title="Cetak Logbook" class="button-cetaklogbook" href="<?= base_url(); ?>logbook/cetakLogbook/<?= $logbook['id_logbook']; ?> "><span style="color:forestgreen;"><i class="fas fa-fw fa-print"></i></span></a>
+                                    <a data-toggle="modal" data-placement="left" title="Cetak Logbook" class="button-cetaklogbook" href="#modalPDFpegawai"><span style="color:forestgreen;"><i class="fas fa-fw fa-print"></i></span></a>
 
                                 <?php else : ?>
 
                                     <a data-toggle="tooltip" data-placement="left" title="Logbook Terkunci" class="button-locklgobook" id="button-locklogbook"><span style=" color:#daa520;"><i class="fas fa-fw fa-lock"></i></span></a>
 
-                                    <a data-toggle="tooltip" data-placement="left" title="Cetak Logbook" class="button-cetaklogbook" href="<?= base_url(); ?>logbook/cetakLogbook/<?= $logbook['id_logbook']; ?> "><span style="color:forestgreen;"><i class="fas fa-fw fa-print"></i></span></a>
+                                    <a data-toggle="modal" data-placement="left" title="Cetak Logbook" class="button-cetaklogbook" href="#modalPDFpegawai"><span style="color:forestgreen;"><i class="fas fa-fw fa-print"></i></span></a>
 
                                 <?php endif; ?>
                             </td>
@@ -182,6 +182,28 @@
                             <button type="submit" id="btn-logbookbaru" class="btn btn-success"><i class="fas fa-fw fa-save"></i> Simpan Logbook</button>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal PDF -->
+    <div class="modal fade" id="modalPDFpegawai" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cetak Data Logbook</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="height:500px;">
+                    <div id="modalpdflogbook">
+                        <iframe src="<?= base_url(); ?>logbook/cetakLogbook/<?= $logbook['id_logbook']; ?>" style="width: 100%; height: 450px;"></iframe>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
                 </div>
             </div>
         </div>

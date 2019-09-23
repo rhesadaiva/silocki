@@ -767,3 +767,43 @@ $('#btn-detailmodalbelumdisetujui').on('click', function (e) {
 
 });
 
+// Test Ganti Pengumuman ke Tutorial
+let foreach1 = '<?php foreach ($pengumuman as $peng) : ?>'
+let foreach2 = "<?php echo $peng['content']; ?>"
+let foreach3 = '<?php endforeach; ?>'
+
+let pengumuman ='<div id="pengumuman">' +
+                foreach1 +
+                '<div class=" alert alert-success" role="alert">'+
+                foreach2 +
+                '</div>' +
+                '</div>' +
+                foreach3;
+            
+let pdf = '<div id = "manualbook">' +
+            '<iframe src="assets/files/test.pdf" style="width: 100%; height: 400px;"></iframe>' +
+            '</div>';
+
+const datashow = $('#content-card').data('show'); 
+
+$('#switch').on('click', function(){
+    if ($('#switch').attr('btn-type') == 'pengumuman')
+    {
+        $('#content-card').html(pdf);
+        $('#switch').attr('btn-type', 'pdf');
+        $('#switch').text('Pengumuman');
+
+    } else if ($('#switch').attr('btn-type') == 'pdf')
+    {
+        
+        $('#content-card').html(pengumuman);
+        $('#switch').attr('btn-type', 'pengumuman')
+        $('#switch').text('Tutorial');
+    };
+
+    
+    
+    
+    
+    // alert('Is Clicked!');
+})
