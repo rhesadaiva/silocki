@@ -182,14 +182,25 @@
         <div class="col-xl-7 col-lg-8">
             <div class="card shadow mb-4 border-top-info">
                 <div class="card-header py-3">
-                    <h5 class="m-0 font-weight-bold text-info"><i class="fas fa-fw fa-bullhorn"></i> PENGUMUMAN</h5>
+                    <div class="row">
+                        <div class="col-sm">
+                            <h5 class="m-0 font-weight-bold text-info" id="judulcard">
+                                <div id="content-judul">
+                                    <i class="fas fa-fw fa-bullhorn"></i> PENGUMUMAN
+
+                                </div>
+                            </h5>
+                        </div>
+                        <div class="col-sm btnganti">
+                            <button class="btn btn-info btn-sm float-right" id="switch" btn-type="pengumuman">Tutorial</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
-                    <?php foreach ($pengumuman as $peng) : ?>
-                    <div class="alert alert-success" role="alert">
-                        <?= $peng['content']; ?>
+                    <div id="content-card">
+
                     </div>
-                    <?php endforeach; ?>
+
                 </div>
             </div>
         </div>
