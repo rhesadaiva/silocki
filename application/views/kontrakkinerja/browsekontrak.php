@@ -35,7 +35,7 @@
                                 <th class="text-center browsekontrak" data-valign="middle" data-halign="center" scope="col">No.</th>
                                 <th class="text-center browsekontrak" scope="col">Jenis Kontrak Kinerja</th>
                                 <?php if ($this->session->userdata['role_id'] == 1) : ?>
-                                    <th class="text-center browseiku" scope="col">Pemilik Kontrak Kinerja</th>
+                                    <th class="text-center browsekontrak" scope="col">Pemilik Kontrak Kinerja</th>
                                 <?php endif; ?>
                                 <th class="text-center browsekontrak" scope="col">Nomor Kontrak Kinerja</th>
                                 <th class="text-center browsekontrak" scope="col">Periode Pelaksanaan</th>
