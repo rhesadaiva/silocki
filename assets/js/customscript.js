@@ -33,7 +33,9 @@ $('.hapus-kontrak').on('click', function (e) {
                 type: "post",
                 url: href,
                 DataType: "json",
-                data: { id: id },
+                data: {
+                    id: id
+                },
                 success: function () {
                     Swal.fire(
                         'Kontrak Kinerja',
@@ -90,7 +92,9 @@ $('.buttonhapusiku').on('click', function (e) {
                 type: "post",
                 url: href,
                 DataType: "json",
-                data: { idiku: idiku },
+                data: {
+                    idiku: idiku
+                },
                 success: function () {
                     Swal.fire(
                         'Indikator Kinerja Utama',
@@ -146,7 +150,9 @@ $('.button-hapuslogbook').on('click', function (e) {
                 type: "post",
                 url: href,
                 DataType: "json",
-                data: { idlogbook: idlogbook },
+                data: {
+                    idlogbook: idlogbook
+                },
                 success: function () {
                     Swal.fire(
                         'Logbook',
@@ -194,7 +200,9 @@ $('.button-kirimlogbook').on('click', function (e) {
                 type: "post",
                 url: href,
                 DataType: "json",
-                data: { idlogbook: idlogbook },
+                data: {
+                    idlogbook: idlogbook
+                },
                 success: function () {
                     Swal.fire(
                         'Logbook',
@@ -295,7 +303,9 @@ $('.button-buttonapprovekontrak').on('click', function (e) {
                 type: "post",
                 url: href,
                 DataType: "json",
-                data: { id: id },
+                data: {
+                    id: id
+                },
                 success: function () {
                     Swal.fire(
                         'Kontrak Kinerja',
@@ -342,7 +352,9 @@ $('.button-buttonbatalapprovekontrak').on('click', function (e) {
                 type: "post",
                 url: href,
                 DataType: "json",
-                data: { id: id },
+                data: {
+                    id: id
+                },
                 success: function () {
                     Swal.fire(
                         'Kontrak Kinerja',
@@ -406,7 +418,9 @@ $('.button-buttonapproveiku').on('click', function (e) {
                 type: "post",
                 url: href,
                 DataType: "json",
-                data: { idiku: idiku },
+                data: {
+                    idiku: idiku
+                },
                 success: function () {
                     Swal.fire(
                         'Indikator Kinerja Utama',
@@ -453,7 +467,9 @@ $('.button-buttonbatalapproveiku').on('click', function (e) {
                 type: "post",
                 url: href,
                 DataType: "json",
-                data: { idiku: idiku },
+                data: {
+                    idiku: idiku
+                },
                 success: function () {
                     Swal.fire(
                         'Indikator Kinerja Utama',
@@ -514,7 +530,9 @@ $('.button-setujulogbookbawahan').on('click', function (e) {
                 type: "post",
                 url: href,
                 DataType: "json",
-                data: { idlogbook: idlogbook },
+                data: {
+                    idlogbook: idlogbook
+                },
                 success: function () {
                     Swal.fire(
                         'Logbook',
@@ -562,7 +580,9 @@ $('.button-tidaksetujulogbookbawahan').on('click', function (e) {
                 type: "post",
                 url: href,
                 DataType: "json",
-                data: { idlogbook: idlogbook },
+                data: {
+                    idlogbook: idlogbook
+                },
                 success: function () {
                     Swal.fire(
                         'Logbook',
@@ -766,51 +786,46 @@ $('#btn-detailmodalbelumdisetujui').on('click', function (e) {
 
 // Test Ganti Pengumuman ke Tutorial
 var loadpengumuman =
-function ()
-{
-    $.ajax({
-        url: 'welcome/ambilPengumuman',
-        type: 'GET',
-        dataType: 'json',
-        data: {
-            content:content
-        },
-        processData: false,
-        contentType: false,
-        success: function(data)
-        {
-            let pengumuman = '';
-            let i = 0;
-            for (i = 0; i < data.length; i++)
-            {
-                pengumuman += '<div class="alert alert-success" role="alert">' + data[i].content + '</div>'
+    function () {
+        $.ajax({
+            url: 'welcome/ambilPengumuman',
+            type: 'GET',
+            dataType: 'json',
+            data: {
+                content: content
+            },
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                let pengumuman = '';
+                let i = 0;
+                for (i = 0; i < data.length; i++) {
+                    pengumuman += '<div class="alert alert-success" role="alert">' + data[i].content + '</div>'
 
-                $('#content-card').html(pengumuman);
+                    $('#content-card').html(pengumuman);
+                }
             }
-        }
-    });
-}
+        });
+    }
 
 // Menjalankan ajax ambil data pengumuman
-$(document).ready(function(){
+$(document).ready(function () {
     loadpengumuman()
 })
-            
-let pdf = '<div id = "manualbook">' +
-            '<iframe src="assets/files/test.pdf" style="width: 100%; height:410px;"></iframe>' +
-            '</div>';
 
-$('#switch').on('click', function(){
-    if ($('#switch').attr('btn-type') == 'pengumuman')
-    {
+let pdf = '<div id = "manualbook">' +
+    '<iframe src="assets/files/Presentasi_SILOCKI.pdf" style="width: 100%; height:410px;"></iframe>' +
+    '</div>';
+
+$('#switch').on('click', function () {
+    if ($('#switch').attr('btn-type') == 'pengumuman') {
         $('div#content-judul').remove()
         $('h5#judulcard').append('<div id = "content-judul"><i class="fas fa-fw fa-book"></i> TUTORIAL</div>');
         $('#content-card').html(pdf);
         $('#switch').attr('btn-type', 'pdf');
         $('#switch').text('Pengumuman');
 
-    } else if ($('#switch').attr('btn-type') == 'pdf')
-    {
+    } else if ($('#switch').attr('btn-type') == 'pdf') {
         $('div#content-judul').remove()
         $('h5#judulcard').append('<div id = "content-judul"><i class="fas fa-fw fa-bullhorn"></i> PENGUMUMAN</div>');
         $('div#manualbook').remove();
