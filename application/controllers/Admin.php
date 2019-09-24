@@ -19,7 +19,6 @@ class Admin extends CI_Controller
         $data['jumlahkk'] = $this->Admin_model->countKK();
         $data['jumlahiku'] = $this->Admin_model->countIKU();
         $data['jumlahlogbook'] = $this->Admin_model->countLogbook();
-        $data['pengumuman']  = $this->Admin_model->getPengumuman();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_admin');

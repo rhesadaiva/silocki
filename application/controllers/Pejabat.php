@@ -23,7 +23,6 @@ class Pejabat extends CI_Controller
         $data['kkbelumdiapprove'] = $this->Pejabat_model->countKKBawahanNotApproved();
         $data['ikubelumdiapprove'] = $this->Pejabat_model->countIKUBawahanNotApproved();
         $data['logbookbelumdiapprove'] = $this->Pejabat_model->countLogbookBawahanNotApproved();
-        $data['pengumuman'] = $this->Pejabat_model->getPengumuman();
 
         $this->load->view('templates/header', $data);
         cek_sidebar();
@@ -56,8 +55,6 @@ class Pejabat extends CI_Controller
     {
         $approvekontrak = $this->Pejabat_model->approvekontrak($id);
         helper_log("approval", "memberikan persetujuan Kontrak Kinerja (id-kontrak-kinerja = $id)");
-        // $this->session->set_flashdata('kkbawahan', 'Disetujui');
-        // redirect('pejabat/kontrakkinerjabawahan');
         echo json_encode($approvekontrak);
     }
 
@@ -66,8 +63,6 @@ class Pejabat extends CI_Controller
     {
         $batalapprovekontrak = $this->Pejabat_model->batalapprovekontrak($id);
         helper_log("unapprove", "membatalkan persetujuan Kontrak Kinerja (id-kontrak-kinerja = $id)");
-        // $this->session->set_flashdata('kkbawahan', 'Dibatalkan');
-        // redirect('pejabat/kontrakkinerjabawahan');
         echo json_encode($batalapprovekontrak);
     }
 
@@ -91,8 +86,6 @@ class Pejabat extends CI_Controller
     {
         $approveiku = $this->Pejabat_model->approveiku($idiku);
         helper_log("approval", "memberikan persetujuan IKU (id-iku = $idiku)");
-        // $this->session->set_flashdata('ikubawahan', 'Disetujui');
-        // redirect('pejabat/kontrakkinerjabawahan');
         echo json_encode($approveiku);
     }
 
@@ -101,8 +94,6 @@ class Pejabat extends CI_Controller
     {
         $batalapproveiku = $this->Pejabat_model->batalapproveiku($idiku);
         helper_log("unapprove", "membatalkan persetujuan IKU (id-iku = $idiku)");
-        // $this->session->set_flashdata('ikubawahan', 'Dibatalkan');
-        // redirect('pejabat/kontrakkinerjabawahan');
         echo json_encode($batalapproveiku);
     }
 
@@ -129,8 +120,6 @@ class Pejabat extends CI_Controller
     {
         $approvelogbook =  $this->Pejabat_model->approvelogbook($idlogbook);
         helper_log("approval", "memberikan persetujuan Logbook bawahan (id-logbook = $idlogbook)");
-        // $this->session->set_flashdata('logbookbawahan', 'Disetujui');
-        // redirect('pejabat/kontrakkinerjabawahan');
         echo json_encode($approvelogbook);
     }
 
@@ -139,23 +128,6 @@ class Pejabat extends CI_Controller
     {
         $batalapprovelogbook = $this->Pejabat_model->batalapprovelogbook($idlogbook);
         helper_log("unapproval", "membatalkan persetujuan Logbook bawahan (id-logbook = $idlogbook)");
-        // $this->session->set_flashdata('logbookbawahan', 'Dibatalkan');
-        // redirect('pejabat/kontrakkinerjabawahan');
         echo json_encode($batalapprovelogbook);
-    }
-
-    private function _telegram($telegram, $message)
-    {
-        $url = "https://api.telegram.org/bot905076968:AAG8sNGqlABcYAw6PuUL6eSuFn1-pmSGUpU/sendMessage?parse_mode=markdown&chat_id=" . $telegram;
-        $url = $url . "&text=" . urlencode($message);
-
-        $ch = curl_init();
-        $optArray = array(
-            CURLOPT_URL => $url,
-            CURLOPT_RETURNTRANSFER => true
-        );
-        curl_setopt_array($ch, $optArray);
-        $result = curl_exec($ch);
-        curl_close($ch);
     }
 }
