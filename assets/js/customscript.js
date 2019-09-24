@@ -574,8 +574,6 @@ $('.button-tidaksetujulogbookbawahan').on('click', function (e) {
                     }, 1000);
                 },
 
-
-
                 error: function () {
                     Swal.fire(
                         'Batal',
@@ -662,7 +660,6 @@ if (flashDataPengumuman) {
 }
 
 // AJAX menampilkan detail logbook yang telah disetujui pada modal
-
 $('#btn-detailmodal').on('click', function (e) {
 
     e.preventDefault();
@@ -768,42 +765,58 @@ $('#btn-detailmodalbelumdisetujui').on('click', function (e) {
 });
 
 // Test Ganti Pengumuman ke Tutorial
-let foreach1 = '<?php foreach ($pengumuman as $peng) : ?>'
-let foreach2 = "<?php echo $peng['content']; ?>"
-let foreach3 = '<?php endforeach; ?>'
+var loadpengumuman =
+function ()
+{
+    $.ajax({
+        url: 'welcome/ambilPengumuman',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            content:content
+        },
+        processData: false,
+        contentType: false,
+        success: function(data)
+        {
+            let pengumuman = '';
+            let i = 0;
+            for (i = 0; i < data.length; i++)
+            {
+                pengumuman += '<div class="alert alert-success" role="alert">' + data[i].content + '</div>'
 
-let pengumuman ='<div id="pengumuman">' +
-                foreach1 +
-                '<div class=" alert alert-success" role="alert">'+
-                foreach2 +
-                '</div>' +
-                '</div>' +
-                foreach3;
+                $('#content-card').html(pengumuman);
+            }
+        }
+    });
+}
+
+// Menjalankan ajax ambil data pengumuman
+$(document).ready(function(){
+    loadpengumuman()
+})
             
 let pdf = '<div id = "manualbook">' +
-            '<iframe src="assets/files/test.pdf" style="width: 100%; height: 400px;"></iframe>' +
+            '<iframe src="assets/files/test.pdf" style="width: 100%; height:410px;"></iframe>' +
             '</div>';
-
-const datashow = $('#content-card').data('show'); 
 
 $('#switch').on('click', function(){
     if ($('#switch').attr('btn-type') == 'pengumuman')
     {
+        $('div#content-judul').remove()
+        $('h5#judulcard').append('<div id = "content-judul"><i class="fas fa-fw fa-book"></i> TUTORIAL</div>');
         $('#content-card').html(pdf);
         $('#switch').attr('btn-type', 'pdf');
         $('#switch').text('Pengumuman');
 
     } else if ($('#switch').attr('btn-type') == 'pdf')
     {
-        
-        $('#content-card').html(pengumuman);
+        $('div#content-judul').remove()
+        $('h5#judulcard').append('<div id = "content-judul"><i class="fas fa-fw fa-bullhorn"></i> PENGUMUMAN</div>');
+        $('div#manualbook').remove();
+        $('div#content-card').append(loadpengumuman());
         $('#switch').attr('btn-type', 'pengumuman')
         $('#switch').text('Tutorial');
     };
 
-    
-    
-    
-    
-    // alert('Is Clicked!');
 })
