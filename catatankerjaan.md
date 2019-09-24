@@ -62,3 +62,9 @@
 - Senin, 23 September 2019
 1. Memindahkan preview logbook PDF ke dalam Modal
 2. Membuat switch pengumuman dan tutorial (not finished)
+
+- Selasa, 24 September 2019
+1. Membuat switch pengumuman dan tutorial (finished)
+2. Merubah algoritma pengambilan data pegawai dengan menggunakan session NIP
+3. Memperbaiki form validation pada menu edit user
+4. Menghapus user_guide
