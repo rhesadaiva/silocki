@@ -16,6 +16,7 @@ class Logbook_model extends CI_Model
             'is_sent' => 0,
             'wakturekam' => date("Y-m-d H:i:s"),
             'nippegawai' => $this->session->userdata('nip'),
+            'tahun_logbook' => date("Y"),
             //END OF TIDAK PERLU FORM VALIDATION
 
             'perhitungan' => $this->input->post('perhitungan', true),
@@ -88,7 +89,7 @@ class Logbook_model extends CI_Model
     {
         $idlogbook = $this->uri->segment(3);
 
-        $query = $this->db->query("SELECT `user`.nama, `user`.`nip`, `user`.`seksi`, `user`.role_id, `user_role`.id, `user_role`.level, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.`nip`, `indikatorkinerjautama`.namaiku, `indikatorkinerjautama`.formulaiku, `indikatorkinerjautama`.targetiku, `logbook`.periode, `logbook`.perhitungan, `logbook`.realisasibulan, `logbook`.realisasiterakhir, `logbook`.ket, `logbook`.tgl_approve
+        $query = $this->db->query("SELECT `user`.nama, `user`.`nip`, `user`.`seksi`, `user`.role_id, `user_role`.id, `user_role`.level, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.`nip`, `indikatorkinerjautama`.namaiku, `indikatorkinerjautama`.formulaiku, `indikatorkinerjautama`.targetiku, `logbook`.periode, `logbook`.perhitungan, `logbook`.realisasibulan, `logbook`.realisasiterakhir, `logbook`.ket, `logbook`.tgl_approve, `logbook`.tahun_logbook
         from user join user_role on `user`.role_id = `user_role`.id
         join `indikatorkinerjautama` using (`nip`)
         join `logbook` using (id_iku) where `logbook`.id_logbook = '$idlogbook'");

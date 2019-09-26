@@ -18,7 +18,7 @@
             <b class="title">
                 BUKU CATATAN <em>(LOGBOOK)</em>
                 <br>
-                CAPAIAN KINERJA PEGAWAI
+                CAPAIAN KINERJA PEGAWAI TAHUN <?= $cetaklogbook['tahun_logbook']; ?>
             </b>
         </div>
     </div>
