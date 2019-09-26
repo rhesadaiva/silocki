@@ -789,20 +789,20 @@ var loadpengumuman =
     function () {
         $.ajax({
             url: 'welcome/ambilPengumuman',
-            type: 'GET',
+            type: 'get',
             dataType: 'json',
             data: {
-                content: content
+                isipengumuman: content,
             },
             processData: false,
             contentType: false,
             success: function (data) {
-                let pengumuman = '';
+                let isipengumuman = '';
                 let i = 0;
                 for (i = 0; i < data.length; i++) {
-                    pengumuman += '<div class="alert alert-success" role="alert">' + data[i].content + '</div>'
+                    isipengumuman += '<div class="alert alert-success" role="alert">' + data[i].isipengumuman + '</div>'
 
-                    $('#content-card').html(pengumuman);
+                    $('#content-card').html(isipengumuman);
                 }
             }
         });
