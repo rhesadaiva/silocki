@@ -7,8 +7,8 @@
                     <div class="card card-login">
 
                         <div class="card-header card-header-success text-center">
-                            <h4 class="card-title">SISTEM PELAPORAN CAPAIAN KINERJA KPPBC TANJUNGPINANG</h4>
-
+                            <!-- <h4 class="card-title">SISTEM PELAPORAN CAPAIAN KINERJA KPPBC TANJUNGPINANG</h4> -->
+                            <img src="<?= base_url('assets/img/logo1.png') ?>" alt="" style="width:90%; margin:auto">
                         </div>
 
                         <?= $this->session->flashdata('message'); ?>
