@@ -68,3 +68,7 @@
 2. Merubah algoritma pengambilan data pegawai dengan menggunakan session NIP
 3. Memperbaiki form validation pada menu edit user
 4. Menghapus user_guide
+
+- Kamis, 26 September 2019
+1. Membuat kolom tahun pada menu KK, IKU, dan Logbook
+2. Menambah logo
