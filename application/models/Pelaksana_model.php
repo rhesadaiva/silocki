@@ -31,10 +31,10 @@ class Pelaksana_model extends CI_Model
     {
         $role = $this->session->userdata('nip');
 
-        $query = $this->db->query("SELECT `user`.`nama`, `user`.`nip`, `user`.`atasan`, `kontrakkinerja`.`nomorkk`, `kontrakkinerja`.`nip`, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.`nip`, `logbook`.* 
+        $query = $this->db->query("SELECT `user`.`nama`, `user`.`nip`, `user`.`atasan`, `kontrakkinerja`.`id_kontrak`, `kontrakkinerja`.`nip`, `indikatorkinerjautama`.id_iku, `indikatorkinerjautama`.`nip`,`indikatorkinerjautama`.id_kontrak, `logbook`.* 
                                     from `kontrakkinerja` right join `user` using (`nip`) 
-                                    join `indikatorkinerjautama` using (`nomorkk`)
-                                    join `logbook` using (`id_iku`) where `is_sent` = 1 and `user`.nip = '$role' ");
+                                    join `indikatorkinerjautama` using (`id_kontrak`)
+                                    join `logbook` using (`id_iku`) where `is_sent` = 1 and `user`.nip = $role ");
         if ($query->num_rows() > 0) {
             return $query->num_rows();
         } else {
