@@ -68,3 +68,11 @@
 2. Merubah algoritma pengambilan data pegawai dengan menggunakan session NIP
 3. Memperbaiki form validation pada menu edit user
 4. Menghapus user_guide
+
+- Minggu, 29 September 2019
+1. Ada bug query getIKUFrom Kontrak di file Pejabat_model, sudah diperbaiki.
+2. Merubah struktur tabel kontrakkinerja dari id menjadi id_kontrak (PENTING)
+3. Menambah kolom id_kontrak pada tabel indikatorkinerjautama (PENTING)
+4. Menghapus kolom nomorkk pada tabel indikatorkinerjautama
+5. merubah id menjadi id_kontrak pada foreach aksi kontrak
+6. merubah id menjadi id_kontrak pada model approval, tambah, edit, delete kontrak
