@@ -29,7 +29,7 @@ class Kontrak_model extends CI_Model
     //ambil KK berdasarkan ID
     public function getKontrakbyID($id)
     {
-        return $this->db->get_where('kontrakkinerja', ['id' => $id])->row_array();
+        return $this->db->get_where('kontrakkinerja', ['id_kontrak' => $id])->row_array();
     }
 
     //Tambah KK Baru
@@ -46,7 +46,7 @@ class Kontrak_model extends CI_Model
         $telegramAtasan = $this->db->query("SELECT `user`.nama, `user`.telegram FROM `user` where `user`.nama = '$namaAtasan'")->row_array();
 
         $data = [
-            'id' => uniqid(),
+            'id_kontrak' => uniqid(),
             'nip' => $this->input->post('nipkk', true),
             'kontrakkinerjake' => $this->input->post('kontrakkinerjake', true),
             'nomorkk' => $this->input->post('nomorkontrakkinerja', true),
@@ -70,7 +70,7 @@ class Kontrak_model extends CI_Model
     //Hapus KK 
     public function hapuskontrak($id)
     {
-        $this->db->where('id', $id);
+        $this->db->where('id_kontrak', $id);
         $this->db->delete('kontrakkinerja');
     }
 
@@ -85,7 +85,7 @@ class Kontrak_model extends CI_Model
             'is_validated' => 1,
         ];
 
-        $this->db->where('id', $this->input->post('id_kontrak'));
+        $this->db->where('id_kontrak', $this->input->post('id_kontrak'));
         $this->db->update('kontrakkinerja', $data);
     }
 

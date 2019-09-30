@@ -17,15 +17,15 @@
                                 <label for="nomorkk" class="col-sm-3 col-form-label">Nomor Kontrak Kinerja</label>
                                 <div class="col-sm-5">
                                     <?php if ($this->session->userdata('role_id') == 1) : ?>
-                                    <select class="selectpicker" name="nomorkk" data-live-search="true" data-width="fit">
-                                        <?php foreach ($kontrak_kinerja as $kontrak) : ?>
-                                        <option value="<?= $kontrak['nomorkk']; ?>"><?= $kontrak['nomorkk']; ?> - <?= $kontrak['nama']; ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
+                                        <select class="selectpicker" name="nomorkk" data-live-search="true" data-width="fit">
+                                            <?php foreach ($kontrak_kinerja as $kontrak) : ?>
+                                                <option value="<?= $kontrak['id_kontrak']; ?>"><?= $kontrak['nomorkk']; ?> - <?= $kontrak['nama']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
                                     <?php else : ?>
-                                    <select class="selectpicker" name="nomorkk">
-                                        <option value="<?= $kontrak_kinerja['nomorkk']; ?>"><?= $kontrak_kinerja['nomorkk']; ?></option>
-                                    </select>
+                                        <select class="selectpicker" name="nomorkk">
+                                            <option value="<?= $kontrak_kinerja['id_kontrak']; ?>"><?= $kontrak_kinerja['nomorkk']; ?></option>
+                                        </select>
                                     <?php endif; ?>
                                 </div>
                             </div>
@@ -141,19 +141,19 @@
 
                             <div class="form-group row">
                                 <?php if ($this->session->userdata('role_id') == 1) : ?>
-                                <label for="nomorpegawai" class="col-sm-3 col-form-label">Set Pegawai</label>
-                                <div class="col-sm-5">
-                                    <select class="selectpicker" name="nomorpegawai" data-live-search="true" data-width="fit">
-                                        <?php foreach ($nip as $n) : ?>
-                                        <option value="<?= $n['nip']; ?>"><?= $n['nip']; ?> - <?= $n['nama']; ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
+                                    <label for="nomorpegawai" class="col-sm-3 col-form-label">Set Pegawai</label>
+                                    <div class="col-sm-5">
+                                        <select class="selectpicker" name="nomorpegawai" data-live-search="true" data-width="fit">
+                                            <?php foreach ($nip as $n) : ?>
+                                                <option value="<?= $n['nip']; ?>"><?= $n['nip']; ?> - <?= $n['nama']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
                                 <?php else : ?>
-                                <label for="nomorpegawai" class="col-sm-3 col-form-label sr-only">NIP</label>
-                                <div class="col-sm-5">
-                                    <input type="hidden" class="form-control" name="nomorpegawai" value="<?= $this->session->userdata('nip'); ?>" readonly>
-                                </div>
+                                    <label for="nomorpegawai" class="col-sm-3 col-form-label sr-only">NIP</label>
+                                    <div class="col-sm-5">
+                                        <input type="hidden" class="form-control" name="nomorpegawai" value="<?= $this->session->userdata('nip'); ?>" readonly>
+                                    </div>
                                 <?php endif; ?>
                             </div>
 

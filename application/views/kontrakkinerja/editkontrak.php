@@ -13,18 +13,18 @@
                         </div>
                         <div class="card-body">
 
-                            <input type="hidden" name="id_kontrak" value="<?= $kontrak['id']; ?>">
+                            <input type="hidden" name="id_kontrak" value="<?= $kontrak['id_kontrak']; ?>">
 
                             <div class="form-group row">
                                 <label for="kontrakkinerjake" class="col-sm-3 col-form-label">Seri Kontrak Kinerja</label>
                                 <div class="col-sm-6">
                                     <select class="selectpicker" name="kontrakkinerjake">
                                         <?php foreach ($serikontrak as $seri) : ?>
-                                        <?php if ($seri == $kontrak['kontrakkinerjake']) :  ?>
-                                        <option value="<?= $seri; ?>" selected><?= $seri; ?></option>
-                                        <?php else : ?>
-                                        <option value="<?= $seri; ?>"><?= $seri; ?></option>
-                                        <?php endif; ?>
+                                            <?php if ($seri == $kontrak['kontrakkinerjake']) :  ?>
+                                                <option value="<?= $seri; ?>" selected><?= $seri; ?></option>
+                                            <?php else : ?>
+                                                <option value="<?= $seri; ?>"><?= $seri; ?></option>
+                                            <?php endif; ?>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -60,8 +60,6 @@
                                     <input type="hidden" class="form-control" name="is_active" value="1" readonly>
                                 </div>
                             </div>
-
-
 
                             <div class="form-group row">
                                 <div class="col-sm-6">

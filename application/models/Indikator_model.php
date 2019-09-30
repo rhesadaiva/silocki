@@ -35,8 +35,7 @@ class Indikator_model extends CI_Model
     //Ambil data IKU khusus ADMIN
     public function getIKU()
     {
-        //return $this->db->get('indikatorkinerjautama')->result_array();
-        $query = $this->db->query("SELECT `indikatorkinerjautama`.*,`user`.nama, `user`.nip from `indikatorkinerjautama`join `user` using(nip)");
+        $query = $this->db->query("SELECT `kontrakkinerja`.id_kontrak, `kontrakkinerja`.nomorkk,`indikatorkinerjautama`.*,`user`.nama, `user`.nip from `indikatorkinerjautama`join `user` using(nip) join `kontrakkinerja` using (id_Kontrak)");
         return $query->result_array();
     }
 
@@ -44,7 +43,8 @@ class Indikator_model extends CI_Model
     public function getIKUByNIP()
     {
         $role = $this->session->userdata('nip');
-        return $this->db->get_where('indikatorkinerjautama', ['nip' => $role])->result_array();
+        return $this->db->query("SELECT `kontrakkinerja`.id_kontrak, `kontrakkinerja`.nomorkk, `indikatorkinerjautama`.*
+                                FROM `kontrakkinerja` JOIN `indikatorkinerjautama` using (id_kontrak) where `indikatorkinerjautama`.nip = $role")->result_array();
     }
 
     //Tambah IKU Baru
@@ -63,7 +63,7 @@ class Indikator_model extends CI_Model
         $data = [
             'nip' => $this->input->post('nomorpegawai', true),
             'id_iku' => uniqid(),
-            'nomorkk' => $this->input->post('nomorkk', true),
+            'id_kontrak' => $this->input->post('nomorkk', true),
             'kodeiku' => $this->input->post('kodeiku', true),
             'namaiku' => $this->input->post('namaiku', true),
             'formulaiku' => $this->input->post('formulaiku', true),

@@ -15,19 +15,19 @@
 
                             <div class="form-group row">
                                 <?php if ($this->session->userdata('role_id') == 1) : ?>
-                                <label for="nipkk" class="col-sm-3 col-form-label">Set Pegawai</label>
-                                <div class="col-sm-6">
-                                    <select class="selectpicker" name="nipkk" data-live-search="true" data-width="fit">
-                                        <?php foreach ($nip as $n) : ?>
-                                        <option value="<?= $n['nip']; ?>"><?= $n['nip']; ?> - <?= $n['nama']; ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
+                                    <label for="nipkk" class="col-sm-3 col-form-label">Set Pegawai</label>
+                                    <div class="col-sm-6">
+                                        <select class="selectpicker" name="nipkk" data-live-search="true" data-width="fit">
+                                            <?php foreach ($nip as $n) : ?>
+                                                <option value="<?= $n['nip']; ?>"><?= $n['nip']; ?> - <?= $n['nama']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
                                 <?php else : ?>
-                                <label for="nipkk" class="col-sm-3 col-form-label sr-only">NIP</label>
-                                <div class="col-sm-6">
-                                    <input type="hidden" class="form-control" name="nipkk" value="<?= $this->session->userdata('nip'); ?>" readonly>
-                                </div>
+                                    <label for="nipkk" class="col-sm-3 col-form-label sr-only">NIP</label>
+                                    <div class="col-sm-6">
+                                        <input type="hidden" class="form-control" name="nipkk" value="<?= $this->session->userdata('nip'); ?>" readonly>
+                                    </div>
                                 <?php endif; ?>
                             </div>
 
@@ -73,8 +73,6 @@
                                     <input type="hidden" class="form-control" name="is_active" value="1" readonly>
                                 </div>
                             </div>
-
-
 
                             <div class="form-group row">
                                 <div class="col-sm-6">
