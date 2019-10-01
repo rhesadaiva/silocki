@@ -189,7 +189,7 @@ class Admin_model extends CI_Model
     {
         $alert =
             [
-                'content' => $this->input->post('contentisi', true),
+                'datapengumuman' => $this->input->post('contentisi', true),
                 'tglrekam' => date("Y-m-d H:i:s")
             ];
 

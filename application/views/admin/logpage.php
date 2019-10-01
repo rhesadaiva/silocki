@@ -36,14 +36,14 @@
                         <tbody>
                             <?php $i = 1; ?>
                             <?php foreach ($log_data as $activity) : ?>
-                            <tr class="logactivity">
-                                <th scope="row"><?= $i; ?></th>
-                                <td><?= $activity['log_user']; ?></td>
-                                <td><?= indonesian_date2($activity['log_time']); ?></td>
-                                <td><?= $activity['log_desc']; ?></td>
+                                <tr class="logactivity">
+                                    <th scope="row"><?= $i; ?></th>
+                                    <td><?= $activity['log_user']; ?></td>
+                                    <td><?= indonesian_date2($activity['log_time']); ?></td>
+                                    <td><?= $activity['log_desc']; ?></td>
 
-                            </tr>
-                            <?php $i++; ?>
+                                </tr>
+                                <?php $i++; ?>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
@@ -77,15 +77,15 @@
                                     <tbody>
                                         <?php $i = 1; ?>
                                         <?php foreach ($notifikasi as $notif) : ?>
-                                        <tr class="pengumumanisi">
-                                            <th scope="row"><?= $i; ?></th>
-                                            <td class="contentpengumuman"><?= $notif['content']; ?></td>
-                                            <td class="tglpengumuman"><?= tgl_indo($notif['tglrekam']); ?></td>
-                                            <td class="aksipengumuman">
-                                                <a data-toggle="tooltip" data-placement="left" title="Hapus Pengumuman" class="hapuspengumuman" href="<?= base_url(); ?>admin/hapuspengumuman/<?= $notif['id']; ?>"><span style=" color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
-                                            </td>
-                                        </tr>
-                                        <?php $i++; ?>
+                                            <tr class="pengumumanisi">
+                                                <th scope="row"><?= $i; ?></th>
+                                                <td class="contentpengumuman"><?= $notif['datapengumuman']; ?></td>
+                                                <td class="tglpengumuman"><?= tgl_indo($notif['tglrekam']); ?></td>
+                                                <td class="aksipengumuman">
+                                                    <a data-toggle="tooltip" data-placement="left" title="Hapus Pengumuman" class="hapuspengumuman" href="<?= base_url(); ?>admin/hapuspengumuman/<?= $notif['id']; ?>"><span style=" color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
+                                                </td>
+                                            </tr>
+                                            <?php $i++; ?>
                                         <?php endforeach; ?>
                                     </tbody>
                                 </table>
