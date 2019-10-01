@@ -784,29 +784,22 @@ $('#btn-detailmodalbelumdisetujui').on('click', function (e) {
 
 });
 
-// Test Ganti Pengumuman ke Tutorial
 var loadpengumuman =
-    function () {
-        $.ajax({
-            url: 'welcome/ambilPengumuman',
-            type: 'get',
-            dataType: 'json',
-            data: {
-                isipengumuman: content,
-            },
-            processData: false,
-            contentType: false,
-            success: function (data) {
-                let isipengumuman = '';
-                let i = 0;
-                for (i = 0; i < data.length; i++) {
-                    isipengumuman += '<div class="alert alert-success" role="alert">' + data[i].isipengumuman + '</div>'
+function() {
+    $.ajax({
+        url: 'welcome/ambilPengumuman',
+        dataType: 'json',
+        success : function(data){
+            let isipengumuman = '';
+            let i = 0;
+            for (i = 0; i < data.length; i++) {
+                isipengumuman += '<div class="alert alert-success" role="alert">' + data[i].datapengumuman + '</div>'
 
-                    $('#content-card').html(isipengumuman);
-                }
+                $('#content-card').html(isipengumuman);
             }
-        });
-    }
+        }
+    });
+}
 
 // Menjalankan ajax ambil data pengumuman
 $(document).ready(function () {
