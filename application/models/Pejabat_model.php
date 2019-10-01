@@ -26,7 +26,7 @@ class Pejabat_model extends CI_Model
     {
         $role = $this->session->userdata('nama');
 
-        $query = $this->db->query("SELECT `kontrakkinerja`.*, `user`.nama, `user`.nip, `user`.atasan, `user`.telegram from `kontrakkinerja` join `user` using (nip) where `kontrakkinerja`.id = '$id' ");
+        $query = $this->db->query("SELECT `kontrakkinerja`.*, `user`.nama, `user`.nip, `user`.atasan, `user`.telegram from `kontrakkinerja` join `user` using (nip) where `kontrakkinerja`.id_kontrak = '$id' ");
 
         $telegram = $query->row_array();
 
@@ -50,7 +50,7 @@ class Pejabat_model extends CI_Model
     //Fungsi batal approve kontrak
     public function batalapprovekontrak($id)
     {
-        $query = $this->db->query("SELECT `kontrakkinerja`.*, `user`.nama, `user`.nip, `user`.atasan, `user`.telegram from `kontrakkinerja` join `user` using (nip) where `kontrakkinerja`.id = '$id' ");
+        $query = $this->db->query("SELECT `kontrakkinerja`.*, `user`.nama, `user`.nip, `user`.atasan, `user`.telegram from `kontrakkinerja` join `user` using (nip) where `kontrakkinerja`.id_kontrak = '$id' ");
 
         $telegram = $query->row_array();
 
