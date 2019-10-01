@@ -835,3 +835,21 @@ $('#switch').on('click', function () {
     };
 
 })
+
+$(document).ready(function () {
+    $('#browsekontrakkinerja').DataTable({
+
+        "lengthChange": false,
+        "ordering": false,
+        "info": false,
+    });
+});
+
+$(document).ready(function () {
+    $('#browseiku').DataTable({
+
+        "lengthChange": false,
+        "ordering": false,
+        "info": false,
+    });
+});
