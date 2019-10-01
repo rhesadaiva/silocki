@@ -76,3 +76,7 @@
 4. Menghapus kolom nomorkk pada tabel indikatorkinerjautama
 5. merubah id menjadi id_kontrak pada foreach aksi kontrak
 6. merubah id menjadi id_kontrak pada model approval, tambah, edit, delete kontrak
+
+- Senin, 30 September 2019
+1. Membetulkan bug approval kontrak bawahan
+2. Menambah datatables pada browse kontrak dan browse IKU
