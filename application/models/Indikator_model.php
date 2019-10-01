@@ -28,7 +28,7 @@ class Indikator_model extends CI_Model
     public function getKontrakByNIP()
     {
         $role = $this->session->userdata('nip');
-        $query = $this->db->query("SELECT * from `kontrakkinerja`  where nip='$role' and is_validated=1");
+        $query = $this->db->query("SELECT * from `kontrakkinerja` where nip= $role ");
         return $query->row_array();
     }
 
