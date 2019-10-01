@@ -35,7 +35,7 @@ class Indikator_model extends CI_Model
     //Ambil data IKU khusus ADMIN
     public function getIKU()
     {
-        $query = $this->db->query("SELECT `kontrakkinerja`.id_kontrak, `kontrakkinerja`.nomorkk,`indikatorkinerjautama`.*,`user`.nama, `user`.nip from `indikatorkinerjautama`join `user` using(nip) join `kontrakkinerja` using (id_Kontrak)");
+        $query = $this->db->query("SELECT `kontrakkinerja`.id_kontrak, `kontrakkinerja`.nomorkk,`indikatorkinerjautama`.*,`user`.nama, `user`.nip from `indikatorkinerjautama`join `user` using(nip) join `kontrakkinerja` using (id_kontrak)");
         return $query->result_array();
     }
 
