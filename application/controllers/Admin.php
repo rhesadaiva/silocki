@@ -123,7 +123,6 @@ class Admin extends CI_Controller
         $data['periode'] = $this->input->get('periodepelaporan');
 
         $data['belumlogbook'] = $this->Admin_model->pegawainotvalidatedlogbook();
-        // var_dump($data['belumlogbook']);
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_admin');

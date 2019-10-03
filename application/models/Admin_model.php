@@ -125,7 +125,7 @@ class Admin_model extends CI_Model
     //query pegawai yang belum divalidasi logbooknya
     public function pegawainotvalidatedlogbook()
     {
-        $query = $this->db->query("SELECT `logbook`.*, `user`.`nama`,
+        $query = $this->db->query("SELECT `logbook`.periode, `logbook`.is_sent, `logbook`.is_approved, `user`.`nama`,
                                     count(nippegawai) as total
                                     from logbook 
                                     join user on `logbook`.`nippegawai`=`user`.`nip`
