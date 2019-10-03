@@ -680,11 +680,11 @@ if (flashDataPengumuman) {
 }
 
 // AJAX menampilkan detail logbook yang telah disetujui pada modal
-$('#btn-detailmodal').on('click', function (e) {
-
-    e.preventDefault();
-    const nama = $('#datanama').data('nama');
-    const periode = $('#dataperiode').data('periode');
+function logbookdisetujui(selected_id) {
+    let nama = document.getElementById(selected_id).getAttribute("nama");
+    let periode = document.getElementById(selected_id).getAttribute("periode");
+    // let temp = "Nama= " + nama + "  , dan Periode= " + periode;
+    // console.log(temp);
 
     $.ajax({
         url: "getDetailLogbookDisetujui?nama=" + nama + "&periode=" + periode,
@@ -728,17 +728,14 @@ $('#btn-detailmodal').on('click', function (e) {
             }
         }
     });
-
-});
+}
 
 
 // AJAX menampilkan detail logbook yang belum disetujui pada modal
 
-$('#btn-detailmodalbelumdisetujui').on('click', function (e) {
-
-    e.preventDefault();
-    const namabelum = $('#datanamabelumdisetujui').data('nama');
-    const periodebelum = $('#dataperiodebelumdisetujui').data('periode');
+function logbookbelumdisetujui(selected_id) {
+    let namabelum = document.getElementById(selected_id).getAttribute("nama");
+    let periodebelum = document.getElementById(selected_id).getAttribute("periode");
 
     $.ajax({
         url: "getDetailLogbookBelumDisetujui?nama=" + namabelum + "&periode=" + periodebelum,
@@ -781,25 +778,26 @@ $('#btn-detailmodalbelumdisetujui').on('click', function (e) {
             }
         }
     });
+}
 
-});
+
 
 var loadpengumuman =
-function() {
-    $.ajax({
-        url: 'welcome/ambilPengumuman',
-        dataType: 'json',
-        success : function(data){
-            let isipengumuman = '';
-            let i = 0;
-            for (i = 0; i < data.length; i++) {
-                isipengumuman += '<div class="alert alert-success" role="alert">' + data[i].datapengumuman + '</div>'
+    function () {
+        $.ajax({
+            url: 'welcome/ambilPengumuman',
+            dataType: 'json',
+            success: function (data) {
+                let isipengumuman = '';
+                let i = 0;
+                for (i = 0; i < data.length; i++) {
+                    isipengumuman += '<div class="alert alert-success" role="alert">' + data[i].datapengumuman + '</div>'
 
-                $('#content-card').html(isipengumuman);
+                    $('#content-card').html(isipengumuman);
+                }
             }
-        }
-    });
-}
+        });
+    }
 
 // Menjalankan ajax ambil data pengumuman
 $(document).ready(function () {

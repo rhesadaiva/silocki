@@ -54,11 +54,10 @@
                             </td>
 
                             <td>
-                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modaldetail" id="btn-detailmodal"><i class="fas fa-fw fa-search"></i> Lihat Detail</button>
+                                <button type="button" class="btn btn-primary btn-sm detailmodal" data-toggle="modal" data-target="#modaldetail" nama="<?= $clear['nama'] ?>" periode="<?= $clear['periode'] ?>" id="<?= $i; ?>" onclick="logbookdisetujui(<?= $i; ?>)"><i class="fas fa-fw fa-search"></i> Lihat Detail</button>
 
                             </td>
-                            <div id="datanama" data-nama="<?= $clear['nama'] ?>"></div>
-                            <div id="dataperiode" data-periode="<?= $clear['periode'] ?>"></div>
+
                         </tr>
                         <?php $i++; ?>
                     <?php endforeach; ?>

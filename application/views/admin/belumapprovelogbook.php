@@ -53,7 +53,7 @@
                                 <td class="belumapprove text-center">Ada <b><?= $belum['total']; ?></b> Logbook yang belum divalidasi oleh atasan</td>
                                 <td class="belumapprove text-center"><?= $belum['periode']; ?></td>
                                 <td class="text-center">
-                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalbelumdisetujui" id="btn-detailmodalbelumdisetujui"><i class="fas fa-fw fa-search"></i> Lihat Detail</button>
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalbelumdisetujui" nama="<?= $belum['nama'] ?>" periode="<?= $belum['periode'] ?>" id="<?= $i; ?>" onclick="logbookbelumdisetujui(<?= $i; ?>)"><i class=" fas fa-fw fa-search"></i> Lihat Detail</button>
 
                                 </td>
                                 <div id="datanamabelumdisetujui" data-nama="<?= $belum['nama'] ?>"></div>
