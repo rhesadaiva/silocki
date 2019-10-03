@@ -46,20 +46,18 @@
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($belumlogbook as $belum) : ?>
-                        <?php if ($belum['total'] < 5) : ?>
-                            <tr>
-                                <th scope="row" class="nomor belumapprove"><?= $i; ?></th>
-                                <td class="belumapprove text-center"><?= $belum['nama']; ?></td>
-                                <td class="belumapprove text-center">Ada <b><?= $belum['total']; ?></b> Logbook yang belum divalidasi oleh atasan</td>
-                                <td class="belumapprove text-center"><?= $belum['periode']; ?></td>
-                                <td class="text-center">
-                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalbelumdisetujui" nama="<?= $belum['nama'] ?>" periode="<?= $belum['periode'] ?>" id="<?= $i; ?>" onclick="logbookbelumdisetujui(<?= $i; ?>)"><i class=" fas fa-fw fa-search"></i> Lihat Detail</button>
 
-                                </td>
-                                <div id="datanamabelumdisetujui" data-nama="<?= $belum['nama'] ?>"></div>
-                                <div id="dataperiodebelumdisetujui" data-periode="<?= $belum['periode'] ?>"></div>
-                            </tr>
-                        <?php endif; ?>
+                        <tr>
+                            <th scope="row" class="nomor belumapprove"><?= $i; ?></th>
+                            <td class="belumapprove text-center"><?= $belum['nama']; ?></td>
+                            <td class="belumapprove text-center">Ada <b><?= $belum['total']; ?></b> Logbook yang belum divalidasi oleh atasan</td>
+                            <td class="belumapprove text-center"><?= $belum['periode']; ?></td>
+                            <td class="text-center">
+                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalbelumdisetujui" nama="<?= $belum['nama'] ?>" periode="<?= $belum['periode'] ?>" id="<?= $i; ?>" onclick="logbookbelumdisetujui(<?= $i; ?>)"><i class=" fas fa-fw fa-search"></i> Lihat Detail</button>
+
+                            </td>
+                        </tr>
+
 
                         <?php $i++; ?>
                     <?php endforeach; ?>
