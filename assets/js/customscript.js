@@ -277,7 +277,7 @@ if (flashDataKontrakBawahan) {
 
     });
 }
-console.log('Kontrak Kinerja berhasil ' + flashDataKontrakBawahan + '.');
+
 
 
 //Sweet Alert Approve Kontrak Bawahan 
@@ -393,7 +393,6 @@ if (flashDataIKUBawahan) {
 
     });
 }
-console.log(flashDataIKUBawahan);
 
 
 //Sweet Alert Approve IKU Bawahan
@@ -506,7 +505,6 @@ if (flashDataLogbookBawahan) {
 
     });
 }
-console.log('Logbook Bawahan berhasil ' + flashDataLogbookBawahan);
 
 //Sweet Alert Approve Logbook
 $('.button-setujulogbookbawahan').on('click', function (e) {
@@ -617,7 +615,6 @@ if (flashDataManageUser) {
 
     });
 }
-console.log('Pegawai ' + flashDataManageUser);
 
 $('.button-hapuspegawai').on('click', function (e) {
 
@@ -683,8 +680,6 @@ if (flashDataPengumuman) {
 function logbookdisetujui(selected_id) {
     let nama = document.getElementById(selected_id).getAttribute("nama");
     let periode = document.getElementById(selected_id).getAttribute("periode");
-    // let temp = "Nama= " + nama + "  , dan Periode= " + periode;
-    // console.log(temp);
 
     $.ajax({
         url: "getDetailLogbookDisetujui?nama=" + nama + "&periode=" + periode,
