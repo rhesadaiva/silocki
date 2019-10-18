@@ -20,11 +20,13 @@ class Admin extends CI_Controller
         $data['jumlahiku'] = $this->Admin_model->countIKU();
         $data['jumlahlogbook'] = $this->Admin_model->countLogbook();
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar_admin');
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/index');
-        $this->load->view('templates/footer');
+        // $this->load->view('templates/header', $data);
+        // $this->load->view('templates/sidebar_admin');
+        // $this->load->view('templates/topbar', $data);
+        // $this->load->view('admin/index');
+        // $this->load->view('templates/footer');
+
+        $this->load->view('admin/indexedit', $data);
     }
 
     public function manajemen_user()
