@@ -81,3 +81,5 @@
 1. Membetulkan bug approval kontrak bawahan
 2. Menambah datatables pada browse kontrak dan browse IKU
 
+- Jumat, 18 Oktober 2019
+1. Memulai membuat template baru.
