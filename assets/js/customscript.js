@@ -30,9 +30,9 @@ $('.hapus-kontrak').on('click', function (e) {
 		if (result.value) {
 			// document.location.href = href;
 			$.ajax({
-				type: "post",
+				type: "POST",
 				url: href,
-				DataType: "json",
+				DataType: "JSON",
 				data: {
 					id: id
 				},
@@ -55,7 +55,6 @@ $('.hapus-kontrak').on('click', function (e) {
 		}
 	})
 })
-
 
 const flashDataIKU = $('.flashdata').data('flashdataiku');
 
@@ -89,9 +88,9 @@ $('.buttonhapusiku').on('click', function (e) {
 		if (result.value) {
 			// document.location.href = href;
 			$.ajax({
-				type: "post",
+				type: "POST",
 				url: href,
-				DataType: "json",
+				DataType: "JSON",
 				data: {
 					idiku: idiku
 				},
@@ -147,9 +146,9 @@ $('.button-hapuslogbook').on('click', function (e) {
 		if (result.value) {
 			// document.location.href = href;
 			$.ajax({
-				type: "post",
+				type: "POST",
 				url: href,
-				DataType: "json",
+				DataType: "JSON",
 				data: {
 					idlogbook: idlogbook
 				},
@@ -196,9 +195,9 @@ $('.button-kirimlogbook').on('click', function (e) {
 		if (result.value) {
 			// document.location.href = href;
 			$.ajax({
-				type: "post",
+				type: "POST",
 				url: href,
-				DataType: "json",
+				DataType: "JSON",
 				data: {
 					idlogbook: idlogbook
 				},
@@ -235,9 +234,9 @@ $('.inputlogbookbaru').on('submit', function (e) {
 	var data = $(this).serialize();
 
 	$.ajax({
-		type: "post",
+		type: "POST",
 		url: url + '/' + idiku,
-		DataType: "json",
+		DataType: "JSON",
 		data: data,
 		success: function () {
 			$('#rekamlogbook').modal('hide');
@@ -294,9 +293,9 @@ $('.button-buttonapprovekontrak').on('click', function (e) {
 	}).then((result) => {
 		if (result.value) {
 			$.ajax({
-				type: "post",
+				type: "POST",
 				url: href,
-				DataType: "json",
+				DataType: "JSON",
 				data: {
 					id: id
 				},
@@ -343,9 +342,9 @@ $('.button-buttonbatalapprovekontrak').on('click', function (e) {
 	}).then((result) => {
 		if (result.value) {
 			$.ajax({
-				type: "post",
+				type: "POST",
 				url: href,
-				DataType: "json",
+				DataType: "JSON",
 				data: {
 					id: id
 				},
@@ -406,9 +405,9 @@ $('.button-buttonapproveiku').on('click', function (e) {
 	}).then((result) => {
 		if (result.value) {
 			$.ajax({
-				type: "post",
+				type: "POST",
 				url: href,
-				DataType: "json",
+				DataType: "JSON",
 				data: {
 					idiku: idiku
 				},
@@ -455,9 +454,9 @@ $('.button-buttonbatalapproveiku').on('click', function (e) {
 	}).then((result) => {
 		if (result.value) {
 			$.ajax({
-				type: "post",
+				type: "POST",
 				url: href,
-				DataType: "json",
+				DataType: "JSON",
 				data: {
 					idiku: idiku
 				},
@@ -516,9 +515,9 @@ $('.button-setujulogbookbawahan').on('click', function (e) {
 	}).then((result) => {
 		if (result.value) {
 			$.ajax({
-				type: "post",
+				type: "POST",
 				url: href,
-				DataType: "json",
+				DataType: "JSON",
 				data: {
 					idlogbook: idlogbook
 				},
@@ -566,9 +565,9 @@ $('.button-tidaksetujulogbookbawahan').on('click', function (e) {
 	}).then((result) => {
 		if (result.value) {
 			$.ajax({
-				type: "post",
+				type: "POST",
 				url: href,
-				DataType: "json",
+				DataType: "JSON",
 				data: {
 					idlogbook: idlogbook
 				},
@@ -629,34 +628,12 @@ $('.button-hapuspegawai').on('click', function (e) {
 	})
 });
 
-//Init Datatables User
-$(document).ready(function () {
-	$('#datauser').DataTable({
-		"lengthChange": false,
-		"ordering": false,
-		"info": false,
-
-	});
-});
-
 //Preloader script
 $(document).ready(function () {
 	$('.preloader').fadeOut();
 })
 
-//Init Datatables Log-Activity
-$(document).ready(function () {
-	$('#log-table').DataTable({
-
-		"lengthChange": false,
-		"ordering": false,
-		"info": false,
-		"searching": false,
-	});
-});
-
 // Alert Tambah Pengumuman
-
 const flashDataPengumuman = $('.flashdata-pengumuman').data('flashdatapengumuman');
 
 if (flashDataPengumuman) {
@@ -679,7 +656,7 @@ function logbookdisetujui(selected_id) {
 			periode: periode
 		},
 		type: "GET",
-		dataType: "json",
+		dataType: "JSON",
 		success: function (data) {
 			let html = '';
 
@@ -727,7 +704,7 @@ function logbookbelumdisetujui(selected_id) {
 			periodebelum: periodebelum
 		},
 		type: "GET",
-		dataType: "json",
+		dataType: "JSON",
 		success: function (data) {
 			let html = '';
 
@@ -762,11 +739,12 @@ function logbookbelumdisetujui(selected_id) {
 	});
 }
 
+// Menjalankan ajax ambil data pengumuman
 var loadpengumuman =
 	function () {
 		$.ajax({
 			url: 'welcome/ambilPengumuman',
-			dataType: 'json',
+			dataType: 'JSON',
 			success: function (data) {
 				let isipengumuman = '';
 				let i = 0;
@@ -779,7 +757,6 @@ var loadpengumuman =
 		});
 	}
 
-// Menjalankan ajax ambil data pengumuman
 $(document).ready(function () {
 	loadpengumuman()
 })
@@ -820,5 +797,24 @@ $(document).ready(function () {
 		"lengthChange": false,
 		"ordering": false,
 		"info": false,
+	});
+});
+
+$(document).ready(function () {
+	$('#datauser').DataTable({
+		"lengthChange": false,
+		"ordering": false,
+		"info": false,
+
+	});
+});
+
+$(document).ready(function () {
+	$('#log-table').DataTable({
+
+		"lengthChange": false,
+		"ordering": false,
+		"info": false,
+		"searching": false,
 	});
 });

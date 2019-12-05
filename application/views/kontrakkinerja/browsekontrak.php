@@ -2,12 +2,8 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-
-
     <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
     <?php if ($this->session->flashdata('flash')) : ?>
-
-
     <?php endif; ?>
 
     <div class="card shadow border-left-primary">
@@ -37,6 +33,9 @@
                                 <?php endif; ?>
                                 <th class="text-center browsekontrak" scope="col">Nomor Kontrak Kinerja</th>
                                 <th class="text-center browsekontrak" scope="col">Periode Pelaksanaan</th>
+                                <?php if ($this->session->userdata['role_id'] == 1) : ?>
+                                    <th class="text-center browsekontrak" scope="col">Tahun Kontrak Kinerja</th>
+                                <?php endif; ?>
                                 <th class="text-center browsekontrak" data-valign="middle" data-halign="center" scope="col">Status Validasi</th>
                                 <th class="text-center browsekontrak" data-valign="middle" data-halign="center" scope="col">Aksi</th>
                             </tr>
@@ -52,6 +51,9 @@
                                     <?php endif; ?>
                                     <td class="browsekontrak"><?= $kontrak['nomorkk']; ?></td>
                                     <td class="browsekontrak"><?= indonesian_date3($kontrak['tanggalmulai']); ?> s.d <?= indonesian_date3($kontrak['tanggalselesai']); ?></td>
+                                    <?php if ($this->session->userdata['role_id'] == 1) : ?>
+                                        <td class="browsekontrak"><?= $kontrak['tahun_kontrak']; ?></td>
+                                    <?php endif; ?>
                                     <td class="browsekontrak">
                                         <?php switch ($kontrak['is_validated']) {
                                                 case 1:
@@ -68,6 +70,7 @@
                                             }
                                             ?>
                                     </td>
+
                                     <td class="aksibrowsekontrak">
                                         <?php if ($kontrak['is_validated'] == 1) : ?>
                                             <a data-toggle="tooltip" data-placement="left" title="Edit Kontrak Kinerja" href="<?= base_url(); ?>kontrakkinerja/editkontrak/<?= $kontrak['id_kontrak']; ?> "><i class="fas fa-fw fa-edit"></i></a>

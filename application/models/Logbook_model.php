@@ -34,7 +34,7 @@ class Logbook_model extends CI_Model
     public function getlogbook($idiku)
     {
         $idiku = $this->uri->segment(3);
-        $query = $this->db->query("SELECT indikatorkinerjautama.*, logbook.* FROM indikatorkinerjautama JOIN logbook using(id_iku) where logbook.id_iku='$idiku'");
+        $query = $this->db->query("SELECT indikatorkinerjautama.*, logbook.* FROM indikatorkinerjautama JOIN logbook USING(id_iku) WHERE `logbook`.id_iku='$idiku'");
         return $query->result_array();
     }
 

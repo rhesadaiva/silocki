@@ -207,8 +207,6 @@
         </div>
     </div>
 
-    <!-- Modal Edit Data Kontrak -->
-
 </div>
 <!-- /.container-fluid -->
 

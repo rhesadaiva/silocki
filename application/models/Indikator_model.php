@@ -20,6 +20,7 @@ class Indikator_model extends CI_Model
     //Ambil data kontrak khusus admin
     public function getKontrak()
     {
+
         $query = $this->db->query('SELECT `kontrakkinerja`.*, `user`.nama from `kontrakkinerja`join `user` using(nip)');
         return $query->result_array();
     }
@@ -27,8 +28,10 @@ class Indikator_model extends CI_Model
     //Ambil data kontrak berdasarkan NIP login
     public function getKontrakByNIP()
     {
+        $year = date("Y");
+
         $role = $this->session->userdata('nip');
-        $query = $this->db->query("SELECT * from `kontrakkinerja` where nip= $role ");
+        $query = $this->db->query("SELECT * from `kontrakkinerja` where nip= $role and tahun_kontrak = $year");
         return $query->row_array();
     }
 
@@ -42,9 +45,11 @@ class Indikator_model extends CI_Model
     //Ambil data IKU berdasarkan NIP login
     public function getIKUByNIP()
     {
+        $year = date("Y");
+
         $role = $this->session->userdata('nip');
         return $this->db->query("SELECT `kontrakkinerja`.id_kontrak, `kontrakkinerja`.nomorkk, `indikatorkinerjautama`.*
-                                FROM `kontrakkinerja` JOIN `indikatorkinerjautama` using (id_kontrak) where `indikatorkinerjautama`.nip = $role")->result_array();
+                                FROM `kontrakkinerja` JOIN `indikatorkinerjautama` using (id_kontrak) where `indikatorkinerjautama`.nip = $role AND `indikatorkinerjautama`.tahun_iku = $year")->result_array();
     }
 
     //Tambah IKU Baru
@@ -57,7 +62,6 @@ class Indikator_model extends CI_Model
         $namaAtasan = $queryAtasan['atasan'];
         // Ambil ID Telegram Atasan dari nama
         $telegramAtasan = $this->db->query("SELECT `user`.nama, `user`.telegram FROM `user` where `user`.nama = '$namaAtasan'")->row_array();
-
 
         //Ambil data dari form
         $data = [

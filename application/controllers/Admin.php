@@ -152,7 +152,6 @@ class Admin extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
         $data['periode'] = $this->input->get('periodepelaporan');
 
-
         $data['logbookclear'] = $this->Admin_model->logbookclear();
 
         $this->load->view('templates/header', $data);

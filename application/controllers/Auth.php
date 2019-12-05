@@ -40,16 +40,12 @@ class Auth extends CI_Controller
                 helper_log("login", "Masuk ke aplikasi SiLocki");
 
                 if ($user['role_id'] == 1) {
-
                     redirect('admin');
                 } elseif ($user['role_id'] == 2) {
-
                     redirect('kepalakantor');
                 } elseif ($user['role_id'] == 3) {
-
                     redirect('pejabat');
                 } elseif ($user['role_id'] == 4) {
-
                     redirect('pejabat');
                 } else {
                     redirect('pelaksana');
@@ -240,7 +236,6 @@ class Auth extends CI_Controller
         );
 
         // Update status pesan menjadi sudah terkirim
-
         $this->db->set('is_sent', 1);
         $this->db->where('token', $tokenid);
         $this->db->where('is_used', 0);

@@ -14,15 +14,17 @@ class Kontrak_model extends CI_Model
     //Ambil semua KK (khusus admin)
     public function getKontrak()
     {
-        $query = $this->db->query('SELECT `kontrakkinerja`.*, `user`.nama from `kontrakkinerja`join `user` using(nip)');
+        $query = $this->db->query("SELECT `kontrakkinerja`.*, `user`.nama from `kontrakkinerja`join `user` using(nip)");
         return $query->result_array();
     }
 
     //Ambil KK berdasarkan NIP login
     public function getKontrakByNIP()
     {
+        $year = date("Y");
+
         $role = $this->session->userdata('nip');
-        $query = $this->db->query("SELECT * from `kontrakkinerja` where nip='$role' ");
+        $query = $this->db->query("SELECT * from `kontrakkinerja` where nip='$role' and `tahun_kontrak` = '$year' ");
         return $query->result_array();
     }
 

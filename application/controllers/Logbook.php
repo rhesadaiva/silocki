@@ -35,7 +35,6 @@ class Logbook extends CI_Controller
     public function rekamlogbook($idiku)
     {
         $idiku = $this->uri->segment(3);
-        // $data['idiku'] = $this->uri->segment(3);
 
         //Validasi data logbook
         $this->form_validation->set_rules('periodepelaporan', 'Periode Pelaporan', 'required');

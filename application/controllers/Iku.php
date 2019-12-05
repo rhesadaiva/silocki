@@ -74,8 +74,6 @@ class Iku extends CI_Controller
     {
         $hapusiku = $this->Indikator_model->hapusiku($idiku);
         helper_log("delete", "menghapus IKU (id-iku = $idiku)");
-        // $this->session->set_flashdata('flash', 'Dihapus');
-        // redirect('iku/browseiku');
         echo json_encode($hapusiku);
     }
 
