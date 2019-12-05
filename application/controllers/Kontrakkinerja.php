@@ -10,9 +10,9 @@ class Kontrakkinerja extends CI_Controller
         $this->load->model('Kontrak_model');
     }
 
+    // Browse Kontrak Kinerja
     public function browsekontrak()
     {
-
         $data['title'] = 'Browse Kontrak Kinerja';
         $data['user'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->row_array();
         $data['role'] = $this->session->userdata('role_id');
@@ -29,6 +29,7 @@ class Kontrakkinerja extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    // Menambah kontrak kinerja baru
     public function tambahkontrak()
     {
         $data['title'] = 'Rekam Kontrak Kinerja Baru';
@@ -54,6 +55,8 @@ class Kontrakkinerja extends CI_Controller
             redirect('kontrakkinerja/browsekontrak');
         }
     }
+
+    // Menghapus Kontrak Kinerja 
     public function hapuskontrak($id)
     {
         $hapuskontrak = $this->Kontrak_model->hapuskontrak($id);
@@ -62,6 +65,7 @@ class Kontrakkinerja extends CI_Controller
         echo json_encode($hapuskontrak);
     }
 
+    // Mengedit Kontrak Kinerja
     public function editkontrak($id)
     {
         $data['title'] = 'Ubah Data Kontrak Kinerja';
@@ -82,7 +86,6 @@ class Kontrakkinerja extends CI_Controller
             $this->load->view('kontrakkinerja/editkontrak', $data);
             $this->load->view('templates/footer');
         } else {
-
             $this->Kontrak_model->editkontrak($id);
             $this->session->set_flashdata('flash', 'Diubah');
             helper_log("edit", "mengubah Kontrak Kinerja (id-kontrak = $id)");

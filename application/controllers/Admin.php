@@ -20,13 +20,11 @@ class Admin extends CI_Controller
         $data['jumlahiku'] = $this->Admin_model->countIKU();
         $data['jumlahlogbook'] = $this->Admin_model->countLogbook();
 
-        // $this->load->view('templates/header', $data);
-        // $this->load->view('templates/sidebar_admin');
-        // $this->load->view('templates/topbar', $data);
-        // $this->load->view('admin/index');
-        // $this->load->view('templates/footer');
-
-        $this->load->view('admin/indexedit', $data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar_admin');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/index');
+        $this->load->view('templates/footer');
     }
 
     public function manajemen_user()
@@ -68,9 +66,7 @@ class Admin extends CI_Controller
         } else {
 
             $this->Admin_model->tambahUser();
-
             helper_log("add", "Menambah data pegawai baru");
-
             $this->session->set_flashdata('user', 'ditambahkan dengan password 123456');
             redirect('admin/manajemen_user');
         }
@@ -88,7 +84,6 @@ class Admin extends CI_Controller
         $data['seksi'] = $this->Admin_model->getSeksi();
 
         //Validasi EDIT User
-
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim|is_unique[user.nama]');
         $this->form_validation->set_rules('nip', 'Nomor Induk Pegawai', 'required|trim|is_unique[user.nip]|numeric');
         $this->form_validation->set_rules('telegram', 'ID Telegram', 'required|numeric');
@@ -167,7 +162,7 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    // //Halaman Pencarian Pegawai yang belum rekam logbook
+    //Halaman Pencarian Pegawai yang belum rekam logbook
     public function filterlogbookselesai()
     {
         $data['title'] = 'Logbook Yang Sudah Divalidasi';
@@ -217,6 +212,7 @@ class Admin extends CI_Controller
         redirect('admin/console');
     }
 
+    // Mengambil Detail Logbook yang telah Disetujui per Pegawai
     public function getDetailLogbookDisetujui()
     {
         $nama = $this->input->get('nama');
@@ -227,6 +223,7 @@ class Admin extends CI_Controller
         exit();
     }
 
+    // Mengambil Detail Logbook yang belum Disetujui per Pegawai
     public function getDetailLogbookBelumDisetujui()
     {
         $namabelum = $this->input->get('namabelum');

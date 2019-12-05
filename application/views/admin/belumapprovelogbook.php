@@ -35,6 +35,7 @@
 
                 </div>
             </form>
+
             <table class="table table-bordered table-hover mt-1">
                 <thead class="thead-light">
                     <tr>
@@ -46,7 +47,6 @@
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($belumlogbook as $belum) : ?>
-
                         <tr>
                             <th scope="row" class="nomor belumapprove"><?= $i; ?></th>
                             <td class="belumapprove text-center"><?= $belum['nama']; ?></td>
@@ -54,11 +54,8 @@
                             <td class="belumapprove text-center"><?= $belum['periode']; ?></td>
                             <td class="text-center">
                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalbelumdisetujui" nama="<?= $belum['nama'] ?>" periode="<?= $belum['periode'] ?>" id="<?= $i; ?>" onclick="logbookbelumdisetujui(<?= $i; ?>)"><i class=" fas fa-fw fa-search"></i> Lihat Detail</button>
-
                             </td>
                         </tr>
-
-
                         <?php $i++; ?>
                     <?php endforeach; ?>
                 </tbody>
@@ -90,7 +87,6 @@
                     <table class="table table-bordered">
                         <thead class="thead-light" style="text-align:center">
                             <tr>
-
                                 <th scope="col" class="headerdetailmodal">Kode IKU</th>
                                 <th scope="col" class="headerdetailmodal">Nama IKU</th>
                                 <th scope="col" class="headerdetailmodal">Perhitungan</th>

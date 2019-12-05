@@ -80,9 +80,9 @@
 
                                     <a data-toggle="tooltip" data-placement="left" title="Kirim Ke Atasan" class="button-kirimlogbook" href="<?= base_url(); ?>logbook/kirimkeatasan/<?= $logbook['id_logbook']; ?>" id-logbook="<?= $logbook['id_logbook'] ?>"><span style="color:blue;"><i class="fas fa-fw fa-paper-plane"></i></span></a>
 
-                                    <a data-toggle="tooltip" data-placement="left" title="Hapus Logbook" class="button-hapuslogbook" href="<?= base_url(); ?>logbook/hapuslogbook/<?= $logbook['id_logbook']; ?> " id-logbook="<?= $logbook['id_logbook'] ?>"><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
+                                    <a data-toggle="modal" data-placement="left" title="Ubah Logbook" href="#rekamlogbook"><span style="color:forestgreen"><i class="fas fa-fw fa-edit"></i></span></a>
 
-                                    <a data-toggle="modal" data-placement="left" title="Cetak Logbook" class="button-cetaklogbook" href="#modalPDFpegawai"><span style="color:forestgreen;"><i class="fas fa-fw fa-print"></i></span></a>
+                                    <a data-toggle="tooltip" data-placement="left" title="Hapus Logbook" class="button-hapuslogbook" href="<?= base_url(); ?>logbook/hapuslogbook/<?= $logbook['id_logbook']; ?> " id-logbook="<?= $logbook['id_logbook'] ?>"><span style="color:red;"><i class="fas fa-fw fa-trash"></i></span></a>
 
                                 <?php else : ?>
 
@@ -92,9 +92,7 @@
 
                                 <?php endif; ?>
                             </td>
-
                         </tr>
-
                 </tbody>
                 <?php $i++; ?>
             <?php endforeach; ?>
@@ -208,6 +206,8 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Edit Data Kontrak -->
 
 </div>
 <!-- /.container-fluid -->

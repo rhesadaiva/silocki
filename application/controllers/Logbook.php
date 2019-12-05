@@ -12,9 +12,9 @@ class Logbook extends CI_Controller
         $this->load->model('Logbook_model');
     }
 
+    // Ambil data logbook
     public function showlogbook($idiku)
     {
-
         $idiku = $this->uri->segment(3);
         $data['idiku'] = $this->uri->segment(3);
 
@@ -31,19 +31,18 @@ class Logbook extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    // Tambah logbook baru
     public function rekamlogbook($idiku)
     {
-
         $idiku = $this->uri->segment(3);
         // $data['idiku'] = $this->uri->segment(3);
 
-        //VALIDATION DATA LOGBOOK
+        //Validasi data logbook
         $this->form_validation->set_rules('periodepelaporan', 'Periode Pelaporan', 'required');
         $this->form_validation->set_rules('perhitungan', 'Perhitungan', 'required');
         $this->form_validation->set_rules('realisasipadabulan', 'Realisasi Pada Bulan Pelaporan', 'required');
         $this->form_validation->set_rules('realisasisdbulan', 'Realisasi s.d Bulan Pelaporan', 'required');
         $this->form_validation->set_rules('keterangan', 'Keterangan', 'required');
-        //END VALIDATION DATA LOGBOOK
 
         if ($this->form_validation->run() == FALSE) {
             $this->showlogbook($idiku);
@@ -54,6 +53,13 @@ class Logbook extends CI_Controller
         }
     }
 
+    // Edit Data Logbook
+    public function editlogbook($idlogbook)
+    {
+        $data['detailLogbook'] = $this->Logbook_model->getLogbookID($idlogbook);
+    }
+
+    // Hapus logbook
     public function hapuslogbook($idlogbook)
     {
         $hapuslogbook = $this->Logbook_model->deletelogbook($idlogbook);
@@ -61,6 +67,7 @@ class Logbook extends CI_Controller
         echo json_encode($hapuslogbook);
     }
 
+    // Kirim logbook ke atasan
     public function kirimkeatasan($idlogbook)
     {
         $kirimlogbook = $this->Logbook_model->kirimlogbook($idlogbook);
@@ -68,6 +75,7 @@ class Logbook extends CI_Controller
         echo json_encode($kirimlogbook);
     }
 
+    // Membuat format pdf logbook
     public function cetakLogbook($idlogbook)
     {
         $idlogbook = $this->uri->segment(3);

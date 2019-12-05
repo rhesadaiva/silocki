@@ -12,9 +12,7 @@
                             <h5 class="editkontrak"><?= $title; ?></h5>
                         </div>
                         <div class="card-body">
-
                             <input type="hidden" name="id_kontrak" value="<?= $kontrak['id_kontrak']; ?>">
-
                             <div class="form-group row">
                                 <label for="kontrakkinerjake" class="col-sm-3 col-form-label">Seri Kontrak Kinerja</label>
                                 <div class="col-sm-6">
@@ -67,13 +65,9 @@
                                     <button type="submit" name="buttoneditkontrak" id="buttoneditkontrak" class="btn btn-success"><i class="fas fa-fw fa-sign-in-alt"></i> Simpan</button>
                                 </div>
                             </div>
-
-
                         </div>
-
                     </div>
                 </div>
-
             </div>
         </form>
     </div>

@@ -34,6 +34,7 @@
 
                 </div>
             </form>
+
             <table class="table table-bordered table-hover mt-1" id="logbookselesai">
                 <thead class="thead-light" style="text-align:center">
                     <tr>
@@ -50,14 +51,10 @@
                             <th scope="row" style="text-align:center" class="nomor"><?= $i; ?></th>
                             <td class="selesai text-center" id="datapegawainama"><?= $clear['nama']; ?></td>
                             <td class="selesai text-center">Sudah menyerahkan <b><?= $clear['total']; ?></b> Logbook</td>
-                            <td class="selesai text-center" id="periodepegawailogbook"><?= $clear['periode']; ?>
-                            </td>
-
+                            <td class="selesai text-center" id="periodepegawailogbook"><?= $clear['periode']; ?></td>
                             <td>
                                 <button type="button" class="btn btn-primary btn-sm detailmodal" data-toggle="modal" data-target="#modaldetail" nama="<?= $clear['nama'] ?>" periode="<?= $clear['periode'] ?>" id="<?= $i; ?>" onclick="logbookdisetujui(<?= $i; ?>)"><i class="fas fa-fw fa-search"></i> Lihat Detail</button>
-
                             </td>
-
                         </tr>
                         <?php $i++; ?>
                     <?php endforeach; ?>
@@ -90,7 +87,6 @@
                     <table class="table table-bordered">
                         <thead class="thead-light" style="text-align:center">
                             <tr>
-
                                 <th scope="col" class="headerdetailmodal">Kode IKU</th>
                                 <th scope="col" class="headerdetailmodal">Nama IKU</th>
                                 <th scope="col" class="headerdetailmodal">Perhitungan</th>

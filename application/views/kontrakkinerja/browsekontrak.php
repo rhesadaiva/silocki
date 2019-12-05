@@ -24,9 +24,7 @@
         </div>
 
         <div class="card-body">
-
             <div class="row">
-
                 <div class="col-lg">
 
                     <table class="table table-bordered table-hover" id="browsekontrakkinerja">
@@ -41,8 +39,6 @@
                                 <th class="text-center browsekontrak" scope="col">Periode Pelaksanaan</th>
                                 <th class="text-center browsekontrak" data-valign="middle" data-halign="center" scope="col">Status Validasi</th>
                                 <th class="text-center browsekontrak" data-valign="middle" data-halign="center" scope="col">Aksi</th>
-
-
                             </tr>
                         </thead>
                         <tbody>
@@ -55,7 +51,6 @@
                                         <td class="browsekontrak"><?= $kontrak['nama']; ?></td>
                                     <?php endif; ?>
                                     <td class="browsekontrak"><?= $kontrak['nomorkk']; ?></td>
-
                                     <td class="browsekontrak"><?= indonesian_date3($kontrak['tanggalmulai']); ?> s.d <?= indonesian_date3($kontrak['tanggalselesai']); ?></td>
                                     <td class="browsekontrak">
                                         <?php switch ($kontrak['is_validated']) {

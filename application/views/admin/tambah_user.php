@@ -6,7 +6,6 @@
 
             <div class="row">
                 <div class="col-lg">
-
                     <div class="card shadow border-left-info">
                         <div class="card-header py-3">
                             <h4 class="tambahuser"><?= $title; ?></h4>
@@ -34,7 +33,7 @@
                                 <div class="col-sm-6">
                                     <select class="selectpicker" name="pangkat" data-live-search="true" data-width="fit">
                                         <?php foreach ($pangkat as $p) : ?>
-                                        <option value="<?= $p['pangkat/golongan']; ?>"><?= $p['pangkat/golongan']; ?></option>
+                                            <option value="<?= $p['pangkat/golongan']; ?>"><?= $p['pangkat/golongan']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -45,7 +44,7 @@
                                 <div class="col-sm-6">
                                     <select class="selectpicker" name="role" data-live-search="true" data-width="fit">
                                         <?php foreach ($role as $r) : ?>
-                                        <option value="<?= $r['id']; ?>"><?= $r['level']; ?></option>
+                                            <option value="<?= $r['id']; ?>"><?= $r['level']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -56,7 +55,7 @@
                                 <div class="col-sm-6">
                                     <select class="selectpicker" name="seksisub" data-live-search="true" data-width="fit">
                                         <?php foreach ($seksi as $s) : ?>
-                                        <option value="<?= $s['seksi/subseksi']; ?>"><?= $s['seksi/subseksi']; ?></option>
+                                            <option value="<?= $s['seksi/subseksi']; ?>"><?= $s['seksi/subseksi']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -67,7 +66,7 @@
                                 <div class="col-sm-6">
                                     <select class="selectpicker" name="atasan" data-live-search="true" data-width="fit">
                                         <?php foreach ($user_data as $user) : ?>
-                                        <option value="<?= $user['nama']; ?>"><?= $user['nama']; ?></option>
+                                            <option value="<?= $user['nama']; ?>"><?= $user['nama']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -90,13 +89,9 @@
                                     <button type="submit" name="buttonuserbaru" id="buttonuserbaru" class="btn btn-success"><i class="fas fa-fw fa-sign-in-alt"></i> Simpan</button>
                                 </div>
                             </div>
-
-
                         </div>
-
                     </div>
                 </div>
-
             </div>
         </form>
     </div>
